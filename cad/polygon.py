@@ -59,7 +59,7 @@ bottom_m = 5
 hatch_w = 8
 corridor = 35
 socket_d = 5
-socket_margin = 3
+socket_margin = 5
 
 # Internals
 
@@ -251,14 +251,10 @@ def keyplate_screw_holes():
     h1 = forward(rows * hole_h + (rows - 1) * padding - socket_margin)(h1)
 
     h2 = screw_hole()
-    h2 = right(hole_w + padding / 2)(h2)
-    h2 = forward(staggers[1] + socket_margin)(h2)
+    h2 = right((cols - 1) * hole_w + (cols - 1.5) * padding)(h2)
+    h2 = forward(sum(staggers[:-1]) + socket_margin)(h2)
 
-    h3 = screw_hole()
-    h3 = right((cols - 2) * hole_w + (cols - 2.5) * padding)(h3)
-    h3 = forward(sum(staggers[:-2]) + socket_margin)(h3)
-
-    return adjust_keyplate_xy(h1 + h2 + h3)
+    return adjust_keyplate_xy(h1 + h2)
 
 def keyplate_footprint():
     plate = keyplate_contour() - matrix()
@@ -373,6 +369,12 @@ def thumbfan_mid():
     profile = linear_extrude(mid_t)(profile)
     profile = map_to_thumb_plane(profile)
     profile -= hatch()
+    
+    holes = keyplate_screw_holes()
+    holes = linear_extrude(socket_d)(holes)
+    holes = down(socket_d)(holes)
+    profile -= holes
+
     return highlight('thumbfan_mid', thumb_cut_around(profile))
 
 
@@ -542,9 +544,9 @@ def right_half():
 # RENDERING
 #
 
-scad_render_to_file(left_half() + right_half(), 'polygon.scad')
-scad_render_to_file(left_half(30), 'polygon_exploded.scad')
+scad_render_to_file(left_half() + right_half(), 'polygon.scad', include_orig_code=False)
+scad_render_to_file(left_half(30), 'polygon_exploded.scad', include_orig_code=False)
 
-scad_render_to_file(keyplate_footprint(), 'polygon_keyplate.scad')
-scad_render_to_file(thumbplate_footprint(), 'polygon_thumbplate.scad')
-scad_render_to_file(battery_plate_footprint(), 'polygon_battery_plate.scad')
+scad_render_to_file(keyplate_footprint(), 'polygon_keyplate.scad', include_orig_code=False)
+scad_render_to_file(thumbplate_footprint(), 'polygon_thumbplate.scad', include_orig_code=False)
+scad_render_to_file(battery_plate_footprint(), 'polygon_battery_plate.scad', include_orig_code=False)
