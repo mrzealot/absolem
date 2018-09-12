@@ -114,7 +114,7 @@ height = col_h + highest_point + pinky_extra_h + 2 * wall_t
 
 # The first right triangle is given by A) the base of the thumb,
 # B) the bottom center of the keycap, and C) the bottom right corner of
-# the keycap. AB is thumb_length - (keycap_h / 2), and BC is thumbkey_w,
+# the keycap. AB is thumb_length - (keycap_h / 2), and BC is thumbkey_w / 2,
 # so AC is calculable. Then the angle BAC is asin(BC / AC).
 
 # The second right triangle is A), C), and D), where D) is the midpoint of
@@ -128,6 +128,9 @@ ac = math.sqrt( (thumbkey_w / 2)**2 + (thumb_length - (keycap_h / 2))**2 )
 bac = math.asin( (thumbkey_w / 2) / ac)
 cad = math.asin(0.5 / ac)
 thumb_angle = math.degrees(2 * (bac + cad))
+
+# Thumb rotations are measured from the bottom center of the switch holes
+thumb_radius = thumb_length - hole_h / 2
 
 hatch_h = height - (width - thumb_plane_start) + 8
 
@@ -301,27 +304,27 @@ def keywell_cover():
 #
 
 def adjust_thumb_x(fan):
-    return right(wall_t + margin + (thumbkey_w - alphakey_w) / 2)(fan)
+    return right(wall_t + margin + cover_t)(fan)
 
-def thumb_holes_helper(profile, shift):
-    first = left(shift)(profile)
-    second = left(shift)(profile)
-    second = forward(thumb_length)(second)
+def thumb_holes_helper(width, height):
+    first = left(width / 2)(square([width, height]))
+    second = first
+    second = forward(thumb_radius)(second)
     second = rotate(-thumb_angle)(second)
-    second = back(thumb_length)(second)
+    second = back(thumb_radius)(second)
     
     fan = first + second
-    fan = right(shift)(forward(thumbfan_h)(fan))
+    fan = right(width / 2)(forward(thumbfan_h)(fan))
     fan = adjust_thumb_x(fan)
     return fan
 
 def thumb_holes():
-    return right((thumbkey_w - alphakey_w) / 2)(thumb_holes_helper(hole(), hole_w / 2))
+    return right((thumbkey_w - alphakey_w) / 2)(
+        thumb_holes_helper(hole_w, hole_h)
+    )
 
 def thumb_footprint():
-    profile = square([hole_w + (thumbkey_w - alphakey_w), hole_h])
-    shift = hole_w / 2 + (thumbkey_w - alphakey_w) / 2
-    return thumb_holes_helper(profile, shift)
+    return thumb_holes_helper(hole_w + (thumbkey_w - alphakey_w), hole_h)
 
 def thumbplate_contour():
     inflation = 10
@@ -334,9 +337,10 @@ def map_to_thumb_plane(plate):
 
 def thumbplate_screw_hole():
     h = screw_hole()
-    h = forward(thumb_length + hole_h * 0.65)(h)
-    h = rotate(-thumb_angle * 0.5)(h)
-    h = back(thumb_length - thumbfan_h)(h)
+    h = forward(hole_h * .75)(h)
+    h = forward(thumb_radius)(h)
+    h = rotate(-thumb_angle / 2)(h)
+    h = back(thumb_radius - thumbfan_h)(h)
     h = right(hole_w / 2 + (thumbkey_w - alphakey_w) / 2)(h)
     h = adjust_thumb_x(h)
     return h
