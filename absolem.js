@@ -16,7 +16,7 @@ const pinky_angle = 5
 
 // Thumbfan related
 const thumb_start = 12
-const thumb_length = 52
+// const thumb_length = 52
 // There used to be a fairly involved calculation here to obtain
 // the optimal angle between the thumb keys which ended up not
 // working out the way I wanted it to because the non-uniformity
@@ -28,7 +28,8 @@ const thumb_angle = -28
 
 // Global
 const width = 250
-const margin = 10
+const extra_gap = 1
+const margin = 8
 const half_angle = -20
 const corner_radius = 2
 
@@ -87,13 +88,11 @@ const left = (model, num) => move(model, [-num, 0])
 const right = (model, num) => move(model, [num, 0])
 const rotate = m.model.rotate
 const point_rotate = m.point.rotate
-const mirror = (model, offset) => {
-    if (offset) {
-        model = right(model, offset)
-    }
+const mirror = (_model, offset) => {
+    let model = deepcopy(_model)
     model = m.model.mirror(model, true, false)
     if (offset) {
-        model = left(model, offset)
+        model = move(model, [offset, 0])
     }
     return model
 }
@@ -111,7 +110,7 @@ const point_mirror = (point, offset) => {
 const combine = (a, b) => {
     return m.model.combineUnion(a, b, {
         farPoint: [1000, 1000],
-        pointMatchingDistance: 0
+        pointMatchingDistance: 0.001
     })
 }
 const subtract = (a, b) => {
@@ -128,7 +127,7 @@ const point = p => ({
     radius: .2
 })
 
-
+const deepcopy = obj => JSON.parse(JSON.stringify(obj))
 
 
 
@@ -174,23 +173,59 @@ const keycap = (col, key) => {
     return {paths}
 }
 
-const real_margin = overhang + gap + margin
+const cover_hole = (col, key) => {
+    let w = overhang + gap + extra_gap
+    let h = w
+    if (col == 'thumb' && key == 'home') {
+        w += kc_diff
+    }
+    paths = {
+        l: line([-w,        -h       ], [-w,        side + h]),
+        t: line([-w,         side + h], [ side + w, side + h]),
+        r: line([ side + w,  side + h], [ side + w, -h      ]),
+        b: line([ side + w, -h       ], [-w,        -h      ])
+    }
+    return {paths}
+}
+
+const real_margin = overhang + gap + extra_gap + margin
 // this is to ensure that the middle of the 45 degree angle corner cut
 // is also the same real_margin away from the hole
 const fence_corner = Math.tan(m.angle.toRadians(45 / 2)) * real_margin * 2 / Math.sqrt(2)
 const fence = (col, key) => {
-    const top = side + real_margin
-    const right = top
-    const bottom = -real_margin
-    const left = bottom
-    const l  = [left, bottom + fence_corner]
-    const lt = [left, top - fence_corner]
-    const t  = [left + fence_corner, top]
-    const tr = [right - fence_corner, top]
-    const r  = [right, top - fence_corner]
-    const rb = [right, bottom + fence_corner]
-    const b  = [right - fence_corner, bottom]
-    const bl = [left + fence_corner, bottom]
+    const _top = side + real_margin
+    const _right = _top
+    const _bottom = -real_margin
+    const _left = _bottom
+    let l  = [_left, _bottom + fence_corner]
+    let lt = [_left, _top - fence_corner]
+    let t  = [_left + fence_corner, _top]
+    let tr = [_right - fence_corner, _top]
+    let r  = [_right, _top - fence_corner]
+    let rb = [_right, _bottom + fence_corner]
+    let b  = [_right - fence_corner, _bottom]
+    let bl = [_left + fence_corner, _bottom]
+
+    console.log(col, key)
+
+    // simplify the "below the wing" region
+    if (col == 'ring' && key == 'bottom') {
+        bl = m.point.add(bl, [0, -1])
+        b = m.point.add(b, [30, -1])
+    } else if (col == 'pinky' && key == 'bottom') {
+        rb = m.point.add(rb, [10, 10])
+
+    // skip the mini step on the inner col + handle top middle connection
+    } else if (col == 'inner' && key == 'top') {
+        t = m.point.add(t, [0, 2])
+        tr = m.point.add(tr, [30, 2])
+        r = m.point.add(r, [30, 2])
+
+    // handle bottom middle connection
+    } else if (col == 'thumb' && key == 'outer') {
+        tr = m.point.add(tr, [0, 30])
+        r = m.point.add(r, [0, 30])
+    }
     paths = {
         l:  line(l, lt),
         lt: line(lt, t),
@@ -238,10 +273,10 @@ const matrix = (func) => {
 
 const thumbfan = (func) => ({
     models: {
-        inner: func(),
+        inner: func('thumb', 'inner'),
         home: rotate(
             right(
-                func(),
+                func('thumb', 'home'),
                 side + padding + kc_diff
             ),
             thumb_angle,
@@ -251,7 +286,7 @@ const thumbfan = (func) => ({
             right(
                 rotate(
                     right(
-                        func(),
+                        func('thumb', 'outer'),
                         side + padding + kc_diff
                     ),
                     thumb_angle,
@@ -343,8 +378,8 @@ const patch = {
     lm: originated.models.matrix.models.inner.models.bottom.paths.r.end,
     lb: m.point.add(originated.models.thumbfan.models.outer.paths.t.end, [0, -2])
 }
-patch.rt = [patch.lt[0] + 100, patch.lt[1]]
-patch.rb = [patch.lb[0] + 100, patch.lb[1]]
+patch.rt = [patch.lt[0] + 30, patch.lt[1]]
+patch.rb = [patch.lb[0] + 30, patch.lb[1]]
 
 const patch_elem = {
     paths: {
@@ -430,7 +465,7 @@ fs.writeFileSync('asrt.html', html_prefix + m.exporter.toSVG({
 let acc = patch_elem
 let ii = 1
 for_each_hole(uncombined_fence, model => {
-    acc = combine(acc, model)
+    acc = combine(acc, deepcopy(model))
 
 
     // fs.writeFileSync('test__' + (ii++) + '.html', html_prefix + m.exporter.toSVG({
@@ -480,39 +515,63 @@ const get_line = (model, [col, key, part]) => {
     }
     // console.log(require('util').inspect(model, {showHidden: false, depth: null}))
     // console.log(require('util').inspect(route, {showHidden: false, depth: null}))
-    return m.travel(model, route).result
+    return deepcopy(m.travel(model, route).result)
 }
 
+let deb = {
+    paths: {}
+}
 
-const fix_corner = (model, route_a, route_b, target) => {
-    const a = get_line(model, route_a)
-    const b = get_line(model, route_b)
+const debb = p => {
+    const i = Object.keys(deb.paths).length
+    deb.paths[i] = point(p)
+}
+
+const crosses = (a, b, c, d) => {
+
+}
+
+const OUTER = true
+const INNER = false
+const MIRRORED = true
+const NOT_MIRRORED = false
+const fix_corner = (model_a, route_a, mirrored_a, model_b, route_b, mirrored_b, outer, target) => {
+
+    console.log('fixing', route_a, route_b)
+
+    const a = get_line(model_a, route_a)
+    const b = get_line(model_b, route_b)
     const center = m.path.intersection(a, b).intersectionPoints[0]
-    const angle_a = m.angle.ofLineInDegrees(a)
-    const angle_b = m.angle.ofLineInDegrees(b)
+    const angle_a = m.angle.ofLineInDegrees(a) + (mirrored_a ? 180 : 0)
+    const angle_b = m.angle.ofLineInDegrees(b) + (mirrored_b ? 180 : 0)
     const angle = angle_b - angle_a
-    const sign = angle > 0 // TODO: do I need this?
-    const radius = Math.tan(m.angle.toRadians(Math.abs(angle) / 2)) * corner_radius
+    let radius = Math.tan(m.angle.toRadians(Math.abs(angle) / 2)) * corner_radius
+    const sign = radius > 0 ? 1 : -1
+    radius = Math.abs(radius)
+    console.log(angle_a, angle_b, angle, radius, sign)
     const circle = { 
         type: 'circle', 
         origin: center,
         radius: radius
     }
-    const ca = m.path.intersection(a, circle).intersectionPoints[0]
-    const cb = m.path.intersection(b, circle).intersectionPoints[0]
-    const arc = new m.models.BezierCurve([ca, center, cb])
+    const cas = m.path.intersection(a, circle).intersectionPoints
+    const cbs = m.path.intersection(b, circle).intersectionPoints
+    
+    debb(center)
 
-    const add = {
-        models: {
-            arc: arc
-        },
-        paths: {}
-    }
+    if (outer) {
+        // there's only one intersection, so this should be unambiguous
+        const ca = cas[0]
+        const cb = cbs[0]
 
-    if (!sign) {
+        debb(ca)
+        debb(cb)
+
+        const arc = new m.models.BezierCurve([ca, center, cb])
         // cutting at the exact line is not enough as the suctraction
         // algorithm leaves the lines... have to make a bigger cut
-        far_point = m.point.fromAngleOnCircle( (angle_a + angle_b) / 2 + 90, circle)
+        const far_point = m.point.fromAngleOnCircle((angle_a + angle_b) / 2 + sign * 90, circle)
+        debb(far_point)
         const remove = {
             paths: {
                 a: line(ca, far_point),
@@ -520,37 +579,124 @@ const fix_corner = (model, route_a, route_b, target) => {
                 c: line(cb, ca)
             }
         }
-        add.paths.a = line(ca, cb)
+        const add = {
+            models: {
+                arc: new m.models.BezierCurve([ca, center, cb])
+            },
+            paths: {
+                line: line(ca, cb)
+            }
+        }
         target = subtract(target, remove)
+        target = combine(target, add)
     } else {
+        // there can be multiple intersections, so as an "inner" curve,
+        // we want the points furthest from the inner_point
+        let i = 1 // TODO remove
+        const inner_point = m.point.fromAngleOnCircle((angle_a + angle_b) / 2 - sign * 90, circle)
+
+        const furthest = (arr, inner) => {
+            let max
+            let max_dist = 0
+
+            for (const point of arr) {
+                const d = m.measure.pointDistance(point, inner)
+                if (d > max_dist) {
+                    max_dist = d
+                    max = point
+                }
+            }
+
+            return max
+        }
+
+        const ca = furthest(cas, inner_point)
+        const cb = furthest(cbs, inner_point)
+
+        debb(ca)
+        debb(cb)
+
         // similarly to above, got to make sure the piece we want to combine
         // has some intersection with the target or it won't "stick"
-        inner_point = m.point.fromAngleOnCircle( (angle_a + angle_b) / 2 - 90, circle)
-        add.paths.a = line(ca, inner_point)
-        add.paths.b = line(inner_point, cb)
-    }
+        
+        debb(inner_point)
+        const add = {
+            models: {
+                arc: new m.models.BezierCurve([ca, center, cb])
+            },
+            paths: {
+                line1: line(ca, inner_point),
+                line2: line(inner_point, cb)
+            }
+        }
+        target = combine(target, deepcopy(add))
 
-    target = combine(target, add)
+
+
+        fs.writeFileSync(`asrt_${i}.html`, html_prefix + m.exporter.toSVG({
+            models: {
+                arst: target,
+                deb: deb, 
+                add: add
+            }
+        }) + html_suffix)
+        i++
+    }
     return target
 }
 
-acc = fix_corner(uncombined_fence, ['pinky', 'bottom', 'b'], ['pinky', 'bottom', 'bl'], acc)
+const uf = uncombined_fence
+const uff = m.model.originate({
+    models: {
+        left: uf,
+        right: mirror(uf, width)
+    }
+})
+
+console.log(uff.models.right)
+    
+
+acc = fix_corner(uf, ['thumb',  'outer',  'r' ], NOT_MIRRORED, uf, ['thumb',  'outer',  'rb'], NOT_MIRRORED, OUTER, acc)
+acc = fix_corner(uf, ['thumb',  'outer',  'rb'], NOT_MIRRORED, uf, ['thumb',  'outer',  'b' ], NOT_MIRRORED, OUTER, acc)
+acc = fix_corner(uf, ['thumb',  'outer',  'b' ], NOT_MIRRORED, uf, ['thumb',  'home',   'b' ], NOT_MIRRORED, INNER, acc)
+acc = fix_corner(uf, ['thumb',  'home',   'b' ], NOT_MIRRORED, uf, ['thumb',  'inner',  'b' ], NOT_MIRRORED, INNER, acc)
+acc = fix_corner(uf, ['thumb',  'inner',  'b' ], NOT_MIRRORED, uf, ['thumb',  'inner',  'bl'], NOT_MIRRORED, OUTER, acc)
+acc = fix_corner(uf, ['thumb',  'inner',  'bl'], NOT_MIRRORED, uf, ['thumb',  'inner',  'l' ], NOT_MIRRORED, OUTER, acc)
+acc = fix_corner(uf, ['thumb',  'inner',  'l' ], NOT_MIRRORED, uf, ['ring',   'bottom', 'b' ], NOT_MIRRORED, INNER, acc)
+acc = fix_corner(uf, ['ring',   'bottom', 'b' ], NOT_MIRRORED, uf, ['pinky',  'bottom', 'rb'], NOT_MIRRORED, INNER, acc)
+acc = fix_corner(uf, ['pinky',  'bottom', 'rb'], NOT_MIRRORED, uf, ['pinky',  'bottom', 'b' ], NOT_MIRRORED, OUTER, acc)
+acc = fix_corner(uf, ['pinky',  'bottom', 'b' ], NOT_MIRRORED, uf, ['pinky',  'bottom', 'bl'], NOT_MIRRORED, OUTER, acc)
+acc = fix_corner(uf, ['pinky',  'bottom', 'bl'], NOT_MIRRORED, uf, ['pinky',  'bottom', 'l' ], NOT_MIRRORED, OUTER, acc)
+acc = fix_corner(uf, ['pinky',  'top',    'l' ], NOT_MIRRORED, uf, ['pinky',  'top',    'lt'], NOT_MIRRORED, OUTER, acc)
+acc = fix_corner(uf, ['pinky',  'top',    'lt'], NOT_MIRRORED, uf, ['pinky',  'top',    't' ], NOT_MIRRORED, OUTER, acc)
+acc = fix_corner(uf, ['pinky',  'top',    't' ], NOT_MIRRORED, uf, ['ring',   'top',    'l' ], NOT_MIRRORED, INNER, acc)
+acc = fix_corner(uf, ['ring',   'top',    'l' ], NOT_MIRRORED, uf, ['ring',   'top',    'lt'], NOT_MIRRORED, OUTER, acc)
+acc = fix_corner(uf, ['ring',   'top',    'lt'], NOT_MIRRORED, uf, ['ring',   'top',    't' ], NOT_MIRRORED, OUTER, acc)
+acc = fix_corner(uf, ['ring',   'top',    't' ], NOT_MIRRORED, uf, ['middle', 'top',    'lt'], NOT_MIRRORED, INNER, acc)
+acc = fix_corner(uf, ['middle', 'top',    'lt'], NOT_MIRRORED, uf, ['middle', 'top',    't' ], NOT_MIRRORED, OUTER, acc)
+acc = fix_corner(uf, ['middle', 'top',    't' ], NOT_MIRRORED, uf, ['middle', 'top',    'tr'], NOT_MIRRORED, OUTER, acc)
+acc = fix_corner(uf, ['middle', 'top',    'tr'], NOT_MIRRORED, uf, ['index',  'top',    't' ], NOT_MIRRORED, INNER, acc)
 
 
-acc = fix_corner(uncombined_fence, ['ring', 'bottom', 'b'], ['pinky', 'bottom', 'r'], acc)
+const acc_1 = deepcopy(acc)
 
-// acc = fix_corner(uncombined_fence, ['pinky', 'top', 't'], ['ring', 'top', 'l'], acc)
+acc = combine(acc, mirror(acc, width))
+
+const acc_2 = deepcopy(acc)
+acc = fix_corner(uff.models.left,  ['inner', 'top',   't'], NOT_MIRRORED, uff.models.right, ['inner', 'top',   't'], MIRRORED,     INNER,  acc)
+acc = fix_corner(uff.models.right, ['thumb', 'outer', 'r'], MIRRORED,     uff.models.left,  ['thumb', 'outer', 'r'], NOT_MIRRORED, INNER,  acc)
 
 
 
 
 model = {
     models: {
-        // left: half(hole),
-        // right: right(mirror(half(hole)), width),
+        left: half(cover_hole),
+        right: mirror(half(cover_hole), width),
         acc: acc,
-        u: uncombined_fence
-        // arst: arst
+        //u: uncombined_fence,
+        //um: mirror(uncombined_fence, width),
+        //deb: deb
 
     },
     // paths: {
