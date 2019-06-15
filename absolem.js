@@ -176,14 +176,17 @@ const keycap = (col, key) => {
 const cover_hole = (col, key) => {
     let w = overhang + gap + extra_gap
     let h = w
+    let pinky_fix = 0
     if (col == 'thumb' && key == 'home') {
         w += kc_diff
+    } else if (col == 'pinky' && key == 'top') {
+        pinky_fix = 5
     }
     paths = {
-        l: line([-w,        -h       ], [-w,        side + h]),
-        t: line([-w,         side + h], [ side + w, side + h]),
-        r: line([ side + w,  side + h], [ side + w, -h      ]),
-        b: line([ side + w, -h       ], [-w,        -h      ])
+        l: line([-w,                    -h       ], [-w,                    side + h]),
+        t: line([-w,                     side + h], [ side + w + pinky_fix, side + h]),
+        r: line([ side + w + pinky_fix,  side + h], [ side + w + pinky_fix, -h      ]),
+        b: line([ side + w + pinky_fix, -h       ], [-w,                    -h      ])
     }
     return {paths}
 }
@@ -316,6 +319,15 @@ const half = (func) => {
     return m.model.rotate(result, half_angle)
 }
 
+const full = (func) => {
+    return m.model.originate({
+        models: {
+            left: func(),
+            right: mirror(func(), width)
+        }
+    })
+}
+
 
 
 
@@ -335,7 +347,22 @@ const for_each_hole = (model, callback) => {
     }
 }
 
+const get_hole = (model, [col, key]) => {
+    let route
+    if (col == 'thumb') {
+        route = ['models', 'thumbfan', 'models', key,]
+    } else {
+        route = ['models', 'matrix', 'models', col, 'models', key]
+    }
+    // console.log(require('util').inspect(model, {showHidden: false, depth: null}))
+    // console.log(require('util').inspect(route, {showHidden: false, depth: null}))
+    return deepcopy(m.travel(model, route).result)
+}
 
+const get_line = (model, [col, key, part]) => {
+    const result = get_hole(model, [col, key])
+    return result.paths[part]
+}
 
 
 
@@ -374,10 +401,11 @@ var originated = m.model.originate(half(hole))
 // }
 
 const patch = {
-    lt: m.point.add(originated.models.matrix.models.inner.models.top.paths.t.end, [0, 1]),
-    lm: originated.models.matrix.models.inner.models.bottom.paths.r.end,
-    lb: m.point.add(originated.models.thumbfan.models.outer.paths.t.end, [0, -2])
+    lt: get_line(originated, ['inner', 'top',    't']).end,
+    lm: get_line(originated, ['inner', 'bottom', 'r']).end,
+    lb: get_line(originated, ['thumb', 'outer',  't']).end,
 }
+// hacked right side for the patch elem
 patch.rt = [patch.lt[0] + 30, patch.lt[1]]
 patch.rb = [patch.lb[0] + 30, patch.lb[1]]
 
@@ -388,9 +416,6 @@ const patch_elem = {
         c: line(patch.rb, patch.lb),
         d: line(patch.lb, patch.lm),
         e: line(patch.lm, patch.lt)
-    },
-    models: {
-
     }
 }
 
@@ -401,82 +426,62 @@ const patch_elem = {
 
 
 
-// let valami = patch_elem
-// ii = 0
-// for (const half of ['left']) {
-
-//     for (const key of ['outer', 'home', 'inner']) {
-//         const route = ['models', half, 'models', 'thumbfan', 'models', key]
-//         valami = combine(
-//             valami,
-//             m.model.outline(
-//                 m.travel(originated, route).result,
-//                 13,
-//                 2
-//             )
-//         )
-//         // valami.models[route.join('')] = m.model.outline(
-//         //     m.travel(originated, route).result,
-//         //     13,
-//         //     2
-//         // )
-
-//         // helper(valami, ++ii)
-//     }
-
-
-//     // for (const col of ['inner', 'index']) {
-//     for (const col of col_names.slice().reverse()) {
-//         for (const key of ['bottom', 'middle', 'top']) {
-//             const route = ['models', half, 'models', 'matrix', 'models', col, 'models', key]
-//             valami = combine(
-//                 valami,
-//                 m.model.outline(
-//                     m.travel(originated, route).result,
-//                     13,
-//                     2
-//                 )
-//             )
-//             // valami.models[route.join('')] = m.model.outline(
-//             //     m.travel(originated, route).result,
-//             //     13,
-//             //     2
-//             // )
-
-//             // helper(valami, ++ii)
-
-//             // console.log(half, col, key, m.travel(model, route))
-//         }
-//     }
-
-    
-// }
-
-// valami = combine(valami, right(mirror(valami), width))
-
 const uncombined_fence = m.model.originate(half(fence))
-
-fs.writeFileSync('asrt.html', html_prefix + m.exporter.toSVG({
-    models: {
-        arst: uncombined_fence
-    }
-}) + html_suffix)
-
 let acc = patch_elem
-let ii = 1
 for_each_hole(uncombined_fence, model => {
     acc = combine(acc, deepcopy(model))
-
-
-    // fs.writeFileSync('test__' + (ii++) + '.html', html_prefix + m.exporter.toSVG({
-    //     models: {
-    //         acc: acc,
-    //         arst: m.model.originate(half(hole))
-    //     }
-    // }) + html_suffix)
-
 })
 
+
+let deb = {
+    paths: {}
+}
+
+const debb = p => {
+    const i = Object.keys(deb.paths).length
+    deb.paths[i] = point(p)
+}
+
+
+
+
+
+const uncombined_cover = m.model.originate(half(cover_hole))
+let cover = {models: {}}
+for_each_hole(uncombined_cover, model => {
+    cover = combine(cover, deepcopy(model))
+})
+
+// fix thumb holes
+
+const fix_hole = (a, b, target) => {
+    const p1 = a.paths.t.end
+    const p2 = b.paths.l.origin
+    const p3 = a.paths.r.end
+    const p4 = b.paths.t.origin
+    debb(p1)
+    debb(p2)
+    debb(p3)
+    debb(p4)
+
+    target = combine(target, {
+        paths: {
+            a: line(p1, p4),
+            b: line(p4, p3),
+            c: line(p3, p2),
+            d: line(p2, p1)
+        }
+    })
+
+    return target
+
+    //target.paths = {arst: line(p1, p4)}
+}
+
+cover = fix_hole(get_hole(uncombined_cover, ['thumb', 'inner']), get_hole(uncombined_cover, ['thumb', 'home' ]), cover)
+cover = fix_hole(get_hole(uncombined_cover, ['thumb', 'home' ]), get_hole(uncombined_cover, ['thumb', 'outer']), cover)
+
+//cover.paths.arst = line()
 
 
 // console.log(require('util').inspect(acc, {showHidden: false, depth: null}))
@@ -506,30 +511,9 @@ for_each_hole(uncombined_fence, model => {
 // }
 
 
-const get_line = (model, [col, key, part]) => {
-    let route
-    if (col == 'thumb') {
-        route = ['models', 'thumbfan', 'models', key, 'paths', part]
-    } else {
-        route = ['models', 'matrix', 'models', col, 'models', key, 'paths', part]
-    }
-    // console.log(require('util').inspect(model, {showHidden: false, depth: null}))
-    // console.log(require('util').inspect(route, {showHidden: false, depth: null}))
-    return deepcopy(m.travel(model, route).result)
-}
 
-let deb = {
-    paths: {}
-}
 
-const debb = p => {
-    const i = Object.keys(deb.paths).length
-    deb.paths[i] = point(p)
-}
 
-const crosses = (a, b, c, d) => {
-
-}
 
 const OUTER = true
 const INNER = false
@@ -592,7 +576,6 @@ const fix_corner = (model_a, route_a, mirrored_a, model_b, route_b, mirrored_b, 
     } else {
         // there can be multiple intersections, so as an "inner" curve,
         // we want the points furthest from the inner_point
-        let i = 1 // TODO remove
         const inner_point = m.point.fromAngleOnCircle((angle_a + angle_b) / 2 - sign * 90, circle)
 
         const furthest = (arr, inner) => {
@@ -630,17 +613,6 @@ const fix_corner = (model_a, route_a, mirrored_a, model_b, route_b, mirrored_b, 
             }
         }
         target = combine(target, deepcopy(add))
-
-
-
-        fs.writeFileSync(`asrt_${i}.html`, html_prefix + m.exporter.toSVG({
-            models: {
-                arst: target,
-                deb: deb, 
-                add: add
-            }
-        }) + html_suffix)
-        i++
     }
     return target
 }
@@ -652,9 +624,6 @@ const uff = m.model.originate({
         right: mirror(uf, width)
     }
 })
-
-console.log(uff.models.right)
-    
 
 acc = fix_corner(uf, ['thumb',  'outer',  'r' ], NOT_MIRRORED, uf, ['thumb',  'outer',  'rb'], NOT_MIRRORED, OUTER, acc)
 acc = fix_corner(uf, ['thumb',  'outer',  'rb'], NOT_MIRRORED, uf, ['thumb',  'outer',  'b' ], NOT_MIRRORED, OUTER, acc)
@@ -678,25 +647,124 @@ acc = fix_corner(uf, ['middle', 'top',    't' ], NOT_MIRRORED, uf, ['middle', 't
 acc = fix_corner(uf, ['middle', 'top',    'tr'], NOT_MIRRORED, uf, ['index',  'top',    't' ], NOT_MIRRORED, INNER, acc)
 
 
-const acc_1 = deepcopy(acc)
-
 acc = combine(acc, mirror(acc, width))
 
-const acc_2 = deepcopy(acc)
 acc = fix_corner(uff.models.left,  ['inner', 'top',   't'], NOT_MIRRORED, uff.models.right, ['inner', 'top',   't'], MIRRORED,     INNER,  acc)
 acc = fix_corner(uff.models.right, ['thumb', 'outer', 'r'], MIRRORED,     uff.models.left,  ['thumb', 'outer', 'r'], NOT_MIRRORED, INNER,  acc)
+
+
+const uc = uncombined_cover
+cover = fix_corner(uc, ['thumb', 'outer',    't' ], NOT_MIRRORED, uc, ['thumb', 'outer',    'r'], NOT_MIRRORED, OUTER, cover)
+cover = fix_corner(uc, ['thumb', 'outer',    'r' ], NOT_MIRRORED, uc, ['thumb', 'outer',    'b'], NOT_MIRRORED, OUTER, cover)
+cover = fix_corner(uc, ['thumb', 'inner',    'b' ], NOT_MIRRORED, uc, ['thumb', 'inner',    'l'], NOT_MIRRORED, OUTER, cover)
+cover = fix_corner(uc, ['index', 'bottom',    'b' ], NOT_MIRRORED, uc, ['index', 'bottom',    'l'], NOT_MIRRORED, OUTER, cover)
+cover = fix_corner(uc, ['ring', 'bottom',    'r' ], NOT_MIRRORED, uc, ['ring', 'bottom',    'b'], NOT_MIRRORED, OUTER, cover)
+cover = fix_corner(uc, ['pinky', 'bottom',    'r' ], NOT_MIRRORED, uc, ['pinky', 'bottom',    'b'], NOT_MIRRORED, OUTER, cover)
+cover = fix_corner(uc, ['pinky', 'bottom',    'b' ], NOT_MIRRORED, uc, ['pinky', 'bottom',    'l'], NOT_MIRRORED, OUTER, cover)
+cover = fix_corner(uc, ['pinky', 'top',    'l' ], NOT_MIRRORED, uc, ['pinky', 'top',    't'], NOT_MIRRORED, OUTER, cover)
+cover = fix_corner(uc, ['ring', 'top',    'l' ], NOT_MIRRORED, uc, ['ring', 'top',    't'], NOT_MIRRORED, OUTER, cover)
+cover = fix_corner(uc, ['middle', 'top',    'l' ], NOT_MIRRORED, uc, ['middle', 'top',    't'], NOT_MIRRORED, OUTER, cover)
+cover = fix_corner(uc, ['middle', 'top',    't' ], NOT_MIRRORED, uc, ['middle', 'top',    'r'], NOT_MIRRORED, OUTER, cover)
+cover = fix_corner(uc, ['index', 'top',    't' ], NOT_MIRRORED, uc, ['index', 'top',    'r'], NOT_MIRRORED, OUTER, cover)
+cover = fix_corner(uc, ['inner', 'top',    't' ], NOT_MIRRORED, uc, ['inner', 'top',    'r'], NOT_MIRRORED, OUTER, cover)
+
+
+
+
+const poly = (arr) => {
+    let counter = 0
+    let prev = arr[arr.length - 1]
+    const res = {
+        paths: {}
+    }
+    for (const p of arr) {
+        res.paths['p' + (++counter)] = line(prev, p)
+        prev = p
+    }
+    return res
+}
+
+const logo = () => {
+
+    const p = {
+        bars: 11,
+        bar: 2,
+        gap: 1,
+        height: 40
+    }
+    
+    p.gaps = p.bars - 1
+    p.width = p.bars * p.bar + p.gaps * p.gap
+    p.step = p.bar + p.gap
+
+
+    let res = poly([
+        [0, 0],
+        [p.width, 0],
+        [p.width, p.height],
+        [0, p.height]
+    ])
+    
+
+    for (let i = 1; i <= p.gaps; i++) {
+        const to = i * p.step
+        const from = to - p.gap
+        res = subtract(res, poly([
+            [from, -10],
+            [to, -10],
+            [to, p.height + 10],
+            [from, p.height + 10]
+        ]))
+    }
+
+    res = subtract(res, poly([
+        [0, 0],
+        [0, p.height],
+        [p.width/2, 0]
+    ]))
+    res = subtract(res, poly([
+        [p.width, 0],
+        [p.width, p.height],
+        [p.width/2, 0]
+    ]))
+
+    top_cut_w = 4 * p.step
+    top_cut_h = 6
+
+    res = subtract(res, poly([
+        [top_cut_w, p.height],
+        [p.width - top_cut_w, p.height],
+        [p.width/2, p.height - top_cut_h]
+    ]))
+
+    res = move(res, [width/2 - p.width/2, -35])
+    res.layer = 'logo'
+    return res
+}
+
+
+
+
+
+
 
 
 
 
 model = {
     models: {
-        left: half(cover_hole),
+        kleft: half(hole),
+        kright: mirror(half(hole), width),
+        capleft: half(keycap),
+        capright: mirror(half(keycap), width),
+        //left: half(cover_hole),
         right: mirror(half(cover_hole), width),
         acc: acc,
         //u: uncombined_fence,
         //um: mirror(uncombined_fence, width),
-        //deb: deb
+        //deb: deb,
+        cover: cover, 
+        logo: logo()
 
     },
     // paths: {
@@ -707,7 +775,13 @@ model = {
 
 
 
-var svg = m.exporter.toSVG(model)
+var svg = m.exporter.toSVG(model, {
+    layerOptions: {
+        logo: {
+            fill: 'black'
+        }
+    }
+})
 fs.writeFileSync('absolem.svg', svg)
 fs.writeFileSync('absolem.html', html_prefix + svg + html_suffix)
 fs.writeFileSync('absolem.dxf', m.exporter.toDXF(model))
