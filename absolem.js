@@ -193,8 +193,8 @@ const cover_hole = (col, key) => {
 
 const real_margin = overhang + gap + extra_gap + margin
 // this is to ensure that the middle of the 45 degree angle corner cut
-// is also the same real_margin away from the hole
-const fence_corner = Math.tan(m.angle.toRadians(45 / 2)) * real_margin * 2 / Math.sqrt(2)
+// is also the same real_margin away from the keycap
+const fence_corner = Math.tan(m.angle.toRadians(45 / 2)) * (real_margin - overhang) * 2 / Math.sqrt(2)
 const fence = (col, key) => {
     const _top = side + real_margin
     const _right = _top
@@ -217,6 +217,10 @@ const fence = (col, key) => {
         b = m.point.add(b, [30, -1])
     } else if (col == 'pinky' && key == 'bottom') {
         rb = m.point.add(rb, [10, 10])
+
+    // elongate the diagonal to reach top of the next key
+    } else if (col == 'middle' && key == 'top') {
+        r = m.point.add(r, [5, -5])
 
     // skip the mini step on the inner col + handle top middle connection
     } else if (col == 'inner' && key == 'top') {
@@ -419,7 +423,7 @@ const patch_elem = {
     }
 }
 
-
+let patch_elem_copy = deepcopy(patch_elem)
 
 
     
@@ -427,7 +431,7 @@ const patch_elem = {
 
 
 const uncombined_fence = m.model.originate(half(fence))
-let acc = patch_elem
+let acc = deepcopy(patch_elem)
 for_each_hole(uncombined_fence, model => {
     acc = combine(acc, deepcopy(model))
 })
@@ -481,34 +485,64 @@ const fix_hole = (a, b, target) => {
 cover = fix_hole(get_hole(uncombined_cover, ['thumb', 'inner']), get_hole(uncombined_cover, ['thumb', 'home' ]), cover)
 cover = fix_hole(get_hole(uncombined_cover, ['thumb', 'home' ]), get_hole(uncombined_cover, ['thumb', 'outer']), cover)
 
-//cover.paths.arst = line()
 
 
-// console.log(require('util').inspect(acc, {showHidden: false, depth: null}))
+
+const screw_hole = (diameter) => (col, key) => {
+
+    let p
+    const down = -overhang - gap - extra_gap - margin / 2
+    const up = -down + side
+
+    if (col == 'pinky' && key == 'top') {
+        p = [side / 2 + 8, up]
+    } else if (col == 'pinky' && key == 'bottom') {
+        p = [side / 2 - 6, down]
+    } else if (col == 'middle' && key == 'top') {
+        p = [side / 2, up]
+    } else if (col == 'middle' && key == 'bottom') {
+        p = [side / 2, down - 3]
+    } else if (col == 'inner' && key == 'top') {
+        p = [side / 2, up + 1]
+    } else if (col == 'thumb' && key == 'inner') {
+        p = [side / 2 + 4, down]
+    } else if (col == 'thumb' && key == 'outer') {
+        p = [up, side / 2 - 4]
+    } else {
+        return {paths: {}}
+    }
+
+    return {
+        paths: {
+            screw: {
+                type: 'circle',
+                origin: p,
+                radius: diameter / 2
+            }
+        }
+    }
+}
 
 
-// const holes = [
-//     [-7, 68],
-//     [8, 129],
-//     [112, 105],
-//     [93, -5],
-//     [54, 36]
-// ]
 
-// const holes_model = {
-//     paths: {}
-// }
 
-// let hi = 0
-// for (const mirror of [false, true]) {
-//     for (const h of holes) {
-//         holes_model.paths[++hi] = {
-//             type: 'circle',
-//             origin: [(mirror ? width - h[0] : h[0]), h[1]],
-//             radius: 2.5 / 2
-//         }
-//     }
-// }
+
+const usb_patch = () => {
+    const w = 16
+    const h = 40
+    const x = (width - w) / 2
+    const y = 0
+    return {
+        paths: {
+            l: line([x,     y    ], [x,     y + h]),
+            t: line([x,     y + h], [x + w, y + h]),
+            r: line([x + w, y + h], [x + w, y    ]),
+            b: line([x + w, y    ], [x,     y    ])
+        }
+    }
+}
+
+patch_elem_copy = combine(patch_elem_copy, usb_patch())
 
 
 
@@ -525,6 +559,11 @@ const fix_corner = (model_a, route_a, mirrored_a, model_b, route_b, mirrored_b, 
 
     const a = get_line(model_a, route_a)
     const b = get_line(model_b, route_b)
+    return fix_corner_raw(a, mirrored_a, b, mirrored_b, outer, target)
+}
+
+
+const fix_corner_raw = (a, mirrored_a, b, mirrored_b, outer, target) => {
     const center = m.path.intersection(a, b).intersectionPoints[0]
     const angle_a = m.angle.ofLineInDegrees(a) + (mirrored_a ? 180 : 0)
     const angle_b = m.angle.ofLineInDegrees(b) + (mirrored_b ? 180 : 0)
@@ -687,14 +726,14 @@ const poly = (arr) => {
 const logo = () => {
 
     const p = {
-        bars: 11,
+        bars: 6,
         bar: 2,
         gap: 1,
         height: 40
     }
     
     p.gaps = p.bars - 1
-    p.width = p.bars * p.bar + p.gaps * p.gap
+    p.width = (p.bars - 0.5) * p.bar + p.gaps * p.gap
     p.step = p.bar + p.gap
 
 
@@ -707,7 +746,7 @@ const logo = () => {
     
 
     for (let i = 1; i <= p.gaps; i++) {
-        const to = i * p.step
+        const to = i * p.step - p.bar/2
         const from = to - p.gap
         res = subtract(res, poly([
             [from, -10],
@@ -719,25 +758,61 @@ const logo = () => {
 
     res = subtract(res, poly([
         [0, 0],
-        [0, p.height],
-        [p.width/2, 0]
-    ]))
-    res = subtract(res, poly([
         [p.width, 0],
-        [p.width, p.height],
-        [p.width/2, 0]
+        [p.width, p.height]
     ]))
 
-    top_cut_w = 4 * p.step
+    top_cut_w = 1.5 * p.step
     top_cut_h = 6
 
     res = subtract(res, poly([
-        [top_cut_w, p.height],
-        [p.width - top_cut_w, p.height],
-        [p.width/2, p.height - top_cut_h]
+        [0, p.height + 10],
+        [2 * top_cut_w, p.height + top_cut_h],
+        [0, p.height - top_cut_h]
     ]))
 
-    res = move(res, [width/2 - p.width/2, -35])
+
+    const sidecut_a = 15
+    const sidecut_b = 25
+    const sidecut_inner = 30
+
+    res = subtract(res, poly([
+        [p.width, sidecut_a],
+        [p.width, sidecut_b],
+        [p.width - 4 * p.step, sidecut_inner]
+    ]))
+
+
+    const bottomcut_a = -10
+    const bottomcut_b = 8
+    const bottomcut_height = 18
+
+    res = subtract(res, poly([
+        [bottomcut_a, 0],
+        [bottomcut_b, 0],
+        [p.bar / 2, bottomcut_height]
+    ]))
+
+
+    const head_height = 2
+    const antenna_height = 4
+
+    res = combine(res, poly([
+        [0, p.height - top_cut_h + head_height],
+        [0, p.height - top_cut_h - head_height],
+        [p.bar / 2, p.height - top_cut_h - head_height],
+        [p.bar / 2, p.height - top_cut_h + antenna_height]
+    ]))
+
+    //res = {
+    //    models: {
+    //        right: res,
+    //        left: mirror(res)
+    //    }
+    //}
+    res = combine(res, mirror(res))
+
+    res = move(res, [width/2, -40])
     res.layer = 'logo'
     return res
 }
@@ -763,8 +838,11 @@ model = {
         //u: uncombined_fence,
         //um: mirror(uncombined_fence, width),
         //deb: deb,
-        cover: cover, 
-        logo: logo()
+        cover: cover,
+        screws: half(screw_hole(2.5)),
+        logo: logo(),
+        patch: patch_elem_copy
+
 
     },
     // paths: {
@@ -787,3 +865,4 @@ fs.writeFileSync('absolem.html', html_prefix + svg + html_suffix)
 fs.writeFileSync('absolem.dxf', m.exporter.toDXF(model))
 fs.writeFileSync('absolem.json', JSON.stringify(model, null, '    '))
 
+ 
