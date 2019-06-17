@@ -9,6 +9,7 @@
   "author": "Bán Dénes <mr@zealot.hu>",
   "license": "MIT",
   "dependencies": {
-    "makerjs": "^0.13.1"
+    "makerjs": "^0.13.1",
+    "mkdirp": "^0.5.1"
   }
 }
