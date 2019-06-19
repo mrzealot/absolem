@@ -44,6 +44,13 @@ const controller_h = 1.8 * inch_to_mm
 const mat_margin = 1
 const mat_diameter = 12
 
+// Logo & badge
+const logo_width = 32
+const small_logo = 16
+const badge_w = 40
+const badge_h = 20
+const badge_font_size = 14
+
 // Computed
 const padding = 2 * overhang + gap
 const staggers_sum = columns.reduce((total, col) => total + col.shift, 0)
@@ -60,6 +67,14 @@ let highest_point = 0
     }
 }
 
+// Command line params
+if (process.argv.length < 4) {
+    console.error('Usage: node absolem font num')
+    process.exit(1)
+}
+const font_path = process.argv[2]
+const badge_num = process.argv[3]
+
 // #endregion
 
 
@@ -68,6 +83,7 @@ let highest_point = 0
 
 const fs = require('fs')
 const mkdirp = require('mkdirp')
+const opentype = require('opentype.js')
 const m = require('makerjs')
 const move = m.model.moveRelative
 const up = (model, num) => move(model, [0, num])
@@ -701,85 +717,84 @@ const mat = () => {
 
 // #region Logo
 
-const logo_raw = () => {
+const logo_raw = logo_width => {
 
-    const p = {
-        bars: 6,
-        bar: 2,
-        gap: 1,
-        height: 40
-    }
-    
-    p.gaps = p.bars - 1
-    p.width = (p.bars - 0.5) * p.bar + p.gaps * p.gap
-    p.step = p.bar + p.gap
+    const w = logo_width / 2
+    const gap = w / 16
+    const bar = 2 * gap
+    const step = bar + gap
 
+    const bars = 6
+    const gaps = bars - 1
+
+    const h = w * 2.5
 
     let res = poly([
         [0, 0],
-        [p.width, 0],
-        [p.width, p.height],
-        [0, p.height]
+        [w, 0],
+        [w, h],
+        [0, h]
     ])
     
 
-    for (let i = 1; i <= p.gaps; i++) {
-        const to = i * p.step - p.bar/2
-        const from = to - p.gap
+    for (let i = 1; i <= gaps; i++) {
+        const to = i * step - bar / 2
+        const from = to - gap
+        // 10 is just an arbitrary overhang here
         res = subtract(res, poly([
             [from, -10],
             [to, -10],
-            [to, p.height + 10],
-            [from, p.height + 10]
+            [to, h + 10],
+            [from, h + 10]
         ]))
     }
 
     res = subtract(res, poly([
         [0, 0],
-        [p.width, 0],
-        [p.width, p.height]
+        [w, 0],
+        [w, h]
     ]))
 
-    top_cut_w = 1.5 * p.step
-    top_cut_h = 6
+    top_cut_w = 1.5 * step
+    top_cut_h = 2 * step
 
     res = subtract(res, poly([
-        [0, p.height + 10],
-        [2 * top_cut_w, p.height + top_cut_h],
-        [0, p.height - top_cut_h]
+        [0, h + 10],
+        [2 * top_cut_w, h + top_cut_h],
+        [0, h - top_cut_h]
     ]))
 
 
-    const sidecut_a = 15
-    const sidecut_b = 25
-    const sidecut_inner = 30
+    const sidecut_a = (3/8) * h
+    const sidecut_b = (5/8) * h
+    const sidecut_inner = (6/8) * h
 
     res = subtract(res, poly([
-        [p.width, sidecut_a],
-        [p.width, sidecut_b],
-        [p.width - 4 * p.step, sidecut_inner]
+        [w, sidecut_a],
+        [w, sidecut_b],
+        [w - 4 * step, sidecut_inner]
     ]))
 
 
-    const bottomcut_a = -10
-    const bottomcut_b = 8
-    const bottomcut_height = 18
+    const bottomcut_a = -5 * bar
+    const bottomcut_b = 4 * bar
+    const bottomcut_height = (9/20) * h
 
     res = subtract(res, poly([
         [bottomcut_a, 0],
         [bottomcut_b, 0],
-        [p.bar / 2, bottomcut_height]
+        [bar / 2, bottomcut_height]
     ]))
 
 
-    const head_height = 2
-    const antenna_height = 4
+    const head_height = bar
+    const antenna_height = 2 * bar
 
     res = combine(res, poly([
-        [0, p.height - top_cut_h + head_height],
-        [0, p.height - top_cut_h - head_height],
-        [p.bar / 2, p.height - top_cut_h - head_height],
-        [p.bar / 2, p.height - top_cut_h + antenna_height]
+        [0, h - top_cut_h + head_height],
+        [0, h - top_cut_h - head_height],
+        [bar / 2, h - top_cut_h - head_height],
+        [bar / 2, h - top_cut_h + antenna_height]
     ]))
 
     res = combine(res, mirror(res))
@@ -792,8 +807,18 @@ const logo = () => {
 }
 
 const badge = () => {
-    const res = m.model.scale(logo_raw(), 0.5)
-    return m.model.originate(move(res, [width/2, -40]))
+    const small_logo = m.model.scale(logo_raw(), 0.5)
+    
+    const font = opentype.loadSync(font_path)
+    
+    const hash = new m.models.Text(font, '#', 100)
+    const num = new m.models.Text(font, badge_num, 100)
+
+    return m.model.originate({models: {
+        logo: move(small_logo, [width/2, -40]),
+        hash: move(hash, [20, 0]),
+        num: move(num, [40, 0])
+    }})
 }
 
 // #endregion
@@ -871,12 +896,14 @@ const dump = (title, data) => {
     const _inline_left = inline(false)
     const _inline_right = mirror(_inline_left, width)
     const _logo = logo()
+    const _badge = badge()
 
     dump('cover', {
         _outline,
         _inline_left,
         _inline_right,
-        _logo
+        _logo,
+        _badge
     })
 
     const _frame_inserts_left = half(pos_screw_hole(insert_d))
