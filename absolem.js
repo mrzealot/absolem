@@ -42,7 +42,7 @@ const inch_to_mm = 25.4
 const controller_w = 0.7 * inch_to_mm
 const controller_h = 1.8 * inch_to_mm
 const mat_margin = 1
-const mat_diameter = 13
+const mat_diameter = 12
 
 // Computed
 const padding = 2 * overhang + gap
@@ -296,6 +296,7 @@ const pos_outline = margin => (col, key) => {
     if (col == 'ring' && key == 'bottom') {
         bl = m.point.add(bl, [0, -1])
         b = m.point.add(b, [30, -1])
+        rb = m.point.add(rb, [30, -1])
     } else if (col == 'pinky' && key == 'bottom') {
         rb = m.point.add(rb, [10, 10])
 
