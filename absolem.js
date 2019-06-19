@@ -41,7 +41,8 @@ const insert_d = 3.51
 const inch_to_mm = 25.4
 const controller_w = 0.7 * inch_to_mm
 const controller_h = 1.8 * inch_to_mm
-const 
+const mat_margin = 1
+const mat_diameter = 13
 
 // Computed
 const padding = 2 * overhang + gap
@@ -239,22 +240,38 @@ const pos_keycap = (col, key) => {
     return {paths}
 }
 
-const pos_inline = (col, key) => {
+const pos_inline = extra_space => (col, key) => {
     let w = overhang + gap + extra_gap
     let h = w
-    let pinky_fix = 0
+    let fix_left = 0
+    let fix_right = 0
+    let fix_up = 0
+    // the thumb home is bigger
     if (col == 'thumb' && key == 'home') {
         w += kc_diff
+    // the pinky angle shouldn't cause a gap
     } else if (col == 'pinky' && key == 'top') {
-        pinky_fix = 5
+        fix_right = 5
+    // extra space for the battery when in "belly mode"
+    } else if (col == 'index' && key == 'bottom' && extra_space) {
+        fix_left = 40
+    // if I have this anyway, let's fix the top middle...
+    } else if (col == 'inner' && key == 'top' && extra_space) {
+        fix_right = 15
+    // ...and the bottom middle, too
+    } else if (col == 'thumb' && key == 'outer' && extra_space) {
+        fix_up = 15
     }
-    paths = {
-        l: line([-w,                    -h       ], [-w,                    side + h]),
-        t: line([-w,                     side + h], [ side + w + pinky_fix, side + h]),
-        r: line([ side + w + pinky_fix,  side + h], [ side + w + pinky_fix, -h      ]),
-        b: line([ side + w + pinky_fix, -h       ], [-w,                    -h      ])
-    }
-    return {paths}
+    const l = -w - fix_left
+    const r = side + w + fix_right
+    const t = side + h + fix_up
+    const b = -h
+    return {paths: {
+        l: line([l, b], [l, t]),
+        t: line([l, t], [r, t]),
+        r: line([r, t], [r, b]),
+        b: line([r, b], [l, b])
+    }}
 }
 
 const pos_outline = margin => (col, key) => {
@@ -322,14 +339,12 @@ const pos_screw_hole = diameter => (col, key) => {
         p = [side / 2 - 6, down]
     } else if (col == 'middle' && key == 'top') {
         p = [side / 2, up]
-    } else if (col == 'middle' && key == 'bottom') {
-        p = [side / 2, down - 3]
     } else if (col == 'inner' && key == 'top') {
         p = [side / 2, up + 1]
     } else if (col == 'thumb' && key == 'inner') {
-        p = [side / 2 + 4, down]
+        p = [down, 2]
     } else if (col == 'thumb' && key == 'outer') {
-        p = [up, side / 2 - 4]
+        p = [up, 2]
     } else {
         return {paths: {}}
     }
@@ -573,10 +588,10 @@ const outline = margin => {
     return result
 }
 
-const inline = () => {
+const inline = extra_space => {
 
     // create initial union
-    const raw = m.model.originate(half(pos_inline))
+    const raw = m.model.originate(half(pos_inline(extra_space)))
     let result = {models: {}}
     for_each_hole(raw, model => {
         result = combine(result, deepcopy(model))
@@ -617,8 +632,10 @@ const inline = () => {
     result = fix_corner(raw, ['thumb',  'outer',  't' ], REGULAR, raw, ['thumb',  'outer',  'r'], REGULAR, OUTER, result)
     result = fix_corner(raw, ['thumb',  'outer',  'r' ], REGULAR, raw, ['thumb',  'outer',  'b'], REGULAR, OUTER, result)
     result = fix_corner(raw, ['thumb',  'inner',  'b' ], REGULAR, raw, ['thumb',  'inner',  'l'], REGULAR, OUTER, result)
-    result = fix_corner(raw, ['index',  'bottom', 'b' ], REGULAR, raw, ['index',  'bottom', 'l'], REGULAR, OUTER, result)
-    result = fix_corner(raw, ['ring',   'bottom', 'r' ], REGULAR, raw, ['ring',   'bottom', 'b'], REGULAR, OUTER, result)
+    if (!extra_space) {
+        result = fix_corner(raw, ['index',  'bottom', 'b' ], REGULAR, raw, ['index',  'bottom', 'l'], REGULAR, OUTER, result)
+        result = fix_corner(raw, ['ring',   'bottom', 'r' ], REGULAR, raw, ['ring',   'bottom', 'b'], REGULAR, OUTER, result)
+    }
     result = fix_corner(raw, ['pinky',  'bottom', 'r' ], REGULAR, raw, ['pinky',  'bottom', 'b'], REGULAR, OUTER, result)
     result = fix_corner(raw, ['pinky',  'bottom', 'b' ], REGULAR, raw, ['pinky',  'bottom', 'l'], REGULAR, OUTER, result)
     result = fix_corner(raw, ['pinky',  'top',    'l' ], REGULAR, raw, ['pinky',  'top',    't'], REGULAR, OUTER, result)
@@ -636,7 +653,7 @@ const belly = () => {
     const raw_right = m.model.originate(mirror(half(pos_outline(margin)), width))
     const usb = usb_patch()
     
-    let cut = inline()
+    let cut = inline(true)
     cut = combine(cut, patch())
     cut = combine(cut, deepcopy(usb))
     cut = combine(cut, mirror(cut, width))
@@ -666,13 +683,24 @@ const controller = diameter => {
     return move(res, [width / 2 - controller_w / 2, -28])
 }
 
+const mat = () => {
+    const base = outline(margin - mat_margin)
+    const left = half(pos_screw_hole(mat_diameter))
+    const holes = {models: {
+        left: left,
+        right: mirror(left, width)
+    }}
+
+    return subtract(base, holes)
+}
+
 // #endregion
 
 
 
 // #region Logo
 
-const logo = () => {
+const logo_raw = () => {
 
     const p = {
         bars: 6,
@@ -754,9 +782,17 @@ const logo = () => {
     ]))
 
     res = combine(res, mirror(res))
-    res = move(res, [width/2, -40])
     res.layer = 'logo'
     return res
+}
+
+const logo = () => {
+    return m.model.originate(move(logo_raw(), [width/2, -40]))
+}
+
+const badge = () => {
+    const res = m.model.scale(logo_raw(), 0.5)
+    return m.model.originate(move(res, [width/2, -40]))
 }
 
 // #endregion
@@ -831,7 +867,7 @@ const dump = (title, data) => {
 ;(() => {
 
     const _outline = outline(margin)
-    const _inline_left = inline()
+    const _inline_left = inline(false)
     const _inline_right = mirror(_inline_left, width)
     const _logo = logo()
 
@@ -882,6 +918,24 @@ const dump = (title, data) => {
         _outline,
         _frame_screws_left,
         _frame_screws_right,
+    })
+
+    const _mat = mat()
+
+    dump('mat', {
+        _mat
+    })
+
+    const _keycaps_left = half(pos_keycap)
+    const _keycaps_right = mirror(_keycaps_left, width)
+
+    dump('illustration', {
+        _outline,
+        _inline_left,
+        _inline_right,
+        _keycaps_left,
+        _keycaps_right,
+        _logo
     })
 
 })()
