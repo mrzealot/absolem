@@ -45,11 +45,10 @@ const mat_margin = 1
 const mat_diameter = 12
 
 // Logo & badge
-const logo_width = 32
-const small_logo = 16
-const badge_w = 40
-const badge_h = 20
-const badge_font_size = 14
+const logo_w = 32
+const small_logo_w = 18
+const badge_w = 55
+const badge_h = 25
 
 // Computed
 const padding = 2 * overhang + gap
@@ -138,6 +137,8 @@ const poly = (arr) => {
 }
 
 const deepcopy = obj => JSON.parse(JSON.stringify(obj))
+
+const measure = m.measure.modelExtents
 
 // TODO: this is just for debugging
 let deb = {
@@ -792,33 +793,69 @@ const logo_raw = logo_width => {
 
     res = combine(res, poly([
         [0, h - top_cut_h + head_height],
-        [0, h - top_cut_h - head_height],
+        [bar / 2, h - top_cut_h + antenna_height],
         [bar / 2, h - top_cut_h - head_height],
-        [bar / 2, h - top_cut_h + antenna_height]
+        [0, h - top_cut_h - head_height]
     ]))
 
     res = combine(res, mirror(res))
-    res.layer = 'logo'
+    res.layer = 'filled'
     return res
 }
 
 const logo = () => {
-    return m.model.originate(move(logo_raw(), [width/2, -40]))
+    return m.model.originate(move(logo_raw(logo_w), [width/2, -40]))
 }
 
-const badge = () => {
-    const small_logo = m.model.scale(logo_raw(), 0.5)
-    
-    const font = opentype.loadSync(font_path)
-    
-    const hash = new m.models.Text(font, '#', 100)
-    const num = new m.models.Text(font, badge_num, 100)
+const badge = with_logo => {
 
-    return m.model.originate({models: {
-        logo: move(small_logo, [width/2, -40]),
-        hash: move(hash, [20, 0]),
-        num: move(num, [40, 0])
-    }})
+    let result = {
+        models: {
+            rect: new m.models.RoundRectangle(badge_w, badge_h, corner_radius),
+        }
+    }
+
+    if (with_logo) {
+
+        // logo generation only works at certain sizes, so I have to scale...
+        const small_logo = m.model.scale(logo_raw(logo_w), small_logo_w / logo_w)
+        const logo_m = measure(small_logo)
+        
+        const font = opentype.loadSync(font_path)
+        
+        const font_num = 15
+        const font_hash = 12
+        const hash = new m.models.Text(font, '#', font_hash)
+        const num = new m.models.Text(font, badge_num, font_num)
+        hash.layer = 'filled'
+        num.layer = 'filled'
+        const hash_m = measure(hash)
+        const num_m = measure(num)
+
+        const logo_up = (badge_h - logo_m.height) / 2 - logo_m.low[1]
+        const hash_up = (badge_h - hash_m.height) / 2
+        const num_up = (badge_h - num_m.height) / 2
+        
+        const space_1 = 2
+        const space_2 = 2
+        const total_w = logo_m.width + space_1 + hash_m.width + space_2 + num_m.width
+        // the 0.1 * logo width correction is for fixing the illusion that
+        // the logo has a larger margin on the left than the num hat on the right
+        const shift = (badge_w - total_w) / 2 - 0.1 * logo_m.width
+
+        const logo_right = shift - logo_m.low[0]
+        const hash_right = shift + logo_m.width + space_1
+        const num_right = hash_right + hash_m.width + space_2
+        
+        result.models.logo = move(small_logo, [logo_right, logo_up])
+        result.models.hash = move(hash, [hash_right, hash_up])
+        result.models.num = move(num, [num_right, num_up])
+    }
+
+    result = rotate(result, half_angle)
+    result = move(result, [20, 15])
+    result = m.model.originate(result)
+    return result
 }
 
 // #endregion
@@ -852,7 +889,7 @@ const dump = (title, data) => {
 
     const svg = m.exporter.toSVG(assembly, {
         layerOptions: {
-            logo: {
+            filled: {
                 fill: 'black'
             }
         }
@@ -872,31 +909,13 @@ const dump = (title, data) => {
     console.log(`Assembly '${title}' dumped...`)
 }
 
-// const assembly = {
-//     models: {
-//         kleft: half(pos_hole),
-//         kright: mirror(half(pos_hole), width),
-//         capleft: half(pos_keycap),
-//         capright: mirror(half(pos_keycap), width),
-//         //left: half(pos_inline),
-//         //right: mirror(half(pos_inline), width),
-//         //acc: outline(margin),
-//         //deb: deb,
-//         cover: inline(),
-//         //screws: half(pos_screw_hole(2.5)),
-//         //logo: logo(),
-//         //patch: patch_elem_copy
-//         //belly: belly()
-//     },
-// }
-
 ;(() => {
 
     const _outline = outline(margin)
     const _inline_left = inline(false)
     const _inline_right = mirror(_inline_left, width)
     const _logo = logo()
-    const _badge = badge()
+    const _badge = badge(true)
 
     dump('cover', {
         _outline,
