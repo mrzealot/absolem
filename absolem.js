@@ -35,20 +35,25 @@ const extra_gap = 1
 const margin = 8
 const half_angle = -20
 const corner_radius = 2
-const usb_hole = 20
+const usb_hole = 18
 const screw_d = 2.51
 const insert_d = 3.51
 const inch_to_mm = 25.4
 const controller_w = 0.7 * inch_to_mm
 const controller_h = 1.8 * inch_to_mm
+const controller_margin = 0.1 * inch_to_mm
+const controller_cellar = 35
 const mat_margin = 1
 const mat_diameter = 12
+const foam_usb_gap = 3
 
-// Logo & badge
+// Logo & badge & battery
 const logo_w = 32
 const small_logo_w = 18
 const badge_w = 55
 const badge_h = 25
+const battery_w = 55
+const battery_h = 42
 
 // Computed
 const padding = 2 * overhang + gap
@@ -106,6 +111,12 @@ const combine = (a, b) => {
 }
 const subtract = (a, b) => {
     return m.model.combineSubtraction(a, b, {
+        farPoint: [1000, 1000],
+        pointMatchingDistance: 0.001
+    })
+}
+const intersect = (a, b) => {
+    return m.model.combineIntersection(a, b, {
         farPoint: [1000, 1000],
         pointMatchingDistance: 0.001
     })
@@ -257,7 +268,7 @@ const pos_keycap = (col, key) => {
     return {paths}
 }
 
-const pos_inline = extra_space => (col, key) => {
+const pos_inline = (fix_wing, fix_middle) => (col, key) => {
     let w = overhang + gap + extra_gap
     let h = w
     let fix_left = 0
@@ -270,13 +281,13 @@ const pos_inline = extra_space => (col, key) => {
     } else if (col == 'pinky' && key == 'top') {
         fix_right = 5
     // extra space for the battery when in "belly mode"
-    } else if (col == 'index' && key == 'bottom' && extra_space) {
+    } else if (col == 'index' && key == 'bottom' && fix_wing) {
         fix_left = 40
     // if I have this anyway, let's fix the top middle...
-    } else if (col == 'inner' && key == 'top' && extra_space) {
+    } else if (col == 'inner' && key == 'top' && fix_middle) {
         fix_right = 15
     // ...and the bottom middle, too
-    } else if (col == 'thumb' && key == 'outer' && extra_space) {
+    } else if (col == 'thumb' && key == 'outer' && fix_middle) {
         fix_up = 15
     }
     const l = -w - fix_left
@@ -525,197 +536,6 @@ const fix_corner = (model_a, route_a, mirrored_a, model_b, route_b, mirrored_b, 
 
 
 
-// #region Outlines, patching, controller holes
-
-const patch = () => {
-    const originated = m.model.originate(half(pos_hole))
-
-    const lt = get_line(originated, ['inner', 'top',    't']).end
-    const lm = get_line(originated, ['inner', 'bottom', 'r']).end
-    const lb = get_line(originated, ['thumb', 'outer',  't']).end
-
-    // hacked right side --> won't matter, as it'll be mirrored anyway
-    rt = [lt[0] + 30, lt[1]]
-    rb = [lb[0] + 30, lb[1]]
-
-    return {
-        paths: {
-            a: line(lt, rt),
-            b: line(rt, rb),
-            c: line(rb, lb),
-            d: line(lb, lm),
-            e: line(lm, lt)
-        }
-    }
-}
-
-const usb_patch = () => {
-    const w = usb_hole
-    const h = 40
-    const x = (width - w) / 2
-    const y = 0
-    return {
-        paths: {
-            l: line([x,     y    ], [x,     y + h]),
-            t: line([x,     y + h], [x + w, y + h]),
-            r: line([x + w, y + h], [x + w, y    ]),
-            b: line([x + w, y    ], [x,     y    ])
-        }
-    }
-}
-
-const outline = margin => {
-
-    // first we combine the initial outline
-    const raw = m.model.originate(half(pos_outline(margin)))
-    let result = patch()
-    for_each_hole(raw, model => {
-        result = combine(result, deepcopy(model))
-    })
-    
-    // then we do a metric shitton of corner fixes
-    result = fix_corner(raw, ['thumb',  'outer',  'r' ], REGULAR, raw, ['thumb',  'outer',  'rb'], REGULAR, OUTER, result)
-    result = fix_corner(raw, ['thumb',  'outer',  'rb'], REGULAR, raw, ['thumb',  'outer',  'b' ], REGULAR, OUTER, result)
-    result = fix_corner(raw, ['thumb',  'outer',  'b' ], REGULAR, raw, ['thumb',  'home',   'b' ], REGULAR, INNER, result)
-    result = fix_corner(raw, ['thumb',  'home',   'b' ], REGULAR, raw, ['thumb',  'inner',  'b' ], REGULAR, INNER, result)
-    result = fix_corner(raw, ['thumb',  'inner',  'b' ], REGULAR, raw, ['thumb',  'inner',  'bl'], REGULAR, OUTER, result)
-    result = fix_corner(raw, ['thumb',  'inner',  'bl'], REGULAR, raw, ['thumb',  'inner',  'l' ], REGULAR, OUTER, result)
-    result = fix_corner(raw, ['thumb',  'inner',  'l' ], REGULAR, raw, ['ring',   'bottom', 'b' ], REGULAR, INNER, result)
-    result = fix_corner(raw, ['ring',   'bottom', 'b' ], REGULAR, raw, ['pinky',  'bottom', 'rb'], REGULAR, INNER, result)
-    result = fix_corner(raw, ['pinky',  'bottom', 'rb'], REGULAR, raw, ['pinky',  'bottom', 'b' ], REGULAR, OUTER, result)
-    result = fix_corner(raw, ['pinky',  'bottom', 'b' ], REGULAR, raw, ['pinky',  'bottom', 'bl'], REGULAR, OUTER, result)
-    result = fix_corner(raw, ['pinky',  'bottom', 'bl'], REGULAR, raw, ['pinky',  'bottom', 'l' ], REGULAR, OUTER, result)
-    result = fix_corner(raw, ['pinky',  'top',    'l' ], REGULAR, raw, ['pinky',  'top',    'lt'], REGULAR, OUTER, result)
-    result = fix_corner(raw, ['pinky',  'top',    'lt'], REGULAR, raw, ['pinky',  'top',    't' ], REGULAR, OUTER, result)
-    result = fix_corner(raw, ['pinky',  'top',    't' ], REGULAR, raw, ['ring',   'top',    'l' ], REGULAR, INNER, result)
-    result = fix_corner(raw, ['ring',   'top',    'l' ], REGULAR, raw, ['ring',   'top',    'lt'], REGULAR, OUTER, result)
-    result = fix_corner(raw, ['ring',   'top',    'lt'], REGULAR, raw, ['ring',   'top',    't' ], REGULAR, OUTER, result)
-    result = fix_corner(raw, ['ring',   'top',    't' ], REGULAR, raw, ['middle', 'top',    'lt'], REGULAR, INNER, result)
-    result = fix_corner(raw, ['middle', 'top',    'lt'], REGULAR, raw, ['middle', 'top',    't' ], REGULAR, OUTER, result)
-    result = fix_corner(raw, ['middle', 'top',    't' ], REGULAR, raw, ['middle', 'top',    'tr'], REGULAR, OUTER, result)
-    result = fix_corner(raw, ['middle', 'top',    'tr'], REGULAR, raw, ['index',  'top',    't' ], REGULAR, INNER, result)
-
-    // then we mirror it
-    const raw_right = m.model.originate(mirror(raw, width))
-    result = combine(result, mirror(result, width))
-
-    // and fix the two new corners that were created by the mirroring
-    result = fix_corner(raw,       ['inner', 'top',   't'], REGULAR,  raw_right, ['inner', 'top',   't'], MIRRORED, INNER, result)
-    result = fix_corner(raw_right, ['thumb', 'outer', 'r'], MIRRORED, raw,       ['thumb', 'outer', 'r'], REGULAR,  INNER, result)
-
-    return result
-}
-
-const inline = extra_space => {
-
-    // create initial union
-    const raw = m.model.originate(half(pos_inline(extra_space)))
-    let result = {models: {}}
-    for_each_hole(raw, model => {
-        result = combine(result, deepcopy(model))
-    })
-    
-    // fix thumb holes
-    const fix_hole = (a, b, corner, target) => {
-        const p1 = a.paths.t.end
-        const p2 = b.paths.l.origin
-        const p3 = a.paths.r.end
-        const p4 = b.paths.t.origin
-        debb(p1)
-        debb(p2)
-        debb(p3)
-        debb(p4)
-    
-        target = combine(target, {
-            paths: {
-                a: line(p1, p4),
-                b: line(p4, p3),
-                c: line(p3, p2),
-                d: line(p2, p1)
-            }
-        })
-
-        if (corner) {
-            target = fix_corner_raw(get_line(raw, ['thumb', 'home', 't']), REGULAR, line(p1, p4), REGULAR, OUTER, target)
-            target = fix_corner_raw(line(p1, p4), REGULAR, get_line(raw, ['thumb', 'outer', 't']), REGULAR, OUTER, target)
-        }
-    
-        return target
-    }
-    
-    result = fix_hole(get_hole(raw, ['thumb', 'inner']), get_hole(raw, ['thumb', 'home' ]), false, result)
-    result = fix_hole(get_hole(raw, ['thumb', 'home' ]), get_hole(raw, ['thumb', 'outer']), true, result)
-    
-    // fix corners --> outers only
-    result = fix_corner(raw, ['thumb',  'outer',  't' ], REGULAR, raw, ['thumb',  'outer',  'r'], REGULAR, OUTER, result)
-    result = fix_corner(raw, ['thumb',  'outer',  'r' ], REGULAR, raw, ['thumb',  'outer',  'b'], REGULAR, OUTER, result)
-    result = fix_corner(raw, ['thumb',  'inner',  'b' ], REGULAR, raw, ['thumb',  'inner',  'l'], REGULAR, OUTER, result)
-    if (!extra_space) {
-        result = fix_corner(raw, ['index',  'bottom', 'b' ], REGULAR, raw, ['index',  'bottom', 'l'], REGULAR, OUTER, result)
-        result = fix_corner(raw, ['ring',   'bottom', 'r' ], REGULAR, raw, ['ring',   'bottom', 'b'], REGULAR, OUTER, result)
-    }
-    result = fix_corner(raw, ['pinky',  'bottom', 'r' ], REGULAR, raw, ['pinky',  'bottom', 'b'], REGULAR, OUTER, result)
-    result = fix_corner(raw, ['pinky',  'bottom', 'b' ], REGULAR, raw, ['pinky',  'bottom', 'l'], REGULAR, OUTER, result)
-    result = fix_corner(raw, ['pinky',  'top',    'l' ], REGULAR, raw, ['pinky',  'top',    't'], REGULAR, OUTER, result)
-    result = fix_corner(raw, ['ring',   'top',    'l' ], REGULAR, raw, ['ring',   'top',    't'], REGULAR, OUTER, result)
-    result = fix_corner(raw, ['middle', 'top',    'l' ], REGULAR, raw, ['middle', 'top',    't'], REGULAR, OUTER, result)
-    result = fix_corner(raw, ['middle', 'top',    't' ], REGULAR, raw, ['middle', 'top',    'r'], REGULAR, OUTER, result)
-    result = fix_corner(raw, ['index',  'top',    't' ], REGULAR, raw, ['index',  'top',    'r'], REGULAR, OUTER, result)
-    result = fix_corner(raw, ['inner',  'top',    't' ], REGULAR, raw, ['inner',  'top',    'r'], REGULAR, OUTER, result)
-    
-    return result
-}
-
-const belly = () => {
-    const raw = m.model.originate(half(pos_outline(margin)))
-    const raw_right = m.model.originate(mirror(half(pos_outline(margin)), width))
-    const usb = usb_patch()
-    
-    let cut = inline(true)
-    cut = combine(cut, patch())
-    cut = combine(cut, deepcopy(usb))
-    cut = combine(cut, mirror(cut, width))
-
-    let result = subtract(outline(margin), cut)
-
-    // OCD corner fixing
-    const a1 = get_line(raw, ['inner', 'top', 't'])
-    const b1 = usb.paths.l
-    result = fix_corner_raw(a1, REGULAR, b1, MIRRORED, OUTER, result)
-
-    const a2 = get_line(raw_right, ['inner', 'top', 't'])
-    const b2 = usb.paths.r
-    result = fix_corner_raw(a2, MIRRORED, b2, MIRRORED, OUTER, result)
-
-    return result
-}
-
-const controller = diameter => {
-    const res = {paths: {
-        bl: circle([0,            0           ], diameter / 2),
-        tl: circle([0,            controller_h], diameter / 2),
-        tr: circle([controller_w, controller_h], diameter / 2),
-        br: circle([controller_w, 0           ], diameter / 2)
-    }}
-
-    return move(res, [width / 2 - controller_w / 2, -28])
-}
-
-const mat = () => {
-    const base = outline(margin - mat_margin)
-    const left = half(pos_screw_hole(mat_diameter))
-    const holes = {models: {
-        left: left,
-        right: mirror(left, width)
-    }}
-
-    return subtract(base, holes)
-}
-
-// #endregion
-
-
-
 // #region Logo
 
 const logo_raw = logo_width => {
@@ -807,11 +627,259 @@ const logo = () => {
     return m.model.originate(move(logo_raw(logo_w), [width/2, -40]))
 }
 
-const badge = with_logo => {
+// #endregion
+
+
+
+// #region Outlines, patching, controller holes
+
+const patch = (expand = 0) => {
+    const originated = m.model.originate(half(pos_hole))
+
+    let lt = get_line(originated, ['inner', 'top',    't']).end
+    let lm = get_line(originated, ['inner', 'bottom', 'r']).end
+    let lb = get_line(originated, ['thumb', 'outer',  't']).end
+
+    if (expand) {
+        lt = m.point.add(lt, [0,  expand])
+        lb = m.point.add(lb, [0, -expand])
+    }
+
+    
+    debb(lt)
+    debb(lm)
+    debb(lb)
+
+    // hacked right side --> won't matter, as it'll be mirrored anyway
+    rt = [lt[0] + 30, lt[1]]
+    rb = [lb[0] + 30, lb[1]]
+
+    return {
+        paths: {
+            a: line(lt, rt),
+            b: line(rt, rb),
+            c: line(rb, lb),
+            d: line(lb, lm),
+            e: line(lm, lt)
+        }
+    }
+}
+
+const usb_patch = () => {
+    const w = usb_hole
+    const h = 40
+    const x = (width - w) / 2
+    const y = 0
+    return {
+        paths: {
+            l: line([x,     y    ], [x,     y + h]),
+            t: line([x,     y + h], [x + w, y + h]),
+            r: line([x + w, y + h], [x + w, y    ]),
+            b: line([x + w, y    ], [x,     y    ])
+        }
+    }
+}
+
+const outline = margin => {
+
+    // first we combine the initial outline
+    const raw = m.model.originate(half(pos_outline(margin)))
+    let result = patch()
+    for_each_hole(raw, model => {
+        result = combine(result, deepcopy(model))
+    })
+    
+    // then we do a metric shitton of corner fixes
+    result = fix_corner(raw, ['thumb',  'outer',  'r' ], REGULAR, raw, ['thumb',  'outer',  'rb'], REGULAR, OUTER, result)
+    result = fix_corner(raw, ['thumb',  'outer',  'rb'], REGULAR, raw, ['thumb',  'outer',  'b' ], REGULAR, OUTER, result)
+    result = fix_corner(raw, ['thumb',  'outer',  'b' ], REGULAR, raw, ['thumb',  'home',   'b' ], REGULAR, INNER, result)
+    result = fix_corner(raw, ['thumb',  'home',   'b' ], REGULAR, raw, ['thumb',  'inner',  'b' ], REGULAR, INNER, result)
+    result = fix_corner(raw, ['thumb',  'inner',  'b' ], REGULAR, raw, ['thumb',  'inner',  'bl'], REGULAR, OUTER, result)
+    result = fix_corner(raw, ['thumb',  'inner',  'bl'], REGULAR, raw, ['thumb',  'inner',  'l' ], REGULAR, OUTER, result)
+    result = fix_corner(raw, ['thumb',  'inner',  'l' ], REGULAR, raw, ['ring',   'bottom', 'b' ], REGULAR, INNER, result)
+    result = fix_corner(raw, ['ring',   'bottom', 'b' ], REGULAR, raw, ['pinky',  'bottom', 'rb'], REGULAR, INNER, result)
+    result = fix_corner(raw, ['pinky',  'bottom', 'rb'], REGULAR, raw, ['pinky',  'bottom', 'b' ], REGULAR, OUTER, result)
+    result = fix_corner(raw, ['pinky',  'bottom', 'b' ], REGULAR, raw, ['pinky',  'bottom', 'bl'], REGULAR, OUTER, result)
+    result = fix_corner(raw, ['pinky',  'bottom', 'bl'], REGULAR, raw, ['pinky',  'bottom', 'l' ], REGULAR, OUTER, result)
+    result = fix_corner(raw, ['pinky',  'top',    'l' ], REGULAR, raw, ['pinky',  'top',    'lt'], REGULAR, OUTER, result)
+    result = fix_corner(raw, ['pinky',  'top',    'lt'], REGULAR, raw, ['pinky',  'top',    't' ], REGULAR, OUTER, result)
+    result = fix_corner(raw, ['pinky',  'top',    't' ], REGULAR, raw, ['ring',   'top',    'l' ], REGULAR, INNER, result)
+    result = fix_corner(raw, ['ring',   'top',    'l' ], REGULAR, raw, ['ring',   'top',    'lt'], REGULAR, OUTER, result)
+    result = fix_corner(raw, ['ring',   'top',    'lt'], REGULAR, raw, ['ring',   'top',    't' ], REGULAR, OUTER, result)
+    result = fix_corner(raw, ['ring',   'top',    't' ], REGULAR, raw, ['middle', 'top',    'lt'], REGULAR, INNER, result)
+    result = fix_corner(raw, ['middle', 'top',    'lt'], REGULAR, raw, ['middle', 'top',    't' ], REGULAR, OUTER, result)
+    result = fix_corner(raw, ['middle', 'top',    't' ], REGULAR, raw, ['middle', 'top',    'tr'], REGULAR, OUTER, result)
+    result = fix_corner(raw, ['middle', 'top',    'tr'], REGULAR, raw, ['index',  'top',    't' ], REGULAR, INNER, result)
+
+    // then we mirror it
+    const raw_right = m.model.originate(mirror(raw, width))
+    result = combine(result, mirror(result, width))
+
+    // and fix the two new corners that were created by the mirroring
+    result = fix_corner(raw,       ['inner', 'top',   't'], REGULAR,  raw_right, ['inner', 'top',   't'], MIRRORED, INNER, result)
+    result = fix_corner(raw_right, ['thumb', 'outer', 'r'], MIRRORED, raw,       ['thumb', 'outer', 'r'], REGULAR,  INNER, result)
+
+    return result
+}
+
+const inline = (fix_wing, fix_middle, fix_inner_corners) => {
+
+    // create initial union
+    const raw = m.model.originate(half(pos_inline(fix_wing, fix_middle)))
+    let result = {models: {}}
+    for_each_hole(raw, model => {
+        result = combine(result, deepcopy(model))
+    })
+    
+    // fix thumb holes
+    const fix_hole = (a, b, corner, target) => {
+        const p1 = a.paths.t.end
+        const p2 = b.paths.l.origin
+        const p3 = a.paths.r.end
+        const p4 = b.paths.t.origin
+        debb(p1)
+        debb(p2)
+        debb(p3)
+        debb(p4)
+    
+        target = combine(target, {
+            paths: {
+                a: line(p1, p4),
+                b: line(p4, p3),
+                c: line(p3, p2),
+                d: line(p2, p1)
+            }
+        })
+
+        if (corner) {
+            target = fix_corner_raw(get_line(raw, ['thumb', 'home', 't']), REGULAR, line(p1, p4), REGULAR, OUTER, target)
+            target = fix_corner_raw(line(p1, p4), REGULAR, get_line(raw, ['thumb', 'outer', 't']), REGULAR, OUTER, target)
+        }
+    
+        return target
+    }
+    
+    result = fix_hole(get_hole(raw, ['thumb', 'inner']), get_hole(raw, ['thumb', 'home' ]), false, result)
+    result = fix_hole(get_hole(raw, ['thumb', 'home' ]), get_hole(raw, ['thumb', 'outer']), true, result)
+    
+    // fix corners --> outers only
+    if (fix_inner_corners) {
+        result = fix_corner(raw, ['thumb',  'outer',  't' ], REGULAR, raw, ['thumb',  'outer',  'r'], REGULAR, OUTER, result)
+        result = fix_corner(raw, ['thumb',  'outer',  'r' ], REGULAR, raw, ['thumb',  'outer',  'b'], REGULAR, OUTER, result)
+    }
+    result = fix_corner(raw, ['thumb',  'inner',  'b' ], REGULAR, raw, ['thumb',  'inner',  'l'], REGULAR, OUTER, result)
+    if (!fix_wing) {
+        result = fix_corner(raw, ['index',  'bottom', 'b' ], REGULAR, raw, ['index',  'bottom', 'l'], REGULAR, OUTER, result)
+        result = fix_corner(raw, ['ring',   'bottom', 'r' ], REGULAR, raw, ['ring',   'bottom', 'b'], REGULAR, OUTER, result)
+    }
+    result = fix_corner(raw, ['pinky',  'bottom', 'r' ], REGULAR, raw, ['pinky',  'bottom', 'b'], REGULAR, OUTER, result)
+    result = fix_corner(raw, ['pinky',  'bottom', 'b' ], REGULAR, raw, ['pinky',  'bottom', 'l'], REGULAR, OUTER, result)
+    result = fix_corner(raw, ['pinky',  'top',    'l' ], REGULAR, raw, ['pinky',  'top',    't'], REGULAR, OUTER, result)
+    result = fix_corner(raw, ['ring',   'top',    'l' ], REGULAR, raw, ['ring',   'top',    't'], REGULAR, OUTER, result)
+    result = fix_corner(raw, ['middle', 'top',    'l' ], REGULAR, raw, ['middle', 'top',    't'], REGULAR, OUTER, result)
+    result = fix_corner(raw, ['middle', 'top',    't' ], REGULAR, raw, ['middle', 'top',    'r'], REGULAR, OUTER, result)
+    result = fix_corner(raw, ['index',  'top',    't' ], REGULAR, raw, ['index',  'top',    'r'], REGULAR, OUTER, result)
+    if (fix_inner_corners) {
+        result = fix_corner(raw, ['inner',  'top',    't' ], REGULAR, raw, ['inner',  'top',    'r'], REGULAR, OUTER, result)
+    }
+    
+    return result
+}
+
+const inline_public = () => inline(false, false, true)
+const inline_for_belly = () => inline(true, true, true)
+const inline_for_dampeners = () => inline(true, false, false)
+
+const belly = () => {
+    let res = inline_for_belly()
+    res = combine(res, patch())
+    res = combine(res, mirror(res, width))
+    return res
+}
+
+const middle = () => {
+    const raw = m.model.originate(half(pos_outline(margin)))
+    const raw_right = m.model.originate(mirror(half(pos_outline(margin)), width))
+    const usb = usb_patch()
+    let cut = belly()
+    cut = combine(cut, usb)
+
+    let result = subtract(outline(margin), cut)
+
+    // OCD corner fixing
+    const a1 = get_line(raw, ['inner', 'top', 't'])
+    const b1 = usb.paths.l
+    result = fix_corner_raw(a1, REGULAR, b1, MIRRORED, OUTER, result)
+
+    const a2 = get_line(raw_right, ['inner', 'top', 't'])
+    const b2 = usb.paths.r
+    result = fix_corner_raw(a2, MIRRORED, b2, MIRRORED, OUTER, result)
+
+    return result
+}
+
+const controller = (diameter, outline) => {
+    const res = {paths: {}}
+
+    if (diameter) {
+        res.paths.bl = circle([0,            0           ], diameter / 2)
+        res.paths.tl = circle([0,            controller_h], diameter / 2)
+        res.paths.tr = circle([controller_w, controller_h], diameter / 2)
+        res.paths.br = circle([controller_w, 0           ], diameter / 2)
+    }
+
+    if (outline) {
+        const w = controller_w + 2 * controller_margin
+        const h = controller_h + 2 * controller_margin
+        const x = -controller_margin
+        const y = -controller_margin
+        // I'm aware that the Rectangle class exists, but I want to know
+        // the names of the individual line sections
+        res.paths.l = line([x, y], [x, y + h])
+        res.paths.t = line([x, y + h], [x + w, y + h])
+        res.paths.r = line([x + w, y + h], [x + w, y])
+        res.paths.b = line([x + w, y], [x, y])
+    }
+
+    return m.model.originate(move(res, [width / 2 - controller_w / 2, -26]))
+}
+
+const mat = () => {
+    const base = outline(margin - mat_margin)
+    const left = half(pos_screw_hole(mat_diameter))
+    const holes = {models: {
+        left: left,
+        right: mirror(left, width)
+    }}
+
+    return subtract(base, holes)
+}
+
+const battery = () => {
+    let result = {
+        models: {
+            rect: new m.models.RoundRectangle(battery_w, battery_h, corner_radius),
+        }
+    }
+
+    result = rotate(result, half_angle)
+    result = move(result, [30, 5])
+    result = m.model.originate(result)
+    return result
+}
+
+const badge = (with_logo, margin = 0) => {
 
     let result = {
         models: {
-            rect: new m.models.RoundRectangle(badge_w, badge_h, corner_radius),
+            rect: move(
+                new m.models.RoundRectangle(
+                    badge_w + 2 * margin,
+                    badge_h + 2 * margin,
+                    corner_radius + margin
+                ),
+                [-margin, -margin]
+            )
         }
     }
 
@@ -852,10 +920,77 @@ const badge = with_logo => {
         result.models.num = move(num, [num_right, num_up])
     }
 
+    result = mirror(result, badge_w)
     result = rotate(result, half_angle)
     result = move(result, [20, 15])
+    result = mirror(result, width)
     result = m.model.originate(result)
     return result
+}
+
+const foam_top = () => {
+    const controller_cut = up(
+        controller(0, true),
+        controller_h + 2 * controller_margin - foam_usb_gap
+    )
+    let res = belly()
+    res = subtract(res, controller_cut)
+    res = subtract(res, battery())
+    res = subtract(res, badge(false, 1))
+    return res
+}
+
+const foam_bottom = () => {
+    const init_x = 80
+    const init_y = 200
+    let res = move(
+        new m.models.Rectangle(init_x, init_y),
+        [width / 2 - init_x, -init_y / 2]
+    )
+    
+    const dampener = inline_for_dampeners()
+    res = subtract(res, dampener)
+    
+    res = subtract(res, controller(0, true))
+    // 5 = a slight expansion to the patching element,
+    // to avoid overlapping lines when doing bool ops
+    res = intersect(res, patch(5))
+    res = intersect(res, foam_top())
+   
+    res = combine(res, mirror(res, width))
+
+    return res
+}
+
+const lightening = () => {
+
+    const aw = 28
+    const ah = controller_cellar
+    const sin = Math.abs(Math.sin(m.angle.toRadians(half_angle)))
+    const ae = sin * ah
+
+    const a = poly([
+        [-ae, 0],
+        [0, ah],
+        [aw, ah],
+        [aw + ae, 0]
+    ])
+
+    const bw = 40
+    const bh = controller_cellar
+
+    const b = poly([
+        [0, bh],
+        [bw / 2, 0],
+        [bw, bh]
+    ])
+
+    let res = {models: {
+        a: move(a, [(width - aw) / 2, -20]),
+        b: move(b, [(width - bw) / 2, -67])
+    }}
+
+    return res
 }
 
 // #endregion
@@ -891,20 +1026,21 @@ const dump = (title, data) => {
         layerOptions: {
             filled: {
                 fill: 'black'
+            },
+            virtual: {
+                stroke: 'red'
             }
         }
     })
 
-    mkdirp('output', function (err) {
-        if (err) {
-            console.error(err)
-        } else {
-            fs.writeFileSync(`output/absolem_${title}.svg`, svg)
-            fs.writeFileSync(`output/absolem_${title}.html`, html_prefix(title) + svg + html_suffix)
-            fs.writeFileSync(`output/absolem_${title}.dxf`, m.exporter.toDXF(assembly))
-            fs.writeFileSync(`output/absolem_${title}.json`, JSON.stringify(assembly, null, '    '))
-        }
-    })
+    mkdirp.sync('output/svg')
+    mkdirp.sync('output/html')
+    mkdirp.sync('output/dxf')
+    mkdirp.sync('output/json')
+    fs.writeFileSync(`output/svg/absolem_${title}.svg`, svg)
+    fs.writeFileSync(`output/html/absolem_${title}.html`, html_prefix(title) + svg + html_suffix)
+    fs.writeFileSync(`output/dxf/absolem_${title}.dxf`, m.exporter.toDXF(assembly))
+    fs.writeFileSync(`output/json/absolem_${title}.json`, JSON.stringify(assembly, null, '    '))
 
     console.log(`Assembly '${title}' dumped...`)
 }
@@ -912,10 +1048,12 @@ const dump = (title, data) => {
 ;(() => {
 
     const _outline = outline(margin)
-    const _inline_left = inline(false)
+    const _virtual_outline = deepcopy(_outline)
+    _virtual_outline.layer = 'virtual'
+    const _inline_left = inline_public()
     const _inline_right = mirror(_inline_left, width)
     const _logo = logo()
-    const _badge = badge(true)
+    const _badge = badge(true, 0)
 
     dump('cover', {
         _outline,
@@ -924,10 +1062,10 @@ const dump = (title, data) => {
         _logo,
         _badge
     })
-
+    
     const _frame_inserts_left = half(pos_screw_hole(insert_d))
     const _frame_inserts_right = mirror(_frame_inserts_left, width)
-    const _controller_inserts = controller(insert_d)
+    const _controller_inserts = controller(insert_d, false)
 
     dump('undercover', {
         _outline,
@@ -942,7 +1080,8 @@ const dump = (title, data) => {
     const _keys_right = mirror(_keys_left, width)
     const _frame_screws_left = half(pos_screw_hole(screw_d))
     const _frame_screws_right = mirror(_frame_screws_left, width)
-    const _controller_screws = controller(screw_d)
+    const _controller_screws = controller(screw_d, false)
+    const _lightening = lightening()
 
     dump('keyplate', {
         _outline,
@@ -950,15 +1089,48 @@ const dump = (title, data) => {
         _keys_right,
         _frame_screws_left,
         _frame_screws_right,
-        _controller_screws
+        _controller_screws,
+        _lightening
     })
 
-    const _belly = belly()
+    const _dampener_left = inline_for_dampeners()
+    const _dampener_right = mirror(_dampener_left, width)
+
+    dump('dampeners', {
+        _virtual_outline,
+        _dampener_left,
+        _dampener_right,
+        _keys_left,
+        _keys_right
+    })
+
+    const _middle = middle()
 
     dump('middle', {
-        _belly,
+        _middle,
         _frame_screws_left,
         _frame_screws_right,
+    })
+
+    const _foam_top = foam_top()
+    const _foam_bottom = foam_bottom()
+    const _controller = controller(0, true)
+
+    dump('foam_top', {
+        _virtual_outline,
+        _foam_top
+    })
+
+    dump('foam_bottom', {
+        _virtual_outline,
+        _foam_bottom,
+        // just the top, so I can avoid extra cuts
+        _controller_line: move(
+            {paths: {
+                t: _controller.paths.t
+            }},
+            [0, -controller_h - 2 * controller_margin + controller_cellar]
+        )
     })
 
     dump('backplate', {
@@ -970,6 +1142,7 @@ const dump = (title, data) => {
     const _mat = mat()
 
     dump('mat', {
+        _virtual_outline,
         _mat
     })
 
@@ -985,6 +1158,7 @@ const dump = (title, data) => {
         _logo
     })
 
+    //console.log('Outline measurements:', measure(outline(margin)))
 })()
 
 // You actually read this?! D'aww... Thanks for your interest!
