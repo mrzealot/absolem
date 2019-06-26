@@ -5,7 +5,6 @@ const side = 14
 const keycap_h = 18
 const alphakey_w = 18
 const thumbkey_w = 22.5
-const overhang = (keycap_h - side) / 2 // same for width
 const gap = 1
 
 // Column related
@@ -42,10 +41,11 @@ const inch_to_mm = 25.4
 const controller_w = 0.7 * inch_to_mm
 const controller_h = 1.8 * inch_to_mm
 const controller_margin = 0.1 * inch_to_mm
-const controller_cellar = 35
+const controller_y = -26
+const lightening_margin = 3
+const lightening_bar = 4
 const mat_margin = 1
 const mat_diameter = 12
-const foam_usb_gap = 3
 
 // Logo & badge & battery
 const logo_w = 32
@@ -56,9 +56,11 @@ const battery_w = 55
 const battery_h = 42
 
 // Computed
+const overhang = (keycap_h - side) / 2 // same for width
 const padding = 2 * overhang + gap
 const staggers_sum = columns.reduce((total, col) => total + col.shift, 0)
 const kc_diff = (thumbkey_w - alphakey_w) / 2
+const controller_cellar = controller_h - 2 * lightening_bar
 
 let highest_point = 0
 {
@@ -151,16 +153,6 @@ const deepcopy = obj => JSON.parse(JSON.stringify(obj))
 
 const measure = m.measure.modelExtents
 
-// TODO: this is just for debugging
-let deb = {
-    paths: {}
-}
-
-const debb = (p, r=0.2) => {
-    const i = Object.keys(deb.paths).length
-    deb.paths[i] = circle(p, r)
-}
-
 // #endregion
 
 
@@ -244,14 +236,14 @@ const half = (func) => {
 
 // #region Positionable elements
 
-const pos_hole = (col, key) => {
+const pos_hole = (s = side, nudge = [0, 0]) => (col, key) => {
     paths = {
-        l: line([0,    0   ], [0,    side]),
-        t: line([0,    side], [side, side]),
-        r: line([side, side], [side, 0   ]),
-        b: line([side, 0   ], [0,    0   ])
+        l: line([0, 0], [0, s]),
+        t: line([0, s], [s, s]),
+        r: line([s, s], [s, 0]),
+        b: line([s, 0], [0, 0])
     }
-    return {paths}
+    return move({paths}, nudge)
 }
 
 const pos_keycap = (col, key) => {
@@ -268,7 +260,7 @@ const pos_keycap = (col, key) => {
     return {paths}
 }
 
-const pos_inline = (fix_wing, fix_middle) => (col, key) => {
+const pos_inline = (extra_gap, fix_wing, fix_middle) => (col, key) => {
     let w = overhang + gap + extra_gap
     let h = w
     let fix_left = 0
@@ -434,11 +426,6 @@ const REGULAR = false
 
 const fix_corner_raw = (a, mirrored_a, b, mirrored_b, outer, target) => {
 
-    //debb(a.origin)
-    //debb(a.end)
-    //debb(b.origin)
-    //debb(b.end)
-
     const center = m.path.intersection(a, b).intersectionPoints[0]
     const angle_a = m.angle.ofLineInDegrees(a) + (mirrored_a ? 180 : 0)
     const angle_b = m.angle.ofLineInDegrees(b) + (mirrored_b ? 180 : 0)
@@ -450,8 +437,6 @@ const fix_corner_raw = (a, mirrored_a, b, mirrored_b, outer, target) => {
     const cas = m.path.intersection(a, circ).intersectionPoints
     const cbs = m.path.intersection(b, circ).intersectionPoints
     
-    debb(center)
-
     // there can be multiple intersections, so we want the points
     // furthest from the control (either inner or outer) point
     const furthest = (arr, control) => {
@@ -473,13 +458,9 @@ const fix_corner_raw = (a, mirrored_a, b, mirrored_b, outer, target) => {
         // cutting at the exact line is not enough as the suctraction
         // algorithm leaves the lines... have to make a bigger cut
         const far_point = m.point.fromAngleOnCircle((angle_a + angle_b) / 2 + sign * 90, circ)
-        debb(far_point, .8)
 
         const ca = furthest(cas, far_point)
         const cb = furthest(cbs, far_point)
-
-        debb(ca, .5)
-        debb(cb, .5)
 
         const arc = new m.models.BezierCurve([ca, center, cb])
         const remove = {
@@ -507,10 +488,6 @@ const fix_corner_raw = (a, mirrored_a, b, mirrored_b, outer, target) => {
 
         const ca = furthest(cas, inner_point)
         const cb = furthest(cbs, inner_point)
-
-        debb(ca)
-        debb(cb)
-        debb(inner_point)
 
         const add = {
             models: {
@@ -634,7 +611,7 @@ const logo = () => {
 // #region Outlines, patching, controller holes
 
 const patch = (expand = 0) => {
-    const originated = m.model.originate(half(pos_hole))
+    const originated = m.model.originate(half(pos_hole()))
 
     let lt = get_line(originated, ['inner', 'top',    't']).end
     let lm = get_line(originated, ['inner', 'bottom', 'r']).end
@@ -644,11 +621,6 @@ const patch = (expand = 0) => {
         lt = m.point.add(lt, [0,  expand])
         lb = m.point.add(lb, [0, -expand])
     }
-
-    
-    debb(lt)
-    debb(lm)
-    debb(lb)
 
     // hacked right side --> won't matter, as it'll be mirrored anyway
     rt = [lt[0] + 30, lt[1]]
@@ -722,10 +694,10 @@ const outline = margin => {
     return result
 }
 
-const inline = (fix_wing, fix_middle, fix_inner_corners) => {
+const inline = (extra_gap, fix_wing, fix_middle, fix_inner_corners) => {
 
     // create initial union
-    const raw = m.model.originate(half(pos_inline(fix_wing, fix_middle)))
+    const raw = m.model.originate(half(pos_inline(extra_gap, fix_wing, fix_middle)))
     let result = {models: {}}
     for_each_hole(raw, model => {
         result = combine(result, deepcopy(model))
@@ -737,10 +709,6 @@ const inline = (fix_wing, fix_middle, fix_inner_corners) => {
         const p2 = b.paths.l.origin
         const p3 = a.paths.r.end
         const p4 = b.paths.t.origin
-        debb(p1)
-        debb(p2)
-        debb(p3)
-        debb(p4)
     
         target = combine(target, {
             paths: {
@@ -786,9 +754,10 @@ const inline = (fix_wing, fix_middle, fix_inner_corners) => {
     return result
 }
 
-const inline_public = () => inline(false, false, true)
-const inline_for_belly = () => inline(true, true, true)
-const inline_for_dampeners = () => inline(true, false, false)
+// different inline versions based on usage
+const inline_public = () => inline(extra_gap, false, false, true)
+const inline_for_belly = () => inline(extra_gap, true, true, true)
+const inline_for_dampeners = extra_gap => inline(extra_gap, true, false, false)
 
 const belly = () => {
     let res = inline_for_belly()
@@ -841,7 +810,7 @@ const controller = (diameter, outline) => {
         res.paths.b = line([x + w, y], [x, y])
     }
 
-    return m.model.originate(move(res, [width / 2 - controller_w / 2, -26]))
+    return m.model.originate(move(res, [width / 2 - controller_w / 2, controller_y]))
 }
 
 const mat = () => {
@@ -908,7 +877,7 @@ const badge = (with_logo, margin = 0) => {
         const space_2 = 2
         const total_w = logo_m.width + space_1 + hash_m.width + space_2 + num_m.width
         // the 0.1 * logo width correction is for fixing the illusion that
-        // the logo has a larger margin on the left than the num hat on the right
+        // the logo has a larger margin on the left than the num has on the right
         const shift = (badge_w - total_w) / 2 - 0.1 * logo_m.width
 
         const logo_right = shift - logo_m.low[0]
@@ -931,7 +900,7 @@ const badge = (with_logo, margin = 0) => {
 const foam_top = () => {
     const controller_cut = up(
         controller(0, true),
-        controller_h + 2 * controller_margin - foam_usb_gap
+        controller_h + controller_margin
     )
     let res = belly()
     res = subtract(res, controller_cut)
@@ -940,7 +909,7 @@ const foam_top = () => {
     return res
 }
 
-const foam_bottom = () => {
+const middle_magic = () => {
     const init_x = 80
     const init_y = 200
     let res = move(
@@ -948,48 +917,56 @@ const foam_bottom = () => {
         [width / 2 - init_x, -init_y / 2]
     )
     
-    const dampener = inline_for_dampeners()
-    res = subtract(res, dampener)
+    const damp = inline_for_dampeners(extra_gap + lightening_margin)
+    res = subtract(res, damp)
     
-    res = subtract(res, controller(0, true))
     // 5 = a slight expansion to the patching element,
     // to avoid overlapping lines when doing bool ops
     res = intersect(res, patch(5))
-    res = intersect(res, foam_top())
+    res = intersect(res, deepcopy(foam_top()))
    
     res = combine(res, mirror(res, width))
 
     return res
 }
 
-const lightening = () => {
-
-    const aw = 28
-    const ah = controller_cellar
-    const sin = Math.abs(Math.sin(m.angle.toRadians(half_angle)))
-    const ae = sin * ah
-
-    const a = poly([
-        [-ae, 0],
-        [0, ah],
-        [aw, ah],
-        [aw + ae, 0]
-    ])
-
-    const bw = 40
-    const bh = controller_cellar
-
-    const b = poly([
-        [0, bh],
-        [bw / 2, 0],
-        [bw, bh]
-    ])
-
-    let res = {models: {
-        a: move(a, [(width - aw) / 2, -20]),
-        b: move(b, [(width - bw) / 2, -67])
+const foam_bottom = () => {
+    let res = middle_magic()
+    const ctl = controller(0, true)
+    res = subtract(res, deepcopy(ctl))
+    // just the top, so I can avoid extra cuts
+    const ctl_line = move(
+        {paths: {
+            t: deepcopy(ctl.paths.t)
+        }},
+        [0, -controller_h - 2 * controller_margin + controller_cellar]
+    )
+    return {models: {
+        res,
+        ctl_line
     }}
+}
 
+const lightening = () => {
+    let res = middle_magic()
+    const top = move(
+        new m.models.Rectangle(100, 100),
+        [width / 2 - 50, controller_y + controller_h - lightening_bar]
+    )
+    const bottom = move(
+        new m.models.Rectangle(100, 2 * lightening_bar),
+        [width / 2 - 50, controller_y - lightening_bar]
+    )
+    res = subtract(res, top)
+    res = subtract(res, bottom)
+    return res
+}
+
+const dampener = () => {
+    let res = inline_for_dampeners(extra_gap + lightening_margin)
+    res = intersect(res, belly())
+    // leave larger holes, so the switches can snap in unhindered
+    res = subtract(res, half(pos_hole(side + 2, [-1, -1])))
     return res
 }
 
@@ -1018,7 +995,7 @@ const html_suffix = '</body></html>'
 const dump = (title, data) => {
 
     const assembly = m.model.originate({
-        models: data,
+        models: deepcopy(data),
         units: 'mm'
     })
 
@@ -1026,9 +1003,6 @@ const dump = (title, data) => {
         layerOptions: {
             filled: {
                 fill: 'black'
-            },
-            virtual: {
-                stroke: 'red'
             }
         }
     })
@@ -1048,8 +1022,6 @@ const dump = (title, data) => {
 ;(() => {
 
     const _outline = outline(margin)
-    const _virtual_outline = deepcopy(_outline)
-    _virtual_outline.layer = 'virtual'
     const _inline_left = inline_public()
     const _inline_right = mirror(_inline_left, width)
     const _logo = logo()
@@ -1076,7 +1048,7 @@ const dump = (title, data) => {
         _controller_inserts
     })
 
-    const _keys_left = half(pos_hole)
+    const _keys_left = half(pos_hole())
     const _keys_right = mirror(_keys_left, width)
     const _frame_screws_left = half(pos_screw_hole(screw_d))
     const _frame_screws_right = mirror(_frame_screws_left, width)
@@ -1093,15 +1065,12 @@ const dump = (title, data) => {
         _lightening
     })
 
-    const _dampener_left = inline_for_dampeners()
+    const _dampener_left = dampener()
     const _dampener_right = mirror(_dampener_left, width)
 
     dump('dampeners', {
-        _virtual_outline,
         _dampener_left,
-        _dampener_right,
-        _keys_left,
-        _keys_right
+        _dampener_right
     })
 
     const _middle = middle()
@@ -1114,23 +1083,13 @@ const dump = (title, data) => {
 
     const _foam_top = foam_top()
     const _foam_bottom = foam_bottom()
-    const _controller = controller(0, true)
 
     dump('foam_top', {
-        _virtual_outline,
         _foam_top
     })
 
     dump('foam_bottom', {
-        _virtual_outline,
-        _foam_bottom,
-        // just the top, so I can avoid extra cuts
-        _controller_line: move(
-            {paths: {
-                t: _controller.paths.t
-            }},
-            [0, -controller_h - 2 * controller_margin + controller_cellar]
-        )
+        _foam_bottom
     })
 
     dump('backplate', {
@@ -1142,7 +1101,6 @@ const dump = (title, data) => {
     const _mat = mat()
 
     dump('mat', {
-        _virtual_outline,
         _mat
     })
 
@@ -1156,6 +1114,32 @@ const dump = (title, data) => {
         _keycaps_left,
         _keycaps_right,
         _logo
+    })
+
+    const _controller = controller(0, true)
+
+    dump('qc', {
+        _outline,
+        _inline_left,
+        _inline_right,
+        _middle,
+        _foam_top,
+        _lightening,
+        _frame_inserts_left,
+        _frame_inserts_right,
+        _controller_inserts,
+        _frame_screws_left,
+        _frame_screws_right,
+        _controller_screws,
+        _keycaps_left,
+        _keycaps_right,
+        _dampener_left,
+        _dampener_right,
+        _keys_left,
+        _keys_right,
+        _controller,
+        _foam_bottom,
+        _mat
     })
 
     //console.log('Outline measurements:', measure(outline(margin)))
