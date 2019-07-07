@@ -40,27 +40,24 @@ const insert_d = 3.51
 const inch_to_mm = 25.4
 const controller_w = 0.7 * inch_to_mm
 const controller_h = 1.8 * inch_to_mm
-const controller_margin = 0.1 * inch_to_mm
+const controller_padding = 0.1 * inch_to_mm
+const controller_margin = 4
 const controller_y = -26
-const lightening_margin = 3
-const lightening_bar = 4
+const lightening_margin = 2
 const mat_margin = 1
 const mat_diameter = 12
 
 // Logo & badge & battery
 const logo_w = 32
-const small_logo_w = 18
-const badge_w = 55
-const badge_h = 25
-const battery_w = 55
-const battery_h = 42
+const battery_w = 42
+const battery_h = 52
+const battery_y = -50
 
 // Computed
 const overhang = (keycap_h - side) / 2 // same for width
 const padding = 2 * overhang + gap
 const staggers_sum = columns.reduce((total, col) => total + col.shift, 0)
 const kc_diff = (thumbkey_w - alphakey_w) / 2
-const controller_cellar = controller_h - 2 * lightening_bar
 
 let highest_point = 0
 {
@@ -260,7 +257,7 @@ const pos_keycap = (col, key) => {
     return {paths}
 }
 
-const pos_inline = (extra_gap, fix_wing, fix_middle) => (col, key) => {
+const pos_inline = (extra_gap, fix_wing, fix_middle_top, fix_middle_bottom) => (col, key) => {
     let w = overhang + gap + extra_gap
     let h = w
     let fix_left = 0
@@ -276,10 +273,10 @@ const pos_inline = (extra_gap, fix_wing, fix_middle) => (col, key) => {
     } else if (col == 'index' && key == 'bottom' && fix_wing) {
         fix_left = 40
     // if I have this anyway, let's fix the top middle...
-    } else if (col == 'inner' && key == 'top' && fix_middle) {
+    } else if (col == 'inner' && key == 'top' && fix_middle_top) {
         fix_right = 15
     // ...and the bottom middle, too
-    } else if (col == 'thumb' && key == 'outer' && fix_middle) {
+    } else if (col == 'thumb' && key == 'outer' && fix_middle_bottom) {
         fix_up = 15
     }
     const l = -w - fix_left
@@ -608,7 +605,7 @@ const logo = () => {
 
 
 
-// #region Outlines, patching, controller holes
+// #region Outlines, patching, "innards"
 
 const patch = (expand = 0) => {
     const originated = m.model.originate(half(pos_hole()))
@@ -637,11 +634,10 @@ const patch = (expand = 0) => {
     }
 }
 
-const usb_patch = () => {
-    const w = usb_hole
+const usb_patch = (w) => {
     const h = 40
     const x = (width - w) / 2
-    const y = 0
+    const y = 3
     return {
         paths: {
             l: line([x,     y    ], [x,     y + h]),
@@ -694,10 +690,10 @@ const outline = margin => {
     return result
 }
 
-const inline = (extra_gap, fix_wing, fix_middle, fix_inner_corners) => {
+const inline = (extra_gap, fix_wing, fix_middle_top, fix_middle_bottom, fix_inner_corners) => {
 
     // create initial union
-    const raw = m.model.originate(half(pos_inline(extra_gap, fix_wing, fix_middle)))
+    const raw = m.model.originate(half(pos_inline(extra_gap, fix_wing, fix_middle_top, fix_middle_bottom)))
     let result = {models: {}}
     for_each_hole(raw, model => {
         result = combine(result, deepcopy(model))
@@ -727,8 +723,9 @@ const inline = (extra_gap, fix_wing, fix_middle, fix_inner_corners) => {
         return target
     }
     
-    result = fix_hole(get_hole(raw, ['thumb', 'inner']), get_hole(raw, ['thumb', 'home' ]), false, result)
-    result = fix_hole(get_hole(raw, ['thumb', 'home' ]), get_hole(raw, ['thumb', 'outer']), true, result)
+    // TODO: hole fixing is broken when the middle bottom is fixed...
+    //result = fix_hole(get_hole(raw, ['thumb', 'inner']), get_hole(raw, ['thumb', 'home' ]), false, result)
+    //result = fix_hole(get_hole(raw, ['thumb', 'home' ]), get_hole(raw, ['thumb', 'outer']), !fix_middle_bottom, result)
     
     // fix corners --> outers only
     if (fix_inner_corners) {
@@ -755,9 +752,9 @@ const inline = (extra_gap, fix_wing, fix_middle, fix_inner_corners) => {
 }
 
 // different inline versions based on usage
-const inline_public = () => inline(extra_gap, false, false, true)
-const inline_for_belly = () => inline(extra_gap, true, true, true)
-const inline_for_dampeners = extra_gap => inline(extra_gap, true, false, false)
+const inline_public = () => inline(extra_gap, false, false, false, true)
+const inline_for_belly = () => inline(extra_gap, true, true, true, true)
+const inline_for_dampeners = extra_gap => inline(extra_gap, true, false, true, false)
 
 const belly = () => {
     let res = inline_for_belly()
@@ -769,7 +766,7 @@ const belly = () => {
 const middle = () => {
     const raw = m.model.originate(half(pos_outline(margin)))
     const raw_right = m.model.originate(mirror(half(pos_outline(margin)), width))
-    const usb = usb_patch()
+    const usb = usb_patch(usb_hole)
     let cut = belly()
     cut = combine(cut, usb)
 
@@ -787,8 +784,8 @@ const middle = () => {
     return result
 }
 
-const controller = (diameter, outline) => {
-    const res = {paths: {}}
+const controller = (diameter, outline, outerline) => {
+    const res = {paths: {}, models: {}}
 
     if (diameter) {
         res.paths.bl = circle([0,            0           ], diameter / 2)
@@ -797,17 +794,28 @@ const controller = (diameter, outline) => {
         res.paths.br = circle([controller_w, 0           ], diameter / 2)
     }
 
+    const w = controller_w + 2 * controller_padding
+    const h = controller_h + 2 * controller_padding
+    const x = -controller_padding
+    const y = -controller_padding
     if (outline) {
-        const w = controller_w + 2 * controller_margin
-        const h = controller_h + 2 * controller_margin
-        const x = -controller_margin
-        const y = -controller_margin
         // I'm aware that the Rectangle class exists, but I want to know
         // the names of the individual line sections
         res.paths.l = line([x, y], [x, y + h])
         res.paths.t = line([x, y + h], [x + w, y + h])
         res.paths.r = line([x + w, y + h], [x + w, y])
         res.paths.b = line([x + w, y], [x, y])
+    }
+
+    if (outerline) {
+        res.models.outerline = move(
+            new m.models.RoundRectangle(
+                w + 2 * controller_margin,
+                h + 2 * controller_margin,
+                corner_radius
+            ),
+            [x - controller_margin, y - controller_margin]
+        )
     }
 
     return m.model.originate(move(res, [width / 2 - controller_w / 2, controller_y]))
@@ -824,6 +832,31 @@ const mat = () => {
     return subtract(base, holes)
 }
 
+const dampener = (cut_holes) => {
+    let res = inline_for_dampeners(extra_gap + lightening_margin)
+    res = intersect(res, belly())
+    if (cut_holes) {
+        // leave larger holes, so the switches can snap in unhindered
+        res = subtract(res, half(pos_hole(side + 2, [-1, -1])))
+    }
+    res = combine(res, mirror(res, width))
+    return res
+}
+
+const middle_cut = () => {
+    let cut = controller(0, false, true)
+    cut = combine(cut, usb_patch(100))
+    cut = subtract(cut, middle())
+    cut = subtract(cut, dampener(false))
+    return cut
+}
+
+const plate = () => {
+    const o = outline(margin)
+    let res = subtract(o, middle_cut())
+    return res
+}
+
 const battery = () => {
     let result = {
         models: {
@@ -831,142 +864,29 @@ const battery = () => {
         }
     }
 
-    result = rotate(result, half_angle)
-    result = move(result, [30, 5])
+    result = move(result, [width / 2 - battery_w / 2, battery_y])
     result = m.model.originate(result)
     return result
 }
 
-const badge = (with_logo, margin = 0) => {
+const battery_plate = (diameter) => {
 
-    let result = {
-        models: {
-            rect: move(
-                new m.models.RoundRectangle(
-                    badge_w + 2 * margin,
-                    badge_h + 2 * margin,
-                    corner_radius + margin
-                ),
-                [-margin, -margin]
-            )
-        }
+    let res = new m.models.Rectangle(80, 60)
+    res = move(res, [width / 2 - 40, -50])
+
+    res = subtract(res, dampener(false))
+    res = combine(res, battery())
+    res = subtract(res, middle_cut())
+
+    if (diameter) {
+        const m = 5
+        const x = width / 2 - battery_w / 2
+        const y = battery_y + 25
+        res.paths = res.paths || {}
+        res.paths.l = circle([x - m,             y], diameter / 2)
+        res.paths.r = circle([x + battery_w + m, y], diameter / 2)
     }
 
-    if (with_logo) {
-
-        // logo generation only works at certain sizes, so I have to scale...
-        const small_logo = m.model.scale(logo_raw(logo_w), small_logo_w / logo_w)
-        const logo_m = measure(small_logo)
-        
-        const font = opentype.loadSync(font_path)
-        
-        const font_num = 15
-        const font_hash = 12
-        const hash = new m.models.Text(font, '#', font_hash)
-        const num = new m.models.Text(font, badge_num, font_num)
-        hash.layer = 'filled'
-        num.layer = 'filled'
-        const hash_m = measure(hash)
-        const num_m = measure(num)
-
-        const logo_up = (badge_h - logo_m.height) / 2 - logo_m.low[1]
-        const hash_up = (badge_h - hash_m.height) / 2
-        const num_up = (badge_h - num_m.height) / 2
-        
-        const space_1 = 2
-        const space_2 = 2
-        const total_w = logo_m.width + space_1 + hash_m.width + space_2 + num_m.width
-        // the 0.1 * logo width correction is for fixing the illusion that
-        // the logo has a larger margin on the left than the num has on the right
-        const shift = (badge_w - total_w) / 2 - 0.1 * logo_m.width
-
-        const logo_right = shift - logo_m.low[0]
-        const hash_right = shift + logo_m.width + space_1
-        const num_right = hash_right + hash_m.width + space_2
-        
-        result.models.logo = move(small_logo, [logo_right, logo_up])
-        result.models.hash = move(hash, [hash_right, hash_up])
-        result.models.num = move(num, [num_right, num_up])
-    }
-
-    result = mirror(result, badge_w)
-    result = rotate(result, half_angle)
-    result = move(result, [20, 15])
-    result = mirror(result, width)
-    result = m.model.originate(result)
-    return result
-}
-
-const foam_top = () => {
-    const controller_cut = up(
-        controller(0, true),
-        controller_h + controller_margin
-    )
-    let res = belly()
-    res = subtract(res, controller_cut)
-    res = subtract(res, battery())
-    res = subtract(res, badge(false, 1))
-    return res
-}
-
-const middle_magic = () => {
-    const init_x = 80
-    const init_y = 200
-    let res = move(
-        new m.models.Rectangle(init_x, init_y),
-        [width / 2 - init_x, -init_y / 2]
-    )
-    
-    const damp = inline_for_dampeners(extra_gap + lightening_margin)
-    res = subtract(res, damp)
-    
-    // 5 = a slight expansion to the patching element,
-    // to avoid overlapping lines when doing bool ops
-    res = intersect(res, patch(5))
-    res = intersect(res, deepcopy(foam_top()))
-   
-    res = combine(res, mirror(res, width))
-
-    return res
-}
-
-const foam_bottom = () => {
-    let res = middle_magic()
-    const ctl = controller(0, true)
-    res = subtract(res, deepcopy(ctl))
-    // just the top, so I can avoid extra cuts
-    const ctl_line = move(
-        {paths: {
-            t: deepcopy(ctl.paths.t)
-        }},
-        [0, -controller_h - 2 * controller_margin + controller_cellar]
-    )
-    return {models: {
-        res,
-        ctl_line
-    }}
-}
-
-const lightening = () => {
-    let res = middle_magic()
-    const top = move(
-        new m.models.Rectangle(100, 100),
-        [width / 2 - 50, controller_y + controller_h - lightening_bar]
-    )
-    const bottom = move(
-        new m.models.Rectangle(100, 2 * lightening_bar),
-        [width / 2 - 50, controller_y - lightening_bar]
-    )
-    res = subtract(res, top)
-    res = subtract(res, bottom)
-    return res
-}
-
-const dampener = () => {
-    let res = inline_for_dampeners(extra_gap + lightening_margin)
-    res = intersect(res, belly())
-    // leave larger holes, so the switches can snap in unhindered
-    res = subtract(res, half(pos_hole(side + 2, [-1, -1])))
     return res
 }
 
@@ -1025,14 +945,12 @@ const dump = (title, data) => {
     const _inline_left = inline_public()
     const _inline_right = mirror(_inline_left, width)
     const _logo = logo()
-    const _badge = badge(true, 0)
 
     dump('cover', {
         _outline,
         _inline_left,
         _inline_right,
-        _logo,
-        _badge
+        _logo
     })
     
     const _frame_inserts_left = half(pos_screw_hole(insert_d))
@@ -1048,29 +966,28 @@ const dump = (title, data) => {
         _controller_inserts
     })
 
+    const _plate = plate()
     const _keys_left = half(pos_hole())
     const _keys_right = mirror(_keys_left, width)
     const _frame_screws_left = half(pos_screw_hole(screw_d))
     const _frame_screws_right = mirror(_frame_screws_left, width)
     const _controller_screws = controller(screw_d, false)
-    const _lightening = lightening()
 
     dump('keyplate', {
-        _outline,
+        _plate,
+        arst: battery_plate(screw_d),
+        rsta: battery(),
         _keys_left,
         _keys_right,
         _frame_screws_left,
         _frame_screws_right,
-        _controller_screws,
-        _lightening
+        _controller_screws
     })
 
-    const _dampener_left = dampener()
-    const _dampener_right = mirror(_dampener_left, width)
+    const _dampener = dampener(true)
 
-    dump('dampeners', {
-        _dampener_left,
-        _dampener_right
+    dump('dampener', {
+        _dampener
     })
 
     const _middle = middle()
@@ -1079,17 +996,6 @@ const dump = (title, data) => {
         _middle,
         _frame_screws_left,
         _frame_screws_right,
-    })
-
-    const _foam_top = foam_top()
-    const _foam_bottom = foam_bottom()
-
-    dump('foam_top', {
-        _foam_top
-    })
-
-    dump('foam_bottom', {
-        _foam_bottom
     })
 
     dump('backplate', {
@@ -1116,15 +1022,13 @@ const dump = (title, data) => {
         _logo
     })
 
-    const _controller = controller(0, true)
+    const _controller = controller(0, true, true)
 
     dump('qc', {
         _outline,
         _inline_left,
         _inline_right,
         _middle,
-        _foam_top,
-        _lightening,
         _frame_inserts_left,
         _frame_inserts_right,
         _controller_inserts,
@@ -1133,12 +1037,10 @@ const dump = (title, data) => {
         _controller_screws,
         _keycaps_left,
         _keycaps_right,
-        _dampener_left,
-        _dampener_right,
+        _dampener,
         _keys_left,
         _keys_right,
         _controller,
-        _foam_bottom,
         _mat
     })
 
