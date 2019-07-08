@@ -41,9 +41,9 @@ const inch_to_mm = 25.4
 const controller_w = 0.7 * inch_to_mm
 const controller_h = 1.8 * inch_to_mm
 const controller_padding = 0.1 * inch_to_mm
-const controller_margin = 4
+const controller_margin = 3
 const controller_y = -26
-const lightening_margin = 2
+const undercover_margin = 3
 const mat_margin = 1
 const mat_diameter = 12
 
@@ -70,14 +70,6 @@ let highest_point = 0
     }
 }
 
-// Command line params
-if (process.argv.length < 4) {
-    console.error('Usage: node absolem font num')
-    process.exit(1)
-}
-const font_path = process.argv[2]
-const badge_num = process.argv[3]
-
 // #endregion
 
 
@@ -86,7 +78,6 @@ const badge_num = process.argv[3]
 
 const fs = require('fs')
 const mkdirp = require('mkdirp')
-const opentype = require('opentype.js')
 const m = require('makerjs')
 const move = m.model.moveRelative
 const up = (model, num) => move(model, [0, num])
@@ -723,9 +714,8 @@ const inline = (extra_gap, fix_wing, fix_middle_top, fix_middle_bottom, fix_inne
         return target
     }
     
-    // TODO: hole fixing is broken when the middle bottom is fixed...
-    //result = fix_hole(get_hole(raw, ['thumb', 'inner']), get_hole(raw, ['thumb', 'home' ]), false, result)
-    //result = fix_hole(get_hole(raw, ['thumb', 'home' ]), get_hole(raw, ['thumb', 'outer']), !fix_middle_bottom, result)
+    result = fix_hole(get_hole(raw, ['thumb', 'inner']), get_hole(raw, ['thumb', 'home' ]), false, result)
+    result = fix_hole(get_hole(raw, ['thumb', 'home' ]), get_hole(raw, ['thumb', 'outer']), !fix_middle_bottom, result)
     
     // fix corners --> outers only
     if (fix_inner_corners) {
@@ -763,23 +753,28 @@ const belly = () => {
     return res
 }
 
-const middle = () => {
+const middle = (cut_usb) => {
     const raw = m.model.originate(half(pos_outline(margin)))
     const raw_right = m.model.originate(mirror(half(pos_outline(margin)), width))
     const usb = usb_patch(usb_hole)
     let cut = belly()
-    cut = combine(cut, usb)
+
+    if (cut_usb) {
+        cut = combine(cut, usb)
+    }
 
     let result = subtract(outline(margin), cut)
 
-    // OCD corner fixing
-    const a1 = get_line(raw, ['inner', 'top', 't'])
-    const b1 = usb.paths.l
-    result = fix_corner_raw(a1, REGULAR, b1, MIRRORED, OUTER, result)
+    if (cut_usb) {
+        // OCD corner fixing
+        const a1 = get_line(raw, ['inner', 'top', 't'])
+        const b1 = usb.paths.l
+        result = fix_corner_raw(a1, REGULAR, b1, MIRRORED, OUTER, result)
 
-    const a2 = get_line(raw_right, ['inner', 'top', 't'])
-    const b2 = usb.paths.r
-    result = fix_corner_raw(a2, MIRRORED, b2, MIRRORED, OUTER, result)
+        const a2 = get_line(raw_right, ['inner', 'top', 't'])
+        const b2 = usb.paths.r
+        result = fix_corner_raw(a2, MIRRORED, b2, MIRRORED, OUTER, result)
+    }
 
     return result
 }
@@ -832,31 +827,6 @@ const mat = () => {
     return subtract(base, holes)
 }
 
-const dampener = (cut_holes) => {
-    let res = inline_for_dampeners(extra_gap + lightening_margin)
-    res = intersect(res, belly())
-    if (cut_holes) {
-        // leave larger holes, so the switches can snap in unhindered
-        res = subtract(res, half(pos_hole(side + 2, [-1, -1])))
-    }
-    res = combine(res, mirror(res, width))
-    return res
-}
-
-const middle_cut = () => {
-    let cut = controller(0, false, true)
-    cut = combine(cut, usb_patch(100))
-    cut = subtract(cut, middle())
-    cut = subtract(cut, dampener(false))
-    return cut
-}
-
-const plate = () => {
-    const o = outline(margin)
-    let res = subtract(o, middle_cut())
-    return res
-}
-
 const battery = () => {
     let result = {
         models: {
@@ -869,24 +839,55 @@ const battery = () => {
     return result
 }
 
-const battery_plate = (diameter) => {
+const battery_plate = (diameter, outline) => {
 
-    let res = new m.models.Rectangle(80, 60)
-    res = move(res, [width / 2 - 40, -50])
-
-    res = subtract(res, dampener(false))
-    res = combine(res, battery())
-    res = subtract(res, middle_cut())
+    const res = {models: {}, paths: {}}
 
     if (diameter) {
         const m = 5
         const x = width / 2 - battery_w / 2
         const y = battery_y + 25
-        res.paths = res.paths || {}
         res.paths.l = circle([x - m,             y], diameter / 2)
         res.paths.r = circle([x + battery_w + m, y], diameter / 2)
     }
 
+    if (outline) {
+        let o = new m.models.Rectangle(80, 60)
+        o = move(o, [width / 2 - 40, -50])
+    
+        o = subtract(o, dampener(false))
+        o = combine(o, battery())
+        o = subtract(o, middle_cut())
+
+        res.models.outline = o
+    }
+
+    return res
+}
+
+const dampener = (cut_holes) => {
+    let res = inline_for_dampeners(extra_gap + undercover_margin)
+    res = intersect(res, belly())
+    if (cut_holes) {
+        // leave larger holes, so the switches can snap in unhindered
+        res = subtract(res, half(pos_hole(side + 2, [-1, -1])))
+    }
+    res = combine(res, mirror(res, width))
+    res = subtract(res, battery())
+    return res
+}
+
+const middle_cut = () => {
+    let cut = controller(0, false, true)
+    cut = combine(cut, usb_patch(100))
+    cut = subtract(cut, middle(true))
+    cut = subtract(cut, dampener(false))
+    return cut
+}
+
+const plate = () => {
+    let res = outline(margin)
+    res = subtract(res, middle_cut())
     return res
 }
 
@@ -952,36 +953,40 @@ const dump = (title, data) => {
         _inline_right,
         _logo
     })
-    
+
+    const _plate = plate()
     const _frame_inserts_left = half(pos_screw_hole(insert_d))
     const _frame_inserts_right = mirror(_frame_inserts_left, width)
-    const _controller_inserts = controller(insert_d, false)
+    const _battery_inserts = battery_plate(insert_d, false)
 
     dump('undercover', {
-        _outline,
+        _plate,
         _inline_left,
         _inline_right,
         _frame_inserts_left,
         _frame_inserts_right,
-        _controller_inserts
+        _battery_inserts
     })
 
-    const _plate = plate()
     const _keys_left = half(pos_hole())
     const _keys_right = mirror(_keys_left, width)
     const _frame_screws_left = half(pos_screw_hole(screw_d))
     const _frame_screws_right = mirror(_frame_screws_left, width)
-    const _controller_screws = controller(screw_d, false)
+    const _battery_screws = battery_plate(screw_d, false)
 
     dump('keyplate', {
         _plate,
-        arst: battery_plate(screw_d),
-        rsta: battery(),
         _keys_left,
         _keys_right,
         _frame_screws_left,
         _frame_screws_right,
-        _controller_screws
+        _battery_screws
+    })
+
+    const _battery_plate = battery_plate(screw_d, true)
+
+    dump('batteryplate', {
+        _battery_plate
     })
 
     const _dampener = dampener(true)
@@ -990,10 +995,18 @@ const dump = (title, data) => {
         _dampener
     })
 
-    const _middle = middle()
+    const _middle_top = middle(true)
 
-    dump('middle', {
-        _middle,
+    dump('middle_top', {
+        _middle_top,
+        _frame_screws_left,
+        _frame_screws_right,
+    })
+
+    const _middle_bottom = middle(false)
+
+    dump('middle_bottom', {
+        _middle_bottom,
         _frame_screws_left,
         _frame_screws_right,
     })
@@ -1022,19 +1035,22 @@ const dump = (title, data) => {
         _logo
     })
 
-    const _controller = controller(0, true, true)
+    const _controller = controller(screw_d, true, false)
 
     dump('qc', {
         _outline,
         _inline_left,
         _inline_right,
-        _middle,
+        _plate,
+        _battery_plate,
+        _middle_top,
+        _middle_bottom,
         _frame_inserts_left,
         _frame_inserts_right,
-        _controller_inserts,
         _frame_screws_left,
         _frame_screws_right,
-        _controller_screws,
+        _battery_inserts,
+        _battery_screws,
         _keycaps_left,
         _keycaps_right,
         _dampener,
