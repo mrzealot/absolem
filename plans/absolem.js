@@ -584,7 +584,7 @@ const logo_raw = logo_width => {
     ]))
 
     res = combine(res, mirror(res))
-    res.layer = 'filled'
+    res.layer = 'engrave'
     return res
 }
 
@@ -922,20 +922,22 @@ const dump = (title, data) => {
 
     const svg = m.exporter.toSVG(assembly, {
         layerOptions: {
-            filled: {
-                fill: 'black'
+            engrave: {
+                fill: 'red',
+                stroke: 'red'
             }
         }
     })
 
-    mkdirp.sync('output/svg')
-    mkdirp.sync('output/html')
-    mkdirp.sync('output/dxf')
-    mkdirp.sync('output/json')
-    fs.writeFileSync(`output/svg/absolem_${title}.svg`, svg)
-    fs.writeFileSync(`output/html/absolem_${title}.html`, html_prefix(title) + svg + html_suffix)
-    fs.writeFileSync(`output/dxf/absolem_${title}.dxf`, m.exporter.toDXF(assembly))
-    fs.writeFileSync(`output/json/absolem_${title}.json`, JSON.stringify(assembly, null, '    '))
+    const folder = 'plans/output'
+    mkdirp.sync(`${folder}/svg`)
+    mkdirp.sync(`${folder}/html`)
+    mkdirp.sync(`${folder}/dxf`)
+    mkdirp.sync(`${folder}/json`)
+    fs.writeFileSync(`${folder}/svg/absolem_${title}.svg`, svg)
+    fs.writeFileSync(`${folder}/html/absolem_${title}.html`, html_prefix(title) + svg + html_suffix)
+    fs.writeFileSync(`${folder}/dxf/absolem_${title}.dxf`, m.exporter.toDXF(assembly))
+    fs.writeFileSync(`${folder}/json/absolem_${title}.json`, JSON.stringify(assembly, null, '    '))
 
     console.log(`Assembly '${title}' dumped...`)
 }
