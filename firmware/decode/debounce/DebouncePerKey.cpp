@@ -1,4 +1,4 @@
-#include "Debounce.h"
+#include "decode/debounce/DebouncePerKey.h"
 
 namespace absolem {
 
@@ -20,6 +20,7 @@ namespace absolem {
             old_time = new_time;
             events.push_back(Event(key, new_active));
         }
+        return events;
     }
     
 } // namespace absolem

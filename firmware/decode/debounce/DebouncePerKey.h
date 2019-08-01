@@ -1,15 +1,10 @@
-#ifndef DEBOUNCE_H
-#define DEBOUNCE_H
+#ifndef DEBOUNCE_PER_KEY_H
+#define DEBOUNCE_PER_KEY_H
 
-#include "common.h"
-#include "Event.h"
+#include "common/History.h"
+#include "decode/debounce/Debounce.h"
 
 namespace absolem {
-
-    class Debounce {
-        public:
-        virtual List<Event> update(const State& state) = 0;
-    };
 
     class DebouncePerKey : public Debounce {
         public:
@@ -19,7 +14,7 @@ namespace absolem {
         private:
         Time timeout;
         History history;
-    }
+    };
 
 } // namespace absolem
 
