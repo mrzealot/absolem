@@ -1,6 +1,4 @@
-#include "decode/Decoder.h"
-
-using namespace std;
+#include "Decoder.h"
 
 namespace absolem {
 

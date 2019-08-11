@@ -1,8 +1,8 @@
 #ifndef ABSOLEM_WIRING_H
 #define ABSOLEM_WIRING_H
 
-#include "common/State.h"
-#include "controllers/Controller.h"
+#include "../../common/State.h"
+#include "../../controllers/Controller.h"
 
 namespace absolem {
 

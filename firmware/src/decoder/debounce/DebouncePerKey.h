@@ -1,8 +1,8 @@
 #ifndef DEBOUNCE_PER_KEY_H
 #define DEBOUNCE_PER_KEY_H
 
-#include "common/History.h"
-#include "decode/debounce/Debounce.h"
+#include "../../common/History.h"
+#include "Debounce.h"
 
 namespace absolem {
 

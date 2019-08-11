@@ -9,6 +9,10 @@ namespace absolem {
     // the wiring can give them simple names with constants later on
     using Key = uint8_t;
 
+    // virtual keys are numbers as well, but there can be more than
+    // 2^8 of them
+    using VirtualKey = uint16_t;
+
     // keycodes are also simple numbers according to the HID specs
     using KeyCode = uint8_t;
     // ...as are modifiers

@@ -1,7 +1,7 @@
 #ifndef MATRIX_WIRING_H
 #define MATRIX_WIRING_H
 
-#include "decode/wiring/Wiring.h"
+#include "Wiring.h"
 
 namespace absolem {
 

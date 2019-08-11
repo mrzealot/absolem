@@ -1,11 +1,9 @@
 #ifndef DECODER_H
 #define DECODER_H
 
-#include <memory>
-
-#include "common/containers.h"
-#include "decode/wiring/Wiring.h"
-#include "decode/debounce/Debounce.h"
+#include "../common/containers.h"
+#include "wiring/Wiring.h"
+#include "debounce/Debounce.h"
 
 namespace absolem {
 

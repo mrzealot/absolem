@@ -2,9 +2,9 @@
 #define ABSOLEM_HISTORY_H
 
 #include <utility>
-#include "common/containers.h"
-#include "common/keys.h"
-#include "common/Time.h"
+#include "containers.h"
+#include "keys.h"
+#include "Time.h"
 
 namespace absolem {
 

@@ -1,4 +1,4 @@
-#include "decode/wiring/MatrixWiring.h"
+#include "MatrixWiring.h"
 
 namespace absolem {
 
@@ -12,7 +12,7 @@ namespace absolem {
 
         State state;
         state.first = controller->time();
-        Set<Key> actives;
+        List<Key> actives;
         size_t row_count = rows.size();
 
         short col_index = 0;
@@ -28,7 +28,7 @@ namespace absolem {
                 if (controller->read(row)) {
                     // physical key ids are automatically calculated
                     Key id = col_index * row_count + row_index;
-                    actives.insert(id);     // and add active ones to the result
+                    actives.push_back(id);     // and add active ones to the result
                 }
             }
             col_index++;

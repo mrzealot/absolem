@@ -1,0 +1,11 @@
+#include "../../../../interpreter/Interpreter.h"
+#include "../../../../interpreter/triggers/PressTrigger.h"
+#include "../../../../interpreter/actions/KeyCodeAction.h"
+
+controller.name = "Absolem #2";
+
+Interpreter interpreter(&controller);
+interpreter.addRule(1, {
+    Rule(PressTrigger(true), KeyCodeAction(0x04)),
+    Rule(PressTrigger(false), KeyCodeAction(0x00))
+});

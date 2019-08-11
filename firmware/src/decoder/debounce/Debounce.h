@@ -1,9 +1,9 @@
 #ifndef DEBOUNCE_H
 #define DEBOUNCE_H
 
-#include "common/containers.h"
-#include "common/State.h"
-#include "decode/Event.h"
+#include "../../common/containers.h"
+#include "../../common/State.h"
+#include "../Event.h"
 
 namespace absolem {
 
