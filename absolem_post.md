@@ -143,6 +143,10 @@ Most of the assembly consisted of waiting. Yes, really.
 
 ### Wiring
 
+- battery fuckup
+    - https://forums.adafruit.com/viewtopic.php?f=57&t=155069
+    - reverse polarity...
+
 ### The finished product
 
 
@@ -157,6 +161,12 @@ Most of the assembly consisted of waiting. Yes, really.
 - writing own
 - quick structure summary + point to separate readme
 - fight with DIODE_DIRECTION
+- huge fight with Arduino
+    - include paths inside src
+    - no code in the global scope
+        - what do you mean that a variable name is not a type?!
+    - https://forums.adafruit.com/viewtopic.php?f=57&t=155100
+        - g++ linking is important!
 
 
 
