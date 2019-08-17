@@ -77,6 +77,7 @@ let highest_point = 0
 // #region Modeling library + helpers
 
 const fs = require('fs')
+const path = require('path')
 const mkdirp = require('mkdirp')
 const m = require('makerjs')
 const move = m.model.moveRelative
@@ -929,7 +930,7 @@ const dump = (title, data) => {
         }
     })
 
-    const folder = 'plans/output'
+    const folder = path.join(__dirname, 'output')
     mkdirp.sync(`${folder}/svg`)
     mkdirp.sync(`${folder}/html`)
     mkdirp.sync(`${folder}/dxf`)
