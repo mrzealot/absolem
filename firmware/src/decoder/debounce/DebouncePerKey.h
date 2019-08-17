@@ -8,7 +8,7 @@ namespace absolem {
 
     class DebouncePerKey : public Debounce {
         public:
-        DebouncePerKey(Time timeout);
+        DebouncePerKey(Controller* c, Time t) : Debounce(c), timeout(t) {};
         List<Event> update(const State& state) override;
 
         private:

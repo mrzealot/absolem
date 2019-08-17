@@ -1,7 +1,7 @@
 #ifndef DECODER_H
 #define DECODER_H
 
-#include "../common/containers.h"
+#include "../common/types.h"
 #include "wiring/Wiring.h"
 #include "debounce/Debounce.h"
 

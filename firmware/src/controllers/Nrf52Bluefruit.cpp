@@ -2,9 +2,14 @@
 
 namespace absolem {
 
-    void Nrf52Bluefruit::debug(const char* message) {
+    void Nrf52Bluefruit::debug(char* message, ...) {
         if (debugMode) {
-            Serial.println(message);
+            char buffer[512];
+            va_list args;
+            va_start(args, message);
+            vsprintf(buffer, message, args);
+            va_end(args);
+            Serial.println(buffer);
         }
     }
 
@@ -13,7 +18,7 @@ namespace absolem {
     }
 
     void Nrf52Bluefruit::delay(Time time) {
-        delay(time);
+        ::delay(time);
     }
 
     void Nrf52Bluefruit::setup() {
@@ -95,11 +100,16 @@ namespace absolem {
     }
 
     void Nrf52Bluefruit::report(Modifiers mods, KeyCode keys[6]) {
+        debug("reporting... %d + %d", mods, keys[0]);
         blehid.keyboardReport(mods, keys);
     }
 
     void Nrf52Bluefruit::report(UsageCode usage) {
         blehid.consumerReport(usage);
+    }
+
+    void Nrf52Bluefruit::reset() {
+        NVIC_SystemReset();
     }
 
     

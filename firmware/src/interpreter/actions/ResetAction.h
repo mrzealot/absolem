@@ -1,5 +1,5 @@
-#ifndef KEYCODE_ACTION_H
-#define KEYCODE_ACTION_H
+#ifndef RESET_ACTION_H
+#define RESET_ACTION_H
 
 #include "../../common/keys.h"
 #include "Action.h"
@@ -7,14 +7,10 @@
 
 namespace absolem {
 
-    class KeyCodeAction : public Action {
+    class ResetAction : public Action {
         public:
-        KeyCodeAction(bool p, KeyCode k) : press(p), key(k) {}
+        ResetAction() {}
         virtual void operator()(Interpreter& interpreter);
-
-        private:
-        bool press;
-        KeyCode key;
     };
 
 } // namespace absolem

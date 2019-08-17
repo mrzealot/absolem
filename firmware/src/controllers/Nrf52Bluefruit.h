@@ -16,7 +16,7 @@ namespace absolem {
 
         Nrf52Bluefruit(bool d) : debugMode(d) {}
 
-        virtual void debug(const char* message);
+        virtual void debug(char* message, ...);
 
         virtual Time time();
         virtual void delay(Time time);
@@ -36,6 +36,8 @@ namespace absolem {
 
         virtual void report(Modifiers mods, KeyCode keys[6]);
         virtual void report(UsageCode usage);
+
+        virtual void reset();
 
         private:
         BLEDis bledis;

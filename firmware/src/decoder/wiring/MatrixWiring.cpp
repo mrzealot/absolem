@@ -12,27 +12,38 @@ namespace absolem {
 
         State state;
         state.first = controller->time();
-        List<Key> actives;
-        size_t row_count = rows.size();
+        Set<Key> actives;
+        Size col_count = cols.size();
 
-        short col_index = 0;
-        for (auto& col : cols) {            // loop through the cols
-            controller->output(col);        // set the current one as an output
-            controller->on(col);            // and activate it
-            for (auto& row : rows) {        // now mark all rows as inputs
-                controller->input(row);
+        short row_index = 0;
+        for (auto& row : rows) {            // loop through the rows
+            //controller->debug("scanning %d. row", row);
+            controller->output(row);        // set the current one as an output
+            controller->on(row);            // and activate it
+            for (auto& col : cols) {        // now mark all cols as inputs
+                //controller->debug("setting up col %d", col);
+                controller->input(col);
             }
             controller->delay(1);           // wait for the signals to settle
-            short row_index = 0;
-            for (auto& row : rows) {        // now check activity on the rows
-                if (controller->read(row)) {
+            short col_index = 0;
+            for (auto& col : cols) {        // now check activity on the cols
+                bool result = controller->read(col);
+                //controller->debug("reading col %d = %d", col, result);
+                if (result) {
                     // physical key ids are automatically calculated
-                    Key id = col_index * row_count + row_index;
-                    actives.push_back(id);     // and add active ones to the result
+                    Key id = row_index * col_count + col_index;
+                    actives.insert(id);     // and add active ones to the result
+
+                    controller->debug("%d (= %d * %d + %d) is active.", id, row_index, col_count, col_index);
                 }
+                controller->disable(col);
+                col_index++;
             }
-            col_index++;
+            controller->disable(row);
+            row_index++;
         }
+
+        //controller->debug("scan ends");
 
         state.second = actives;
         return state;

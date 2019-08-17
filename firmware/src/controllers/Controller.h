@@ -1,6 +1,8 @@
 #ifndef ABSOLEM_CONTROLLER_H
 #define ABSOLEM_CONTROLLER_H
 
+#include <cstdarg>
+
 #include "../common/keys.h"
 #include "../common/Pin.h"
 #include "../common/Time.h"
@@ -16,7 +18,7 @@ namespace absolem {
     class Controller {
         public:
 
-        virtual void debug(const char* message) = 0;
+        virtual void debug(char* message, ...) = 0;
 
         virtual Time time() = 0;
         virtual void delay(Time time) = 0;
@@ -36,6 +38,8 @@ namespace absolem {
 
         virtual void report(Modifiers mods, KeyCode keys[6]) = 0;
         virtual void report(UsageCode usage) = 0;
+
+        virtual void reset() = 0;
 
         // freely accessible, so no setters needed
         const char* name;
