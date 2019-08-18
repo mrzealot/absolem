@@ -23,18 +23,18 @@ namespace absolem {
 
     void Interpreter::enqueue(List<Event> events) {
         notify("onBeforeEnqueue", [&](Module* m) {
-            m->onBeforeEnqueue(events);
+            return m->onBeforeEnqueue(events);
         });
         queue.insert(queue.end(), events.begin(), events.end());
         notify("onAfterEnqueue", [&](Module* m) {
-            m->onAfterEnqueue(events);
+            return m->onAfterEnqueue(events);
         });
     }
 
     void Interpreter::tick() {
 
         notify("onBeforeTick", [&](Module* m) {
-            m->onBeforeTick();
+            return m->onBeforeTick();
         });
 
         if (!queue.size()) {
@@ -48,7 +48,7 @@ namespace absolem {
 
         VirtualKey virtualKey = physicalKey;
         notify("onMapKey", [&](Module* m) {
-            virtualKey = m->onMapKey(virtualKey);
+            return m->onMapKey(virtualKey);
         });
 
         DD(controller->debug("Interpreter::tick: Mapping ended, virtual key is %d", virtualKey);)
@@ -84,7 +84,7 @@ namespace absolem {
         }
 
         notify("onAfterTick", [&](Module* m) {
-            m->onAfterTick();
+            return m->onAfterTick();
         });
     }
 
@@ -92,8 +92,8 @@ namespace absolem {
         rules[key] = rule;
     }
 
-    void Interpreter::addModule(String name, Module* module) {
-        modules[name] = module;
+    void Interpreter::addModule(Module* module) {
+        modules[module->getName()] = module;
         module->interpreter = this;
 
         MODULE_HOOK(onBeforeEnqueue);
@@ -127,7 +127,11 @@ namespace absolem {
         DD(controller->debug("Interpreter::notify: %s starts (%d)", event.c_str(), list.size());)
         for (auto pair : list) {
             Module* m = pair.second;
-            callback(m);
+            bool shouldContinue = callback(m);
+            if (!shouldContinue) {
+                DD(controller->debug("Interpreter::notify: %s breaks the chain", m->getName().c_str());)
+                break;
+            }
         }
         DD(controller->debug("Interpreter::notify: %s ends", event.c_str());)
     }

@@ -12,7 +12,7 @@
 
 namespace absolem {
 
-    using Callback = std::function<void (Module*)>;
+    using Callback = std::function<bool (Module*)>;
 
     class Interpreter {
         public:
@@ -22,7 +22,7 @@ namespace absolem {
         void tick();
 
         void addRule(VirtualKey key, List<Rule> rule);
-        void addModule(String name, Module* module);
+        void addModule(Module* module);
 
         Controller* getController();
         Event getEvent(size_t num);

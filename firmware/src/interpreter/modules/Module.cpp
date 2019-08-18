@@ -4,19 +4,21 @@ namespace absolem {
 
     const Byte Module::defaultPriority = 100;
 
-    void Module::onBeforeEnqueue(List<Event> e) {}
+    String Module::getName() { return name; }
+
+    bool Module::onBeforeEnqueue(List<Event>& e) { return true; }
     Byte Module::onBeforeEnqueuePriority() { return 0; }
 
-    void Module::onAfterEnqueue(List<Event> e) {}
+    bool Module::onAfterEnqueue(List<Event>& e) { return true; }
     Byte Module::onAfterEnqueuePriority() { return 0; }
 
-    void Module::onBeforeTick() {}
+    bool Module::onBeforeTick() { return true; }
     Byte Module::onBeforeTickPriority() { return 0; }
 
-    VirtualKey Module::onMapKey(VirtualKey k) {}
+    bool Module::onMapKey(VirtualKey& k) { return true; }
     Byte Module::onMapKeyPriority() { return 0; }
 
-    void Module::onAfterTick() {}
+    bool Module::onAfterTick() { return true; }
     Byte Module::onAfterTickPriority() { return 0; }
 
 } // namespace absolem

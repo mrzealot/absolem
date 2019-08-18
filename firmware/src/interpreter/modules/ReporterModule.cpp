@@ -20,13 +20,13 @@
 
 namespace absolem {
 
-    void ReporterModule::onAfterTick() {
+    bool ReporterModule::onAfterTick() {
         DD(interpreter->getController()->debug("ReporterModule::onAfterTick runs");)
         if (dirty) {
             KeyCode arr[6] = {0,0,0,0,0,0};
             Byte i = 0;
             for (auto k : keys) {
-                arr[i] = k;
+                arr[i++] = k;
                 if (i >= 5) break;
             }
             Modifiers m = currentMods | oneshotMods;
@@ -35,6 +35,7 @@ namespace absolem {
             DD(interpreter->getController()->debug("ReporterModule::onAfterTick: ["BINARY_PATTERN"] + [%d, %d, %d, %d, %d, %d]", BINARY(m), arr[0], arr[1], arr[2], arr[3], arr[4], arr[5]);)
             dirty = false;
         }
+        return true;
     }
 
     Byte ReporterModule::onAfterTickPriority() {

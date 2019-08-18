@@ -13,22 +13,26 @@ namespace absolem {
         public:
         static const Byte defaultPriority;
 
-        virtual void onBeforeEnqueue(List<Event> e);
+        Module(String n) : name(n) {}
+        String getName();
+
+        virtual bool onBeforeEnqueue(List<Event>& e);
         virtual Byte onBeforeEnqueuePriority();
 
-        virtual void onAfterEnqueue(List<Event> e);
+        virtual bool onAfterEnqueue(List<Event>& e);
         virtual Byte onAfterEnqueuePriority();
 
-        virtual void onBeforeTick();
+        virtual bool onBeforeTick();
         virtual Byte onBeforeTickPriority();
 
-        virtual VirtualKey onMapKey(VirtualKey k);
+        virtual bool onMapKey(VirtualKey& k);
         virtual Byte onMapKeyPriority();
 
-        virtual void onAfterTick();
+        virtual bool onAfterTick();
         virtual Byte onAfterTickPriority();
 
         protected:
+        String name;
         Interpreter* interpreter;
 
         friend class Interpreter;

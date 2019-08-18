@@ -41,7 +41,7 @@ void keymapSetup() {
   controller.name = "Absolem #2";
   controller.setup();
 
-  interpreter.addModule("reporter", &reporter);
+  interpreter.addModule(&reporter);
 
   interpreter.addRule(2, {
     Rule(new PressTrigger(true), new KeyCodeAction(true, 0x04)),
