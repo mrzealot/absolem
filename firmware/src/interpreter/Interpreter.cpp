@@ -41,6 +41,7 @@ namespace absolem {
     void Interpreter::tick() {
 
         controller->tick();
+        Time time = controller->time();
 
         #ifndef DISABLE_HOOK_ON_BEFORE_TICK
         notify("onBeforeTick", [&](Module* m) {
@@ -49,7 +50,7 @@ namespace absolem {
         #endif
 
         if (!queue.size()) {
-            DD(controller->debug("Interpreter::tick: Queue empty at T%lu...", controller->time());)
+            DD(controller->debug("Interpreter::tick: Queue empty at T%lu...", time);)
             return;
         }
 
@@ -126,6 +127,12 @@ namespace absolem {
             return m->onAfterTick();
         });
         #endif
+
+        // emergency fix for potentially stuck elements
+        // 3000 is just a magic number here, TODO
+        if (time - lastUpdate > 3000) {
+            complete(1);
+        }
     }
 
     void Interpreter::addRule(VirtualKey key, List<Rule> rule) {
@@ -157,6 +164,7 @@ namespace absolem {
     void Interpreter::complete(size_t num) {
         DD(controller->debug("Interpreter::complete: %d elem is completed...", num);)
         queue.erase(queue.begin(), queue.begin() + num);
+        lastUpdate = controller->time();
     }
 
     Module* Interpreter::getModule(String name) {

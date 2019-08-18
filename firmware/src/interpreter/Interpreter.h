@@ -36,6 +36,7 @@ namespace absolem {
         private:
         Controller* controller;
         List<Event> queue;
+        Time lastUpdate;
         Key physicalKey;
         VirtualKey virtualKey;
         Map<VirtualKey, List<Rule>> rules;

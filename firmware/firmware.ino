@@ -73,8 +73,8 @@ void keymapSetup() {
   interpreter.addRule(4, kc(0, KC_LSHIFT));
 
   interpreter.addRule(5, kc(0, HU_EE));
-  //interpreter.addRule(6, kc(0, KC_SPACE));
-  //interpreter.addRule(7, kc(0, KC_SPACE)); layer stuff --> todo
+  interpreter.addRule(6, kc(0, KC_NO));
+  interpreter.addRule(7, kc(0, KC_NO));
   interpreter.addRule(8, kc(0, HU_H));
   interpreter.addRule(9, kc(0, HU_K));
 
