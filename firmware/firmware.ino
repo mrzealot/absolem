@@ -19,7 +19,7 @@
 using namespace absolem;
 
 
-Nrf52Bluefruit controller(true);
+Nrf52Bluefruit controller;
 MatrixWiring wiring(&controller, {2, 3, 4, 5, 16, 15, 7, 11}, {29, 8, 14, 13, 12});
 DebouncePerKey debounce(&controller, 5);
 Decoder decoder(&wiring, &debounce);
@@ -39,6 +39,7 @@ ReporterModule reporter;
 
 void keymapSetup() {
   controller.name = "Absolem #2";
+  controller.setup();
 
   interpreter.addModule("reporter", &reporter);
 
@@ -55,7 +56,6 @@ void keymapSetup() {
 void setup() {
   keyboardSetup();
   keymapSetup();
-  controller.setup();
 }
 
 void loop() {

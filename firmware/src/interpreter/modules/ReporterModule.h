@@ -7,7 +7,7 @@ namespace absolem {
 
     class ReporterModule : public Module {
         public:
-        virtual void onAfterTick(Interpreter& interpreter) override;
+        virtual void onAfterTick() override;
         virtual Byte onAfterTickPriority();
 
         void press(KeyCode key);

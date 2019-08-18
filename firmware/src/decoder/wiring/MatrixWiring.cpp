@@ -1,5 +1,11 @@
 #include "MatrixWiring.h"
 
+#if defined(DEBUG) && 0
+#define DD(x) x
+#else
+#define DD(x)
+#endif
+
 namespace absolem {
 
     State MatrixWiring::getState() {
@@ -17,24 +23,24 @@ namespace absolem {
 
         short row_index = 0;
         for (auto& row : rows) {            // loop through the rows
-            //controller->debug("scanning %d. row", row);
+            DD(controller->debug("MatrixWiring::getState: scanning %d. row", row);)
             controller->output(row);        // set the current one as an output
             controller->on(row);            // and activate it
             for (auto& col : cols) {        // now mark all cols as inputs
-                //controller->debug("setting up col %d", col);
+                DD(controller->debug("MatrixWiring::getState: setting up col %d", col);)
                 controller->input(col);
             }
             controller->delay(1);           // wait for the signals to settle
             short col_index = 0;
             for (auto& col : cols) {        // now check activity on the cols
                 bool result = controller->read(col);
-                //controller->debug("reading col %d = %d", col, result);
+                DD(controller->debug("MatrixWiring::getState: reading col %d = %d", col, result);)
                 if (result) {
                     // physical key ids are automatically calculated
                     Key id = row_index * col_count + col_index;
                     actives.insert(id);     // and add active ones to the result
 
-                    controller->debug("%d (= %d * %d + %d) is active.", id, row_index, col_count, col_index);
+                    DD(controller->debug("MatrixWiring::getState: %d (= %d * %d + %d) is active.", id, row_index, col_count, col_index);)
                 }
                 controller->disable(col);
                 col_index++;
@@ -43,7 +49,7 @@ namespace absolem {
             row_index++;
         }
 
-        //controller->debug("scan ends");
+        DD(controller->debug("scan ends");)
 
         state.second = actives;
         return state;

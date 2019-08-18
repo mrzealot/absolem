@@ -1,17 +1,23 @@
 #include "Nrf52Bluefruit.h"
 
+#if defined(DEBUG) && 1
+#define DD(x) x
+#else
+#define DD(x)
+#endif
+
 namespace absolem {
 
+    #ifdef DEBUG
     void Nrf52Bluefruit::debug(char* message, ...) {
-        if (debugMode) {
-            char buffer[512];
-            va_list args;
-            va_start(args, message);
-            vsprintf(buffer, message, args);
-            va_end(args);
-            Serial.println(buffer);
-        }
+        char buffer[512];
+        va_list args;
+        va_start(args, message);
+        vsprintf(buffer, message, args);
+        va_end(args);
+        Serial.println(buffer);
     }
+    #endif
 
     Time Nrf52Bluefruit::time() {
         return millis();
@@ -22,9 +28,8 @@ namespace absolem {
     }
 
     void Nrf52Bluefruit::setup() {
-        if (debugMode) {
-            Serial.begin(9600);
-        }
+        DD(Serial.begin(9600);)
+        DD(debug("Serial interface started...");)
 
         Bluefruit.begin();
         Bluefruit.setTxPower(4);    // Check bluefruit.h for supported values
@@ -100,7 +105,7 @@ namespace absolem {
     }
 
     void Nrf52Bluefruit::report(Modifiers mods, KeyCode keys[6]) {
-        debug("reporting... %d + %d", mods, keys[0]);
+        DD(debug("Nrf52Bluefruit::report: reporting... %d + %d", mods, keys[0]);)
         blehid.keyboardReport(mods, keys);
     }
 

@@ -14,9 +14,11 @@ namespace absolem {
     class Nrf52Bluefruit : public Controller {
         public:
 
-        Nrf52Bluefruit(bool d) : debugMode(d) {}
+        Nrf52Bluefruit() {}
 
+        #ifdef DEBUG
         virtual void debug(char* message, ...);
+        #endif
 
         virtual Time time();
         virtual void delay(Time time);
@@ -42,7 +44,6 @@ namespace absolem {
         private:
         BLEDis bledis;
         BLEHidAdafruit blehid;
-        bool debugMode;
     };
     
 } // namespace absolem

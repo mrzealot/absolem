@@ -12,13 +12,16 @@
 #define ABSOLEM_LOOP_BEGIN
 #define ABSOLEM_LOOP_END
 
+#define DEBUG
 
 namespace absolem {
 
     class Controller {
         public:
 
+        #ifdef DEBUG
         virtual void debug(char* message, ...) = 0;
+        #endif
 
         virtual Time time() = 0;
         virtual void delay(Time time) = 0;

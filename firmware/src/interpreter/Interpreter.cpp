@@ -3,10 +3,18 @@
 
 #include <algorithm>
 
-#define MODULE_REG(name) \
+#if defined(DEBUG) && 1
+#define DD(x) x
+#else
+#define DD(x)
+#endif
+
+#define MODULE_HOOK(name) \
     auto name##prio = module->name##Priority(); \
+    DD(controller->debug("Interpreter::addModule: Priority for %s event is %d", #name, name##prio);) \
     if (name##prio > 0) { \
-        auto list = priorities[#name]; \
+        DD(controller->debug("Interpreter::addModule: %s hook registered...", #name);) \
+        auto& list = priorities[#name]; \
         list.push_back(std::make_pair(name##prio, module)); \
         std::sort(list.begin(), list.end()); \
     }
@@ -15,36 +23,39 @@ namespace absolem {
 
     void Interpreter::enqueue(List<Event> events) {
         notify("onBeforeEnqueue", [&](Module* m) {
-            m->onBeforeEnqueue(*this, events);
+            m->onBeforeEnqueue(events);
         });
         queue.insert(queue.end(), events.begin(), events.end());
         notify("onAfterEnqueue", [&](Module* m) {
-            m->onAfterEnqueue(*this, events);
+            m->onAfterEnqueue(events);
         });
     }
 
     void Interpreter::tick() {
 
         notify("onBeforeTick", [&](Module* m) {
-            m->onBeforeTick(*this);
+            m->onBeforeTick();
         });
 
         if (!queue.size()) {
-            controller->debug("Queue empty at %lu...", controller->time());
+            DD(controller->debug("Interpreter::tick: Queue empty at T%lu...", controller->time());)
             return;
         }
 
         // get the Key that's affected by the front of the queue
         Key physicalKey = std::get<0>(queue.front());
+        DD(controller->debug("Interpreter::tick: Physical key is %d, mapping...", physicalKey);)
 
         VirtualKey virtualKey = physicalKey;
         notify("onMapKey", [&](Module* m) {
-            virtualKey = m->onMapKey(*this, virtualKey);
+            virtualKey = m->onMapKey(virtualKey);
         });
 
-        // again, module insert point, TODO
+        DD(controller->debug("Interpreter::tick: Mapping ended, virtual key is %d", virtualKey);)
+
         auto ruleIt = rules.find(virtualKey);
         if (ruleIt == rules.end()) {
+            DD(controller->debug("Interpreter::tick: No rule, aborting...");)
             return;
         }
 
@@ -55,23 +66,25 @@ namespace absolem {
             Action* action = rule.second;
             auto state = trigger->state(*this);
             if (state == TriggerState::UNDECIDED) {
+                DD(controller->debug("Interpreter::tick: Undecided rule, will check back later...");)
                 return;
             } else if (state == TriggerState::YES) {
                 if (match == nullptr) {
                     match = action;
                 } else {
-                    // multiple rules matched, TODO
+                    // multiple rules matched, what happens here?
+                    DD(controller->debug("Interpreter::tick: Multiple rules matched at once, FYI");)
                 }
             }
         }
 
         if (match) {
-            controller->debug("There's a match...");
+            DD(controller->debug("Interpreter::tick: There's a match...");)
             (*match)(*this);
         }
 
         notify("onAfterTick", [&](Module* m) {
-            m->onAfterTick(*this);
+            m->onAfterTick();
         });
     }
 
@@ -81,14 +94,15 @@ namespace absolem {
 
     void Interpreter::addModule(String name, Module* module) {
         modules[name] = module;
+        module->interpreter = this;
 
-        MODULE_REG(onBeforeEnqueue);
-        MODULE_REG(onAfterEnqueue);
+        MODULE_HOOK(onBeforeEnqueue);
+        MODULE_HOOK(onAfterEnqueue);
 
-        MODULE_REG(onBeforeTick);
-        MODULE_REG(onAfterTick);
+        MODULE_HOOK(onBeforeTick);
+        MODULE_HOOK(onAfterTick);
 
-        MODULE_REG(onMapKey);
+        MODULE_HOOK(onMapKey);
     }
 
     Controller* Interpreter::getController() {
@@ -100,7 +114,7 @@ namespace absolem {
     }
 
     void Interpreter::complete(size_t num) {
-        controller->debug("%d elem is completed...", num);
+        DD(controller->debug("Interpreter::complete: %d elem is completed...", num);)
         queue.erase(queue.begin(), queue.begin() + num);
     }
 
@@ -109,10 +123,13 @@ namespace absolem {
     }
 
     void Interpreter::notify(String event, Callback callback) {
-        for (auto pair : priorities[event]) {
+        auto list = priorities[event];
+        DD(controller->debug("Interpreter::notify: %s starts (%d)", event.c_str(), list.size());)
+        for (auto pair : list) {
             Module* m = pair.second;
             callback(m);
         }
+        DD(controller->debug("Interpreter::notify: %s ends", event.c_str());)
     }
     
 } // namespace absolem

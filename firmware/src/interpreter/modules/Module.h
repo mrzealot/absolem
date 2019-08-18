@@ -13,20 +13,25 @@ namespace absolem {
         public:
         static const Byte defaultPriority;
 
-        virtual void onBeforeEnqueue(Interpreter& i, List<Event> e);
+        virtual void onBeforeEnqueue(List<Event> e);
         virtual Byte onBeforeEnqueuePriority();
 
-        virtual void onAfterEnqueue(Interpreter& i, List<Event> e);
+        virtual void onAfterEnqueue(List<Event> e);
         virtual Byte onAfterEnqueuePriority();
 
-        virtual void onBeforeTick(Interpreter& i);
+        virtual void onBeforeTick();
         virtual Byte onBeforeTickPriority();
 
-        virtual VirtualKey onMapKey(Interpreter& i, VirtualKey k);
+        virtual VirtualKey onMapKey(VirtualKey k);
         virtual Byte onMapKeyPriority();
 
-        virtual void onAfterTick(Interpreter& i);
+        virtual void onAfterTick();
         virtual Byte onAfterTickPriority();
+
+        protected:
+        Interpreter* interpreter;
+
+        friend class Interpreter;
     };
 
 } // namespace absolem

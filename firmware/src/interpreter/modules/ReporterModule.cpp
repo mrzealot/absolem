@@ -1,11 +1,29 @@
 #include "ReporterModule.h"
 #include "../Interpreter.h"
 
+#if defined(DEBUG) && 1
+#define DD(x) x
+#else
+#define DD(x)
+#endif
+
+#define BINARY_PATTERN "%c%c%c%c%c%c%c%c"
+#define BINARY(byte)  \
+  (byte & 0x80 ? 'X' : '_'), \
+  (byte & 0x40 ? 'X' : '_'), \
+  (byte & 0x20 ? 'X' : '_'), \
+  (byte & 0x10 ? 'X' : '_'), \
+  (byte & 0x08 ? 'X' : '_'), \
+  (byte & 0x04 ? 'X' : '_'), \
+  (byte & 0x02 ? 'X' : '_'), \
+  (byte & 0x01 ? 'X' : '_') 
+
 namespace absolem {
 
-    void ReporterModule::onAfterTick(Interpreter& interpreter) {
+    void ReporterModule::onAfterTick() {
+        DD(interpreter->getController()->debug("ReporterModule::onAfterTick runs");)
         if (dirty) {
-            KeyCode arr[6];
+            KeyCode arr[6] = {0,0,0,0,0,0};
             Byte i = 0;
             for (auto k : keys) {
                 arr[i] = k;
@@ -13,7 +31,9 @@ namespace absolem {
             }
             Modifiers m = currentMods | oneshotMods;
             oneshotMods = 0;
-            interpreter.getController()->report(m, arr);
+            interpreter->getController()->report(m, arr);
+            DD(interpreter->getController()->debug("ReporterModule::onAfterTick: ["BINARY_PATTERN"] + [%d, %d, %d, %d, %d, %d]", BINARY(m), arr[0], arr[1], arr[2], arr[3], arr[4], arr[5]);)
+            dirty = false;
         }
     }
 
@@ -22,19 +42,25 @@ namespace absolem {
     }
 
     void ReporterModule::press(KeyCode key) {
+        DD(interpreter->getController()->debug("ReporterModule::press: %d", key);)
         keys.insert(key);
+        dirty = true;
     }
 
     void ReporterModule::release(KeyCode key) {
+        DD(interpreter->getController()->debug("ReporterModule::release: %d", key);)
         keys.erase(key);
+        dirty = true;
     }
 
     void ReporterModule::modify(Modifiers mods) {
         currentMods |= mods;
+        dirty = true;
     }
 
     void ReporterModule::unmodify(Modifiers mods) {
         currentMods &= ~mods;
+        dirty = true;
     }
 
     

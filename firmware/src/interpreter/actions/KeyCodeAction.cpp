@@ -1,11 +1,17 @@
 #include "KeyCodeAction.h"
 #include "../modules/ReporterModule.h"
 
+#if defined(DEBUG) && 1
+#define DD(x) x
+#else
+#define DD(x)
+#endif
+
 namespace absolem {
 
     void KeyCodeAction::operator()(Interpreter& interpreter) {
         // dummy stuff
-        interpreter.getController()->debug("Something should happen now...");
+        DD(interpreter.getController()->debug("Something should happen now...");)
         auto r = (ReporterModule*) interpreter.getModule("reporter");
         if (press) {
             r->press(key);
