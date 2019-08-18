@@ -12,7 +12,7 @@
 #define ABSOLEM_LOOP_BEGIN
 #define ABSOLEM_LOOP_END
 
-#define DEBUG
+//#define DEBUG
 
 namespace absolem {
 
