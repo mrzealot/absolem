@@ -22,20 +22,31 @@
 namespace absolem {
 
     void Interpreter::enqueue(List<Event> events) {
+
+        #ifndef DISABLE_HOOK_ON_BEFORE_ENQUEUE
         notify("onBeforeEnqueue", [&](Module* m) {
             return m->onBeforeEnqueue(events);
         });
+        #endif
+
         queue.insert(queue.end(), events.begin(), events.end());
+
+        #ifndef DISABLE_HOOK_ON_AFTER_ENQUEUE
         notify("onAfterEnqueue", [&](Module* m) {
             return m->onAfterEnqueue(events);
         });
+        #endif
     }
 
     void Interpreter::tick() {
 
+        controller->tick();
+
+        #ifndef DISABLE_HOOK_ON_BEFORE_TICK
         notify("onBeforeTick", [&](Module* m) {
             return m->onBeforeTick();
         });
+        #endif
 
         if (!queue.size()) {
             DD(controller->debug("Interpreter::tick: Queue empty at T%lu...", controller->time());)
@@ -43,25 +54,52 @@ namespace absolem {
         }
 
         // get the Key that's affected by the front of the queue
-        Key physicalKey = std::get<0>(queue.front());
-        DD(controller->debug("Interpreter::tick: Physical key is %d, mapping...", physicalKey);)
+        physicalKey = std::get<0>(queue.front());
+        DD(controller->debug("Interpreter::tick: Physical key is %d", physicalKey);)
 
-        VirtualKey virtualKey = physicalKey;
-        notify("onMapKey", [&](Module* m) {
-            return m->onMapKey(virtualKey);
+        // the matching rules will be searched 3 ways:
+        List<Rule> candidates;
+        bool foundRules = false;
+
+        // 1. a direct hook for modules
+        #ifndef DISABLE_HOOK_ON_DIRECT_SEARCH
+        notify("onDirectSearch", [&](Module* m) {
+            return m->onDirectSearch(physicalKey, candidates);
         });
+        foundRules = candidates.size() > 0;
+        DD(controller->debug("Interpreter::tick: Direct search ended, %s", foundRules ? "rules found!" : "no rules found...");)
+        #endif
 
-        DD(controller->debug("Interpreter::tick: Mapping ended, virtual key is %d", virtualKey);)
+        // 2. a virtual hook for the mapped key
+        virtualKey = physicalKey;
+        if (!foundRules) {
+            #ifndef DISABLE_HOOK_ON_MAP_KEY
+            notify("onMapKey", [&](Module* m) {
+                return m->onMapKey(virtualKey);
+            });
+            DD(controller->debug("Interpreter::tick: Mapping ended, virtual key is %d", virtualKey);)
+            #endif
 
-        auto ruleIt = rules.find(virtualKey);
-        if (ruleIt == rules.end()) {
-            DD(controller->debug("Interpreter::tick: No rule, aborting...");)
-            return;
+            #ifndef DISABLE_HOOK_VIRTUAL_SEARCH
+            notify("onVirtualSearch", [&](Module* m) {
+                return m->onVirtualSearch(virtualKey, candidates);
+            });
+            DD(controller->debug("Interpreter::tick: Virtual search ended, %s", foundRules ? "rules found!" : "no rules found...");)
+            #endif
         }
 
-        List<Rule> ruleList = ruleIt->second;
+        // 3. using the built-in mapping
+        if (!foundRules) {
+            auto ruleIt = rules.find(virtualKey);
+            if (ruleIt == rules.end()) {
+                DD(controller->debug("Interpreter::tick: No rule, aborting...");)
+                return;
+            }
+            candidates = ruleIt->second;
+        }
+
         Action* match = nullptr;
-        for (auto rule : ruleList) {
+        for (auto rule : candidates) {
             Trigger* trigger = rule.first;
             Action* action = rule.second;
             auto state = trigger->state(*this);
@@ -83,9 +121,11 @@ namespace absolem {
             (*match)(*this);
         }
 
+        #ifndef DISABLE_HOOK_ON_AFTER_TICK
         notify("onAfterTick", [&](Module* m) {
             return m->onAfterTick();
         });
+        #endif
     }
 
     void Interpreter::addRule(VirtualKey key, List<Rule> rule) {
@@ -100,9 +140,10 @@ namespace absolem {
         MODULE_HOOK(onAfterEnqueue);
 
         MODULE_HOOK(onBeforeTick);
-        MODULE_HOOK(onAfterTick);
-
+        MODULE_HOOK(onDirectSearch);
         MODULE_HOOK(onMapKey);
+        MODULE_HOOK(onVirtualSearch);
+        MODULE_HOOK(onAfterTick);
     }
 
     Controller* Interpreter::getController() {
@@ -120,6 +161,14 @@ namespace absolem {
 
     Module* Interpreter::getModule(String name) {
         return modules.at(name);
+    }
+
+    Key Interpreter::getPhysicalKey() {
+        return physicalKey;
+    }
+    
+    VirtualKey Interpreter::getVirtualKey() {
+        return virtualKey;
     }
 
     void Interpreter::notify(String event, Callback callback) {

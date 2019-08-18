@@ -4,6 +4,7 @@
 #include "../../common/keys.h"
 #include "../../common/types.h"
 #include "../../decoder/Event.h"
+#include "../Rule.h"
 
 namespace absolem {
 
@@ -25,8 +26,14 @@ namespace absolem {
         virtual bool onBeforeTick();
         virtual Byte onBeforeTickPriority();
 
+        virtual bool onDirectSearch(Key k, List<Rule>& candidates);
+        virtual Byte onDirectSearchPriority();
+
         virtual bool onMapKey(VirtualKey& k);
         virtual Byte onMapKeyPriority();
+
+        virtual bool onVirtualSearch(VirtualKey k, List<Rule>& candidates);
+        virtual Byte onVirtualSearchPriority();
 
         virtual bool onAfterTick();
         virtual Byte onAfterTickPriority();

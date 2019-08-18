@@ -15,6 +15,7 @@
 #include "src/interpreter/actions/ResetAction.h"
 
 #include "src/interpreter/modules/ReporterModule.h"
+#include "src/interpreter/modules/CacheModule.h"
 
 using namespace absolem;
 
@@ -33,6 +34,7 @@ void keyboardSetup() {
 Interpreter interpreter(&controller);
 
 ReporterModule reporter;
+CacheModule cache;
 
 
 
@@ -42,10 +44,21 @@ void keymapSetup() {
   controller.setup();
 
   interpreter.addModule(&reporter);
+  interpreter.addModule(&cache);
 
   interpreter.addRule(2, {
-    Rule(new PressTrigger(true), new KeyCodeAction(true, 0x04)),
-    Rule(new PressTrigger(false), new KeyCodeAction(false, 0x04))
+    Rule(
+      new PressTrigger(true),
+      new KeyCodeAction(
+        true,
+        0,
+        4,
+        Rule(
+          new PressTrigger(false),
+          new KeyCodeAction(false, 0, 4)
+        )
+      )
+    )
   });
 
   interpreter.addRule(4, {
@@ -59,7 +72,6 @@ void setup() {
 }
 
 void loop() {
-  controller.tick();
   interpreter.enqueue(decoder.getEvents());
   interpreter.tick();
 }

@@ -15,8 +15,14 @@ namespace absolem {
     bool Module::onBeforeTick() { return true; }
     Byte Module::onBeforeTickPriority() { return 0; }
 
+    bool Module::onDirectSearch(Key k, List<Rule>& candidates) { return true; }
+    Byte Module::onDirectSearchPriority() { return 0; }
+
     bool Module::onMapKey(VirtualKey& k) { return true; }
     Byte Module::onMapKeyPriority() { return 0; }
+
+    bool Module::onVirtualSearch(VirtualKey k, List<Rule>& candidates) { return true; }
+    Byte Module::onVirtualSearchPriority() { return 0; }
 
     bool Module::onAfterTick() { return true; }
     Byte Module::onAfterTickPriority() { return 0; }
