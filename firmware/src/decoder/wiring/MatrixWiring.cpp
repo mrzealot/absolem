@@ -1,4 +1,5 @@
 #include "MatrixWiring.h"
+#include "../../profiling/profiling.h"
 
 #if defined(DEBUG) && 0
 #define DD(x) x
@@ -9,6 +10,8 @@
 namespace absolem {
 
     State MatrixWiring::getState() {
+
+        PF(4);
 
         // This is usually where diode direction comes into play
         // with defines and conditionals for how to handle it.

@@ -1,0 +1,34 @@
+#include "profiling.h"
+#include "../controllers/Nrf52Bluefruit.h"
+
+void clear_profiling_data() {
+    for(unsigned char c = 0 ; c < MAXPROF ; c++) {
+	    prof_array[c] = 0;
+    }
+    prof_count = 0;
+    prof_overload = 0;
+    prof_underload = 0;
+
+    prof_report_sum = 0;
+    prof_report_count = 0;
+}
+
+void dump_profiling_data() {
+    if (prof_count >= PROFDUMP) {
+        char arst[256];
+        sprintf(arst, "Profile report, overload = %lu, underload = %lu", prof_overload, prof_underload);
+        Serial.println(arst);
+        sprintf(arst, "sum = %lu, count = %lu, avg = %ld", prof_report_sum, prof_report_count, prof_report_sum / (long double) prof_report_count);
+        Serial.println(arst);
+        for(unsigned char c = 0 ; c < MAXPROF ; c++) {
+            sprintf(arst, "Bin %d = %lu", c, prof_array[c]);
+            Serial.println(arst);
+        }
+        clear_profiling_data();
+    }
+}
+
+void profiling_loop() {
+    prof_array[prof_bin]++;
+    prof_count++;
+}

@@ -8,7 +8,7 @@
 
 namespace absolem {
 
-    #ifdef DEBUG
+    #if defined(DEBUG) || defined(PROFILING)
     void Nrf52Bluefruit::debug(char* message, ...) {
         char buffer[512];
         va_list args;
@@ -20,16 +20,23 @@ namespace absolem {
     #endif
 
     Time Nrf52Bluefruit::time() {
-        return millis();
+        return micros();
     }
 
     void Nrf52Bluefruit::delay(Time time) {
-        ::delay(time);
+        PF(1);
+        if (time > 10000) {
+            ::delay((Time)(time / 1000));
+        } else {
+            ::delayMicroseconds(time);
+        }
     }
 
     void Nrf52Bluefruit::setup() {
-        DD(Serial.begin(9600);)
-        DD(debug("Serial interface started...");)
+        #if defined(DEBUG) || defined(PROFILING)
+        Serial.begin(9600);
+        debug("Serial interface started...");
+        #endif
 
         Bluefruit.begin();
         Bluefruit.setTxPower(4);    // Check bluefruit.h for supported values

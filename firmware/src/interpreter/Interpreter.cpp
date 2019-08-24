@@ -1,5 +1,6 @@
 #include "Interpreter.h"
 #include "../common/keys.h"
+#include "../profiling/profiling.h"
 
 #include <algorithm>
 
@@ -23,6 +24,8 @@ namespace absolem {
 
     void Interpreter::enqueue(List<Event> events) {
 
+        PF(6);
+
         #ifndef DISABLE_HOOK_ON_BEFORE_ENQUEUE
         notify("onBeforeEnqueue", [&](Module* m) {
             return m->onBeforeEnqueue(events);
@@ -40,8 +43,15 @@ namespace absolem {
 
     void Interpreter::tick() {
 
+        PF(10);
+
         controller->tick();
         Time time = controller->time();
+
+        if (!queue.size()) {
+            DD(controller->debug("Interpreter::tick: Queue empty at T%lu...", time);)
+            return;
+        }
 
         #ifndef DISABLE_HOOK_ON_BEFORE_TICK
         notify("onBeforeTick", [&](Module* m) {
@@ -49,78 +59,90 @@ namespace absolem {
         });
         #endif
 
-        if (!queue.size()) {
-            DD(controller->debug("Interpreter::tick: Queue empty at T%lu...", time);)
-            return;
-        }
+        PF(11);
 
-        // get the Key that's affected by the front of the queue
-        physicalKey = std::get<0>(queue.front());
-        DD(controller->debug("Interpreter::tick: Physical key is %d", physicalKey);)
+        while (queue.size()) {
 
-        // the matching rules will be searched 3 ways:
-        List<Rule> candidates;
-        bool foundRules = false;
+            // get the Key that's affected by the front of the queue
+            physicalKey = std::get<0>(queue.front());
+            DD(controller->debug("Interpreter::tick: Physical key is %d", physicalKey);)
 
-        // 1. a direct hook for modules
-        #ifndef DISABLE_HOOK_ON_DIRECT_SEARCH
-        notify("onDirectSearch", [&](Module* m) {
-            return m->onDirectSearch(physicalKey, candidates);
-        });
-        foundRules = candidates.size() > 0;
-        DD(controller->debug("Interpreter::tick: Direct search ended, %s", foundRules ? "rules found!" : "no rules found...");)
-        #endif
+            // the matching rules will be searched 3 ways:
+            List<Rule> candidates;
+            bool foundRules = false;
 
-        // 2. a virtual hook for the mapped key
-        virtualKey = physicalKey;
-        if (!foundRules) {
-            #ifndef DISABLE_HOOK_ON_MAP_KEY
-            notify("onMapKey", [&](Module* m) {
-                return m->onMapKey(virtualKey);
+            // 1. a direct hook for modules
+            #ifndef DISABLE_HOOK_ON_DIRECT_SEARCH
+            notify("onDirectSearch", [&](Module* m) {
+                return m->onDirectSearch(physicalKey, candidates);
             });
-            DD(controller->debug("Interpreter::tick: Mapping ended, virtual key is %d", virtualKey);)
+            foundRules = candidates.size() > 0;
+            DD(controller->debug("Interpreter::tick: Direct search ended, %s", foundRules ? "rules found!" : "no rules found...");)
             #endif
 
-            #ifndef DISABLE_HOOK_VIRTUAL_SEARCH
-            notify("onVirtualSearch", [&](Module* m) {
-                return m->onVirtualSearch(virtualKey, candidates);
-            });
-            DD(controller->debug("Interpreter::tick: Virtual search ended, %s", foundRules ? "rules found!" : "no rules found...");)
-            #endif
-        }
+            PF(12);
 
-        // 3. using the built-in mapping
-        if (!foundRules) {
-            auto ruleIt = rules.find(virtualKey);
-            if (ruleIt == rules.end()) {
-                DD(controller->debug("Interpreter::tick: No rule, aborting...");)
-                return;
+            // 2. a virtual hook for the mapped key
+            virtualKey = physicalKey;
+            if (!foundRules) {
+                #ifndef DISABLE_HOOK_ON_MAP_KEY
+                notify("onMapKey", [&](Module* m) {
+                    return m->onMapKey(virtualKey);
+                });
+                DD(controller->debug("Interpreter::tick: Mapping ended, virtual key is %d", virtualKey);)
+                #endif
+
+                #ifndef DISABLE_HOOK_VIRTUAL_SEARCH
+                notify("onVirtualSearch", [&](Module* m) {
+                    return m->onVirtualSearch(virtualKey, candidates);
+                });
+                DD(controller->debug("Interpreter::tick: Virtual search ended, %s", foundRules ? "rules found!" : "no rules found...");)
+                #endif
             }
-            candidates = ruleIt->second;
-        }
 
-        Action* match = nullptr;
-        for (auto rule : candidates) {
-            Trigger* trigger = rule.first;
-            Action* action = rule.second;
-            auto state = trigger->state(*this);
-            if (state == TriggerState::UNDECIDED) {
-                DD(controller->debug("Interpreter::tick: Undecided rule, will check back later...");)
-                return;
-            } else if (state == TriggerState::YES) {
-                if (match == nullptr) {
-                    match = action;
-                } else {
-                    // multiple rules matched, what happens here?
-                    DD(controller->debug("Interpreter::tick: Multiple rules matched at once, FYI");)
+            PF(13);
+
+            // 3. using the built-in mapping
+            if (!foundRules) {
+                auto ruleIt = rules.find(virtualKey);
+                if (ruleIt == rules.end()) {
+                    DD(controller->debug("Interpreter::tick: No rule, continuing...");)
+                    complete(1);
+                    continue;
+                }
+                candidates = ruleIt->second;
+            }
+
+            PF(14);
+
+            Action* match = nullptr;
+            for (auto rule : candidates) {
+                Trigger* trigger = rule.first;
+                Action* action = rule.second;
+                auto state = trigger->state(*this);
+                if (state == TriggerState::UNDECIDED) {
+                    DD(controller->debug("Interpreter::tick: Undecided rule, will check back later...");)
+                    break;
+                } else if (state == TriggerState::YES) {
+                    if (match == nullptr) {
+                        match = action;
+                    } else {
+                        // multiple rules matched, what happens here?
+                        DD(controller->debug("Interpreter::tick: Multiple rules matched at once, FYI");)
+                    }
                 }
             }
+
+            PF(15);
+
+            if (match) {
+                DD(controller->debug("Interpreter::tick: There's a match...");)
+                (*match)(*this);
+            }
+
         }
 
-        if (match) {
-            DD(controller->debug("Interpreter::tick: There's a match...");)
-            (*match)(*this);
-        }
+        PF(16);
 
         #ifndef DISABLE_HOOK_ON_AFTER_TICK
         notify("onAfterTick", [&](Module* m) {
@@ -130,9 +152,9 @@ namespace absolem {
 
         // emergency fix for potentially stuck elements
         // 3000 is just a magic number here, TODO
-        if (time - lastUpdate > 3000) {
-            complete(1);
-        }
+        //if (time - lastUpdate > 3000) {
+        //    complete(1);
+        //}
     }
 
     void Interpreter::addRule(VirtualKey key, List<Rule> rule) {
@@ -162,8 +184,8 @@ namespace absolem {
     }
 
     void Interpreter::complete(size_t num) {
-        DD(controller->debug("Interpreter::complete: %d elem is completed...", num);)
         queue.erase(queue.begin(), queue.begin() + num);
+        DD(controller->debug("Interpreter::complete: %d elem is completed, new queue size is %d...", num, queue.size());)
         lastUpdate = controller->time();
     }
 

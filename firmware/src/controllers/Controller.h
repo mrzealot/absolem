@@ -12,6 +12,7 @@
 #define ABSOLEM_LOOP_BEGIN
 #define ABSOLEM_LOOP_END
 
+#include "../profiling/profiling.h"
 //#define DEBUG
 
 namespace absolem {
@@ -19,7 +20,7 @@ namespace absolem {
     class Controller {
         public:
 
-        #ifdef DEBUG
+        #if defined(DEBUG) || defined(PROFILING)
         virtual void debug(char* message, ...) = 0;
         #endif
 

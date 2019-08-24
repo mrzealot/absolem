@@ -1,6 +1,10 @@
 #ifndef ABSOLEM_FIRMWARE_INO
 #define ABSOLEM_FIRMWARE_INO
 
+#define PROFILING_MAIN
+#include <nrf.h>
+#include "nrf_timer.h"
+
 #undef min
 #undef max
 
@@ -18,6 +22,9 @@
 #include "src/interpreter/modules/CacheModule.h"
 
 #include "src/hidspec/keycodes_hungarian.h"
+
+
+#include "src/profiling/profiling.h"
 
 using namespace absolem;
 
@@ -56,6 +63,12 @@ List<Rule> kc(Modifiers mods, Key key) {
     )
   };
 }
+
+#include "src/profiling/Timer.h"
+
+#define nrf_timer_num   (1)
+#define cc_channel_num  (0)
+TimerClass timer(nrf_timer_num, cc_channel_num);
 
 
 void keymapSetup() {
@@ -113,14 +126,33 @@ void keymapSetup() {
   interpreter.addRule(39, kc(0, HU_B));
 }
 
+//void profiling_wrapper() {
+//  profiling_loop();
+//  timer.attachInterrupt(&profiling_wrapper, 1000); // microseconds
+//}
+
 void setup() {
   keyboardSetup();
   keymapSetup();
+  //clear_profiling_data();
+  //timer.attachInterrupt(&profiling_wrapper, 1000); // microseconds
 }
 
+#define TICK_FREQ 25000
+
 void loop() {
+  Time begin = controller.time();
   interpreter.enqueue(decoder.getEvents());
   interpreter.tick();
+  Time end = controller.time();
+  Time diff = end - begin;
+  if (diff >= TICK_FREQ) {
+    //prof_overload += diff - PROF_TARGET;
+  } else {
+    //prof_underload += PROF_TARGET - diff;
+    controller.delay(TICK_FREQ - diff);
+  }
+  //dump_profiling_data();
 }
 
 #endif

@@ -16,7 +16,7 @@ namespace absolem {
 
         Nrf52Bluefruit() {}
 
-        #ifdef DEBUG
+        #if defined(DEBUG) || defined(PROFILING)
         virtual void debug(char* message, ...);
         #endif
 

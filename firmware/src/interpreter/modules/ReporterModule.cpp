@@ -11,7 +11,8 @@
 namespace absolem {
 
     bool ReporterModule::onAfterTick() {
-        DD(interpreter->getController()->debug("ReporterModule::onAfterTick runs");)
+        auto* controller = interpreter->getController(); 
+        DD(controller->debug("ReporterModule::onAfterTick runs");)
         if (dirty) {
             KeyCode arr[6] = {0,0,0,0,0,0};
             Byte i = 0;
@@ -21,8 +22,13 @@ namespace absolem {
             }
             Modifiers m = currentMods | oneshotMods;
             oneshotMods = 0;
-            interpreter->getController()->report(m, arr);
-            DD(interpreter->getController()->debug("ReporterModule::onAfterTick: ["BINARY_PATTERN"] + [%d, %d, %d, %d, %d, %d]", BINARY(m), arr[0], arr[1], arr[2], arr[3], arr[4], arr[5]);)
+            PF(20);
+            //prof_report_count++;
+            //Time start = controller->time();
+            controller->report(m, arr);
+            //prof_report_sum += controller->time() - start;
+            PF(0);
+            DD(controller->debug("ReporterModule::onAfterTick: ["BINARY_PATTERN"] + [%d, %d, %d, %d, %d, %d]", BINARY(m), arr[0], arr[1], arr[2], arr[3], arr[4], arr[5]);)
             dirty = false;
         }
         return true;

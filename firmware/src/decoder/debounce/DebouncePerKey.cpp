@@ -1,5 +1,6 @@
 #include "DebouncePerKey.h"
 #include <algorithm>
+#include "../../profiling/profiling.h"
 
 #if defined(DEBUG) && 0
 #define DD(x) x
@@ -10,6 +11,7 @@
 namespace absolem {
 
     List<Event> DebouncePerKey::update(const State& state) {
+        PF(3);
         Time new_time = state.first;
         const Set<Key>& keys = state.second;
         auto events = List<Event>();
