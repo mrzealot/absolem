@@ -61,11 +61,22 @@ namespace absolem {
 
         PF(11);
 
+        Time currentTimeBatch = 0;
         while (queue.size()) {
 
             // get the Key that's affected by the front of the queue
-            physicalKey = std::get<0>(queue.front());
-            DD(controller->debug("Interpreter::tick: Physical key is %d", physicalKey);)
+            auto& event = queue.front();
+            physicalKey = std::get<0>(event);
+            Time eventTime = std::get<2>(event);
+            DD(controller->debug("Interpreter::tick: Physical key is %d at %lu", physicalKey, eventTime);)
+
+            // if the current event belongs to another batch, we force a flush
+            if (currentTimeBatch == 0) {
+                currentTimeBatch = eventTime;
+            }
+            if (currentTimeBatch != eventTime) {
+                break;
+            }
 
             // the matching rules will be searched 3 ways:
             List<Rule> candidates;
