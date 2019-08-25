@@ -11,5 +11,4 @@ namespace absolem {
     
 } // namespace absolem
 
-
 #endif

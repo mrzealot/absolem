@@ -1,4 +1,5 @@
 #include "MatrixWiring.h"
+#include "../PhysicalKeycodes.h"
 #include "../../profiling/profiling.h"
 
 #if defined(DEBUG) && 0
@@ -40,7 +41,7 @@ namespace absolem {
                 DD(controller->debug("MatrixWiring::getState: reading col %d = %d", col, result);)
                 if (result) {
                     // physical key ids are automatically calculated
-                    Key id = row_index * col_count + col_index;
+                    Key id = PHYS_START + row_index * col_count + col_index;
                     actives.insert(id);     // and add active ones to the result
 
                     DD(controller->debug("MatrixWiring::getState: %d (= %d * %d + %d) is active.", id, row_index, col_count, col_index);)
