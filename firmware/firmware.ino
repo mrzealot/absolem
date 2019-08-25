@@ -17,9 +17,11 @@
 #include "src/interpreter/triggers/PressTrigger.h"
 #include "src/interpreter/actions/KeyCodeAction.h"
 #include "src/interpreter/actions/ResetAction.h"
+#include "src/interpreter/actions/LayerAction.h"
 
 #include "src/interpreter/modules/ReporterModule.h"
 #include "src/interpreter/modules/CacheModule.h"
+#include "src/interpreter/modules/LayerModule.h"
 
 #include "src/hidspec/keycodes_hungarian.h"
 
@@ -44,6 +46,7 @@ Interpreter interpreter(&controller);
 
 ReporterModule reporter;
 CacheModule cache;
+LayerModule layer(100);
 
 
 
@@ -64,6 +67,22 @@ List<Rule> kc(Modifiers mods, Key key) {
   };
 }
 
+List<Rule> ly(Byte layer) {
+  return {
+    Rule(
+      new PressTrigger(true),
+      new LayerAction(
+        true,
+        layer,
+        Rule(
+          new PressTrigger(false),
+          new LayerAction(false, layer)
+        )
+      )
+    )
+  };
+}
+
 #include "src/profiling/Timer.h"
 
 #define nrf_timer_num   (1)
@@ -77,6 +96,7 @@ void keymapSetup() {
 
   interpreter.addModule(&reporter);
   interpreter.addModule(&cache);
+  interpreter.addModule(&layer);
 
 
   interpreter.addRule(3, { // instead of escape, as an escape... ha, get it? :)
@@ -87,7 +107,7 @@ void keymapSetup() {
 
   interpreter.addRule(6, kc(0, HU_EE));
   interpreter.addRule(7, kc(0, KC_NO));
-  interpreter.addRule(8, kc(0, KC_NO));
+  interpreter.addRule(8, ly(1));
   interpreter.addRule(9, kc(0, HU_H));
   interpreter.addRule(10, kc(0, HU_K));
 
@@ -124,6 +144,56 @@ void keymapSetup() {
   interpreter.addRule(38, kc(0, HU_F));
   interpreter.addRule(39, kc(0, HU_P));
   interpreter.addRule(40, kc(0, HU_B));
+
+
+
+
+
+
+
+  interpreter.addRule(103, kc(0, HU_MINS));
+  interpreter.addRule(104, kc(0, HU_COMM));
+  interpreter.addRule(105, kc(0, HU_DOT));
+
+  interpreter.addRule(106, kc(HU_GRV_MODS, HU_GRV));
+  interpreter.addRule(107, kc(HU_PLUS_MODS, HU_PLUS));
+  interpreter.addRule(108, kc(0, KC_NO));
+  interpreter.addRule(109, kc(HU_EQL_MODS, HU_EQL));
+  interpreter.addRule(110, kc(HU_AMPR_MODS, HU_AMPR));
+
+  interpreter.addRule(111, kc(HU_SCLN_MODS, HU_SCLN));
+  interpreter.addRule(112, kc(HU_COLN_MODS, HU_COLN));
+  interpreter.addRule(113, kc(0, KC_NO));
+  interpreter.addRule(114, kc(HU_ASTR_MODS, HU_ASTR));
+  interpreter.addRule(115, kc(HU_PERC_MODS, HU_PERC));
+
+  interpreter.addRule(116, kc(HU_AT_MODS, HU_AT));
+  interpreter.addRule(117, kc(0, KC_NO));
+  interpreter.addRule(118, kc(0, KC_NO));
+  interpreter.addRule(119, kc(HU_CIRC_MODS, HU_CIRC));
+  interpreter.addRule(120, kc(HU_TILD_MODS, HU_TILD));
+
+  interpreter.addRule(123, kc(HU_UNDS_MODS, HU_UNDS));
+  interpreter.addRule(124, kc(HU_QUOT_MODS, HU_QUOT));
+  interpreter.addRule(125, kc(HU_DQOT_MODS, HU_DQOT));
+
+  interpreter.addRule(126, kc(HU_HASH_MODS, HU_HASH));
+  interpreter.addRule(127, kc(HU_DLR_MODS, HU_DLR));
+  interpreter.addRule(128, kc(HU_QST_MODS, HU_QST));
+  interpreter.addRule(129, kc(HU_EXLM_MODS, HU_EXLM));
+  interpreter.addRule(130, kc(HU_PIPE_MODS, HU_PIPE));
+
+  interpreter.addRule(131, kc(HU_LESS_MODS, HU_LESS));
+  interpreter.addRule(132, kc(HU_LCBR_MODS, HU_LCBR));
+  interpreter.addRule(133, kc(HU_LBRC_MODS, HU_LBRC));
+  interpreter.addRule(134, kc(HU_LPRN_MODS, HU_LPRN));
+  interpreter.addRule(135, kc(HU_SLSH_MODS, HU_SLSH));
+
+  interpreter.addRule(136, kc(HU_MORE_MODS, HU_MORE));
+  interpreter.addRule(137, kc(HU_RCBR_MODS, HU_RCBR));
+  interpreter.addRule(138, kc(HU_RBRC_MODS, HU_RBRC));
+  interpreter.addRule(139, kc(HU_RPRN_MODS, HU_RPRN));
+  interpreter.addRule(140, kc(HU_BSLS_MODS, HU_BSLS));
 }
 
 //void profiling_wrapper() {

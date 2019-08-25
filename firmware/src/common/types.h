@@ -5,6 +5,7 @@
 #include <utility>
 #include <vector>
 #include <set>
+#include <stack>
 #include <map>
 
 namespace absolem {
@@ -24,6 +25,9 @@ namespace absolem {
 
     template<class T>
     using Set = std::set<T>;
+
+    template<class T>
+    using Stack = std::stack<T>;
 
     template<class K, class V>
     using Map = std::map<K, V>;
