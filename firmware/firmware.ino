@@ -15,6 +15,7 @@
 
 #include "src/interpreter/Interpreter.h"
 #include "src/interpreter/triggers/PressTrigger.h"
+#include "src/interpreter/triggers/MultiTrigger.h"
 #include "src/interpreter/actions/KeyCodeAction.h"
 #include "src/interpreter/actions/ResetAction.h"
 #include "src/interpreter/actions/LayerAction.h"
@@ -50,10 +51,9 @@ LayerModule layer(100);
 
 
 
-List<Rule> kc(Modifiers mods, Key key) {
-  return {
-    Rule(
-      new PressTrigger(true),
+Rule helper(Trigger* trigger, Modifiers mods, Key key) {
+  return Rule(
+      trigger,
       new KeyCodeAction(
         true,
         mods,
@@ -63,8 +63,11 @@ List<Rule> kc(Modifiers mods, Key key) {
           new KeyCodeAction(false, mods, key)
         )
       )
-    )
-  };
+    );
+}
+
+List<Rule> kc(Modifiers mods, Key key) {
+  return {helper(new PressTrigger(true), mods, key)};
 }
 
 List<Rule> ly(Byte layer) {
@@ -90,6 +93,8 @@ List<Rule> ly(Byte layer) {
 TimerClass timer(nrf_timer_num, cc_channel_num);
 
 
+#define TERM 200000
+
 void keymapSetup() {
   controller.name = "Absolem #2";
   controller.setup();
@@ -99,8 +104,13 @@ void keymapSetup() {
   interpreter.addModule(&layer);
 
 
-  interpreter.addRule(3, { // instead of escape, as an escape... ha, get it? :)
-    Rule(new PressTrigger(true), new ResetAction())
+  //interpreter.addRule(3, { // instead of escape, as an escape... ha, get it? :)
+  //  Rule(new PressTrigger(true), new ResetAction())
+  //});
+  interpreter.addRule(3, {
+    helper(new MultiTrigger(TERM, 1, true), 0, HU_C),
+    helper(new MultiTrigger(TERM, 0, true), 0, HU_B),
+    helper(new MultiTrigger(TERM, 1, false), 0, HU_A),
   });
   interpreter.addRule(4, kc(0, KC_BSPACE));
   interpreter.addRule(5, kc(0, KC_LSHIFT));

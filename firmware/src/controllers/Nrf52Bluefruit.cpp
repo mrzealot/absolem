@@ -1,6 +1,6 @@
 #include "Nrf52Bluefruit.h"
 
-#if defined(DEBUG) && 1
+#if defined(DEBUG) && (defined(DEBUG_GLOBAL) || defined(DEBUG_NRF52BLUEFRUIT))
 #define DD(x) x
 #else
 #define DD(x)

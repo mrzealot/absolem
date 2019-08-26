@@ -25,17 +25,20 @@ namespace absolem {
         void addModule(Module* module);
 
         Controller* getController();
-        Event getEvent(Size num);
+        List<Event>& getQueue();
         void complete(Size num);
 
         Module* getModule(String name);
 
         Key getPhysicalKey();
         VirtualKey getVirtualKey();
+        Time getCurrentTime();
+        Time getLastUpdate();
 
         private:
         Controller* controller;
         List<Event> queue;
+        Time currentTime;
         Time lastUpdate;
         Key physicalKey;
         VirtualKey virtualKey;

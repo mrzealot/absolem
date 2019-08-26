@@ -1,7 +1,7 @@
 #include "CacheModule.h"
 #include "../Interpreter.h"
 
-#if defined(DEBUG) && 1
+#if defined(DEBUG) && (defined(DEBUG_GLOBAL) || defined(DEBUG_CACHEMODULE))
 #define DD(x) x
 #else
 #define DD(x)

@@ -4,7 +4,7 @@
 
 #include <algorithm>
 
-#if defined(DEBUG) && 1
+#if defined(DEBUG) && (defined(DEBUG_GLOBAL) || defined(DEBUG_INTERPRETER))
 #define DD(x) x
 #else
 #define DD(x)
@@ -46,10 +46,10 @@ namespace absolem {
         PF(10);
 
         controller->tick();
-        Time time = controller->time();
+        currentTime = controller->time();
 
         if (!queue.size()) {
-            DD(controller->debug("Interpreter::tick: Queue empty at T%lu...", time);)
+            DD(controller->debug("Interpreter::tick: Queue empty at T%lu...", currentTime);)
             return;
         }
 
@@ -131,16 +131,12 @@ namespace absolem {
                 Trigger* trigger = rule.first;
                 Action* action = rule.second;
                 auto state = trigger->state(*this);
-                if (state == TriggerState::UNDECIDED) {
+                if (state == TriggerState::YES && match == nullptr) {
+                    match = action;
+                    break;
+                } else if (state == TriggerState::UNDECIDED) {
                     DD(controller->debug("Interpreter::tick: Undecided rule, will check back later...");)
                     break;
-                } else if (state == TriggerState::YES) {
-                    if (match == nullptr) {
-                        match = action;
-                    } else {
-                        // multiple rules matched, what happens here?
-                        DD(controller->debug("Interpreter::tick: Multiple rules matched at once, FYI");)
-                    }
                 }
             }
 
@@ -163,7 +159,7 @@ namespace absolem {
 
         // emergency fix for potentially stuck elements
         // 3000 is just a magic number here, TODO
-        //if (time - lastUpdate > 3000) {
+        //if (currentTime - lastUpdate > 3000) {
         //    complete(1);
         //}
     }
@@ -190,14 +186,14 @@ namespace absolem {
         return controller;
     }
 
-    Event Interpreter::getEvent(size_t num) {
-        return queue.at(num);
+    List<Event>& Interpreter::getQueue() {
+        return queue;
     }
 
-    void Interpreter::complete(size_t num) {
+    void Interpreter::complete(Size num) {
         queue.erase(queue.begin(), queue.begin() + num);
         DD(controller->debug("Interpreter::complete: %d elem is completed, new queue size is %d...", num, queue.size());)
-        lastUpdate = controller->time();
+        lastUpdate = currentTime;
     }
 
     Module* Interpreter::getModule(String name) {
@@ -210,6 +206,14 @@ namespace absolem {
     
     VirtualKey Interpreter::getVirtualKey() {
         return virtualKey;
+    }
+
+    Time Interpreter::getCurrentTime() {
+        return currentTime;
+    }
+
+    Time Interpreter::getLastUpdate() {
+        return lastUpdate;
     }
 
     void Interpreter::notify(String event, Callback callback) {

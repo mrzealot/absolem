@@ -2,7 +2,7 @@
 #include <algorithm>
 #include "../../profiling/profiling.h"
 
-#if defined(DEBUG) && 0
+#if defined(DEBUG) && (defined(DEBUG_GLOBAL) || defined(DEBUG_DEBOUNCEPERKEY))
 #define DD(x) x
 #else
 #define DD(x)
