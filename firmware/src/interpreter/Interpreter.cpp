@@ -127,6 +127,7 @@ namespace absolem {
             PF(14);
 
             Action* match = nullptr;
+            bool undecided = false;
             for (auto rule : candidates) {
                 Trigger* trigger = rule.first;
                 Action* action = rule.second;
@@ -136,8 +137,14 @@ namespace absolem {
                     break;
                 } else if (state == TriggerState::UNDECIDED) {
                     DD(controller->debug("Interpreter::tick: Undecided rule, will check back later...");)
+                    undecided = true;
                     break;
                 }
+            }
+
+            // need to break the outer loop, too
+            if (undecided) {
+                break;
             }
 
             PF(15);

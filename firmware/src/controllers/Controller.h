@@ -13,8 +13,9 @@
 #define ABSOLEM_LOOP_END
 
 #include "../profiling/profiling.h"
-#define DEBUG
-#define DEBUG_GLOBAL
+//#define DEBUG
+#define DEBUG_MULTITRIGGER
+//#define DEBUG_INTERPRETER
 
 namespace absolem {
 
