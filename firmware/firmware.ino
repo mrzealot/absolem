@@ -142,18 +142,18 @@ List<Rule> fullLayer(Byte layer) {
   };
 }
 
-List<Rule> fullMod(Modifiers mods) {
+List<Rule> fullMod(KeyCode mod, Modifiers mods) {
   return {
     Rule(
       holdTrigger,
       new KeyCodeAction(
         true,
-        mods,
-        false,
         0,
+        false,
+        mod,
         Rule(
           releaseTrigger,
-          new KeyCodeAction(false, mods, false, 0)
+          new KeyCodeAction(false, 0, false, mod)
         )
       )
     ),
@@ -174,7 +174,7 @@ List<Rule> fullMod(Modifiers mods) {
 }
 
 
-List<Rule> modTap(Modifiers mods, KeyCode key) {
+List<Rule> modTap(KeyCode mod, KeyCode key, bool realMod = true) {
   Action* keyAction = new KeyCodeAction(
     true,
     0,
@@ -194,12 +194,17 @@ List<Rule> modTap(Modifiers mods, KeyCode key) {
       holdTrigger,
       new KeyCodeAction(
         true,
-        mods,
+        realMod ? 0 : mod,
         false,
-        0,
+        realMod ? mod : 0,
         Rule(
           releaseTrigger,
-          new KeyCodeAction(false, mods, false, 0)
+          new KeyCodeAction(
+            false,
+            realMod ? 0 : mod,
+            false,
+            realMod ? mod : 0
+          )
         )
       )
     ),
@@ -292,9 +297,9 @@ void keymapSetup() {
   interpreter.addModule(&layer);
 
 
-  interpreter.addRule(3, modTap(MOD_MASK_GUI, KC_ESC));
+  interpreter.addRule(3, modTap(KC_LGUI, KC_ESC));
   interpreter.addRule(4, layerTap(4, KC_BSPACE)); // Num
-  interpreter.addRule(5, fullMod(MOD_MASK_SHIFT));
+  interpreter.addRule(5, fullMod(KC_LSHIFT, MOD_SHIFT));
 
   interpreter.addRule(6, kc(HU_EE));
   interpreter.addRule(7, fullLayer(2)); // Misc
@@ -314,9 +319,9 @@ void keymapSetup() {
   interpreter.addRule(19, kc(HU_L));
   interpreter.addRule(20, kc(HU_J));
 
-  interpreter.addRule(23, modTap(MOD_MASK_CTRL, KC_TAB));
+  interpreter.addRule(23, modTap(KC_LCTRL, KC_TAB));
   interpreter.addRule(24, layerTap(3, KC_SPACE)); // Nav
-  interpreter.addRule(25, modTap(MOD_MASK_CSA, KC_ENTER));
+  interpreter.addRule(25, modTap(MOD_MASK_CSA, KC_ENTER, false));
 
   interpreter.addRule(26, kc(HU_Z));
   interpreter.addRule(27, kc(HU_X));
@@ -460,10 +465,10 @@ void keymapSetup() {
   interpreter.addRule(329, kc(MOD_CTRL, HU_D));
   interpreter.addRule(330, kc(MOD_CTRL, HU_V));
 
-  interpreter.addRule(331, fullMod(MOD_GUI));
-  interpreter.addRule(332, fullMod(MOD_ALT));
-  interpreter.addRule(333, fullMod(MOD_SHIFT));
-  interpreter.addRule(334, fullMod(MOD_CTRL));
+  interpreter.addRule(331, fullMod(KC_LGUI, MOD_GUI));
+  interpreter.addRule(332, fullMod(KC_LALT, MOD_ALT));
+  interpreter.addRule(333, fullMod(KC_LSHIFT, MOD_SHIFT));
+  interpreter.addRule(334, fullMod(KC_LCTRL, MOD_CTRL));
   interpreter.addRule(335, us(CON_VOLUME_DECREMENT));
 
   interpreter.addRule(336, us(CON_MUTE));
@@ -482,21 +487,21 @@ void keymapSetup() {
   //interpreter.addRule(405, );
 
   interpreter.addRule(406, kc(HU_COMM));
-  interpreter.addRule(407, kc(KC_3));
-  interpreter.addRule(408, kc(KC_2));
-  interpreter.addRule(409, kc(KC_1));
+  interpreter.addRule(407, kc(HU_3));
+  interpreter.addRule(408, kc(HU_2));
+  interpreter.addRule(409, kc(HU_1));
   interpreter.addRule(410, kc(HU_PLUS_MODS, HU_PLUS));
 
   interpreter.addRule(411, kc(HU_DOT));
-  interpreter.addRule(412, kc(KC_6));
-  interpreter.addRule(413, kc(KC_5));
-  interpreter.addRule(414, kc(KC_4));
-  interpreter.addRule(415, kc(KC_0));
+  interpreter.addRule(412, kc(HU_6));
+  interpreter.addRule(413, kc(HU_5));
+  interpreter.addRule(414, kc(HU_4));
+  interpreter.addRule(415, kc(HU_0));
 
   interpreter.addRule(416, kc(KC_BSPC));
-  interpreter.addRule(417, kc(KC_9));
-  interpreter.addRule(418, kc(KC_8));
-  interpreter.addRule(419, kc(KC_7));
+  interpreter.addRule(417, kc(HU_9));
+  interpreter.addRule(418, kc(HU_8));
+  interpreter.addRule(419, kc(HU_7));
   interpreter.addRule(420, kc(HU_MINS));
 
   interpreter.addRule(423, kc(KC_TAB));
