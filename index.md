@@ -106,7 +106,7 @@ Generally, there are three approaches for the thumbs:
 2. Clusters -- consider the [Ergodox](https://ergodox-ez.com) again. While this way is definitely better than a single spacebar, in my opinion it overcompensates with the amount of work it tries to give to the thumbs. The side effect of this is that very few of those thumb keys are actually convenient (or usable, according to some). This leads us nicely to:
 3. Fans -- consider the [KeyboardIO Model 01](https://shop.keyboard.io/). This approach appreciates that the thumb actually moves in an arc, and doesn't try to add extra functionality either above or below it.
 
-This is probably the only "really" original part of the Absolem design, as all the other stuff I've mentioned so far could be seen _somewhere_ before. And, depending on how we interpret "original", maybe not even this... But: I actually placed the thumb keys on an arc, with a measured thumb radius. And I, of course, followed the 1DFH principle, so there can only be 3 (unlike the KeyboardIO's 4).
+This is probably the only "really" original part of the Absolem design, as all the other stuff I've mentioned so far could be seen _somewhere_ before. And, depending on how we interpret "original", maybe not even this... But: I actually placed the thumb keys on an arc, with a measured thumb radius. Yes, I actually had to refresh my trigonometry for this! And I, of course, followed the 1DFH principle, too, so there can only be 3 (unlike the KeyboardIO's 4).
 
 I'd also like to mention as someone with quite wide (read: fat) thumbs, I've aimed to have 1.25u thumb keys from the start, at least for the home position. The sides can more easily be 1u because they don't have a neighbour on one side, so there's less chance for misclicking (mispressing?). But the thumb home position (which is flanked by other thumb keys on both sides) definitely deserves to be bigger imho.
 
@@ -161,14 +161,18 @@ But that's in the past now, and a PhD (plus a short but very intense job at a cu
 
 ## Design
 
+With all this very important (&lt;/sarcasm&gt;) knowledge collected, it was time to design "the endgame".
+
 ### The Polygon phase
 
-- little cardboard example
-- a working prototype: https://www.reddit.com/r/MechanicalKeyboards/comments/9aam0u/polygon_a_prototype_demo_a_roadmap_and_lots_of/
-- a 3D model --> maybe still useful for someone
-- a huge gap...
+I started out with a little cardboard example (fig. 1) to get a feel for a different thumb plane. Note that the main keywell layout was already identical to the final product -- that was never in question. It then grew into a working prototype which I've already posted about [here](https://www.reddit.com/r/MechanicalKeyboards/comments/9aam0u/polygon_a_prototype_demo_a_roadmap_and_lots_of/) (fig. 2). I was generally satisfied with it, so I went ahead and coded a Python &rarr; OpenSCAD model (fig. 3)<a href="#footnote-5"><sup>5</sup></a>.
+
+Here came a huge gap where I did not have the luxury to retrain myself with the board (or to think a whole lot about keyboards in general) as I constantly had to meet strict deadlines; with the good ol' QWERTZ.
+
 
 ### Transitioning to 2D
+
+That "gap" ended this April, by which time I've reconsidered a few things due to a) the prototyping experience, b) the designs I kept seeing on occasional visits to reddit, and c) the notion and pursuit of minimalism that kept creeping into my life.
 
 - reconsidered aspects based on the prototyping experience
 - no split
@@ -180,6 +184,8 @@ But that's in the past now, and a PhD (plus a short but very intense job at a cu
     - the most important angle was the _inward_, not the upward
 - redesign with maker.js
 - rough first draft --> 
+
+### Going wireless
 
 ### A visit from the "Low Profile Police"
 
@@ -254,20 +260,22 @@ Most of the assembly consisted of waiting. Yes, really.
 
 ## Keymap
 
-### Base
+My keymap is available [here](https://docs.google.com/spreadsheets/d/1Af3q4IMkBpMjVFEbvwf8Ib_Vf0bDYXK0Xkphn-pAfto/edit?usp=sharing), which (similarly to the physical aspects of the builds) was very much born in the spirit of "go hard or go home".
+The alpha layer is [Colemak Mod-DH](https://colemakmods.github.io/mod-dh/) without the punctuation, and the thumbfan is mostly the "destress the pinky" zone leaning heavily on [mod/tap](https://docs.qmk.fm/#/feature_advanced_keycodes?id=mod-tap) and layers.
+The numbers are laid out like on a numpad, and the navigation layer (with full modifier support on the left) is designed with text editing in mind.
+There are ergonomic consideration even on the symbol layer, where I placed the symbols to more/less comportable positions according to their relative frequency in both natural language corpora (corpuses?) and programming language source code.
 
-### Symbols
-
-### Navigation
-
-### Misc
 
 ### Adjustment progress
 
-- typing.com: 15 -> 30
-- nitrotype.com: 30 -> 80 (so far)
-- also using 10fastfingers.com, keybr.com (a lot), and www.speedcoder.net
-- graph about the progress
+As it's an enormous shift from full size QWERTZ to 36 key ergo Colemak, I've decided to put in the hours and learn proper touch typing this time.
+It was pretty disheartening to go from around 60 wpm to below 10 in blink.
+But I then completed the [typing.com](https://www.typing.com/) tutorial and reached ~30wpm, which provided enough familiarity to start the slow but steady climb over on [NitroType](https://www.nitrotype.com/team/D20R).
+After daily practice for over 4 months (which I log [here](https://docs.google.com/spreadsheets/d/1pBDQd8YSD9eLS8331yy9vSNgv2Vac4_oS9yFa0fSX98/edit?usp=sharing)), I'm currently at an average of about 80 wpm with occasional visits in the 90s... Not part of the elite (yet) but progress nevertheless.
+
+![WPM progress](https://zealot.hu/absolem/pics/wpm_progress.png)
+
+I also frequently use [Keybr.com](https://www.keybr.com/) (like, a LOT), [10fastfingers](https://10fastfingers.com/typing-test/english), and [SpeedCoder](http://www.speedcoder.net/) for some varied practice.
 
 
 
@@ -285,16 +293,33 @@ There's even a section in it which is about this writeup, in which I discuss why
 
 ## Future work
 
-- PCB
-- top layer gap for thumb
-- sleeve
+- physical
+    - PCB
+    - top layer gap for thumb
+    - sleeve
 - firmware improvements
+    - energy efficiency issues
+        - solve sleep
+        - other, slower scan in the middle?
+        - BT polling sleep when cannot connect for a while
+        - battery measurements
+    - organize the firmware to a separate repo
+        - submodule in the original
+    - build script and keyboard/map organization
 
 
 
 
 
 ## "Club"
+
+I have a controlled, but ever present tendency to "fanboy" over something if it really deserves it. For example, I'm a proud owner of a [Secrid Miniwallet](https://secrid.com/en-global/miniwallet-crisple-black) and I consider it a cool "club" to be a part of. And I would very much like it if there was an official "Absolem club", even if it's just the two of us!
+
+![Nerd Party](https://zealot.hu/absolem/pics/nerd_party.jpg)
+
+So all I ask of you, dear reader, is that if you ever decide that the Absolem is a good match for you and you build one, please contact me so that I can add you to the club! Or you could contact me to build you one; then I'll know to add you automatically! It'll be great, I promise... We could even wear a badge! Too much? Okay, I'll stop now.
+
+Anyways, there'll be a list of some sort here, if there's ever someone other than me... :)
 
 
 
@@ -309,9 +334,15 @@ If you've seriously read all the way down here, then you're awesome! I hope I ma
 <br />
 <hr />
 
+__History__:
+
+- Originally posted on 2019.??.??.
+
 __Acknowledgment__: Besides the people already mentioned it the post, I'd like to thank my wife, who put up with me during this year-long process, and whose first reactions weren't "You're doing WHAT?!" and "It costs HOW MUCH?!" :)
 
 __Disclaimer__: This post contains lots of pictures and references that are obviosly not my work, and I'm not claiming that they are. GIFs and jokes come from a quick Google searches, and I'm not going to put a "source: something..." under each one. Use your best judgement.
+
+__Footnotes__:
 
 <sup id="footnote-1">1</sup>: notice how my nick is "zealot", which is just a cooler name for fanatic. (I reject the religious connotation, though.)
 
@@ -320,3 +351,5 @@ __Disclaimer__: This post contains lots of pictures and references that are obvi
 <sup id="footnote-3">3</sup>: "heirloom-grade" was a phrase I first encountered on the KeyboardIO site, but subconsciously it has been the driving force behind a lot of the design and material choices I'd made even before then. I freely use it, though, as I find it sums up my intentions really well.
 
 <sup id="footnote-4">4</sup>: My crafts teacher in elementary school (may he rest in peace) once said to me that if there's ever anything to fix around the house, I should just call someone over :D
+
+<sup id="footnote-5">5</sup>: If you think that it's a shame that I didn't go in this 3D-ish direction, then feel free to go dumpster-diving into the [repo](https://github.com/mrzealot/absolem)'s history, and fish out the model to use/modify.
