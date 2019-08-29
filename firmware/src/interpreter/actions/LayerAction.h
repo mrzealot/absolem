@@ -9,14 +9,14 @@ namespace absolem {
 
     class LayerAction : public Action {
         public:
-        LayerAction(bool p, Byte l) : press(p), layer(l) {}
-        LayerAction(bool p, Byte l, Rule c) : press(p), layer(l), counterpart(c) {}
+        LayerAction(bool p, Byte l, bool o) : press(p), layer(l), oneshot(o) {}
+        LayerAction(bool p, Byte l, bool o, Rule c) : Action(c), press(p), layer(l), oneshot(o) {}
         virtual void operator()(Interpreter& interpreter);
 
         private:
         bool press;
         Byte layer;
-        Rule counterpart;
+        bool oneshot;
     };
 
 } // namespace absolem

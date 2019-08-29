@@ -11,18 +11,18 @@
 namespace absolem {
 
     void LayerAction::operator()(Interpreter& interpreter) {
-        DD(interpreter.getController()->debug("LayerAction::operator(): %s [%d]...", press ? "pressing" : "releasing", layer);)
+        DD(interpreter.getController()->debug("LayerAction::operator(): %s%s [%d]...", press ? "pressing" : "releasing", oneshot ? "(oneshot)" : "", layer);)
         auto l = (LayerModule*) interpreter.getModule("layer");
         if (press) {
-            l->push(layer);
+            if (oneshot) {
+                l->oneshot(layer);
+            } else {
+                l->push(layer);
+            }
         } else {
             l->pop();
         }
-        interpreter.complete(1);
-        if (counterpart.first) {
-            auto c = (CacheModule*) interpreter.getModule("cache");
-            c->set(interpreter.getPhysicalKey(), counterpart);
-        }
+        Action::operator()(interpreter);
     }
     
 } // namespace absolem

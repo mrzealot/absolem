@@ -15,8 +15,14 @@ namespace absolem {
         void press(KeyCode key);
         void release(KeyCode key);
 
+        void pressConsumer(UsageCode usage);
+        void releaseConsumer();
+
         void modify(Modifiers mods);
         void unmodify(Modifiers mods);
+        void oneshot(Modifiers mods);
+
+        void flush();
 
         private:
         bool dirty;

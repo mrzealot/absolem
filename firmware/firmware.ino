@@ -19,6 +19,9 @@
 #include "src/interpreter/actions/KeyCodeAction.h"
 #include "src/interpreter/actions/ResetAction.h"
 #include "src/interpreter/actions/LayerAction.h"
+#include "src/interpreter/actions/SequenceAction.h"
+#include "src/interpreter/actions/FlushAction.h"
+#include "src/interpreter/actions/ConsumerAction.h"
 
 #include "src/interpreter/modules/ReporterModule.h"
 #include "src/interpreter/modules/CacheModule.h"
@@ -51,40 +54,225 @@ LayerModule layer(100);
 
 
 
-Rule helper(Trigger* trigger, Modifiers mods, Key key) {
+// -------
+// this is NOT elegant yet, I'm just trying to replicate the
+// functionality of my proto build with this mental model
+
+
+#define TERM 200000
+
+
+Trigger* pressTrigger = new PressTrigger(true);
+Trigger* releaseTrigger = new PressTrigger(false);
+Trigger* tapTrigger = new MultiTrigger(TERM, 1, false);
+Trigger* holdTrigger = new MultiTrigger(TERM, 0, true);
+Trigger* tapHoldTrigger = new MultiTrigger(TERM, 1, true);
+//Trigger* tripleTapTrigger = new MultiTrigger(TERM, 3, false);
+
+Action* noop = new Action();
+Action* flushAction = new FlushAction();
+
+
+Rule helper(Trigger* trigger, Modifiers mods, KeyCode key) {
   return Rule(
       trigger,
       new KeyCodeAction(
         true,
         mods,
+        false,
         key,
         Rule(
-          new PressTrigger(false),
-          new KeyCodeAction(false, mods, key)
+          releaseTrigger,
+          new KeyCodeAction(false, mods, false, key)
         )
       )
     );
 }
 
-List<Rule> kc(Modifiers mods, Key key) {
-  return {helper(new PressTrigger(true), mods, key)};
+List<Rule> kc(Modifiers mods, KeyCode key) {
+  return {helper(pressTrigger, mods, key)};
 }
 
-List<Rule> ly(Byte layer) {
+List<Rule> kc(KeyCode key) {
+  return {helper(pressTrigger, 0, key)};
+}
+
+
+List<Rule> us(UsageCode usage) {
   return {
     Rule(
-      new PressTrigger(true),
-      new LayerAction(
+      pressTrigger,
+      new ConsumerAction(
         true,
-        layer,
+        usage,
         Rule(
-          new PressTrigger(false),
-          new LayerAction(false, layer)
+          releaseTrigger,
+          new ConsumerAction(
+            false,
+            usage
+          )
         )
       )
     )
   };
 }
+
+List<Rule> fullLayer(Byte layer) {
+  return {
+    Rule(
+      holdTrigger,
+      new LayerAction(
+        true,
+        layer,
+        false,
+        Rule(
+          releaseTrigger,
+          new LayerAction(false, layer, false)
+        )
+      )
+    ),
+    Rule(
+      tapTrigger,
+      new LayerAction(
+        true,
+        layer,
+        true
+      )
+    )
+  };
+}
+
+List<Rule> fullMod(Modifiers mods) {
+  return {
+    Rule(
+      holdTrigger,
+      new KeyCodeAction(
+        true,
+        mods,
+        false,
+        0,
+        Rule(
+          releaseTrigger,
+          new KeyCodeAction(false, mods, false, 0)
+        )
+      )
+    ),
+    Rule(
+      tapTrigger,
+      new KeyCodeAction(
+        true,
+        mods,
+        true,
+        0,
+        Rule(
+          releaseTrigger,
+          new KeyCodeAction(false, mods, true, 0)
+        )
+      )
+    )
+  };
+}
+
+
+List<Rule> modTap(Modifiers mods, KeyCode key) {
+  Action* keyAction = new KeyCodeAction(
+    true,
+    0,
+    false,
+    key,
+    Rule(
+      releaseTrigger,
+      new KeyCodeAction(false, 0, false, key)
+    )
+  );
+  return {
+    //Rule(
+    //  tapHoldTrigger,
+    //  keyAction
+    //),
+    Rule(
+      holdTrigger,
+      new KeyCodeAction(
+        true,
+        mods,
+        false,
+        0,
+        Rule(
+          releaseTrigger,
+          new KeyCodeAction(false, mods, false, 0)
+        )
+      )
+    ),
+    Rule(
+      tapTrigger,
+      keyAction
+    )
+  };
+}
+
+
+
+List<Rule> layerTap(Byte layer, KeyCode key) {
+  Action* keyAction = new KeyCodeAction(
+    true,
+    0,
+    false,
+    key,
+    Rule(
+      releaseTrigger,
+      new KeyCodeAction(false, 0, false, key)
+    )
+  );
+  return {
+    //Rule(
+    //  tapHoldTrigger,
+    //  keyAction
+    //),
+    Rule(
+      holdTrigger,
+      new LayerAction(
+        true,
+        layer,
+        false,
+        Rule(
+          releaseTrigger,
+          new LayerAction(false, layer, false)
+        )
+      )
+    ),
+    Rule(
+      tapTrigger,
+      keyAction
+    )
+  };
+}
+
+
+
+
+
+List<Rule> seq(List<Pair<Modifiers, KeyCode>> list, bool shiftAtEnd = false) {
+  List<Action*> actions;
+  KeyCode last = 0;
+  for (auto& pair : list) {
+    if (last == pair.second) {
+      actions.push_back(flushAction); 
+    }
+    actions.push_back(new KeyCodeAction(true, pair.first, false, pair.second));
+    actions.push_back(flushAction);
+    actions.push_back(new KeyCodeAction(false, pair.first, false, pair.second));
+    last = pair.second;
+  }
+  if (shiftAtEnd) {
+    actions.push_back(flushAction);
+    actions.push_back(new KeyCodeAction(true, MOD_MASK_SHIFT, true, 0));
+  }
+  return {
+    Rule(pressTrigger, new SequenceAction(actions))
+  };
+}
+
+
 
 #include "src/profiling/Timer.h"
 
@@ -93,7 +281,7 @@ List<Rule> ly(Byte layer) {
 TimerClass timer(nrf_timer_num, cc_channel_num);
 
 
-#define TERM 200000
+
 
 void keymapSetup() {
   controller.name = "Absolem #2";
@@ -104,56 +292,49 @@ void keymapSetup() {
   interpreter.addModule(&layer);
 
 
-  //interpreter.addRule(3, { // instead of escape, as an escape... ha, get it? :)
-  //  Rule(new PressTrigger(true), new ResetAction())
-  //});
-  interpreter.addRule(3, {
-    helper(new MultiTrigger(TERM, 1, true), 0, HU_C),
-    helper(new MultiTrigger(TERM, 0, true), 0, HU_B),
-    helper(new MultiTrigger(TERM, 1, false), 0, HU_A),
-  });
-  interpreter.addRule(4, kc(0, KC_BSPACE));
-  interpreter.addRule(5, kc(0, KC_LSHIFT));
+  interpreter.addRule(3, modTap(MOD_MASK_GUI, KC_ESC));
+  interpreter.addRule(4, layerTap(4, KC_BSPACE)); // Num
+  interpreter.addRule(5, fullMod(MOD_MASK_SHIFT));
 
-  interpreter.addRule(6, kc(0, HU_EE));
-  interpreter.addRule(7, kc(0, KC_NO));
-  interpreter.addRule(8, ly(1));
-  interpreter.addRule(9, kc(0, HU_H));
-  interpreter.addRule(10, kc(0, HU_K));
+  interpreter.addRule(6, kc(HU_EE));
+  interpreter.addRule(7, fullLayer(2)); // Misc
+  interpreter.addRule(8, fullLayer(1)); // Sym
+  interpreter.addRule(9, kc(HU_H));
+  interpreter.addRule(10, kc(HU_K));
 
-  interpreter.addRule(11, kc(0, HU_O));
-  interpreter.addRule(12, kc(0, HU_I));
-  interpreter.addRule(13, kc(0, HU_E));
-  interpreter.addRule(14, kc(0, HU_N));
-  interpreter.addRule(15, kc(0, HU_M));
+  interpreter.addRule(11, kc(HU_O));
+  interpreter.addRule(12, kc(HU_I));
+  interpreter.addRule(13, kc(HU_E));
+  interpreter.addRule(14, kc(HU_N));
+  interpreter.addRule(15, kc(HU_M));
 
-  interpreter.addRule(16, kc(0, HU_AA));
-  interpreter.addRule(17, kc(0, HU_Y));
-  interpreter.addRule(18, kc(0, HU_U));
-  interpreter.addRule(19, kc(0, HU_L));
-  interpreter.addRule(20, kc(0, HU_J));
+  interpreter.addRule(16, kc(HU_AA));
+  interpreter.addRule(17, kc(HU_Y));
+  interpreter.addRule(18, kc(HU_U));
+  interpreter.addRule(19, kc(HU_L));
+  interpreter.addRule(20, kc(HU_J));
 
-  interpreter.addRule(23, kc(0, KC_TAB));
-  interpreter.addRule(24, kc(0, KC_SPACE));
-  interpreter.addRule(25, kc(0, KC_ENTER));
+  interpreter.addRule(23, modTap(MOD_MASK_CTRL, KC_TAB));
+  interpreter.addRule(24, layerTap(3, KC_SPACE)); // Nav
+  interpreter.addRule(25, modTap(MOD_MASK_CSA, KC_ENTER));
 
-  interpreter.addRule(26, kc(0, HU_Z));
-  interpreter.addRule(27, kc(0, HU_X));
-  interpreter.addRule(28, kc(0, HU_C));
-  interpreter.addRule(29, kc(0, HU_D));
-  interpreter.addRule(30, kc(0, HU_V));
+  interpreter.addRule(26, kc(HU_Z));
+  interpreter.addRule(27, kc(HU_X));
+  interpreter.addRule(28, kc(HU_C));
+  interpreter.addRule(29, kc(HU_D));
+  interpreter.addRule(30, kc(HU_V));
 
-  interpreter.addRule(31, kc(0, HU_A));
-  interpreter.addRule(32, kc(0, HU_R));
-  interpreter.addRule(33, kc(0, HU_S));
-  interpreter.addRule(34, kc(0, HU_T));
-  interpreter.addRule(35, kc(0, HU_G));
+  interpreter.addRule(31, kc(HU_A));
+  interpreter.addRule(32, kc(HU_R));
+  interpreter.addRule(33, kc(HU_S));
+  interpreter.addRule(34, kc(HU_T));
+  interpreter.addRule(35, kc(HU_G));
 
-  interpreter.addRule(36, kc(0, HU_Q));
-  interpreter.addRule(37, kc(0, HU_W));
-  interpreter.addRule(38, kc(0, HU_F));
-  interpreter.addRule(39, kc(0, HU_P));
-  interpreter.addRule(40, kc(0, HU_B));
+  interpreter.addRule(36, kc(HU_Q));
+  interpreter.addRule(37, kc(HU_W));
+  interpreter.addRule(38, kc(HU_F));
+  interpreter.addRule(39, kc(HU_P));
+  interpreter.addRule(40, kc(HU_B));
 
 
 
@@ -161,25 +342,25 @@ void keymapSetup() {
 
 
 
-  interpreter.addRule(103, kc(0, HU_MINS));
-  interpreter.addRule(104, kc(0, HU_COMM));
-  interpreter.addRule(105, kc(0, HU_DOT));
+  interpreter.addRule(103, kc(HU_MINS));
+  interpreter.addRule(104, kc(HU_COMM));
+  interpreter.addRule(105, kc(HU_DOT));
 
   interpreter.addRule(106, kc(HU_GRV_MODS, HU_GRV));
   interpreter.addRule(107, kc(HU_PLUS_MODS, HU_PLUS));
-  interpreter.addRule(108, kc(0, KC_NO));
+  interpreter.addRule(108, kc(KC_NO));
   interpreter.addRule(109, kc(HU_EQL_MODS, HU_EQL));
   interpreter.addRule(110, kc(HU_AMPR_MODS, HU_AMPR));
 
   interpreter.addRule(111, kc(HU_SCLN_MODS, HU_SCLN));
   interpreter.addRule(112, kc(HU_COLN_MODS, HU_COLN));
-  interpreter.addRule(113, kc(0, KC_NO));
+  interpreter.addRule(113, kc(KC_NO));
   interpreter.addRule(114, kc(HU_ASTR_MODS, HU_ASTR));
   interpreter.addRule(115, kc(HU_PERC_MODS, HU_PERC));
 
   interpreter.addRule(116, kc(HU_AT_MODS, HU_AT));
-  interpreter.addRule(117, kc(0, KC_NO));
-  interpreter.addRule(118, kc(0, KC_NO));
+  interpreter.addRule(117, kc(KC_NO));
+  interpreter.addRule(118, kc(KC_NO));
   interpreter.addRule(119, kc(HU_CIRC_MODS, HU_CIRC));
   interpreter.addRule(120, kc(HU_TILD_MODS, HU_TILD));
 
@@ -204,6 +385,142 @@ void keymapSetup() {
   interpreter.addRule(138, kc(HU_RBRC_MODS, HU_RBRC));
   interpreter.addRule(139, kc(HU_RPRN_MODS, HU_RPRN));
   interpreter.addRule(140, kc(HU_BSLS_MODS, HU_BSLS));
+
+
+  
+
+  interpreter.addRule(203, seq({
+    Pair<Modifiers, KeyCode>(0, KC_SPACE),
+    Pair<Modifiers, KeyCode>(0, HU_MINS),
+    Pair<Modifiers, KeyCode>(0, HU_MINS),
+    Pair<Modifiers, KeyCode>(0, KC_SPACE),
+  }));
+  interpreter.addRule(204, seq({
+    Pair<Modifiers, KeyCode>(0, HU_COMM),
+    Pair<Modifiers, KeyCode>(0, KC_SPACE),
+  }));
+  interpreter.addRule(205, seq({
+    Pair<Modifiers, KeyCode>(0, HU_DOT),
+    Pair<Modifiers, KeyCode>(0, KC_SPACE)
+  }, true));
+
+  interpreter.addRule(228, seq({
+    Pair<Modifiers, KeyCode>(HU_QST_MODS, HU_QST),
+    Pair<Modifiers, KeyCode>(0, KC_SPACE)
+  }, true));
+  interpreter.addRule(229, seq({
+    Pair<Modifiers, KeyCode>(HU_EXLM_MODS, HU_EXLM),
+    Pair<Modifiers, KeyCode>(0, KC_SPACE)
+  }, true));
+
+  interpreter.addRule(231, kc(HU_II));
+  interpreter.addRule(232, kc(HU_OEE));
+  interpreter.addRule(233, kc(HU_OE));
+  interpreter.addRule(234, kc(HU_OO));
+
+  interpreter.addRule(236, kc(HU_UEE));
+  interpreter.addRule(237, kc(HU_UE));
+  interpreter.addRule(238, kc(HU_UU));
+
+
+
+
+
+
+
+  interpreter.addRule(303, kc(KC_ESC));
+  interpreter.addRule(304, kc(KC_BSPC));
+  interpreter.addRule(305, kc(KC_DEL));
+
+  interpreter.addRule(306, kc(KC_ENTER));
+  interpreter.addRule(307, kc(KC_END));
+  interpreter.addRule(308, kc(KC_DOWN));
+  interpreter.addRule(309, kc(KC_HOME));
+  //interpreter.addRule(310, kc(KC_MENU)); --> need generic system control reports... (0x01)
+
+  interpreter.addRule(311, kc(KC_TAB));
+  interpreter.addRule(312, kc(KC_RIGHT));
+  interpreter.addRule(313, kc(KC_UP));
+  interpreter.addRule(314, kc(KC_LEFT));
+  interpreter.addRule(315, kc(MOD_CTRL, HU_MINS));
+
+  interpreter.addRule(316, kc(KC_INS));
+  interpreter.addRule(317, kc(KC_PGDOWN));
+  interpreter.addRule(318, kc(KC_SPACE));
+  interpreter.addRule(319, kc(KC_PGUP));
+  interpreter.addRule(320, kc(MOD_MASK_CS, HU_PLUS)); // CS, because + needs shift
+
+  //interpreter.addRule(323, );
+  //interpreter.addRule(324, );
+  //interpreter.addRule(325, );
+
+  interpreter.addRule(326, kc(MOD_CTRL, HU_Z));
+  interpreter.addRule(327, kc(MOD_CTRL, HU_X));
+  interpreter.addRule(328, kc(MOD_CTRL, HU_C));
+  interpreter.addRule(329, kc(MOD_CTRL, HU_D));
+  interpreter.addRule(330, kc(MOD_CTRL, HU_V));
+
+  interpreter.addRule(331, fullMod(MOD_GUI));
+  interpreter.addRule(332, fullMod(MOD_ALT));
+  interpreter.addRule(333, fullMod(MOD_SHIFT));
+  interpreter.addRule(334, fullMod(MOD_CTRL));
+  interpreter.addRule(335, us(CON_VOLUME_DECREMENT));
+
+  interpreter.addRule(336, us(CON_MUTE));
+  interpreter.addRule(337, us(CON_SCAN_PREVIOUS_TRACK));
+  interpreter.addRule(338, us(CON_PLAY_PAUSE));
+  interpreter.addRule(339, us(CON_SCAN_NEXT_TRACK));
+  interpreter.addRule(340, us(CON_VOLUME_INCREMENT));
+
+
+
+
+
+
+  //interpreter.addRule(403, );
+  //interpreter.addRule(404, );
+  //interpreter.addRule(405, );
+
+  interpreter.addRule(406, kc(HU_COMM));
+  interpreter.addRule(407, kc(KC_3));
+  interpreter.addRule(408, kc(KC_2));
+  interpreter.addRule(409, kc(KC_1));
+  interpreter.addRule(410, kc(HU_PLUS_MODS, HU_PLUS));
+
+  interpreter.addRule(411, kc(HU_DOT));
+  interpreter.addRule(412, kc(KC_6));
+  interpreter.addRule(413, kc(KC_5));
+  interpreter.addRule(414, kc(KC_4));
+  interpreter.addRule(415, kc(KC_0));
+
+  interpreter.addRule(416, kc(KC_BSPC));
+  interpreter.addRule(417, kc(KC_9));
+  interpreter.addRule(418, kc(KC_8));
+  interpreter.addRule(419, kc(KC_7));
+  interpreter.addRule(420, kc(HU_MINS));
+
+  interpreter.addRule(423, kc(KC_TAB));
+  interpreter.addRule(424, kc(KC_SPACE));
+  interpreter.addRule(425, kc(KC_ENTER));
+
+  interpreter.addRule(426, kc(KC_F11));
+  interpreter.addRule(427, kc(KC_F12));
+  interpreter.addRule(428, kc(KC_F13));
+  interpreter.addRule(429, kc(KC_PSCREEN));
+  interpreter.addRule(430, kc(KC_PAUSE));
+
+  interpreter.addRule(431, kc(KC_F6));
+  interpreter.addRule(432, kc(KC_F7));
+  interpreter.addRule(433, kc(KC_F8));
+  interpreter.addRule(434, kc(KC_F9));
+  interpreter.addRule(435, kc(KC_F10));
+
+  interpreter.addRule(436, kc(KC_F1));
+  interpreter.addRule(437, kc(KC_F2));
+  interpreter.addRule(438, kc(KC_F3));
+  interpreter.addRule(439, kc(KC_F4));
+  interpreter.addRule(440, kc(KC_F5));
+
 }
 
 //void profiling_wrapper() {
@@ -218,7 +535,7 @@ void setup() {
   //timer.attachInterrupt(&profiling_wrapper, 1000); // microseconds
 }
 
-#define TICK_FREQ 25000
+#define TICK_FREQ 20000
 
 void loop() {
   Time begin = controller.time();

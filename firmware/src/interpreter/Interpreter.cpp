@@ -1,4 +1,6 @@
 #include "Interpreter.h"
+#include "triggers/Trigger.h"
+#include "actions/Action.h"
 #include "../common/keys.h"
 #include "../profiling/profiling.h"
 
@@ -152,6 +154,9 @@ namespace absolem {
             if (match) {
                 DD(controller->debug("Interpreter::tick: There's a match...");)
                 (*match)(*this);
+            } else {
+                DD(controller->debug("Interpreter::tick: There's NO match, trash and continue...");)
+                complete(1);
             }
 
         }

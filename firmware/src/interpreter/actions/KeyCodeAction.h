@@ -9,15 +9,15 @@ namespace absolem {
 
     class KeyCodeAction : public Action {
         public:
-        KeyCodeAction(bool p, Modifiers m, KeyCode k) : press(p), mods(m), key(k) {}
-        KeyCodeAction(bool p, Modifiers m, KeyCode k, Rule c) : press(p), mods(m), key(k), counterpart(c) {}
+        KeyCodeAction(bool p, Modifiers m, bool o, KeyCode k) : press(p), mods(m), oneshot(o), key(k) {}
+        KeyCodeAction(bool p, Modifiers m, bool o, KeyCode k, Rule c) : Action(c), press(p), mods(m), oneshot(o), key(k) {}
         virtual void operator()(Interpreter& interpreter);
 
         private:
         bool press;
         Modifiers mods;
+        bool oneshot;
         KeyCode key;
-        Rule counterpart;
     };
 
 } // namespace absolem

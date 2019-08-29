@@ -14,8 +14,11 @@
 
 #include "../profiling/profiling.h"
 //#define DEBUG
-#define DEBUG_MULTITRIGGER
+//#define DEBUG_REPORTERMODULE
+//#define DEBUG_LAYERMODULE
+//#define DEBUG_KEYCODEACTION
 //#define DEBUG_INTERPRETER
+//#define DEBUG_CONSUMERACTION
 
 namespace absolem {
 

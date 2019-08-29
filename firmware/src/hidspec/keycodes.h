@@ -1,4 +1,5 @@
 // Copied as-is from QMK, https://github.com/qmk/qmk_firmware/blob/master/tmk_core/common/keycode.h
+// TODO --> clean this up to use the actual HID spec for consumer stuff, too
 
 /*
 Copyright 2011,2012 Jun Wako <wakojun@gmail.com>
@@ -383,13 +384,6 @@ enum hid_keyboard_keypad_usage {
   KC_CRSEL,
   KC_EXSEL,
 
-#if 0
-  // ***************************************************************
-  // These keycodes are present in the HID spec, but are           *
-  // nonfunctional on modern OSes. QMK uses this range (0xA5-0xDF) *
-  // for the media and function keys instead - see below.          *
-  // ***************************************************************
-
   KC_KP_00                = 0xB0,
   KC_KP_000,
   KC_THOUSANDS_SEPARATOR,
@@ -436,7 +430,7 @@ enum hid_keyboard_keypad_usage {
   KC_KP_OCTAL,
   KC_KP_DECIMAL,
   KC_KP_HEXADECIMAL,
-#endif
+
 
   /* Modifiers */
   KC_LCTRL                = 0xE0,
@@ -448,102 +442,9 @@ enum hid_keyboard_keypad_usage {
   KC_RALT,
   KC_RGUI
 
-  // **********************************************
-  // * 0xF0-0xFF are unallocated in the HID spec. *
-  // * QMK uses these for Mouse Keys - see below. *
-  // **********************************************
 };
 
-/* Media and Function keys */
-enum internal_special_keycodes {
-  /* Generic Desktop Page (0x01) */
-  KC_SYSTEM_POWER         = 0xA5,
-  KC_SYSTEM_SLEEP,
-  KC_SYSTEM_WAKE,
 
-  /* Consumer Page (0x0C) */
-  KC_AUDIO_MUTE,
-  KC_AUDIO_VOL_UP,
-  KC_AUDIO_VOL_DOWN,
-  KC_MEDIA_NEXT_TRACK,
-  KC_MEDIA_PREV_TRACK,
-  KC_MEDIA_STOP,
-  KC_MEDIA_PLAY_PAUSE,
-  KC_MEDIA_SELECT,
-  KC_MEDIA_EJECT,         //0xB0
-  KC_MAIL,
-  KC_CALCULATOR,
-  KC_MY_COMPUTER,
-  KC_WWW_SEARCH,
-  KC_WWW_HOME,
-  KC_WWW_BACK,
-  KC_WWW_FORWARD,
-  KC_WWW_STOP,
-  KC_WWW_REFRESH,
-  KC_WWW_FAVORITES,
-  KC_MEDIA_FAST_FORWARD,
-  KC_MEDIA_REWIND,
-  KC_BRIGHTNESS_UP,
-  KC_BRIGHTNESS_DOWN,
-
-  /* Fn keys */
-  KC_FN0                  = 0xC0,
-  KC_FN1,
-  KC_FN2,
-  KC_FN3,
-  KC_FN4,
-  KC_FN5,
-  KC_FN6,
-  KC_FN7,
-  KC_FN8,
-  KC_FN9,
-  KC_FN10,
-  KC_FN11,
-  KC_FN12,
-  KC_FN13,
-  KC_FN14,
-  KC_FN15,
-  KC_FN16,                //0xD0
-  KC_FN17,
-  KC_FN18,
-  KC_FN19,
-  KC_FN20,
-  KC_FN21,
-  KC_FN22,
-  KC_FN23,
-  KC_FN24,
-  KC_FN25,
-  KC_FN26,
-  KC_FN27,
-  KC_FN28,
-  KC_FN29,
-  KC_FN30,
-  KC_FN31
-};
-
-enum mouse_keys {
-  /* Mouse Buttons */
-  KC_MS_UP                = 0xF0,
-  KC_MS_DOWN,
-  KC_MS_LEFT,
-  KC_MS_RIGHT,
-  KC_MS_BTN1,
-  KC_MS_BTN2,
-  KC_MS_BTN3,
-  KC_MS_BTN4,
-  KC_MS_BTN5,
-
-  /* Mouse Wheel */
-  KC_MS_WH_UP,
-  KC_MS_WH_DOWN,
-  KC_MS_WH_LEFT,
-  KC_MS_WH_RIGHT,
-
-  /* Acceleration */
-  KC_MS_ACCEL0,
-  KC_MS_ACCEL1,
-  KC_MS_ACCEL2
-};
 
 enum modifier_codes {
   MOD_NONE    = 0x00,
@@ -559,6 +460,17 @@ enum modifier_codes {
   MOD_ALT     = 0x44,
   MOD_RGUI    = 0x80,
   MOD_GUI     = 0x88
+};
+
+
+enum actual_consumer_codes {
+  CON_MENU                = 0x40,
+  CON_SCAN_NEXT_TRACK     = 0xB5,
+  CON_SCAN_PREVIOUS_TRACK = 0xB6,
+  CON_PLAY_PAUSE          = 0xCD,
+  CON_MUTE                = 0xE2,
+  CON_VOLUME_INCREMENT    = 0xE9,
+  CON_VOLUME_DECREMENT    = 0xEA
 };
 
 #endif

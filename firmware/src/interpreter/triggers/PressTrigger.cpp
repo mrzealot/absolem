@@ -11,6 +11,7 @@ namespace absolem {
     TriggerState PressTrigger::state(Interpreter& interpreter) {
         DD(interpreter.getController()->debug("PressTrigger::state: State is checked against %s...", press ? "press" : "release");)
         if (std::get<1>(interpreter.getQueue().front()) == press) {
+            interpreter.complete(1);
             return TriggerState::YES;
         } else {
             return TriggerState::NO;

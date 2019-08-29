@@ -22,7 +22,7 @@ namespace absolem {
         private:
         Byte offset;
         Stack<Byte> stack;
-        bool oneshotActive;
+        Key oneshotActive;
         bool locked;
 
     };

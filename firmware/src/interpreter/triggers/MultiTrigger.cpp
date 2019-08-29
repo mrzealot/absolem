@@ -69,7 +69,7 @@ namespace absolem {
                             // we said "within" term, so if we're already past that, it's a hold
                             if (ejTime - eventTime > term) {
                                 DD(controller->debug("MultiTrigger::state: hold matches because of time (while examining events)");)
-                                interpreter.complete(index);
+                                interpreter.complete(index + 1);
                                 return TriggerState::YES;
                             }
                             // okay, we're within the term still, so look for the different press
@@ -84,7 +84,7 @@ namespace absolem {
                                 } else if (presses.find(ejKey) != presses.end()) {
                                     // got our proof
                                     DD(controller->debug("MultiTrigger::state: hold matches because of a different release");)
-                                    interpreter.complete(index);
+                                    interpreter.complete(index + 1);
                                     return TriggerState::YES;
                                 }
                             }
@@ -92,8 +92,8 @@ namespace absolem {
 
                         // ...or it should be active past term on its own
                         if ((currentTime - eventTime) > term) {
-                            interpreter.complete(index);
                             DD(controller->debug("MultiTrigger::state: hold matches because of time");)
+                            interpreter.complete(index + 1);
                             return TriggerState::YES;
                         }
 
@@ -107,7 +107,7 @@ namespace absolem {
                 } else {
                     if (i == taps && press) {
                         DD(controller->debug("MultiTrigger::state: press got to the end");)
-                        interpreter.complete(index);
+                        interpreter.complete(index + 1);
                         return TriggerState::YES;
                     }
                 }

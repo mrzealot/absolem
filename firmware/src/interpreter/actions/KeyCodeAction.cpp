@@ -15,18 +15,28 @@ namespace absolem {
         DD(interpreter.getController()->debug("KeyCodeAction::operator(): %s ["BINARY_PATTERN"][%d]...", press ? "pressing" : "releasing", BINARY(mods), key);)
         auto r = (ReporterModule*) interpreter.getModule("reporter");
         if (press) {
-            r->modify(mods);
-            r->press(key);
+            if (key) {
+                DD(interpreter.getController()->debug("KeyCodeAction::operator(): press");)
+                r->press(key);
+            }
+            if (oneshot) {
+                DD(interpreter.getController()->debug("KeyCodeAction::operator(): oneshot");)
+                r->oneshot(mods);
+            } else {
+                DD(interpreter.getController()->debug("KeyCodeAction::operator(): modify");)
+                r->modify(mods);
+            }
         } else {
-            r->unmodify(mods);
-            r->release(key);
+            if (key) {
+                DD(interpreter.getController()->debug("KeyCodeAction::operator(): release");)
+                r->release(key);
+            }
+            if (!oneshot) {
+                DD(interpreter.getController()->debug("KeyCodeAction::operator(): unmodify");)
+                r->unmodify(mods);
+            }
         }
-        interpreter.complete(1);
-        if (counterpart.first) {
-            DD(interpreter.getController()->debug("KeyCodeAction::operator(): Setting counterpart");)
-            auto c = (CacheModule*) interpreter.getModule("cache");
-            c->set(interpreter.getPhysicalKey(), counterpart);
-        }
+        Action::operator()(interpreter);
     }
     
 } // namespace absolem
