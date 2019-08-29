@@ -1,12 +1,28 @@
 # Absolem -- My 2D Endgame
 
 
-
+![Absolem Splash](https://zealot.hu/absolem/pics/splash.jpg)
 
 
 ## tl;dr
 
-I've designed and built my own mechanical keyboard. It's fucking awesome! I'm going to ramble about it now, *in detail*. Read on if you're interested, or jump to the pictures, or post a comment to the reddit thread, or... you know... do whatever you fancy. I'm not your mom. :)
+I've designed and built my own mechanical keyboard. It's fucking awesome! I'm going to ramble about it now, *in detail*. Read on if you're interested, or [jump to the pictures](#the-finished-product), or post a comment to [the reddit thread](), or... you know... do whatever you fancy. I'm not your mom. :)
+
+
+
+
+
+## Table of Contents
+
+- [Intro](#intro)
+- [Research](#research)
+- [Design](#design)
+- [Build](#build)
+- [Firmware](#firmware)
+- [Keymap](#keymap)
+- [Writeup](#writeup)
+- [TODO](#todo)
+- ["Club"](#club)
 
 
 
@@ -14,12 +30,15 @@ I've designed and built my own mechanical keyboard. It's fucking awesome! I'm go
 
 ## Intro
 
-- shitty Genius
-- need backlighting to see keys at night
-- MasterKeys Pro S
-- rabbithole
-- structure
-- mention scrollspy and how it works
+Until about one and a half years ago, I'd been happily typing on a [shitty Genius](https://www.cnet.com/products/genius-slimstar-i220-keyboard-series/) with a QWERTZ (Hungarian QWERTY) layout. Ah... simpler times!
+
+!["Ignorance is bliss"](https://www.reactiongifs.us/wp-content/uploads/2013/04/ignorance_is_bliss_matrix.gif)
+
+I was hovering at about 50-60 wpm, which -- while decidedly not blazing fast -- didn't bother me much. I also didn't really care that my typing "technique" involved around 4-6 fingers and a lot of looking at the keyboard. What _did_ bother me was nights when I couldn't actually see the keys and it slowed me down quite a bit.
+
+If you're thinking that my solution was learning to touch type, you're wrong! (for now...) I, of course, decided that I needed a backlit keyboard. Around this time I was vaguely aware of mechanical keyboards and the "supposed" superior typing experience they provide. So to celebrate my dissertation defense, -- and after a cursory glance at full size vs. TKL arguments -- I treated myself to a [MasterKeys Pro S](https://www.coolermaster.com/catalog/peripheral/keyboards/masterkeys-pro-s-white/). And that's where the problems started...
+
+To be fair, the Pro S is a fine keyboard. But it's not even the thing that convinced me about mechs. By the time it arrived, the geekhack-deskthority-r/mk Bermuda triangle sucked me in, and I was already too deep in the rabbit hole. Looking back now, I think the main cause was that I started looking at the topic as genuine "research", and in my mildly fanatic<a href="#footnote-1"><sup>1</sup></a> worldview that could only end with another "dissertation", which is what this post is, I guess.
 
 
 
@@ -28,9 +47,11 @@ I've designed and built my own mechanical keyboard. It's fucking awesome! I'm go
 ## Research
 
 Being a researcher by trade, I can very much appreciate the need for seeing what someone has already done in order to not reinvent the wheel.
-Also, following the old saying "stealing from one source is plagiarism; stealing from many is research", I have basically patched together the best parts of what the current state of the art has to offer. It was an interesting observation to make that almost all the best* ergo aspects came from different places, while their combination didn't exist yet. That's probably what lead to me deciding to design my own; had I found a board that checks all the boxes, I'd have just ordered that.
-- (I'm also secretly happy that it didn't turn out like that, because this way I got to make my own, and it was a good chance to grow... but psst, don't tell that to anyone!)
-- 
+Also, following the old saying "stealing from one source is plagiarism; stealing from many is research", I have basically patched together the (imho) best parts of what the current state of the art has to offer. It was an interesting observation to make that almost all the best<a href="#footnote-2"><sup>2</sup></a> ergo aspects came from different places, while their combination didn't exist yet. That's probably what lead to me deciding to design my own; had I found a board that checks all the boxes, I'd have just ordered that.
+(I'm also secretly happy that it didn't turn out like that, because this way I got to make my own, and it was a good chance to grow... but psst, don't tell that to anyone!)
+
+So with that in mind, let me just quickly walk you through the steps that lead me to "keeb enlightenment":
+ 
 
 ### General stuff
 
@@ -203,13 +224,18 @@ There's even a section in it which is about this writeup, in which I discuss why
 
 
 
-## Sleeve
+## TODO
+
+- PCB
+- top layer gap for thumb
+- sleeve
+- firmware improvements
 
 
 
 
 
-## Club
+## "Club"
 
 
 
@@ -217,14 +243,13 @@ There's even a section in it which is about this writeup, in which I discuss why
 
 ## That's it, folks!
 
-If you've seriously read all the way down here, then you're awesome! I hope I managed to keep it interesting. Now go and upvote the corresponding reddit post and star my github repo to earn an official, non-refundable, virtual high-five!
+If you've seriously read all the way down here, then you're awesome! I hope I managed to keep it interesting. Now go and upvote the [corresponding reddit post]() and star my [github repo](https://github.com/mrzealot/absolem) to earn an official, non-refundable, virtual high-five!
 
-.
-.
-.
 
-.
-.
-.
+<br />
+<br />
+<hr />
 
-This is here to allow the top progress bar to reach completion :)
+<sup id="footnote-1">1</sup>: notice how my nick is "zealot", which is just a cooler name for fanatic. (I reject the religious connotation, though.)
+
+<sup id="footnote-2">2</sup>: "best" is arguable here, I admit. But, despite my every effort to keep this as objective as possible, the whole topic is somewhat subjective, so bear with me.
