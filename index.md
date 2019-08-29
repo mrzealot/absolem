@@ -40,6 +40,8 @@ If you're thinking that my solution was learning to touch type, you're wrong! (f
 
 To be fair, the Pro S is a fine keyboard. But it's not even the thing that convinced me about mechs. By the time it arrived, the geekhack-deskthority-r/mk Bermuda triangle sucked me in, and I was already too deep in the rabbit hole. Looking back now, I think the main cause was that I started looking at the topic as genuine "research", and in my mildly fanatic<a href="#footnote-1"><sup>1</sup></a> worldview that could only end with another "dissertation", which is what this post is, I guess.
 
+So, strap in as I rant about the whole journey that led me here. Also, fair warning that I'm writing this on the already finished Absolem, which is just a pleasure to type on, so I'm going to be verbose! :P
+
 
 
 
@@ -62,7 +64,7 @@ This is also where I'd like to thank a few people for their general help in this
 
 - [algernon](https://geekhack.org/index.php?action=profile;u=55020), fellow Hungarian keeb expert, for all the early advice,
 - [Azel4231](https://feierabendprojekte.wordpress.com/2018/03/21/building-a-keyboard-by-hand/), for his help in switch layout related measurements (I'm the "redditor" from the addendum...),
-- and, naturally, [DotDash32](), for the metric shitton of discussion we've done in both posts and reddit messages that really helped me shape what I should aim for.
+- and, naturally, [DotDash32](https://www.reddit.com/user/Dotdash32/), for the metric shitton of discussion we've done in both posts and reddit messages that really helped me shape what I should aim for.
 
 
 ### Staggers
@@ -98,43 +100,61 @@ As an example of pinky overworking, consider any regular layout (or even the [Er
 
 ### The thumb region
 
-- probably the only "really" original part of the design
-- as the others are all seen _somewhere_ before
-    - plagiarism vs. research
-    - good artists steal, great artists 
+Generally, there are three approaches for the thumbs:
+
+1. SPACEBAR!!! -- one of the thumbs can keep hacking away on a button that takes up 6-7 spaces, while the other just exists. Very efficient... &lt;/sarcasm&gt; There are more sophisticated layouts, with split spacebars and the like, but from an ergonomical standpoint, these are all subpar compared to the next two.
+2. Clusters -- consider the [Ergodox](https://ergodox-ez.com) again. While this way is definitely better than a single spacebar, in my opinion it overcompensates with the amount of work it tries to give to the thumbs. The side effect of this is that very few of those thumb keys are actually convenient (or usable, according to some). This leads us nicely to:
+3. Fans -- consider the [KeyboardIO Model 01](https://shop.keyboard.io/). This approach appreciates that the thumb actually moves in an arc, and doesn't try to add extra functionality either above or below it.
+
+This is probably the only "really" original part of the Absolem design, as all the other stuff I've mentioned so far could be seen _somewhere_ before. And, depending on how we interpret "original", maybe not even this... But: I actually placed the thumb keys on an arc, with a measured thumb radius. And I, of course, followed the 1DFH principle, so there can only be 3 (unlike the KeyboardIO's 4).
+
+I'd also like to mention as someone with quite wide (read: fat) thumbs, I've aimed to have 1.25u thumb keys from the start, at least for the home position. The sides can more easily be 1u because they don't have a neighbour on one side, so there's less chance for misclicking (mispressing?). But the thumb home position (which is flanked by other thumb keys on both sides) definitely deserves to be bigger imho.
+
 
 ### The angle between the halves
 
-- none is objectively bad
-- splits solve this by relegating it to the user
-- one piece boards should definitely add some
+Like we already established, our hands don't just sprout out from our chests. The forearms (like the thumbs) move on an arc, if we consider the elbows fixed. That means that the keywells for the hands should be in line with each other(parallel? co-linear?) only if they are shoulder width apart, which they rarely are.
+
+So for a "normal" compact board, no angle is definitely bad for the wrists. Splits solve this quite elegantly by completely relegating the issue to the user, but for non-splits there _should_ be an angle. Additionally, my (very un-scientific and subjective) measurements indicate that that angle should be at least 20&deg; (so a little steeper than anything I've seen, apart from [crazy adjustable ones](https://www.youtube.com/watch?v=185AWX6_pHE)).
+
+For illustration, consider traditional one-piece boards vs. splits like a [Let's Split](https://www.reddit.com/r/MechanicalKeyboards/comments/4v51co/lets_split_the_build_guide/) vs. angled one-piece ones like -- again -- an [Atreus](https://atreus.technomancy.us/).
+
 
 ### 3D aspects
 
-- tenting
-- keywell curvature
+What we haven't touched on yet, are 3D aspects like forward/backward tilting, inward/outward tenting, and concave curvature within the keywell. The curvature was probably the first thing I abandoned because a) it prohibits a lot of manufacturing options that lead to an "heirloom-grade"<a href="#footnote-3"><sup>3</sup></a> keyboard, and b) it is really only useful for larger keywells anyway, which we've already ruled against. As for tilting/tenting and separate thumb planes, I gave them a chance and then decided not to utilize them, as I'll talk about in the design section.
+
+For examples of the concepts, see the [Dactyl-Manuform](https://geekhack.org/index.php?topic=88576.0) which has them all.
+
 
 ### Switches
 
-- feedback is good
-- and if sound is important (which it is for me), then there is a really weak claim to endgame status for any "in-between" switches. You either want it to make sound (in which case you're probably one of those clicky fanatics with MX blues in a workplace board :P) or you don't (in which case you go for silent options).
-- naturally I went for the latter, and 
+To keep it simple (and to avoid straying into religious wars territory), all I'll say is that generally there are linear, tactile, and tactile+clicky switches, where the former two can be silent or regular. Plus I wanted to stay within the bounds of the [MX standard](https://www.cherrymx.de/en/mx-original/mx-red.html) (mainly for keycap reasons), so if you're interested in more extreme switch choices, I'll have to disappoint... A round of research on the interwebs suggested that linears are mostly for gaming, plus everyone seemed to agree that a tactile switch is better for typing purposes. There's also this [speed typing guide](https://forum.colemak.com/topic/2455-vipers-speedtyping-guide/) that states that feedback is good! So linears were out.
+
+That leaves silent tactile, regular tactile, and clicky. Now, if sound is important (which it is for me), then there is a really weak claim to endgame status for any regular "in-between" switches. You either want it to make sound (in which case you're probably one of those clicky fanatics with MX blues in a workplace board :P) or you don't (in which case you go for silent options).
+
+You might have deduced from the wording of that last sentence that I went for the latter, and if you constrain your search to silent tactile switches, you'll inevitably run into [Zilents](https://zealpc.net/products/zilents). There are cheaper alternatives, but since this was an endgame build for me, I went with the Zilents, and they are absolutely worth it. People might chalk all the rave Zealio/Zilent reviews up to choice-supportive bias, but I know I love them, so there's that.
+
+Another thing to note here is that I've seen very few boards out there that utilize variable spring weights for their switches. However, if we hold ourselves to the notion that each key has its dedicated finger, we could account for the different finger strengths by the different switch weights. So that's what I did. Luckily I didn't even have to take apart and modify any switches manually, as Zilents come in four flavours. See my ergo finger-aware weight layout in the [Assembly section](#assembly).
+
 
 ### Keycaps
 
-- the aesthetics are discussed below, the focus here is the profile of the caps, which greatly add to the overall feel and ergonomy.
-- during my "awakening" I went from staring at high res photos and not seeing any difference other than color and symbols to being able to identify SA, DSA, XDA, OEM and Cherry by a cursory glance. This is probably not a very notable feat amongst the hardcore keeb folk, I just put it here to remind myself (and the esteemed reader) that it is easy to forget what is "obvious" and what isn't to an outsider...
-- Anyways, I knew early on that I value sculpted sets, sort of as a compensation for not having curvature within the keywell.
-- I mention the "feedback is good" principle here again, which also points to sculpted
-- And from among the sculpted sets, I felt that lower is better than higher -- so SA was out pretty fast.
-- Then came a research session from all over the net to see what people like/dislike, and once I factored in my priorities (mostly typing comfort, thereby largely eliminating gamer concerns) I found a pretty unanimous preference for the OG Cherry profile. And having tried it, I don't really see myself going for anything else. Cherry for the win, case closed.
+The aesthetics are discussed below; the focus here is the profile of the caps, which greatly add to the overall feel and ergonomy.
+
+Side story: during my "awakening", I went from staring at high resolution photos and not seeing any difference other than color and symbols, to being able to identify SA, DSA, XDA, OEM and Cherry by a cursory glance. This is probably not a very notable feat amongst the hardcore keeb folk, I just put it here to remind myself (and the esteemed reader) that it is easy to forget what is "obvious" and what isn't to an outsider...
+
+Anyways, I knew early on that I value sculpted sets, sort of as a compensation for not having curvature within the keywell. Plus I'd like to mention the "feedback is good" principle here again, which also points to sculpted. And from among the sculpted sets, I felt that lower is better than higher -- so SA was out pretty fast.
+
+Then came a research session from all over the net to see what people like/dislike, and once I factored in my priorities (mostly typing comfort, thereby largely eliminating gamer concerns) I found a pretty unanimous preference for the OG Cherry profile. And having tried it, I don't really see myself going for anything else. Cherry for the win, case closed.
+
 
 ### Actually doing something
 
-- learning about electronics in general, wiring, soldering, etc
-    - mention the ghosting fuckup
-http://blog.komar.be/how-to-make-a-keyboard-the-matrix/
-soldering tutorial
+The research section cannot be complete without mentioning how much reading and browsing I had to do in order to at least have a superficial grasp on how _anything_ works within the field of electronics in general. I mean I haven't held a soldering iron in my hand my whole life. And that doesn't even take it into account that I've always kind sucked at anything DIY<a href="#footnote-4"><sup>4</sup></a>.
+
+But that's in the past now, and a PhD (plus a short but very intense job at a cutting edge tech firm) quickly teaches you that you're capable of much more than you initially think. So even if you feel as hopeless as I did at the beginning, give it a go! Read/watch a few Sparkfun/Adafruit tutorials! Learn about [keyboard matrices](http://blog.komar.be/how-to-make-a-keyboard-the-matrix/), then [fuck it up](https://www.reddit.com/r/MechanicalKeyboards/comments/95o35o/diodes_in_series_am_i_an_idiot/) regardless... Then try again! It's gonna be worth it in the end.
+
 
 
 
@@ -175,8 +195,7 @@ soldering tutorial
 
 ## Build
 
-- tanárúr említés
-- Brave-es lecke --> meg tudom csinálni!
+Ooookay, enough small talk, let's get our hands dirty!
 
 ### General aesthetics
 
@@ -189,6 +208,7 @@ soldering tutorial
 - minimalist, clean
 - quiet
 - wireless
+- heirloom-grade<a href="#footnote-3"><sup>3</sup></a>
 
 ### Materials
 
@@ -289,10 +309,14 @@ If you've seriously read all the way down here, then you're awesome! I hope I ma
 <br />
 <hr />
 
-__Acknowledgment__: Besides the people already mentioned it the post, I'd like to thank my wife, who put up with me during this year-long process, and whose first reactions weren't "You're doing WHAT?!" and "How much?!" :)
+__Acknowledgment__: Besides the people already mentioned it the post, I'd like to thank my wife, who put up with me during this year-long process, and whose first reactions weren't "You're doing WHAT?!" and "It costs HOW MUCH?!" :)
 
 __Disclaimer__: This post contains lots of pictures and references that are obviosly not my work, and I'm not claiming that they are. GIFs and jokes come from a quick Google searches, and I'm not going to put a "source: something..." under each one. Use your best judgement.
 
 <sup id="footnote-1">1</sup>: notice how my nick is "zealot", which is just a cooler name for fanatic. (I reject the religious connotation, though.)
 
 <sup id="footnote-2">2</sup>: "best" is arguable here, I admit. But, despite my every effort to keep this as objective as possible, the whole topic is somewhat subjective, so bear with me.
+
+<sup id="footnote-3">3</sup>: "heirloom-grade" was a phrase I first encountered on the KeyboardIO site, but subconsciously it has been the driving force behind a lot of the design and material choices I'd made even before then. I freely use it, though, as I find it sums up my intentions really well.
+
+<sup id="footnote-4">4</sup>: My crafts teacher in elementary school (may he rest in peace) once said to me that if there's ever anything to fix around the house, I should just call someone over :D
