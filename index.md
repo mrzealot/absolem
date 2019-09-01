@@ -165,9 +165,9 @@ With all this very important (&lt;/sarcasm&gt;) knowledge collected, it was time
 
 ### The Polygon phase
 
-I started out with a little cardboard example (fig. 1) to get a feel for a different thumb plane. Note that the main keywell layout was already identical to the final product -- that was never in question. It then grew into a working prototype which I've already posted about [here](https://www.reddit.com/r/MechanicalKeyboards/comments/9aam0u/polygon_a_prototype_demo_a_roadmap_and_lots_of/) (fig. 2). I was generally satisfied with it, so I went ahead and coded a Python &rarr; OpenSCAD model (fig. 3)<a href="#footnote-5"><sup>5</sup></a>.
+I started out with a little cardboard example (fig. 1) to get a feel for a different thumb plane. Note that the main keywell layout was already identical to the final product -- that was never in question. It then grew into a working prototype which I've already posted about [here](https://www.reddit.com/r/MechanicalKeyboards/comments/9aam0u/polygon_a_prototype_demo_a_roadmap_and_lots_of/) (fig. 2-3). I was generally satisfied with it, so I went ahead and coded a Python &rarr; OpenSCAD model, too (fig. 4-5)<a href="#footnote-5"><sup>5</sup></a>.
 
-Here came a huge gap where I did not have the luxury to retrain myself with the board (or to think a whole lot about keyboards in general) as I constantly had to meet strict deadlines; with the good ol' QWERTZ.
+Here came a huge gap where I did not have the luxury to retrain myself with the new board/layout (or to think a whole lot about keyboards in general) as I constantly had to meet strict deadlines; with the good ol' QWERTZ.
 
 
 ### Transitioning to 2D
@@ -192,6 +192,24 @@ That "gap" ended this April, by which time I've reconsidered a few things due to
 - this is where I _think_ I'm done with 
 
 ### Etimology
+
+The name comes from the Tim Burton version of [Alice in Wonderland](https://en.wikipedia.org/wiki/Alice_in_Wonderland_(2010_film)), where they actually named the [Caterpillar](https://en.wikipedia.org/wiki/Caterpillar_(Alice%27s_Adventures_in_Wonderland)).
+And connecting this keyboard project to the Caterpillar from Alice is pertinent for multiple reasons:
+
+- the keyboard looks like a butterfly...
+
+![D'uuuh](https://zealot.hu/absolem/pics/duh.gif)
+
+- my all-time computer (and the in-progress environment I'm cultivating on it) is called Alice, and it's very fitting to have the "Absolem" blow letters to her over the air:
+
+![Hookah smoke letters](https://zealot.hu/absolem/pics/smoke_letters.jpg)
+
+- Absolem helped Alice & co. interpret the Oracle, which would make _me_ the Oracle in this analogy, and that's an ego-boost I can't pass up!
+
+![Oracle](https://zealot.hu/absolem/pics/oracle.jpg)
+
+- plus it also sounds really cool, even if I do say so myself.
+
 
 ### Logo ~~stealing~~ design
 
@@ -293,19 +311,30 @@ There's even a section in it which is about this writeup, in which I discuss why
 
 ## Future work
 
-- physical
-    - PCB
-    - top layer gap for thumb
-    - sleeve
-- firmware improvements
-    - energy efficiency issues
-        - solve sleep
-        - other, slower scan in the middle?
-        - BT polling sleep when cannot connect for a while
-        - battery measurements
-    - organize the firmware to a separate repo
-        - submodule in the original
-    - build script and keyboard/map organization
+Okay, if you want to nitpick, I did really say "endgame" in the title, which _should_ mean that there's no "future work" remaining... And yes, you're:
+
+![Technically Correct](https://zealot.hu/absolem/pics/technically_correct.jpg)
+
+In my defense, though, I'd like to say that:
+
+a) my TODO list is just about refinement, so we can justifiably say that it's v1.0 already;
+b) I could have waited with this post until all the refinements are done as well... but just ~~couldn't~~ didn't want to; and
+c) I've always planned to have 2 boards anyway (so that I have a backup if the main one ever needs service) in which case it would be foolish of me not to learn from the first round's experience and correct any minor imperfections.
+
+So, even though I'm re(eeee)aly pleased with how things turned out, here are some further improvement ideas I have in mind:
+
+- Physical:
+    - I want a **PCB** -- despite the fact that I clearly stated in the past that I [don't want a PCB](https://www.reddit.com/r/MechanicalKeyboards/comments/bpc54c/absolem_step_2_towards_world_domination/esr8nbd/). I mean, I still stand by what I said there about the potential durability and fixability differences, but what I didn't consider with enough weight then is that it could hold both the Feather and the battery in place and I wouldn't need to glue extra nuts to the underside of the cover layer (I hate gluing...). It would also add more stability to the switches so I wouldn't need to glue those in either (Have I mentioned yet that I hate gluing?). Plus it would look much more "professional" and clean. And PCBs are not that expensive... And it would make it much easier for other people to potentially bulid their own. So yeah, I want a PCB.
+    - I want a **thumb valley** -- as the topmost _cover_ layer (while beautiful as it is) still bothers my thumbs a little at certain angles, even after I deliberately filed away most of the edges there in anticipation of this exact thing... Again, it's not prohibitive or anything; it's barely noticable most of the time. But if I were to do this again (which I will), I would probably leave that region completely out as early as the lasercutting stage and then merge it together with the _undercover_ layer to make a more pronounced "valley". I'm probably not describing this very visually, but you'll see the difference when I get to it...
+    - I want a **sleeve** -- to replace my trusty keyboard carrying [travel towel](). It's not the functionality, it's the prestige of a dedicated (and, of course, branded) carry case. Don't know much about how I want to solve this one yet, so it can end up a sleeve, or a hard case, or some sort of origami-ish [furoshiki](https://en.wikipedia.org/wiki/Furoshiki) cloth... Time will tell; stay tuned...
+- Firmware-related:
+    - I intend to solve various energy efficiency issues down the line, including a "deep" sleep, plus also a kind of middle ground between full activity and full sleep that would kick in earlier and where the matrix scanning is slower.
+    - Yet another kind of sleep, this time for the Bluetooth connection polling, which could then be restarted of course, it just wouldn't waste the battery in an infinite loop.
+    - Measuring (and then hopefully further optimizing) battery usage.
+    - Finish the initial ideas sprinkled throughout the repo regarding general use and personalization, and add a build scrit that streamlines the process.
+    - Separate the firmware part to its own repository (and add that as a submodule of the original one) to make it more accessible for potential other projects not associated with the physical aspects of the Absolem.
+
+I'll probably write another post (and link it here) when I get around to addressing all these. 
 
 
 
@@ -313,7 +342,9 @@ There's even a section in it which is about this writeup, in which I discuss why
 
 ## "Club"
 
-I have a controlled, but ever present tendency to "fanboy" over something if it really deserves it. For example, I'm a proud owner of a [Secrid Miniwallet](https://secrid.com/en-global/miniwallet-crisple-black) and I consider it a cool "club" to be a part of. And I would very much like it if there was an official "Absolem club", even if it's just the two of us!
+I have a controlled, but ever present tendency to "fanboy" over something if it really deserves it.
+For example, I'm a proud owner of a [Secrid Miniwallet](https://secrid.com/en-global/miniwallet-crisple-black) and I consider it a cool "club" to be a part of.
+And I would very much like it if there was an official "Absolem club", even if it's just the two of us!
 
 ![Nerd Party](https://zealot.hu/absolem/pics/nerd_party.jpg)
 
