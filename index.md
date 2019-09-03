@@ -264,13 +264,22 @@ That "gap" ended this April, by which time I've reconsidered a few things due to
     - hindered mobility, killed aesthetics
     - the most important angle was the _inward_, not the upward
 - redesign with maker.js
-- rough first draft --> 
+- rough first draft --> https://www.reddit.com/r/MechanicalKeyboards/comments/bpc54c/absolem_step_2_towards_world_domination/
+    - the form here was almost completely dictated by the ergonomic layout of the keys themselves, with a small, automatic outline applied.
+    - as I said in a comment (first half): "I'm totally unapologetic about the looks as the design is completely driven by ergonomics decisions..."
 
-### Going wireless
+### Going fancy and wireless
+
+- new controller footprint, plus battery accommodation
+- incredible OCD phase with the corners
+    - second half of the above quote: "The only minor things I have my "aesthetic influence" in is how the corners are rounded, how thick the margin is, how big the back opening is, etc."
+    - well, these might sound minor indeed, but the amount of time I pissed away trying to make them look just right was nothing short of ridiculous.
+- I also scheduled a complete rewrite to be as logical and "elegant" as I can make it (because why wouldn't I?)
+- results, summarized in a quality shitpost: https://www.reddit.com/r/MechanicalKeyboards/comments/c5rrao/you_may_not_like_it_but_this_is_what_peak/
 
 ### A visit from the "Low Profile Police"
 
-- this is where I _think_ I'm done with 
+- this is where I _think_ I'm done with the design but then [DanL4](https://www.reddit.com/user/DanL4/) comes along
 
 ### Etimology
 
@@ -302,28 +311,64 @@ And connecting this keyboard project to the Caterpillar from Alice is pertinent 
 
 Ooookay, enough small talk, let's get our hands dirty!
 
-### General aesthetics
 
-- natural --> more like an instrument
-- high profile
-    - low profile only "viable" when milled
-    - so a) contradicts wood, and
-    - b) "slim" is rarely "robust"
-- NO screws visible
-- minimalist, clean
-- quiet
-- wireless
-- heirloom-grade<a href="#footnote-3"><sup>3</sup></a>
+### Aesthetics
 
-### Materials
+With the ergonomic side of the design ready, it is time to discuss the specifics of building an actual, physical thing.
+The general guidelines I followed can be summed up as:
 
+- natural -- it should feel more like an instrument than a cheap peripheral
+- high profile -- anything that is "slim" is rarely "robust"
+- minimalistic -- so a clean, no frills look, no wires, and definitely NO visible screws
+- quiet -- only the bare minimum noise that's required for ergonomic operation
+- heirloom-grade<a href="#footnote-3"><sup>3</sup></a> -- a construction quality that would actually make it feasible to leave one of these to the next generation.
+
+Translating the above to materials led to:
+
+- 4 mm thick oak layers for the cover/undercover and the "belly",
+- 1.5 and 1 mm thick stainless steel layers for the switch plate and the bottom cover, respectively, and
+- 3 mm thick embossed neoprene for the anti-slip bottom and the internal sound insulation.
+
+
+### Preparations
+
+Getting all these required a lot of calls and messages to a lot of different people, and that doesn't even include having them cut according to the plans.
+Oak boards of the desired thickness are only sold by one webshop in the whole country.
+For the neoprene, I had to make a specific deal with a Chinese wholesale manufacturer to send me A4 sized "samples" (and where the shipping cost was a whole magnitude larger than the material).
+As for lasercutting, a lot of companies don't take small, one-off orders so I had to shop around quite a bit to find two that accepted the metalwork and the wood/neoprene, respectively.
+
+As for the other "ingredients", the Zilents came straight from the official store in Canada, and all the rest came from Aliexpress:
+
+- [Blank black Cherry profile thick PBT keycaps](https://www.aliexpress.com/item/32750162619.html?spm=a2g0s.9042311.0.0.27424c4dhR6zv3)
+- [Adafruit Feather nRF52 Bluefruit](https://www.aliexpress.com/item/32956053585.html?spm=a2g0s.9042311.0.0.27424c4dhR6zv3) 
+- [Magnetic Micro USB connector](https://www.aliexpress.com/item/32856265666.html?spm=a2g0s.9042311.0.0.27424c4dhR6zv3)
+- [1N4148 diodes](https://www.aliexpress.com/item/32729204179.html?spm=a2g0s.9042311.0.0.27424c4dhR6zv3)
+- [24 AWG tinned solid core wire](https://www.aliexpress.com/item/32879288883.html?spm=a2g0s.9042311.0.0.27424c4dhR6zv3)
+- [M2.5 button head Allen screws](https://www.aliexpress.com/item/33013007352.html?spm=a2g0s.9042311.0.0.27424c4dEGY0hq); 4 (controller), 6 (battery), and 14 mm (case)
+- [M2.5 hex nuts](https://www.aliexpress.com/item/32959149109.html?spm=a2g0s.9042311.0.0.27424c4dhR6zv3)
+- [M2.5 brass threaded inserts](https://www.aliexpress.com/item/32961915881.html?spm=a2g0s.9042311.0.0.27424c4dEGY0hq); 4 mm
+- [1500 mAh LiPo battery](https://www.aliexpress.com/item/32910470051.html?spm=a2g0s.9042311.0.0.27424c4dEGY0hq); 40 &times; 50 &times; 5 mm
+- [JST 2.0 PH 2-pin connector](https://www.aliexpress.com/item/32711927418.html?spm=a2g0s.9042311.0.0.27424c4dFcdI48)
+
+For the assembly, I also needed:
+
+- sandpaper in different grits
+- alcohol and Q-tips to clean the plates and the neoprene sides
+- universal glue and a professional, dedicated "spreading toothpick" -- to keep the threaded inserts in place, and also to glue the wooden layer-pairs together (I would use dedicated wood glue next time)
+- a hot glue gun -- to affix the controller nuts and to glue the switches in place
+- clamps (I had 4, but I would probably buy more next time)
+- wood stain, rags, brushes
+- a soldering kit, and a good wire stripper for the wiring
+- a 1.5 mm allen key for the screws
+
+Note that while the above shopping list looks quite nice and tidy, it's the result of probably half a dozen (or more) trips to different stores on as many occasions when I just remembered that "Oh, I need _that_ as well!".
 And then a looot of waiting for everything to arrive.
 
-### Prep
 
 ### Assembly
 
-Even most of the assembly consisted of waiting. Yes, really. (drying)
+Even most of the assembly consisted of waiting with all those drying and glue-setting times.
+It also didn't help much that I'm a complete n00b, so I would rather not tell you the actual (ungodly amount of) time it took me to do this.
 - only 3 legs for the controller --> improvisation is necessary :)
 
 ### Wiring
@@ -333,6 +378,8 @@ Even most of the assembly consisted of waiting. Yes, really. (drying)
     - reverse polarity...
 
 ### The finished product
+
+Feast your eyes!
 
 
 
