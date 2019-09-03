@@ -9,7 +9,7 @@
 I've designed and built my own mechanical keyboard.
 It's fucking awesome!
 I'm going to ramble about it now, *in detail*.
-Read on if you're interested, or [jump to the pictures](#the-finished-product), or post a comment to [the reddit thread](), or... you know... do whatever you fancy.
+Read on if you're interested, or [jump to the pictures](#the-finished-product), or post a comment to [the reddit thread](TODO), or... you know... do whatever you fancy.
 I'm not your mom. :)
 
 
@@ -280,6 +280,7 @@ That "gap" ended this April, by which time I've reconsidered a few things due to
 ### A visit from the "Low Profile Police"
 
 - this is where I _think_ I'm done with the design but then [DanL4](https://www.reddit.com/user/DanL4/) comes along
+- post layer pics here
 
 ### Etimology
 
@@ -303,7 +304,26 @@ And connecting this keyboard project to the Caterpillar from Alice is pertinent 
 
 ### Logo ~~stealing~~ design
 
+I knew that I wanted something butterfly-based, and also something geometric.
+What I also knew was that I suck at graphic design.
+So I started Googling "butterfly logo" and similarly creative terms hoping for the best.
+I even took side-quests like "hookah logo" or "caterpillar logo" but there was no clear winner.
+Until, that is, I tried to be as direct as possible and typed in "absolem logo".
+It immediately lead me to [absolem.pro](http://absolem.pro/), which -- I assume -- is a Russian hookah lounge franchise... with the perfect logo foundation!
+See if you can find the similarity:
 
+<div class="gallery">
+<img src="https://zealot.hu/absolem/pics/absolem_steal.jpg" width="45%"></img> <img src="https://zealot.hu/absolem/pics/absolem_logo.png" width="45%"></img>
+</div>
+
+So yeah, I totally ~~stole~~ borrowed inspiration from this, and did a few minor modifications:
+
+- the whole thing -- like the keyboard plans themselves -- is [generated procedurally](https://github.com/mrzealot/absolem/blob/master/plans/absolem.js#L505), so there are definitely some differences in the angles and the distances
+- the tail is now short, because why would it be long in the first place?
+- it now has a "head" with little "antennae"
+- it has 5 "bars" in either side (representing the 5 columns of the board), of which only 3 remains for the lower region (representing the thumb keys)
+
+The end result got engraved onto the cover layer, and I'm very pleased with how it turned out.
 
 
 
