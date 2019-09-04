@@ -313,7 +313,7 @@ It immediately lead me to [absolem.pro](http://absolem.pro/), which -- I assume 
 See if you can find the similarity:
 
 <div class="gallery">
-<img src="https://zealot.hu/absolem/pics/absolem_steal.jpg" width="45%"></img> <img src="https://zealot.hu/absolem/pics/absolem_logo.png" width="45%"></img>
+<img src="https://zealot.hu/absolem/pics/absolem_steal.jpg" width="45%" /> <img src="https://zealot.hu/absolem/pics/absolem_logo.png" width="45%" />
 </div>
 
 So yeah, I totally ~~stole~~ borrowed inspiration from this, and did a few minor modifications:
@@ -321,7 +321,7 @@ So yeah, I totally ~~stole~~ borrowed inspiration from this, and did a few minor
 - the whole thing -- like the keyboard plans themselves -- is [generated procedurally](https://github.com/mrzealot/absolem/blob/master/plans/absolem.js#L505), so there are definitely some differences in the angles and the distances
 - the tail is now short, because why would it be long in the first place?
 - it now has a "head" with little "antennae"
-- it has 5 "bars" in either side (representing the 5 columns of the board), of which only 3 remains for the lower region (representing the thumb keys)
+- it has 5 "bars" on either side (representing the 5 columns of the board), of which only 3 remains for the lower region (representing the thumb keys)
 
 The end result got engraved onto the cover layer, and I'm very pleased with how it turned out.
 
