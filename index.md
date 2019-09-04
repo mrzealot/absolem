@@ -37,7 +37,9 @@ I'm not your mom. :)
 Until about one and a half years ago, I'd been happily typing on a [shitty Genius](https://www.cnet.com/products/genius-slimstar-i220-keyboard-series/) with a QWERTZ (Hungarian QWERTY) layout.
 Ah... simpler times!
 
-!["Ignorance is bliss"](https://zealot.hu/absolem/pics/ignorance_is_bliss_matrix.gif)
+<div class="gallery">
+<img alt="Ignorance is bliss" src="https://zealot.hu/absolem/pics/ignorance_is_bliss_matrix.gif"/>
+</div>
 
 I was hovering at about 50-60 wpm, which -- while decidedly not blazing fast -- didn't bother me much.
 I also didn't really care that my typing "technique" involved around 4-6 fingers and a lot of looking at the keyboard.
@@ -97,7 +99,9 @@ I'm not really a comment-y kind of guy, but you can find even me sometimes in th
 I'm much more "lenient" towards ortho (a.k.a. grid, or matrix) layouts, but the clear winner of this aspect (for me) is column-staggered boards.
 Let's give future aliens a chance to figure out how we looked like!
 
-![Nerd joke](https://zealot.hu/absolem/pics/nerd_joke.jpg)
+<div class="gallery">
+<img alt="Nerd joke" src="https://zealot.hu/absolem/pics/nerd_joke.jpg" width="60%"/>
+</div>
 
 What's more, I'm very much in favour of an "agressive" stagger.
 Many boards started in the right direction, but few went far enough, so I've been planning to be a little heavier-handed in the stagger department from the start.
@@ -109,6 +113,10 @@ As an example, compare a ["traditional" TKL (or 60%)](http://www.vortexgear.tw/v
 
 Today's full size (and beyond) keyboards come from the assumption that there should be the same number of keys as there are desired functionalities and we should make our hands conform to the resulting layout.
 I, on the other hand, think that the inverse of this is true, namely that we should make the number of the keys match what's comfortably reachable from the home position and make the desired functionalities conform to that.
+
+<div class="gallery">
+<img alt="XKCD keyboard" src="https://zealot.hu/absolem/pics/xkcd_keyboard.png" width="60%"/>
+</div>
 
 This leads to a) touch typing -- or at least a strictly enforced finger-key relationship (which has many more benefits I'm not going to discuss here) and b) to the need to significantly decrease the number of keys.
 On the other extreme of the spectrum is [stenography](http://plover.stenoknight.com/), but even if we remain firmly within the realm of letter-based typing, we can (and should) make do following the "at most 1 key distance from home" principle.
@@ -143,9 +151,13 @@ As an example of pinky overworking, consider any regular layout (or even the [Er
 
 Generally, there are three approaches for the thumbs:
 
-1. SPACEBAR!!! -- one of the thumbs can keep hacking away on a button that takes up 6-7 spaces, while the other just exists. Very efficient... &lt;/sarcasm&gt; There are more sophisticated layouts, with split spacebars and the like, but from an ergonomical standpoint, these are all subpar compared to the next two.
+1. SPACEBAR!!! -- one of the thumbs can keep hacking away on a button that takes up 6-7 spaces, while the other just exists. Very efficient... `</sarcasm>` There are more sophisticated layouts, with split spacebars and the like, but from an ergonomical standpoint, these are all subpar compared to the next two.
 2. Clusters -- consider the [Ergodox](https://ergodox-ez.com) again. While this way is definitely better than a single spacebar, in my opinion it overcompensates with the amount of work it tries to give to the thumbs. The side effect of this is that very few of those thumb keys are actually convenient (or usable, according to some). This leads us nicely to:
 3. Fans -- consider the [KeyboardIO Model 01](https://shop.keyboard.io/). This approach appreciates that the thumb actually moves in an arc, and doesn't try to add extra functionality either above or below it.
+
+<div class="gallery">
+<img alt="Thumb fractal" src="https://zealot.hu/absolem/pics/thumb_fractal.jpg" width="60%"/>
+</div>
 
 This is probably the only "really" original part of the Absolem design, as all the other stuff I've mentioned so far could be seen _somewhere_ before.
 And, depending on how we interpret "original", maybe not even this...
@@ -207,6 +219,10 @@ See my ergo finger-aware weight layout in the [Assembly section](#assembly).
 
 The aesthetics are discussed below; the focus here is the profile of the caps, which greatly add to the overall feel and ergonomy.
 
+<div class="gallery">
+<img alt="A literal key cap" src="https://zealot.hu/absolem/pics/key_cap.jpg" width="60%"/>
+</div>
+
 Side story: during my "awakening", I went from staring at high resolution photos and not seeing any difference other than color and symbols, to being able to identify SA, DSA, XDA, OEM and Cherry by a cursory glance.
 This is probably not a very notable feat amongst the hardcore keeb folk, I just put it here to remind myself (and the esteemed reader) that it is easy to forget what is "obvious" and what isn't to an outsider...
 
@@ -239,7 +255,7 @@ It's gonna be worth it in the end.
 
 ## Design
 
-With all this very important (&lt;/yawn&gt;) knowledge collected, it was time to design "the endgame".
+With all this very important (`</yawn>`) knowledge collected, it was time to design "the endgame".
 
 ### The Polygon phase
 
@@ -289,15 +305,21 @@ And connecting this keyboard project to the Caterpillar from Alice is pertinent 
 
 - the keyboard looks like a butterfly...
 
-![D'uuuh](https://zealot.hu/absolem/pics/duh.gif)
+<div class="gallery">
+<img alt="D'uuuh" src="https://zealot.hu/absolem/pics/duh.gif"/>
+</div>
 
 - my all-time computer (and the in-progress environment I'm cultivating on it) is called Alice, and it's very fitting to have the "Absolem" blow letters to her over the air:
 
-![Hookah smoke letters](https://zealot.hu/absolem/pics/smoke_letters.jpg)
+<div class="gallery">
+<img alt="Hookah smoke letters" src="https://zealot.hu/absolem/pics/smoke_letters.jpg" width="60%"/>
+</div>
 
 - in the Tim Burton version (again), Absolem helped Alice & co. interpret the Oracle, which would make _me_ the Oracle in this analogy, and that's an ego-boost I can't pass up!
 
-![Oracle](https://zealot.hu/absolem/pics/oracle.jpg)
+<div class="gallery">
+<img alt="Oracle" src="https://zealot.hu/absolem/pics/oracle.jpg" width="50%"/>
+</div>
 
 - plus it also sounds really cool, even if I do say so myself.
 
@@ -313,7 +335,8 @@ It immediately lead me to [absolem.pro](http://absolem.pro/), which -- I assume 
 See if you can find the similarity:
 
 <div class="gallery">
-<img src="https://zealot.hu/absolem/pics/absolem_steal.jpg" width="45%" /> <img src="https://zealot.hu/absolem/pics/absolem_logo.png" width="45%" />
+<img src="https://zealot.hu/absolem/pics/absolem_steal.jpg" width="45%" />
+<img src="https://zealot.hu/absolem/pics/absolem_logo.png" width="45%" />
 </div>
 
 So yeah, I totally ~~stole~~ borrowed inspiration from this, and did a few minor modifications:
@@ -334,7 +357,7 @@ Ooookay, enough small talk, let's get our hands dirty!
 
 ### Aesthetics
 
-With the ergonomic side of the design ready, it is time to discuss the specifics of building an actual, physical thing.
+With the digital side of the design ready, it is time to discuss the specifics of building an actual, physical thing.
 The general guidelines I followed can be summed up as:
 
 - natural -- it should feel more like an instrument than a cheap peripheral
@@ -347,7 +370,7 @@ Translating the above to materials led to:
 
 - 4 mm thick oak layers for the cover/undercover and the "belly",
 - 1.5 and 1 mm thick stainless steel layers for the switch plate and the bottom cover, respectively, and
-- 3 mm thick embossed neoprene for the anti-slip bottom and the internal sound insulation.
+- 3 mm thick embossed neoprene for the anti-slip bottom and the internal sound dampening.
 
 
 ### Preparations
