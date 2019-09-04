@@ -1,4 +1,4 @@
-# Absolem -- My 2D Endgame
+# Absolem
 
 
 ![Absolem Splash](https://zealot.hu/absolem/pics/splash.jpg)
@@ -34,7 +34,7 @@ I'm not your mom. :)
 
 ## Intro
 
-Until about one and a half years ago, I'd been happily typing on a [shitty Genius](https://www.cnet.com/products/genius-slimstar-i220-keyboard-series/) with a QWERTZ (Hungarian QWERTY) layout.
+Until about one and a half years ago, I'd been happily typing on a [basic Genius keyboard](https://www.cnet.com/products/genius-slimstar-i220-keyboard-series/) with a QWERTZ (Hungarian QWERTY) layout.
 Ah... simpler times!
 
 <div class="gallery">
@@ -462,9 +462,11 @@ It was pretty disheartening to go from around 60 wpm to below 10 in blink.
 But I then completed the [typing.com](https://www.typing.com/) tutorial and reached ~30wpm, which provided enough familiarity to start the slow but steady climb over on [NitroType](https://www.nitrotype.com/team/D20R).
 After daily practice for over 4 months (which I log [here](https://docs.google.com/spreadsheets/d/1pBDQd8YSD9eLS8331yy9vSNgv2Vac4_oS9yFa0fSX98/edit?usp=sharing)), I'm currently at an average of about 80 wpm with occasional visits in the 90s... Not part of the elite (yet) but progress nevertheless.
 
-![WPM progress](https://zealot.hu/absolem/pics/wpm_progress.png)
+<div class="gallery">
+<img alt="WPM progress" src="https://zealot.hu/absolem/pics/wpm_progress.png" width="90%"/>
+</div>
 
-I also frequently use [Keybr.com](https://www.keybr.com/) (like, a LOT), [10fastfingers](https://10fastfingers.com/typing-test/english), and [SpeedCoder](http://www.speedcoder.net/) for some varied practice.
+I also frequently use [Keybr.com](https://www.keybr.com/) (like, a LOT), [10fastfingers](https://10fastfingers.com/typing-test/english), [typeracer](https://data.typeracer.com/pit/profile?user=mrzealot), and [SpeedCoder](http://www.speedcoder.net/) for some varied practice.
 
 
 
@@ -482,9 +484,11 @@ There's even a section in it which is about this writeup, in which I discuss why
 
 ## Future work
 
-Okay, if you want to nitpick, I did really say "endgame" in the title, which _should_ mean that there's no "future work" remaining...
+Okay, if you want to nitpick, I did really say "endgame" in this post several times, which _should_ mean that there's no "future work" remaining...
 
-![Technically Correct](https://zealot.hu/absolem/pics/technically_correct.jpg)
+<div class="gallery">
+<img alt="Technically Correct" src="https://zealot.hu/absolem/pics/technically_correct.jpg" />
+</div>
 
 In my defense, though, I'd like to say that:
 
@@ -517,7 +521,9 @@ I have a controlled, but ever present tendency to "fanboy" over something if it 
 For example, I'm a proud owner of a [Secrid Miniwallet](https://secrid.com/en-global/miniwallet-crisple-black) and I consider it a cool "club" to be a part of.
 And I would very much like it if there was an official "Absolem club", even if it's just the two of us!
 
-![Nerd Party](https://zealot.hu/absolem/pics/nerd_party.jpg)
+<div class="gallery">
+<img alt="Nerd Party" src="https://zealot.hu/absolem/pics/nerd_party.jpg" />
+</div>
 
 So all I ask of you, dear reader, is that if you ever decide that the Absolem is a good match for you and you build one, please contact me so that I can add you to the club! Or you could contact me to build you one; then I'll know to add you automatically! It'll be great, I promise... We could even wear a badge! Too much? Okay, I'll stop now.
 
@@ -532,6 +538,7 @@ Anyways, there'll be a list of some sort here, if there's ever someone other tha
 If you've seriously read all the way down here, then you're awesome! I hope I managed to keep it interesting. Now go and upvote the [corresponding reddit post]() and star my [GitHub repo](https://github.com/mrzealot/absolem) to earn an official, non-refundable, virtual high-five!
 
 
+<br />
 <br />
 <br />
 <hr />
