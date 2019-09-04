@@ -156,7 +156,7 @@ Generally, there are three approaches for the thumbs:
 3. Fans -- consider the [KeyboardIO Model 01](https://shop.keyboard.io/). This approach appreciates that the thumb actually moves in an arc, and doesn't try to add extra functionality either above or below it.
 
 <div class="gallery">
-<img alt="Thumb fractal" src="https://zealot.hu/absolem/pics/thumb_fractal.jpg" width="60%"/>
+<img alt="Thumb fractal" src="https://zealot.hu/absolem/pics/thumb_fractal.jpg" width="40%"/>
 </div>
 
 This is probably the only "really" original part of the Absolem design, as all the other stuff I've mentioned so far could be seen _somewhere_ before.
@@ -220,7 +220,7 @@ See my ergo finger-aware weight layout in the [Assembly section](#assembly).
 The aesthetics are discussed below; the focus here is the profile of the caps, which greatly add to the overall feel and ergonomy.
 
 <div class="gallery">
-<img alt="A literal key cap" src="https://zealot.hu/absolem/pics/key_cap.jpg" width="60%"/>
+<img alt="A literal key cap" src="https://zealot.hu/absolem/pics/key_cap.jpg" width="40%"/>
 </div>
 
 Side story: during my "awakening", I went from staring at high resolution photos and not seeing any difference other than color and symbols, to being able to identify SA, DSA, XDA, OEM and Cherry by a cursory glance.
