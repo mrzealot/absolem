@@ -259,17 +259,41 @@ With all this very important (`</yawn>`) knowledge collected, it was time to des
 
 ### The Polygon phase
 
-I started out with a little cardboard example (fig. 1) to get a feel for a different thumb plane.
-Note that the main keywell layout was already identical to the final product -- that was never in question.
-It then grew into a working prototype which I've already posted about [here](https://www.reddit.com/r/MechanicalKeyboards/comments/9aam0u/polygon_a_prototype_demo_a_roadmap_and_lots_of/) (fig. 2-3).
-I was generally satisfied with it, so I went ahead and coded a Python &rarr; OpenSCAD model, too (fig. 4-5)<a href="#footnote-5"><sup>5</sup></a>.
+I started out with a little cardboard example to get a feel for a different thumb plane.
 
-Here came a huge gap where I did not have the luxury to retrain myself with the new board/layout (or to think a whole lot about keyboards in general) as I constantly had to meet strict deadlines; with the good ol' QWERTZ.
+<div class="gallery">
+    <img src="https://zealot.hu/absolem/pics/polygon_1.jpg" width="80%"/>
+</div>
+
+Note that the main keywell layout was already identical to the final product -- that was never in question.
+
+<div class="gallery">
+    <img src="https://zealot.hu/absolem/pics/polygon_2.jpg" width="80%"/>
+</div>
+
+It then grew into a working prototype which I've already posted about [here](https://www.reddit.com/r/MechanicalKeyboards/comments/9aam0u/polygon_a_prototype_demo_a_roadmap_and_lots_of/).
+
+<div class="gallery">
+    <img src="https://zealot.hu/absolem/pics/polygon_3.jpg" width="80%"/>
+    <img src="https://zealot.hu/absolem/pics/polygon_4.jpg" width="80%"/>
+    <img src="https://zealot.hu/absolem/pics/polygon_5.jpg" width="80%"/>
+    <img src="https://zealot.hu/absolem/pics/polygon_6.jpg" width="80%"/>
+</div>
+
+I was generally satisfied with it, so I went ahead and coded a Python &rarr; OpenSCAD model, too, in preparation of a "real" build.<a href="#footnote-5"><sup>5</sup></a>.
+
+<div class="gallery">
+    <img src="https://zealot.hu/absolem/pics/polygon_7.png" width="80%"/>
+    <img src="https://zealot.hu/absolem/pics/polygon_8.png" width="80%"/>
+    <img src="https://zealot.hu/absolem/pics/polygon_9.png" width="80%"/>
+</div>
+
+Here came a huge, work-related gap where I did not have the luxury to retrain myself with the new board/layout (or to think a whole lot about keyboards in general) as I constantly had to meet strict deadlines under insane pressure; with the good ol' QWERTZ.
 
 
 ### Transitioning to 2D
 
-That "gap" ended this April, by which time I've reconsidered a few things due to a) the prototyping experience, b) the designs I kept seeing on occasional visits to reddit, and c) the notion and pursuit of minimalism that kept creeping into my life.
+That "gap" (and the associated pressure, thankfully) ended this April, by which time I've reconsidered a few things due to a) the prototyping experience, b) the designs I kept seeing on occasional visits to reddit, and c) the notion and pursuit of minimalism that kept creeping into my life.
 
 - reconsidered aspects based on the prototyping experience
 - no split
