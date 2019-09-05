@@ -260,14 +260,10 @@ With all this very important (`</yawn>`) knowledge collected, it was time to des
 ### The Polygon phase
 
 I started out with a little cardboard example to get a feel for a different thumb plane.
-
-<div class="gallery">
-    <img src="https://zealot.hu/absolem/pics/polygon_1.jpg" width="80%"/>
-</div>
-
 Note that the main keywell layout was already identical to the final product -- that was never in question.
 
 <div class="gallery">
+    <img src="https://zealot.hu/absolem/pics/polygon_1.jpg" width="80%"/>
     <img src="https://zealot.hu/absolem/pics/polygon_2.jpg" width="80%"/>
 </div>
 
@@ -281,6 +277,7 @@ It then grew into a working prototype which I've already posted about [here](htt
 </div>
 
 I was generally satisfied with it, so I went ahead and coded a Python &rarr; OpenSCAD model, too, in preparation of a "real" build.<a href="#footnote-5"><sup>5</sup></a>.
+The last picture is an exploded view to help understand the 3D structure...
 
 <div class="gallery">
     <img src="https://zealot.hu/absolem/pics/polygon_7.png" width="80%"/>
@@ -295,22 +292,45 @@ Here came a huge, work-related gap where I did not have the luxury to retrain my
 
 That "gap" (and the associated pressure, thankfully) ended this April, by which time I've reconsidered a few things due to a) the prototyping experience, b) the designs I kept seeing on occasional visits to reddit, and c) the notion and pursuit of minimalism that kept creeping into my life.
 
-- reconsidered aspects based on the prototyping experience
-- no split
-    - always ended up in the same position anyway
-    - was a hassle to align every time
-- no thumbplane + tenting
-    - was not "bad" but didn't add much
-    - hindered mobility, killed aesthetics
-    - the most important angle was the _inward_, not the upward
-- redesign with maker.js
-- rough first draft --> https://www.reddit.com/r/MechanicalKeyboards/comments/bpc54c/absolem_step_2_towards_world_domination/
-    - the form here was almost completely dictated by the ergonomic layout of the keys themselves, with a small, automatic outline applied.
-    - as I said in a comment (first half): "I'm totally unapologetic about the looks as the design is completely driven by ergonomics decisions..."
+First, no more split; I "glued" the board together.
+I'm not saying that split is somehow worse in any way, as it might be optimal for people who frequently change up their board's position.
+But for me, it always ended up in the same configuration, and it was just an additional hassle to align it every time.
+A one piece design also makes transportation easier and the whole board is much more "compact" as a result.
+
+The other big change was abandoning the separate thumb plane and the tenting -- so basically everything 3D.
+Again, I'm definitely not saying that 3D stuff is bad.
+But we're well past objective, preparatory research now, and my subjective opinion was that while they weren't "bad" or "uncomfortable", they didn't _add_ much either.
+From an ergonomic POV, I found that the most important angle is the _inward_ one, not the upward, anyway.
+The 3D stuff did, however, significantly take away from mobility and compactness (again), and also kind of killed the whole aesthetic of the board for me.
+
+So I decided to redesign the whole thing strictly on the 2D plane.
+Of course when I say "the whole thing", I really mean the thumb area, which I modeled as an actual arc with a given thumb radius.
+This, combined with the aforementioned 1DFH principle, lead to a thumb fan that reached well below the usual amount...
+But hey, if that's where my fingers are, then so be it.
+
+The "redesign" happened with the use of [Maker.js](https://maker.js.org/) as I (unsurprisingly) still didn't want to draw if I could avoid it.
+In the spirit of quick prototyping, I focused solely on the positioning of the keys and practically everything else was a simble placeholder.
+For example, the whole outline was just an automatically generated outline of the union of the keyholes.
+It had jagged edges, and it looked very "industrial", but that was good enough.
+As I said in (the first half of) a comment: "I'm totally unapologetic about the looks as the design is completely driven by ergonomics decisions...".
+
+When it reached a state where it could be unironically called "beta", I had a steel keyplate cut, desoldered the Polygon switches for repurposing, manually wired in a Pro Micro (that I attached to the bottom of the plate using blu tack), put a piece of cardboard underneath it all (that I cut out from a fucking cucumber box I scavenged from a nearby shop), and called it "done".
+I posted about the rough first draft [here](https://www.reddit.com/r/MechanicalKeyboards/comments/bpc54c/absolem_step_2_towards_world_domination/).
+
+<div class="gallery">
+    <img src="https://zealot.hu/absolem/pics/proto_1.jpg" width="80%"/>
+    <img src="https://zealot.hu/absolem/pics/proto_2.jpg" width="80%"/>
+    <img src="https://zealot.hu/absolem/pics/proto_3.jpg" width="80%"/>
+</div>
+
+Aww, isn't that cute?
+I even had a little hatch on the bottom (for accessing the reset button) that opened/closed and was held by a piece of tape...
+
 
 ### Going fancy and wireless
 
 - new controller footprint, plus battery accommodation
+    - thanks to [SouthPawEngineer](https://www.reddit.com/user/SouthPawEngineer/) and [iamjoric](https://www.reddit.com/user/iamjoric/) for their help with the wireless aspects 
 - incredible OCD phase with the corners
     - second half of the above quote: "The only minor things I have my "aesthetic influence" in is how the corners are rounded, how thick the margin is, how big the back opening is, etc."
     - well, these might sound minor indeed, but the amount of time I pissed away trying to make them look just right was nothing short of ridiculous.
@@ -392,9 +412,10 @@ The general guidelines I followed can be summed up as:
 
 Translating the above to materials led to:
 
-- 4 mm thick oak layers for the cover/undercover and the "belly",
-- 1.5 and 1 mm thick stainless steel layers for the switch plate and the bottom cover, respectively, and
-- 3 mm thick embossed neoprene for the anti-slip bottom and the internal sound dampening.
+- 4 mm thick oak layers for the cover/undercover and the "middles",
+- 1.5 and 1 mm thick stainless steel layers for the switch plate and the bottom cover, respectively,
+- 3 mm thick embossed neoprene for the anti-slip bottom and the internal sound dampening, and
+- blank PBT keycaps for a minimal, clean look (and to force me to actually learn my fucking keymap).
 
 
 ### Preparations
@@ -402,7 +423,7 @@ Translating the above to materials led to:
 Getting all these required a lot of calls and messages to a lot of different people, and that doesn't even include having them cut according to the plans.
 Oak boards of the desired thickness are only sold by one webshop in the whole country.
 For the neoprene, I had to make a specific deal with a Chinese wholesale manufacturer to send me A4 sized "samples" (and where the shipping cost was a whole magnitude larger than the material).
-As for lasercutting, a lot of companies don't take small, one-off orders so I had to shop around quite a bit to find two that accepted the metalwork and the wood/neoprene, respectively.
+Regarding lasercutting, a lot of companies don't take small, one-off orders so I had to shop around quite a bit to find two that accepted the metalwork and the wood/neoprene, respectively.
 
 As for the other "ingredients", the Zilents came straight from the official store in Canada, and all the rest came from Aliexpress:
 
@@ -430,6 +451,10 @@ For the assembly, I also needed:
 
 Note that while the above shopping list looks quite nice and tidy, it's the result of probably half a dozen (or more) trips to different stores on as many occasions when I just remembered that "Oh, I need _that_ as well!".
 And then a looot of waiting for everything to arrive.
+
+As for how much all this cost me, I can really only guess because of all the tools I didn't have and all the experimentation I did -- what we include here matters a lot.
+In any case, I'd say I've spent somewhere in the neighbourhood of $400 (so far!).
+If it ever came to making this "repeatable", though, with a little streamlining, _and_ we woundn't include the switches and the keycaps (as most estimates usually don't), it could be well below $200.
 
 
 ### Assembly
