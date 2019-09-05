@@ -276,7 +276,7 @@ It then grew into a working prototype which I've already posted about [here](htt
     <img src="https://zealot.hu/absolem/pics/polygon_6.jpg" width="80%"/>
 </div>
 
-I was generally satisfied with it, so I went ahead and coded a Python &rarr; OpenSCAD model, too, in preparation of a "real" build.<a href="#footnote-5"><sup>5</sup></a>.
+I was generally satisfied with it, so I went ahead and coded a Python &rarr; OpenSCAD model, too, in preparation of a "real" build<a href="#footnote-5"><sup>5</sup></a>.
 The last picture is an exploded view to help understand the 3D structure...
 
 <div class="gallery">
@@ -327,7 +327,27 @@ Aww, isn't that cute?
 I even had a little hatch on the bottom (for accessing the reset button) that opened/closed and was held by a piece of tape...
 
 
-### Going fancy and wireless
+### Going wireless, and fancy
+
+As soon as I started using the prototype -- even despite the frustration that came from the incredible slowdown I was experiencing -- I knew that this is the shit<a href="#footnote-6"><sup>6</sup></a>!
+So, naturally, I immediately started preparations for a "real" build...
+[This time, for sure!](https://hearthstone.gamepedia.com/Tinkmaster_Overspark#Quotes)
+
+The first thing I had to consider was that wireless operation required me to say goodbye to my beloved Pro Micros.
+Let me seize this opportunity to thank [SouthPawEngineer](https://www.reddit.com/user/SouthPawEngineer/) (pentagram in ink with a 65g Zealio switch in the middle) and [iamjoric](https://www.reddit.com/user/iamjoric/) for their help with the wireless aspects, and just generally orienting me to have an idea about what I should consider.
+After checking my options from a shitton of perspectives (availability, reliability, replaceability, _whatever_-ability... and price), I chose the [Adafruit Feather nRF52 Bluefruit LE](https://www.adafruit.com/product/3406) as the controller.
+It was really an "all-in-one" package for me, as it ticked every box I cared about:
+
+- high quality
+- native Bluetooth LE
+- built-in LiPo charging
+- USB programmability with auto reset
+- plenty of GPIOs
+
+It was, however, larger than the Pro Micro, and (of course) also required a battery, so I had to make room.
+As the middle region couldn't accommodate both side-by-side, I initially went for a thicker construction where the battery would go under one of the keywells -- more on this later.
+
+
 
 - new controller footprint, plus battery accommodation
     - thanks to [SouthPawEngineer](https://www.reddit.com/user/SouthPawEngineer/) and [iamjoric](https://www.reddit.com/user/iamjoric/) for their help with the wireless aspects 
@@ -414,8 +434,8 @@ Translating the above to materials led to:
 
 - 4 mm thick oak layers for the cover/undercover and the "middles",
 - 1.5 and 1 mm thick stainless steel layers for the switch plate and the bottom cover, respectively,
-- 3 mm thick embossed neoprene for the anti-slip bottom and the internal sound dampening, and
-- blank PBT keycaps for a minimal, clean look (and to force me to actually learn my fucking keymap).
+- 3 mm thick embossed neoprene for the anti-slip bottom and the internal sound dampening (it didn't _have_ to be embossed, but it looked so cool under my mousepad that I couldn't resist), and
+- blank PBT keycaps for comfort, and a minimal, clean look (and to force me to actually learn my fucking keymap).
 
 
 ### Preparations
@@ -456,6 +476,15 @@ As for how much all this cost me, I can really only guess because of all the too
 In any case, I'd say I've spent somewhere in the neighbourhood of $400 (so far!).
 If it ever came to making this "repeatable", though, with a little streamlining, _and_ we woundn't include the switches and the keycaps (as most estimates usually don't), it could be well below $200.
 
+Two short, related anecdotes:
+
+1) The metal lasercutting shop is in an industrial park a few kilometers out of town, and when we arrived there to pick up the plates with my wife by bike, some workers were laughing at us pretty hard.
+They said that they have been doing this for a while, and have encountered the whole spectrum of cars, vans, and trucks at the shop, but nobody has ever come to collect their order by bike yet... :)
+
+2) When asking around about wood processing options in a local shop, I brought along the current prototype for illustration.
+The 2 guys there were really helpful (they referred me to the lasercutter  I ended up with), but there was also a woman who acted really condescendingly towards me the whole time, and whose only contribution to the conversation was a careless "That's not possible... You have to forget about this!".
+I'd just like to state for the record that it _was_ indeed possible, and send a heartfelt "Fuck you!" to that "lady" through this channel as well...
+
 
 ### Assembly
 
@@ -463,18 +492,31 @@ Even most of the assembly consisted of waiting with all those drying and glue-se
 It also didn't help much that I'm a complete n00b, so I would rather not tell you the actual (ungodly amount of) time it took me to do this.
 - only 3 legs for the controller --> improvisation is necessary :)
 
+
 ### Wiring
 
 - battery fuckup
     - https://forums.adafruit.com/viewtopic.php?f=57&t=155069
     - reverse polarity...
 
+
 ### The finished product
 
-Feast your eyes!
+This whole process has often reminded me of jedi knights building their own lightsabers...
+And finally I was ready to "graduate", as the build was finished!
 
+Well, physically...
+It was nothing more at this stage than a fancy desk ornament as it did exactly nothing, but it was finished nevertheless!
+You'll have to forgive me if I sound a little too fucking proud...
+Anyways, feast your eyes<a href="#footnote-7"><sup>7</sup></a>!
 
-
+<div class="gallery">
+<img src="https://zealot.hu/absolem/pics/splash.jpg" width="80%" />
+<img src="https://zealot.hu/absolem/pics/finished_1.jpg" width="80%" />
+<img src="https://zealot.hu/absolem/pics/finished_2.jpg" width="80%" />
+<img src="https://zealot.hu/absolem/pics/finished_3.jpg" width="80%" />
+<img src="https://zealot.hu/absolem/pics/finished_4.jpg" width="80%" />
+</div>
 
 
 ## Firmware
@@ -611,3 +653,7 @@ __Footnotes__:
 <sup id="footnote-4">4</sup>: My crafts teacher in elementary school (may he rest in peace) once said to me that if there's ever anything to fix around the house, I should just call someone over :D
 
 <sup id="footnote-5">5</sup>: If you think that it's a shame that I didn't go in this 3D-ish direction, then feel free to go dumpster-diving into the [repo](https://github.com/mrzealot/absolem)'s history, and fish out the model to use/modify.
+
+<sup id="footnote-6">6</sup>: I just love how when something's shit, that's bad. But when something's _the_ shit, it's really good. Also relevant is the crazy relationship between horrible/horrific/terrible and terrific. English is (the?) shit. :P
+
+<sup id="footnote-7">7</sup>: As you might have noticed from the potato-quality photos, I'm _not_ a photographer. So please do both of us a favour and concentrate on the subject matter of the pics, not the quality!
