@@ -329,7 +329,7 @@ I even had a little hatch on the bottom (for accessing the reset button) that op
 
 ### Going wireless, and fancy
 
-As soon as I started using the prototype -- even despite the frustration that came from the incredible slowdown I was experiencing -- I knew that this is the shit<a href="#footnote-6"><sup>6</sup></a>!
+As soon as I started using the prototype -- even despite the frustration that came from the incredible slowdown I was experiencing -- I knew that this layout was the shit<a href="#footnote-6"><sup>6</sup></a>!
 So, naturally, I immediately started preparations for a "real" build...
 [This time, for sure!](https://hearthstone.gamepedia.com/Tinkmaster_Overspark#Quotes)
 
@@ -347,20 +347,49 @@ It was really an "all-in-one" package for me, as it ticked every box I cared abo
 It was, however, larger than the Pro Micro, and (of course) also required a battery, so I had to make room.
 As the middle region couldn't accommodate both side-by-side, I initially went for a thicker construction where the battery would go under one of the keywells -- more on this later.
 
+The other thing I had to address was the "polish" of the outlines, the cover layers, and the fancy-ization in general.
+And here is where the second half of the above-mentioned comment comes into play:
+"I'm totally unapologetic about the looks as the design is completely driven by ergonomics decisions... The only minor things I have my 'aesthetic influence' in is how the corners are rounded, how thick the margin is, how big the back opening is, etc.".
+Suffice it to say, that "minor influence" quickly turned into an incredible OCD phase where I fought witht gaps, joints, and corner roundings so minor that you'd barely even notice.
+The amount of time I pissed away trying to make them look _juuuust right_ was nothing short of ridiculous.
+I, of course, also scheduled a complete rewrite while I was at it so the code can be as logically structured and "elegant" as I can make it (because why wouldn't I?).
 
+The results of this phase were summarized in [this quality shitpost](https://www.reddit.com/r/MechanicalKeyboards/comments/c5rrao/you_may_not_like_it_but_this_is_what_peak/), full of comparisons to butterflies, briefs, and even uteruses.
 
-- new controller footprint, plus battery accommodation
-    - thanks to [SouthPawEngineer](https://www.reddit.com/user/SouthPawEngineer/) and [iamjoric](https://www.reddit.com/user/iamjoric/) for their help with the wireless aspects 
-- incredible OCD phase with the corners
-    - second half of the above quote: "The only minor things I have my "aesthetic influence" in is how the corners are rounded, how thick the margin is, how big the back opening is, etc."
-    - well, these might sound minor indeed, but the amount of time I pissed away trying to make them look just right was nothing short of ridiculous.
-- I also scheduled a complete rewrite to be as logical and "elegant" as I can make it (because why wouldn't I?)
-- results, summarized in a quality shitpost: https://www.reddit.com/r/MechanicalKeyboards/comments/c5rrao/you_may_not_like_it_but_this_is_what_peak/
+<div class="gallery">
+    <img src="https://zealot.hu/absolem/pics/shitpost.png" width="80%"/>
+</div>
 
 ### A visit from the "Low Profile Police"
 
-- this is where I _think_ I'm done with the design but then [DanL4](https://www.reddit.com/user/DanL4/) comes along
-- post layer pics here
+This is the point in the process where I _thought_ I was done with the design, but then [DanL4](https://www.reddit.com/user/DanL4/) came along to fuck everything up!
+He suggested that I somehow solve the positioning of the controller and the battery _above/below_ each other to cram everything in the middle, thereby making the whole build about 4 mm (1 wood layer) thinner.
+(Always with the making it thinner spiel... I'm surprised I was even allowed to use full size MX switches at all!)
+The shameful part here is that I'd actually thought about this before and concluded that they just couldn't fit.
+Even though I really wanted them to, as it would have also solved the problem of having to mount the battery to the bottom, while everything else was mounted to the top part (thereby making disassembly much less safe/convenient).
+
+That is, until Dan suggested that since the top cover is 2 wood layers anyway, why don't we just hollow out the lower one to house the controller, so the battery (that would go below it, but still connected to the top assembly somehow) could now fit in the same space the switches take up anyway.
+I did my measurements and then (both happily and begrudgingly) conceded that he was right.
+And since it lead to an objectively better design, I couldn't bury my head in
+the sand... so I started to redesign stuff.
+
+The mounting of the controller changed from threaded inserts (that I also planned for the side screws) to manually glued nuts inside the hollow space.
+And if we take the 4 mm hollow + the 1.5 mm switchplate into account, I only needed another 1.5 mm of rise to be able to accommodate the battery as well, which I solved with a dedicated "battery plate" that then could be screwed to the top part.
+Take a look at some of the interesting-looking outlines born this way (undercover<a href="#footnote-TODO"><sup>TODO</sup></a>, keyplate, dampener, batteryplate, and middle_top, respectively):
+
+<div class="gallery">
+    <img src="./pics/absolem_undercover.png" width="80%"/>
+    <img src="./pics/absolem_keyplate.png" width="80%"/>
+    <img src="./pics/absolem_dampener.png" width="80%"/>
+    <img src="./pics/absolem_batteryplate.png" width="30%"/>
+    <img src="./pics/absolem_middle_top.png" width="80%"/>
+</div>
+
+Dan continues to be an impromptu product manager on the project -- spoiler alert: he's a product manager.
+He pokes holes in every assumption I make, and having to explain myself to someone who's also very knowledgable in this field makes the end result objectively better.
+He's definitely the person who's helped me the most during this whole madness.
+Thanks a lot, man!
+
 
 ### Etimology
 
@@ -549,7 +578,7 @@ There are ergonomic consideration even on the symbol layer, where I placed the s
 ### Adjustment progress
 
 As it's an enormous shift from full size QWERTZ to 36 key ergo Colemak, I've decided to put in the hours and learn proper touch typing this time.
-It was pretty disheartening to go from around 60 wpm to below 10 in blink.
+It was pretty disheartening to go from around 60 wpm to below 10 in a blink.
 But I then completed the [typing.com](https://www.typing.com/) tutorial and reached ~30wpm, which provided enough familiarity to start the slow but steady climb over on [NitroType](https://www.nitrotype.com/team/D20R).
 After daily practice for over 4 months (which I log [here](https://docs.google.com/spreadsheets/d/1pBDQd8YSD9eLS8331yy9vSNgv2Vac4_oS9yFa0fSX98/edit?usp=sharing)), I'm currently at an average of about 80 wpm with occasional visits in the 90s... Not part of the elite (yet) but progress nevertheless.
 
@@ -657,3 +686,5 @@ __Footnotes__:
 <sup id="footnote-6">6</sup>: I just love how when something's shit, that's bad. But when something's _the_ shit, it's really good. Also relevant is the crazy relationship between horrible/horrific/terrible and terrific. English is (the?) shit. :P
 
 <sup id="footnote-7">7</sup>: As you might have noticed from the potato-quality photos, I'm _not_ a photographer. So please do both of us a favour and concentrate on the subject matter of the pics, not the quality!
+
+<sup id="footnote-TODO">TODO</sup>: this layer is not called "undercover" because it did some incognito work for the FBI. It's just literally _under_ the _cover_ layer.
