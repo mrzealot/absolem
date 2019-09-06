@@ -273,7 +273,7 @@ It then grew into a working prototype which I've already posted about [here](htt
     <img src="https://zealot.hu/absolem/pics/polygon_3.jpg" width="80%"/>
     <img src="https://zealot.hu/absolem/pics/polygon_4.jpg" width="80%"/>
     <img src="https://zealot.hu/absolem/pics/polygon_5.jpg" width="80%"/>
-    <img src="https://zealot.hu/absolem/pics/polygon_6.jpg" width="80%"/>
+    <img src="https://zealot.hu/absolem/pics/polygon_6.jpg" width="50%"/>
 </div>
 
 I was generally satisfied with it, so I went ahead and coded a Python &rarr; OpenSCAD model, too, in preparation of a "real" build<a href="#footnote-5"><sup>5</sup></a>.
@@ -281,7 +281,7 @@ The last picture is an exploded view to help understand the 3D structure...
 
 <div class="gallery">
     <img src="https://zealot.hu/absolem/pics/polygon_7.png" width="80%"/>
-    <img src="https://zealot.hu/absolem/pics/polygon_8.png" width="80%"/>
+    <img src="https://zealot.hu/absolem/pics/polygon_8.png" width="40%"/>
     <img src="https://zealot.hu/absolem/pics/polygon_9.png" width="80%"/>
 </div>
 
@@ -428,8 +428,8 @@ It immediately lead me to [absolem.pro](http://absolem.pro/), which -- I assume 
 See if you can find the similarity:
 
 <div class="gallery">
-<img src="https://zealot.hu/absolem/pics/absolem_steal.jpg" width="45%" />
-<img src="https://zealot.hu/absolem/pics/absolem_logo.png" width="45%" />
+<img src="https://zealot.hu/absolem/pics/absolem_steal.jpg" width="35%" />
+<img src="https://zealot.hu/absolem/pics/absolem_logo.png" width="35%" />
 </div>
 
 So yeah, I totally ~~stole~~ borrowed inspiration from this, and did a few minor modifications:
