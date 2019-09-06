@@ -550,18 +550,30 @@ Anyways, feast your eyes<a href="#footnote-7"><sup>7</sup></a>!
 
 ## Firmware
 
-- QMK on the protos
-- looking into alternatives, not finding an "as is" match
-    - just like with the physical keyboard itself
-- writing own
-- quick structure summary + point to separate readme
-- fight with DIODE_DIRECTION
-- huge fight with Arduino
-    - include paths inside src
-    - no code in the global scope
-        - what do you mean that a variable name is not a type?!
-    - https://forums.adafruit.com/viewtopic.php?f=57&t=155100
-        - g++ linking is important!
+Okay, so how do we make the shiny new build actually _functional_?
+[QMK](https://docs.qmk.fm/#/) was fine in the prototyping phase, of course, but now we're dealing with a Bluefruit...
+Well, I looked into the alternatives, but didn't find an "as-is" solution (just like with the physical keyboard itself).
+
+The closest I got was [jpconstantineau](https://www.reddit.com/user/jpconstantineau/)'s firmware (who I'd also like to thank here, his work really made mine a lot easier).
+And although the [BlueMicro_BLE](https://github.com/jpconstantineau/BlueMicro_BLE) is a good starting point, it didn't support everything I needed from my QMK days.
+
+While I was looking into it (and QMK, and others), though, I caught the bug again.
+Why don't I write my own firmware, too?
+I could do better than the current state of the art!
+Better being a more "elegant", object-oriented logical design, I mean.
+I know too little about the low-level stuff to even think about competing in pure performance...
+But modeling a generic keyboard firmware infrastructure was right up my alley.
+And it also promised to be a good chance to grow as a programmer, _and_ to be in complete control of both the hardware and the software aspects of the Absolem.
+So this is exactly what I did.
+
+I don't want to go into too many details here -- this post is almost a book already -- so I'll probably write about it separately in another post if there's any interest.
+In the meantime, you can check out the code [here](https://github.com/mrzealot/absolem/tree/master/firmware).
+
+The important thing is that as of about a week ago, I was able to almost completely (99%) replicate my old QMK config.
+_And_ with such grace that I just couldn't stop patting myself on the back. :D
+Seriously, though, I think it turned out pretty okay...
+There's still a lot to do on this front, but I'm covered for now.
+
 
 
 
