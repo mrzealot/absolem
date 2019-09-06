@@ -9,7 +9,7 @@
 I've designed and built my own mechanical keyboard.
 It's fucking awesome!
 I'm going to ramble about it now, *in detail*.
-Read on if you're interested, or [jump to the pictures](#the-finished-product), or post a comment to [the reddit thread](TODO), or... you know... do whatever you fancy.
+Read on if you're interested, or jump to either the [in-progress](#assembly) or the [finished](#the-finished-product) pictures, or post a comment to [the reddit thread](TODO), or... you know... do whatever you fancy.
 I'm not your mom. :)
 
 
@@ -38,7 +38,7 @@ Until about one and a half years ago, I'd been happily typing on a [basic Genius
 Ah... simpler times!
 
 <div class="gallery">
-<img alt="Ignorance is bliss" src="https://zealot.hu/absolem/pics/ignorance_is_bliss_matrix.gif"/>
+    <img alt="Ignorance is bliss" src="./pics/fun/ignorance_is_bliss.gif" />
 </div>
 
 I was hovering at about 50-60 wpm, which -- while decidedly not blazing fast -- didn't bother me much.
@@ -100,7 +100,7 @@ I'm much more "lenient" towards ortho (a.k.a. grid, or matrix) layouts, but the 
 Let's give future aliens a chance to figure out how we looked like!
 
 <div class="gallery">
-<img alt="Nerd joke" src="https://zealot.hu/absolem/pics/nerd_joke.jpg" width="60%"/>
+    <img alt="Nerd joke" src="./pics/fun/nerd_joke.jpg" width="60%"/>
 </div>
 
 What's more, I'm very much in favour of an "agressive" stagger.
@@ -115,7 +115,7 @@ Today's full size (and beyond) keyboards come from the assumption that there sho
 I, on the other hand, think that the inverse of this is true, namely that we should make the number of the keys match what's comfortably reachable from the home position and make the desired functionalities conform to that.
 
 <div class="gallery">
-<img alt="XKCD keyboard" src="https://zealot.hu/absolem/pics/xkcd_keyboard.png" width="60%"/>
+    <img alt="XKCD keyboard" src="./pics/fun/xkcd_keyboard.png" width="60%"/>
 </div>
 
 This leads to a) touch typing -- or at least a strictly enforced finger-key relationship (which has many more benefits I'm not going to discuss here) and b) to the need to significantly decrease the number of keys.
@@ -144,7 +144,7 @@ Regarding the physical layout of the pinky keys, my experiments (and my eyes, wh
 This _could_ theoretically apply to the ring and middle fingers, too, but I didn't feel the need in those cases.
 However, it really shouldn't apply for the index finger, which already has an extra column to take care of, like in the case of the [Sector](https://github.com/omkbd/Sector).
 
-As an example of pinky overworking, consider any regular layout (or even the [Ergodox](https://ergodox-ez.com)) vs. the [Minidox](https://geekhack.org/index.php?topic=89951.0) (of which my design is basically a slightly refined, glued together, and wireless-ized version). As for an illustration of the pinky angle, take a look at [this crazy thing](https://zealot.hu/absolem/pics/ergowrap.jpg) (I believe called ergowrap?).
+As an example of pinky overworking, consider any regular layout (or even the [Ergodox](https://ergodox-ez.com)) vs. the [Minidox](https://geekhack.org/index.php?topic=89951.0) (of which my design is basically a slightly refined, glued together, and wireless-ized version). As for an illustration of the pinky angle, take a look at [this crazy thing](./pics/misc/ergowrap.jpg) (I believe called ergowrap?).
 
 
 ### The thumb region
@@ -156,7 +156,7 @@ Generally, there are three approaches for the thumbs:
 3. Fans -- consider the [KeyboardIO Model 01](https://shop.keyboard.io/). This approach appreciates that the thumb actually moves in an arc, and doesn't try to add extra functionality either above or below it.
 
 <div class="gallery">
-<img alt="Thumb fractal" src="https://zealot.hu/absolem/pics/thumb_fractal.jpg" width="40%"/>
+    <img alt="Thumb fractal" src="./pics/fun/thumb_fractal.jpg" width="40%" />
 </div>
 
 This is probably the only "really" original part of the Absolem design, as all the other stuff I've mentioned so far could be seen _somewhere_ before.
@@ -220,7 +220,7 @@ See my ergo finger-aware weight layout in the [Assembly section](#assembly).
 The aesthetics are discussed below; the focus here is the profile of the caps, which greatly add to the overall feel and ergonomy.
 
 <div class="gallery">
-<img alt="A literal key cap" src="https://zealot.hu/absolem/pics/key_cap.jpg" width="40%"/>
+    <img alt="A literal key cap" src="./pics/fun/key_cap.jpg" width="40%" />
 </div>
 
 Side story: during my "awakening", I went from staring at high resolution photos and not seeing any difference other than color and symbols, to being able to identify SA, DSA, XDA, OEM and Cherry by a cursory glance.
@@ -263,26 +263,26 @@ I started out with a little cardboard example to get a feel for a different thum
 Note that the main keywell layout was already identical to the final product -- that was never in question.
 
 <div class="gallery">
-    <img src="https://zealot.hu/absolem/pics/polygon_1.jpg" width="80%"/>
-    <img src="https://zealot.hu/absolem/pics/polygon_2.jpg" width="80%"/>
+    <img src="./pics/design/polygon_1.jpg" width="80%"/>
+    <img src="./pics/design/polygon_2.jpg" width="80%"/>
 </div>
 
 It then grew into a working prototype which I've already posted about [here](https://www.reddit.com/r/MechanicalKeyboards/comments/9aam0u/polygon_a_prototype_demo_a_roadmap_and_lots_of/).
 
 <div class="gallery">
-    <img src="https://zealot.hu/absolem/pics/polygon_3.jpg" width="80%"/>
-    <img src="https://zealot.hu/absolem/pics/polygon_4.jpg" width="80%"/>
-    <img src="https://zealot.hu/absolem/pics/polygon_5.jpg" width="80%"/>
-    <img src="https://zealot.hu/absolem/pics/polygon_6.jpg" width="50%"/>
+    <img src="./pics/design/polygon_3.jpg" width="80%"/>
+    <img src="./pics/design/polygon_4.jpg" width="80%"/>
+    <img src="./pics/design/polygon_5.jpg" width="80%"/>
+    <img src="./pics/design/polygon_6.jpg" width="50%"/>
 </div>
 
 I was generally satisfied with it, so I went ahead and coded a Python &rarr; OpenSCAD model, too, in preparation of a "real" build<a href="#footnote-5"><sup>5</sup></a>.
 The last picture is an exploded view to help understand the 3D structure...
 
 <div class="gallery">
-    <img src="https://zealot.hu/absolem/pics/polygon_7.png" width="80%"/>
-    <img src="https://zealot.hu/absolem/pics/polygon_8.png" width="40%"/>
-    <img src="https://zealot.hu/absolem/pics/polygon_9.png" width="80%"/>
+    <img src="./pics/design/polygon_7.png" width="80%"/>
+    <img src="./pics/design/polygon_8.png" width="40%"/>
+    <img src="./pics/design/polygon_9.png" width="80%"/>
 </div>
 
 Here came a huge, work-related gap where I did not have the luxury to retrain myself with the new board/layout (or to think a whole lot about keyboards in general) as I constantly had to meet strict deadlines under insane pressure; with the good ol' QWERTZ.
@@ -318,9 +318,9 @@ When it reached a state where it could be unironically called "beta", I had a st
 I posted about the rough first draft [here](https://www.reddit.com/r/MechanicalKeyboards/comments/bpc54c/absolem_step_2_towards_world_domination/).
 
 <div class="gallery">
-    <img src="https://zealot.hu/absolem/pics/proto_1.jpg" width="80%"/>
-    <img src="https://zealot.hu/absolem/pics/proto_2.jpg" width="80%"/>
-    <img src="https://zealot.hu/absolem/pics/proto_3.jpg" width="80%"/>
+    <img src="./pics/design/proto_1.jpg" width="80%"/>
+    <img src="./pics/design/proto_2.jpg" width="80%"/>
+    <img src="./pics/design/proto_3.jpg" width="80%"/>
 </div>
 
 Aww, isn't that cute?
@@ -357,7 +357,7 @@ I, of course, also scheduled a complete rewrite while I was at it so the code ca
 The results of this phase were summarized in [this quality shitpost](https://www.reddit.com/r/MechanicalKeyboards/comments/c5rrao/you_may_not_like_it_but_this_is_what_peak/), full of comparisons to butterflies, briefs, and even uteruses.
 
 <div class="gallery">
-    <img src="https://zealot.hu/absolem/pics/shitpost.png" width="80%"/>
+    <img src="./pics/design/shitpost.png" width="80%"/>
 </div>
 
 ### A visit from the "Low Profile Police"
@@ -378,11 +378,11 @@ And if we take the 4 mm hollow + the 1.5 mm switchplate into account, I only nee
 Take a look at some of the interesting-looking outlines born this way (undercover<a href="#footnote-TODO"><sup>TODO</sup></a>, keyplate, dampener, batteryplate, and middle_top, respectively):
 
 <div class="gallery">
-    <img src="./pics/absolem_undercover.png" width="80%"/>
-    <img src="./pics/absolem_keyplate.png" width="80%"/>
-    <img src="./pics/absolem_dampener.png" width="80%"/>
-    <img src="./pics/absolem_batteryplate.png" width="30%"/>
-    <img src="./pics/absolem_middle_top.png" width="80%"/>
+    <img src="./pics/design/absolem_undercover.png" width="80%"/>
+    <img src="./pics/design/absolem_keyplate.png" width="80%"/>
+    <img src="./pics/design/absolem_dampener.png" width="80%"/>
+    <img src="./pics/design/absolem_batteryplate.png" width="30%"/>
+    <img src="./pics/design/absolem_middle_top.png" width="80%"/>
 </div>
 
 Dan continues to be an impromptu product manager on the project -- spoiler alert: he's a product manager.
@@ -399,19 +399,19 @@ And connecting this keyboard project to the Caterpillar from Alice is pertinent 
 - the keyboard looks like a butterfly...
 
 <div class="gallery">
-<img alt="D'uuuh" src="https://zealot.hu/absolem/pics/duh.gif"/>
+    <img alt="D'uuuh" src="./pics/fun/duh.gif" />
 </div>
 
 - my all-time computer (and the in-progress environment I'm cultivating on it) is called Alice, and it's very fitting to have the "Absolem" blow letters to her over the air:
 
 <div class="gallery">
-<img alt="Hookah smoke letters" src="https://zealot.hu/absolem/pics/smoke_letters.jpg" width="60%"/>
+    <img alt="Hookah smoke letters" src="./pics/fun/smoke_letters.jpg" width="60%" />
 </div>
 
 - in the Tim Burton version (again), Absolem helped Alice & co. interpret the Oracle, which would make _me_ the Oracle in this analogy, and that's an ego-boost I can't pass up!
 
 <div class="gallery">
-<img alt="Oracle" src="https://zealot.hu/absolem/pics/oracle.jpg" width="50%"/>
+    <img alt="Oracle" src="./pics/fun/oracle.jpg" width="50%" />
 </div>
 
 - plus it also sounds really cool, even if I do say so myself.
@@ -428,8 +428,8 @@ It immediately lead me to [absolem.pro](http://absolem.pro/), which -- I assume 
 See if you can find the similarity:
 
 <div class="gallery">
-<img src="https://zealot.hu/absolem/pics/absolem_steal.jpg" width="35%" />
-<img src="https://zealot.hu/absolem/pics/absolem_logo.png" width="35%" />
+    <img src="./pics/design/absolem_steal.jpg" width="35%" />
+    <img src="./pics/design/absolem_logo.png" width="35%" />
 </div>
 
 So yeah, I totally ~~stole~~ borrowed inspiration from this, and did a few minor modifications:
@@ -519,6 +519,17 @@ I'd just like to state for the record that it _was_ indeed possible, and send a 
 
 Even most of the assembly consisted of waiting with all those drying and glue-setting times.
 It also didn't help much that I'm a complete n00b, so I would rather not tell you the actual (ungodly amount of) time it took me to do this.
+Let's start with the raw materials like wood:
+
+<div class="gallery">
+    <img src="./pics/assembly/.jpg" width="80%" />
+</div>
+
+
+
+
+
+
 - only 3 legs for the controller --> improvisation is necessary :)
 
 
@@ -540,11 +551,11 @@ You'll have to forgive me if I sound a little too fucking proud...
 Anyways, feast your eyes<a href="#footnote-7"><sup>7</sup></a>!
 
 <div class="gallery">
-<img src="https://zealot.hu/absolem/pics/splash.jpg" width="80%" />
-<img src="https://zealot.hu/absolem/pics/finished_1.jpg" width="80%" />
-<img src="https://zealot.hu/absolem/pics/finished_2.jpg" width="80%" />
-<img src="https://zealot.hu/absolem/pics/finished_3.jpg" width="80%" />
-<img src="https://zealot.hu/absolem/pics/finished_4.jpg" width="80%" />
+    <img src="./pics/splash.jpg" width="80%" />
+    <img src="./pics/finished/finished_1.jpg" width="80%" />
+    <img src="./pics/finished/finished_2.jpg" width="80%" />
+    <img src="./pics/finished/finished_3.jpg" width="80%" />
+    <img src="./pics/finished/finished_4.jpg" width="80%" />
 </div>
 
 
@@ -566,7 +577,7 @@ But modeling a generic keyboard firmware infrastructure was right up my alley.
 And it also promised to be a good chance to grow as a programmer, _and_ to be in complete control of both the hardware and the software aspects of the Absolem.
 So this is exactly what I did.
 
-I don't want to go into too many details here -- this post is almost a book already -- so I'll probably write about it separately in another post if there's any interest.
+I don't want to go into too many details here -- this post is almost a book already -- so I'll probably write about the firmware separately in another post if there's any interest.
 In the meantime, you can check out the code [here](https://github.com/mrzealot/absolem/tree/master/firmware).
 
 The important thing is that as of about a week ago, I was able to almost completely (99%) replicate my old QMK config.
@@ -595,7 +606,7 @@ But I then completed the [typing.com](https://www.typing.com/) tutorial and reac
 After daily practice for over 4 months (which I log [here](https://docs.google.com/spreadsheets/d/1pBDQd8YSD9eLS8331yy9vSNgv2Vac4_oS9yFa0fSX98/edit?usp=sharing)), I'm currently at an average of about 80 wpm with occasional visits in the 90s... Not part of the elite (yet) but progress nevertheless.
 
 <div class="gallery">
-<img alt="WPM progress" src="https://zealot.hu/absolem/pics/wpm_progress.png" width="90%"/>
+    <img alt="WPM progress" src="./pics/misc/wpm_progress.png" width="80%"/>
 </div>
 
 I also frequently use [Keybr.com](https://www.keybr.com/) (like, a LOT), [10fastfingers](https://10fastfingers.com/typing-test/english), [typeracer](https://data.typeracer.com/pit/profile?user=mrzealot), and [SpeedCoder](http://www.speedcoder.net/) for some varied practice.
@@ -619,7 +630,7 @@ There's even a section in it which is about this writeup, in which I discuss why
 Okay, if you want to nitpick, I did really say "endgame" in this post several times, which _should_ mean that there's no "future work" remaining...
 
 <div class="gallery">
-<img alt="Technically Correct" src="https://zealot.hu/absolem/pics/technically_correct.jpg" />
+    <img alt="Technically Correct" src="./pics/fun/technically_correct.jpg" />
 </div>
 
 In my defense, though, I'd like to say that:
@@ -654,7 +665,7 @@ For example, I'm a proud owner of a [Secrid Miniwallet](https://secrid.com/en-gl
 And I would very much like it if there was an official "Absolem club", even if it's just the two of us!
 
 <div class="gallery">
-<img alt="Nerd Party" src="https://zealot.hu/absolem/pics/nerd_party.jpg" />
+    <img alt="Nerd Party" src="./pics/fun/nerd_party.jpg" />
 </div>
 
 So all I ask of you, dear reader, is that if you ever decide that the Absolem is a good match for you and you build one, please contact me so that I can add you to the club! Or you could contact me to build you one; then I'll know to add you automatically! It'll be great, I promise... We could even wear a badge! Too much? Okay, I'll stop now.
@@ -667,7 +678,9 @@ Anyways, there'll be a list of some sort here, if there's ever someone other tha
 
 ## That's it, folks!
 
-If you've seriously read all the way down here, then you're awesome! I hope I managed to keep it interesting. Now go and upvote the [corresponding reddit post]() and star my [GitHub repo](https://github.com/mrzealot/absolem) to earn an official, non-refundable, virtual high-five!
+If you've seriously read all the way down here, then you're awesome!
+I hope I managed to keep it interesting.
+Now go and upvote the [corresponding reddit post](TODO) and star my [GitHub repo](https://github.com/mrzealot/absolem) to earn an official, non-refundable, virtual high-five!
 
 
 <br />
