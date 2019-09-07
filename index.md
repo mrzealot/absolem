@@ -103,7 +103,7 @@ Let's give future aliens a chance to figure out how we looked like!
     <img alt="Nerd joke" src="./pics/fun/nerd_joke.jpg" width="60%"/>
 </div>
 
-What's more, I'm very much in favour of an "agressive" stagger.
+What's more, I'm very much in favour of an "aggressive" stagger.
 Many boards started in the right direction, but few went far enough, so I've been planning to be a little heavier-handed in the stagger department from the start.
 
 As an example, compare a ["traditional" TKL (or 60%)](http://www.vortexgear.tw/vortex2_2.asp?kind=47&kind2=220&kind3=&kind4=997) vs. a [Planck](https://olkb.com/planck) vs. an [Atreus](https://atreus.technomancy.us/).
@@ -151,7 +151,7 @@ As an example of pinky overworking, consider any regular layout (or even the [Er
 
 Generally, there are three approaches for the thumbs:
 
-1. SPACEBAR!!! -- one of the thumbs can keep hacking away on a button that takes up 6-7 spaces, while the other just exists. Very efficient... `</sarcasm>` There are more sophisticated layouts, with split spacebars and the like, but from an ergonomical standpoint, these are all subpar compared to the next two.
+1. SPACEBAR!!! -- one of the thumbs can keep hacking away on a button that takes up 6-7 spaces, while the other just exists. Very efficient... `</sarcasm>` There are more sophisticated layouts, with split spacebars and the like, but from an ergonomic standpoint, these are all subpar compared to the next two.
 2. Clusters -- consider the [Ergodox](https://ergodox-ez.com) again. While this way is definitely better than a single spacebar, in my opinion it overcompensates with the amount of work it tries to give to the thumbs. The side effect of this is that very few of those thumb keys are actually convenient (or usable, according to some). This leads us nicely to:
 3. Fans -- consider the [KeyboardIO Model 01](https://shop.keyboard.io/). This approach appreciates that the thumb actually moves in an arc, and doesn't try to add extra functionality either above or below it.
 
@@ -166,7 +166,7 @@ Yes, I actually had to refresh my trigonometry for this!
 And I, of course, followed the 1DFH principle, too, so there can only be 3 (unlike the KeyboardIO's 4).
 
 I'd also like to mention, as someone with quite wide (read: fat) thumbs, I've aimed to have 1.25u thumb keys from the start, at least for the home position.
-The sides can more easily be 1u because they don't have a neighbour on one side, so there's less chance for misclicking (mispressing?).
+The sides can more easily be 1u because they don't have a neighbor on one side, so there's less chance for misclicking (mispressing?).
 But the thumb home position (which is flanked by other thumb keys on both sides) definitely deserves to be bigger imho.
 
 
@@ -309,7 +309,7 @@ This, combined with the aforementioned 1DFH principle, lead to a thumb fan that 
 But hey, if that's where my fingers are, then so be it.
 
 The "redesign" happened with the use of [Maker.js](https://maker.js.org/) as I (unsurprisingly) still didn't want to draw if I could avoid it.
-In the spirit of quick prototyping, I focused solely on the positioning of the keys and practically everything else was a simble placeholder.
+In the spirit of quick prototyping, I focused solely on the positioning of the keys and practically everything else was a simple placeholder.
 For example, the whole outline was just an automatically generated outline of the union of the keyholes.
 It had jagged edges, and it looked very "industrial", but that was good enough.
 As I said in (the first half of) a comment: "I'm totally unapologetic about the looks as the design is completely driven by ergonomics decisions...".
@@ -350,7 +350,7 @@ As the middle region couldn't accommodate both side-by-side, I initially went fo
 The other thing I had to address was the "polish" of the outlines, the cover layers, and the fancy-ization in general.
 And here is where the second half of the above-mentioned comment comes into play:
 "I'm totally unapologetic about the looks as the design is completely driven by ergonomics decisions... The only minor things I have my 'aesthetic influence' in is how the corners are rounded, how thick the margin is, how big the back opening is, etc.".
-Suffice it to say, that "minor influence" quickly turned into an incredible OCD phase where I fought witht gaps, joints, and corner roundings so minor that you'd barely even notice.
+Suffice it to say, that "minor influence" quickly turned into an incredible OCD phase where I fought with gaps, joints, and corner roundings so minor that you'd barely even notice.
 The amount of time I pissed away trying to make them look _juuuust right_ was nothing short of ridiculous.
 I, of course, also scheduled a complete rewrite while I was at it so the code can be as logically structured and "elegant" as I can make it (because why wouldn't I?).
 
@@ -374,7 +374,7 @@ And since it lead to an objectively better design, I couldn't bury my head in
 the sand... so I started to redesign stuff.
 
 The mounting of the controller changed from threaded inserts (that I also planned for the side screws) to manually glued nuts inside the hollow space.
-And if we take the 4 mm hollow + the 1.5 mm switchplate into account, I only needed another 1.5 mm of rise to be able to accommodate the battery as well, which I solved with a dedicated "battery plate" that then could be screwed to the top part.
+And if we take the 4 mm hollow + the 1.5 mm keyplate into account, I only needed another 1.5 mm of rise to be able to accommodate the battery as well, which I solved with a dedicated "battery plate" that then could be screwed to the top part.
 Take a look at some of the interesting-looking outlines born this way (undercover<a href="#footnote-7"><sup>7</sup></a>, keyplate, dampener, batteryplate, and middle_top, respectively):
 
 <div class="gallery">
@@ -502,8 +502,8 @@ Note that while the above shopping list looks quite nice and tidy, it's the resu
 And then a looot of waiting for everything to arrive.
 
 As for how much all this cost me, I can really only guess because of all the tools I didn't have and all the experimentation I did -- what we include here matters a lot.
-In any case, I'd say I've spent somewhere in the neighbourhood of $400 (so far!).
-If it ever came to making this "repeatable", though, with a little streamlining, _and_ we woundn't include the switches and the keycaps (as most estimates usually don't), it could be well below $200.
+In any case, I'd say I've spent somewhere in the neighborhood of $400 (so far!).
+If it ever came to making this "repeatable", though, with a little streamlining, _and_ we wouldn't include the switches and the keycaps (as most estimates usually don't), it could be well below $200.
 
 Two short, related anecdotes:
 
@@ -598,7 +598,7 @@ And on the right, we can see two of the well-known cucumber boxes (which also ga
     <img src="./pics/assembly/92_1st_staining.jpg" width="40%" />
 </div>
 
-I don't know the exact point in the process where the wood got a litte warped, but it did.
+I don't know the exact point in the process where the wood got a little warped, but it did.
 So I applied a little heat (I literally ironed the layers) and then clamped them to a straight surface to cool "the right way".
 Anyways, the results are looking good so far!
 
@@ -817,14 +817,14 @@ c) I've always planned to have 2 boards anyway (so that I have a backup if the m
 So, even though I'm re(eeee)aly pleased with how things turned out, here are some further improvement ideas I have in mind:
 
 - Physical:
-    - I want a **PCB** -- despite the fact that I clearly stated in the past that I [don't want a PCB](https://www.reddit.com/r/MechanicalKeyboards/comments/bpc54c/absolem_step_2_towards_world_domination/esr8nbd/). I mean, I still stand by what I said there about the potential durability and fixability differences, but what I didn't consider with enough weight then is that it could hold both the Feather and the battery in place and I wouldn't need to glue extra nuts to the underside of the cover layer (I hate gluing...). It would also add more stability to the switches so I wouldn't need to glue those in either (Have I mentioned yet that I hate gluing?). Plus it would look much more "professional" and clean. And PCBs are not that expensive... And it would make it much easier for other people to potentially bulid their own. So yeah, I want a PCB.
-    - I want a **thumb valley** -- as the topmost _cover_ layer (while beautiful as it is) still bothers my thumbs a little at certain angles, even after I deliberately filed away most of the edges there in anticipation of this exact thing... Again, it's not prohibitive or anything; it's barely noticable most of the time. But if I were to do this again (which I will), I would probably leave that region completely out as early as the lasercutting stage and then merge it together with the _undercover_ layer to make a more pronounced "valley". I'm probably not describing this very visually, but you'll see the difference when I get to it...
-    - I want a **sleeve** -- to replace my trusty keyboard carrying [travel towel](). It's not the functionality, it's the prestige of a dedicated (and, of course, branded) carry case. Don't know much about how I want to solve this one yet, so it can end up a sleeve, or a hard case, or some sort of origami-ish [furoshiki](https://en.wikipedia.org/wiki/Furoshiki) cloth... Time will tell; stay tuned...
+    - I want a **PCB** -- despite the fact that I clearly stated in the past that I [don't want a PCB](https://www.reddit.com/r/MechanicalKeyboards/comments/bpc54c/absolem_step_2_towards_world_domination/esr8nbd/). I mean, I still stand by what I said there about the potential durability and fixability differences, but what I didn't consider with enough weight then is that it could hold both the Feather and the battery in place and I wouldn't need to glue extra nuts to the underside of the cover layer (I hate gluing...). It would also add more stability to the switches so I wouldn't need to glue those in either (Have I mentioned yet that I hate gluing?). Plus it would look much more "professional" and clean. And PCBs are not that expensive... And it would make it much easier for other people to potentially build their own. So yeah, I want a PCB.
+    - I want a **thumb valley** -- as the topmost _cover_ layer (while beautiful as it is) still bothers my thumbs a little at certain angles, even after I deliberately filed away most of the edges there in anticipation of this exact thing... Again, it's not prohibitive or anything; it's barely noticeable most of the time. But if I were to do this again (which I will), I would probably leave that region completely out as early as the lasercutting stage and then merge it together with the _undercover_ layer to make a more pronounced "valley". I'm probably not describing this very visually, but you'll see the difference when I get to it...
+    - I want a **sleeve** -- to replace my trusty keyboard carrying travel towel<sup>TM</sup>. It's not the functionality, it's the prestige of a dedicated (and, of course, branded) carry case. Don't know much about how I want to solve this one yet, so it can end up a sleeve, or a hard case, or some sort of origami-ish [furoshiki](https://en.wikipedia.org/wiki/Furoshiki) cloth... Time will tell; stay tuned...
 - Firmware-related:
     - I intend to solve various energy efficiency issues down the line, including a "deep" sleep, plus also a kind of middle ground between full activity and full sleep that would kick in earlier and where the matrix scanning is slower.
     - Yet another kind of sleep, this time for the Bluetooth connection polling, which could then be restarted of course, it just wouldn't waste the battery in an infinite loop.
     - Measuring (and then hopefully further optimizing) battery usage.
-    - Finish the initial ideas sprinkled throughout the repo regarding general use and personalization, and add a build scrit that streamlines the process.
+    - Finish the initial ideas sprinkled throughout the repo regarding general use and personalization, and add a build script that streamlines the process.
     - Separate the firmware part to its own repository (and add that as a submodule of the original one) to make it more accessible for potential other projects not associated with the physical aspects of the Absolem.
 
 I'll probably write another post (and link it here) when I get around to addressing all these. 
@@ -871,7 +871,7 @@ __History__:
 
 __Acknowledgment__: Besides the people already mentioned it the post, I'd like to thank my wife, who put up with me during this year-long process, and whose first reactions weren't "You're doing WHAT?!" and "It costs HOW MUCH?!" :)
 
-__Disclaimer__: This post contains lots of pictures and references that are obviosly not my work, and I'm not claiming that they are. GIFs and jokes come from a quick Google searches, and I'm not going to put a "source: something..." under each one. Use your best judgement.
+__Disclaimer__: This post contains lots of pictures and references that are obviously not my work, and I'm not claiming that they are. GIFs and jokes come from quick Google searches, and I'm not going to put a "source: something..." under each one. Use your best judgement.
 
 __Footnotes__:
 
