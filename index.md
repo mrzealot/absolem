@@ -375,7 +375,7 @@ the sand... so I started to redesign stuff.
 
 The mounting of the controller changed from threaded inserts (that I also planned for the side screws) to manually glued nuts inside the hollow space.
 And if we take the 4 mm hollow + the 1.5 mm switchplate into account, I only needed another 1.5 mm of rise to be able to accommodate the battery as well, which I solved with a dedicated "battery plate" that then could be screwed to the top part.
-Take a look at some of the interesting-looking outlines born this way (undercover<a href="#footnote-TODO"><sup>TODO</sup></a>, keyplate, dampener, batteryplate, and middle_top, respectively):
+Take a look at some of the interesting-looking outlines born this way (undercover<a href="#footnote-7"><sup>7</sup></a>, keyplate, dampener, batteryplate, and middle_top, respectively):
 
 <div class="gallery">
     <img src="./pics/design/absolem_undercover.png" width="80%"/>
@@ -723,7 +723,7 @@ And finally I was ready to "graduate", as the build was finished!
 Well, physically...
 It was nothing more at this stage than a fancy desk ornament as it did exactly nothing, -- except blink a little led -- but it was finished nevertheless!
 You'll have to forgive me if I sound a little too fucking proud...
-Anyways, feast your eyes<a href="#footnote-7"><sup>7</sup></a>!
+Anyways, feast your eyes<a href="#footnote-8"><sup>8</sup></a>!
 
 <div class="gallery">
     <img src="./pics/splash.jpg" width="80%" />
@@ -863,11 +863,11 @@ Now go and upvote the [corresponding reddit post](TODO) and star my [GitHub repo
 <br />
 <hr />
 
-__Contact__: you can find me [by mail](mailto:mr@zealot.hu), [on GitHub](https://github.com/mrzealot), [on Reddit](https://www.reddit.com/user/mrzealot), or on Discord (MrZealot#8079), and I'd love to hear from you!
+__Contact__: you can find me [by mail](mailto:mr@zealot.hu), [on GitHub](https://github.com/mrzealot), [on Reddit](https://www.reddit.com/user/mrzealot), or on Discord (MrZealot#8079), and if you have any feedback regarding the Absolem, I'd love to hear from you!
 
 __History__:
 
-- Originally posted on 2019.??.??.
+- Originally posted on 2019.09.07.
 
 __Acknowledgment__: Besides the people already mentioned it the post, I'd like to thank my wife, who put up with me during this year-long process, and whose first reactions weren't "You're doing WHAT?!" and "It costs HOW MUCH?!" :)
 
@@ -887,6 +887,6 @@ __Footnotes__:
 
 <sup id="footnote-6">6</sup>: I just love how when something's shit, that's bad. But when something's _the_ shit, it's really good. Also relevant is the crazy relationship between horrible/horrific/terrible and terrific. English is (the?) shit. :P
 
-<sup id="footnote-7">7</sup>: As you might have noticed from the potato-quality photos, I'm _not_ a photographer. So please do both of us a favour and concentrate on the subject matter of the pics, not the quality!
+<sup id="footnote-7">7</sup>: this layer is not called "undercover" because it did some incognito work for the FBI. It's just literally _under_ the _cover_ layer.
 
-<sup id="footnote-TODO">TODO</sup>: this layer is not called "undercover" because it did some incognito work for the FBI. It's just literally _under_ the _cover_ layer.
+<sup id="footnote-8">8</sup>: As you might have noticed from the potato-quality photos, I'm _not_ a photographer. So please do both of us a favour and concentrate on the subject matter of the pics, not the quality!
