@@ -519,18 +519,143 @@ I'd just like to state for the record that it _was_ indeed possible, and send a 
 
 Even most of the assembly consisted of waiting with all those drying and glue-setting times.
 It also didn't help much that I'm a complete n00b, so I would rather not tell you the actual (ungodly amount of) time it took me to do this.
-Let's start with the raw materials like wood:
+
+Let's start with the materials like wood (raw & cut), which I've sanded both before and after the cut.
 
 <div class="gallery">
-    <img src="./pics/assembly/.jpg" width="80%" />
+    <img src="./pics/assembly/11_wood_raw.jpg" width="40%" />
+    <img src="./pics/assembly/12_wood_cut.jpg" width="40%" />
+</div>
+
+Metal (raw from the cutter's & brushed).
+I first cleaned the stains with rubbing alcohol and then brushed them with a metal sanding paper so make them look nice.
+Who'd've thought that you can make brushed metal by just taking a piece of metal, and... you know... brushing it?!
+My deep DIY experience shines here, but this really surprised me; I expected something more complicated.
+
+<div class="gallery">
+    <img src="./pics/assembly/21_metal_raw.jpg" width="40%" />
+    <img src="./pics/assembly/22_metal_brushed.jpg" width="40%" />
+</div>
+
+And the embossed neoprene (raw & cut).
+The lasercutting left some staining residue on the sides, so these pieces required an additional round with some water and several Q-tips to properly clean.
+
+<div class="gallery">
+    <img src="./pics/assembly/31_neoprene_raw.jpg" width="40%" />
+    <img src="./pics/assembly/32_neoprene_cut.jpg" width="40%" />
+</div>
+
+Here's the first, tentative assembly showing how the part will look like together.
+
+ <div class="gallery">
+    <img src="./pics/assembly/41_first_assembly_top.jpg" width="40%" />
+    <img src="./pics/assembly/42_first_assembly_angle.jpg" width="40%" />
+</div>
+
+For a "feel test", I put the switches in and some (scavenged) caps on.
+As you can see from the left pic, the pinky and the ring fingers are deemed the weakest with 62g springs.
+Then comes the middle finger, which is -- well -- the middle, with 65g.
+The index finger is stronger, so it gets 67g springs -- except for when it has to do diagonal movement, in which case we lighten its load to be the same as for the middle.
+And finally the thumbs get the heaviest switches with 78g springs.
+I have to say the feel(ios) are excellent!
+There's definitely going to be an adjustment period as it feels a little heavier than pure browns overall, but it's gonna be worth it.
+
+<div class="gallery">
+    <img src="./pics/assembly/51_switches_in.jpg" width="40%" />
+    <img src="./pics/assembly/52_caps_on.jpg" width="40%" />
+</div>
+
+So let's start some actual DIY with testing the (dark walnut) stain on one of the leftover wood pieces, and round down the edges on the cover where the thumbs might be hindered later on.
+
+<div class="gallery">
+    <img src="./pics/assembly/61_test_color.jpg" width="40%" />
+    <img src="./pics/assembly/62_file_edge.jpg" width="40%" />
+</div>
+
+Then came the installation of the threaded inserts into the undercover layer, and the gluing together of the two middle parts.
+During these steps I managed to break the wood not once, but twice -- one for each step.
+Fortunately, I was just in the middle of gluing wood, so I glued it back together, and that was it.
+No one expected this to be an factory level precision assembly anyway, and these little scars and imperfections just give the finished piece some character...
+
+<div class="gallery">
+    <img src="./pics/assembly/71_break_1.jpg" width="40%" />
+    <img src="./pics/assembly/72_break_2.jpg" width="40%" />
+</div>
+
+The gluing of the two middle layers was easier as they had holes to begin with.
+But the gluing of the cover (which is deliberately screw-free) and the undercover needed some funny-looking clamping.
+
+<div class="gallery">
+    <img src="./pics/assembly/81_glue_with_screws.jpg" width="40%" />
+    <img src="./pics/assembly/82_glue_with_clamps.jpg" width="40%" />
+</div>
+
+I used one of the spare wood boards to clamp flat the non-slip neoprene layer while its glue set.
+And on the right, we can see two of the well-known cucumber boxes (which also gave the bottom of the prototype) covering the wood pieces while the first round of stain dries.
+ 
+<div class="gallery">
+    <img src="./pics/assembly/91_neoprene_gluing.jpg" width="40%" />
+    <img src="./pics/assembly/92_1st_staining.jpg" width="40%" />
+</div>
+
+I don't know the exact point in the process where the wood got a litte warped, but it did.
+So I applied a little heat (I literally ironed the layers) and then clamped them to a straight surface to cool "the right way".
+Anyways, the results are looking good so far!
+
+<div class="gallery">
+    <img src="./pics/assembly/A1_straightening.jpg" width="40%" />
+    <img src="./pics/assembly/A2_looking_good.jpg" width="40%" />
+</div>
+
+I then applied a second coat of the stain, which turned out wonderfully!
+
+<div class="gallery">
+    <img src="./pics/assembly/B1_2nd_stain.jpg" width="40%" />
+    <img src="./pics/assembly/B2_2nd_stain_logo.jpg" width="40%" />
+</div>
+
+Next, I started progress on the keyplate by gluing on the dampener neoprene.
+I also put in the switches again in preparation of the wiring, when I noticed that the switches fit veeery loosely in the holes, and I won't be able to use a keycap puller without removing the switch as well...
+
+<div class="gallery">
+    <img src="./pics/assembly/C1_dampener_glued.jpg" width="40%" />
+    <img src="./pics/assembly/C2_switches_in_place.jpg" width="40%" />
+</div>
+
+... so I glued the fuckers in with some (that is, a lot of) hot glue.
+Now they were ready for the keycaps that also arrived in the meantime!
+
+<div class="gallery">
+    <img src="./pics/assembly/D1_switches_glued.jpg" width="40%" />
+    <img src="./pics/assembly/D2_keycaps_ready.jpg" width="40%" />
+</div>
+
+Gluing the nuts to make a sort of "controller socket" went about as lamely as it could.
+It wasn't enough that I could barely control the glue gun and made a mess (hey, it's inside, no one's gonna see it...), but it also turned out that the Bluefruit couldn't accept one of the mounting screws because it would have physically interfered with some on-board components.
+So I made it three-legged.
+At least it will never wobble, right?
+The point here is that improvisation is necessary, no matter how much preparation you do in advance.
+
+<div class="gallery">
+    <img src="./pics/assembly/E1_controller_nuts.jpg" width="40%" />
+    <img src="./pics/assembly/E2_3_legs.jpg" width="40%" />
+</div>
+
+I also taped (and then trimmed) the backplate to protect against accidental shorts.
+
+<div class="gallery">
+    <img src="./pics/assembly/F1_tape.jpg" width="40%" />
+    <img src="./pics/assembly/F2_trim.jpg" width="40%" />
+</div>
+
+And (in a very long-story-short way) the "shell" of the Absolem was done -- even though it was still completely empty inside...
+
+<div class="gallery">
+    <img src="./pics/assembly/G1_looking_fine.jpg" width="40%" />
+    <img src="./pics/assembly/G2_empty.jpg" width="40%" />
 </div>
 
 
-
-
-
-
-- only 3 legs for the controller --> improvisation is necessary :)
 
 
 ### Wiring
