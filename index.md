@@ -507,10 +507,10 @@ If it ever came to making this "repeatable", though, with a little streamlining,
 
 Two short, related anecdotes:
 
-1) The metal lasercutting shop is in an industrial park a few kilometers out of town, and when we arrived there to pick up the plates with my wife by bike, some workers were laughing at us pretty hard.
+1. The metal lasercutting shop is in an industrial park a few kilometers out of town, and when we arrived there to pick up the plates with my wife by bike, some workers were laughing at us pretty hard.
 They said that they have been doing this for a while, and have encountered the whole spectrum of cars, vans, and trucks at the shop, but nobody has ever come to collect their order by bike yet... :)
 
-2) When asking around about wood processing options in a local shop, I brought along the current prototype for illustration.
+2. When asking around about wood processing options in a local shop, I brought along the current prototype for illustration.
 The 2 guys there were really helpful (they referred me to the lasercutter  I ended up with), but there was also a woman who acted really condescendingly towards me the whole time, and whose only contribution to the conversation was a careless "That's not possible... You have to forget about this!".
 I'd just like to state for the record that it _was_ indeed possible, and send a heartfelt "Fuck you!" to that "lady" through this channel as well...
 
@@ -528,7 +528,7 @@ Let's start with the materials like wood (raw & cut), which I've sanded both bef
 </div>
 
 Metal (raw from the cutter's & brushed).
-I first cleaned the stains with rubbing alcohol and then brushed them with a metal sanding paper so make them look nice.
+I first cleaned the stains with rubbing alcohol and then brushed them with a metal sanding paper to make them look nice.
 Who'd've thought that you can make brushed metal by just taking a piece of metal, and... you know... brushing it?!
 My deep DIY experience shines here, but this really surprised me; I expected something more complicated.
 
@@ -565,7 +565,7 @@ There's definitely going to be an adjustment period as it feels a little heavier
     <img src="./pics/assembly/52_caps_on.jpg" width="40%" />
 </div>
 
-So let's start some actual DIY with testing the (dark walnut) stain on one of the leftover wood pieces, and round down the edges on the cover where the thumbs might be hindered later on.
+So I started the actual DIY with testing the (dark walnut) stain on one of the leftover wood pieces, and rounding down the edges on the cover where the thumbs might be hindered later on.
 
 <div class="gallery">
     <img src="./pics/assembly/61_test_color.jpg" width="40%" />
@@ -575,7 +575,7 @@ So let's start some actual DIY with testing the (dark walnut) stain on one of th
 Then came the installation of the threaded inserts into the undercover layer, and the gluing together of the two middle parts.
 During these steps I managed to break the wood not once, but twice -- one for each step.
 Fortunately, I was just in the middle of gluing wood, so I glued it back together, and that was it.
-No one expected this to be an factory level precision assembly anyway, and these little scars and imperfections just give the finished piece some character...
+No one expected this to be a factory level precision assembly anyway, and these little scars and imperfections just give the finished piece some character...
 
 <div class="gallery">
     <img src="./pics/assembly/71_break_1.jpg" width="40%" />
@@ -810,14 +810,14 @@ Okay, if you want to nitpick, I did really say "endgame" in this post several ti
 
 In my defense, though, I'd like to say that:
 
-a) my TODO list is just about refinement, so we can justifiably say that it's v1.0 already;
-b) I could have waited with this post until all the refinements are done as well... but just ~~couldn't~~ didn't want to; and
-c) I've always planned to have 2 boards anyway (so that I have a backup if the main one ever needs service) in which case it would be foolish of me not to learn from the first round's experience and correct any minor imperfections.
+1. my TODO list is just about refinement, so we can justifiably say that it's v1.0 already;
+2. I could have waited with this post until all the refinements are done as well... but just ~~couldn't~~ didn't want to; and
+3. I've always planned to have 2 boards anyway (so that I have a backup if the main one ever needs service) in which case it would be foolish of me not to learn from the first round's experience and correct any minor imperfections.
 
 So, even though I'm re(eeee)aly pleased with how things turned out, here are some further improvement ideas I have in mind:
 
 - Physical:
-    - I want a **PCB** -- despite the fact that I clearly stated in the past that I [don't want a PCB](https://www.reddit.com/r/MechanicalKeyboards/comments/bpc54c/absolem_step_2_towards_world_domination/esr8nbd/). I mean, I still stand by what I said there about the potential durability and fixability differences, but what I didn't consider with enough weight then is that it could hold both the Feather and the battery in place and I wouldn't need to glue extra nuts to the underside of the cover layer (I hate gluing...). It would also add more stability to the switches so I wouldn't need to glue those in either (Have I mentioned yet that I hate gluing?). Plus it would look much more "professional" and clean. And PCBs are not that expensive... And it would make it much easier for other people to potentially build their own. So yeah, I want a PCB.
+    - I want a **PCB** -- despite the fact that I clearly stated in the past that [I don't want a PCB](https://www.reddit.com/r/MechanicalKeyboards/comments/bpc54c/absolem_step_2_towards_world_domination/esr8nbd/). I mean, I still stand by what I said there about the potential durability and fixability differences, but what I didn't consider with enough weight then is that it could hold both the Feather and the battery in place and I wouldn't need to glue extra nuts to the underside of the cover layer (I hate gluing...). It would also add more stability to the switches so I wouldn't need to glue those in either (Have I mentioned yet that I hate gluing?). Plus it would look much more "professional" and clean. And PCBs are not that expensive... And it would make it much easier for other people to potentially build their own. So yeah, I want a PCB. If you're a PCB wizard and want to help, I'd love to hear from you!
     - I want a **thumb valley** -- as the topmost _cover_ layer (while beautiful as it is) still bothers my thumbs a little at certain angles, even after I deliberately filed away most of the edges there in anticipation of this exact thing... Again, it's not prohibitive or anything; it's barely noticeable most of the time. But if I were to do this again (which I will), I would probably leave that region completely out as early as the lasercutting stage and then merge it together with the _undercover_ layer to make a more pronounced "valley". I'm probably not describing this very visually, but you'll see the difference when I get to it...
     - I want a **sleeve** -- to replace my trusty keyboard carrying travel towel<sup>TM</sup>. It's not the functionality, it's the prestige of a dedicated (and, of course, branded) carry case. Don't know much about how I want to solve this one yet, so it can end up a sleeve, or a hard case, or some sort of origami-ish [furoshiki](https://en.wikipedia.org/wiki/Furoshiki) cloth... Time will tell; stay tuned...
 - Firmware-related:
