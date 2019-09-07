@@ -144,7 +144,8 @@ Regarding the physical layout of the pinky keys, my experiments (and my eyes, wh
 This _could_ theoretically apply to the ring and middle fingers, too, but I didn't feel the need in those cases.
 However, it really shouldn't apply for the index finger, which already has an extra column to take care of, like in the case of the [Sector](https://github.com/omkbd/Sector).
 
-As an example of pinky overworking, consider any regular layout (or even the [Ergodox](https://ergodox-ez.com)) vs. the [Minidox](https://geekhack.org/index.php?topic=89951.0) (of which my design is basically a slightly refined, glued together, and wireless-ized version). As for an illustration of the pinky angle, take a look at [this crazy thing](./pics/misc/ergowrap.jpg) (I believe called ergowrap?).
+As an example of pinky overworking, consider any regular layout (or even the [Ergodox](https://ergodox-ez.com)) vs. the [Minidox](https://geekhack.org/index.php?topic=89951.0) (of which my design is basically a slightly refined, glued together, and wireless-ized version).
+As for an illustration of the pinky angle, take a look at the [ErgoWarp](https://github.com/pseudoku/ErgoWarp).
 
 
 ### The thumb region
@@ -867,7 +868,8 @@ __Contact__: you can find me [by mail](mailto:mr@zealot.hu), [on GitHub](https:/
 
 __History__:
 
-- Originally posted on 2019.09.07.
+- 2019.09.07. -- Original publication.
+- 2019.09.07. -- I already stand corrected: what I referenced as "ergowrap" is actually the [ErgoWarp](https://github.com/pseudoku/ErgoWarp). My apologies!
 
 __Acknowledgment__: Besides the people already mentioned it the post, I'd like to thank my wife, who put up with me during this year-long process, and whose first reactions weren't "You're doing WHAT?!" and "It costs HOW MUCH?!" :)
 
