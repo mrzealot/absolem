@@ -9,7 +9,7 @@
 I've designed and built my own mechanical keyboard.
 It's fucking awesome!
 I'm going to ramble about it now, *in detail*.
-Read on if you're interested, or jump to either the [in-progress](#assembly) or the [finished](#the-finished-product) pictures, or post a comment to [the reddit thread](TODO), or... you know... do whatever you fancy.
+Read on if you're interested, or jump to either the [in-progress](#assembly) or the [finished](#the-finished-product) pictures, or post a comment to [the reddit thread](https://www.reddit.com/r/MechanicalKeyboards/comments/d0wls7/ladies_and_gentleman_the_absolem/), or... you know... do whatever you fancy.
 I'm not your mom. :)
 
 
@@ -855,7 +855,7 @@ Anyways, there'll be a list of some sort here, if there's ever someone other tha
 
 If you've seriously read all the way down here, then you're awesome!
 I hope I managed to keep it interesting.
-Now go and upvote the [corresponding reddit post](TODO) and star my [GitHub repo](https://github.com/mrzealot/absolem) to earn an official, non-refundable, virtual high-five!
+Now go and upvote the [corresponding reddit post](https://www.reddit.com/r/MechanicalKeyboards/comments/d0wls7/ladies_and_gentleman_the_absolem/) and star my [GitHub repo](https://github.com/mrzealot/absolem) to earn an official, non-refundable, virtual high-five!
 
 
 <br />
