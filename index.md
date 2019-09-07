@@ -657,12 +657,62 @@ And (in a very long-story-short way) the "shell" of the Absolem was done -- even
 
 
 
-
 ### Wiring
 
-- battery fuckup
-    - https://forums.adafruit.com/viewtopic.php?f=57&t=155069
-    - reverse polarity...
+To have the monster come alive, I first had to do some prep work (again).
+Namely, bend diodes, measure and "loop-ize" wire, and select the correct screw lengths, among others.
+
+<div class="gallery">
+    <img src="./pics/wiring/11_diode_bending.jpg" width="26%" />
+    <img src="./pics/wiring/12_wire_prep.jpg" width="26%" />
+    <img src="./pics/wiring/13_screws.jpg" width="26%" />
+</div>
+
+Then came the time to solder all the things!
+(First the diodes, then the rows, and lastly the columns.)
+
+<div class="gallery">
+    <img src="./pics/wiring/21_diodes_in.jpg" width="80%" />
+    <img src="./pics/wiring/22_rows_in.jpg" width="80%" />
+    <img src="./pics/wiring/23_columns_in.jpg" width="80%" />
+</div>
+
+The soldering continues on the controller side as well with the columns on the top, and the two sets of rows on the bottom.
+
+<div class="gallery">
+    <img src="./pics/wiring/31_controller_columns.jpg" width="80%" />
+    <img src="./pics/wiring/32_controller_rows.jpg" width="80%" />
+</div>
+
+It all just looks so nice and orderly this way that I can almost believe that it's not the same build where I screwed most things up, and made a mess even when I didn't...
+To make things feel a bit more realistic, let me just show you that I used tack to hold wires in place while soldering (left) and that I also managed to singe the battery connector with the soldering iron (right).
+
+<div class="gallery">
+    <img src="./pics/wiring/41_nonprof_tack.jpg" width="40%" />
+    <img src="./pics/wiring/42_nonprof_burn.jpg" width="40%" />
+</div>
+
+Fitting and connecting the controller went relatively smoothly, but then came the battery, which proved a little more difficult.
+You see, if I'd paid attention to the [Bluefruit wiring diagram](https://cdn-learn.adafruit.com/assets/assets/000/046/210/original/Feather_NRF52_Pinout_v1.2.pdf?1504807075) I might have noticed which side expects the red wire and which the black.
+But I didn't even pay attention to this part as I thought that everyone's following the same standards.
+
+Well, no.
+I had the misfortune of ordering JST connectors with the exact opposite wiring, which I only realized after a kind soul helped me out on the [Adafruit forums](https://forums.adafruit.com/viewtopic.php?f=57&t=155069).
+This is why you always go for batteries with the protection circuitry built-in!
+So I reversed the polarity, taped the battery to its plate, and tada...
+
+<div class="gallery">
+    <img src="./pics/wiring/51_controller_done.jpg" width="80%" />
+    <img src="./pics/wiring/52_battery_done.jpg" width="80%" />
+</div>
+
+As proof of life, you can see the yellow light on the left -- showing that the battery is charging -- and the red light on the right -- which I made blink from a test sketch...
+Victory!
+
+<div class="gallery">
+    <img src="./pics/wiring/61_yellow.jpg" width="40%" />
+    <img src="./pics/wiring/62_red.jpg" width="40%" />
+</div>
 
 
 ### The finished product
@@ -671,7 +721,7 @@ This whole process has often reminded me of jedi knights building their own ligh
 And finally I was ready to "graduate", as the build was finished!
 
 Well, physically...
-It was nothing more at this stage than a fancy desk ornament as it did exactly nothing, but it was finished nevertheless!
+It was nothing more at this stage than a fancy desk ornament as it did exactly nothing, -- except blink a little led -- but it was finished nevertheless!
 You'll have to forgive me if I sound a little too fucking proud...
 Anyways, feast your eyes<a href="#footnote-7"><sup>7</sup></a>!
 
@@ -812,6 +862,8 @@ Now go and upvote the [corresponding reddit post](TODO) and star my [GitHub repo
 <br />
 <br />
 <hr />
+
+__Contact__: you can find me [by mail](mailto:mr@zealot.hu), [on GitHub](https://github.com/mrzealot), [on Reddit](https://www.reddit.com/user/mrzealot), or on Discord (MrZealot#8079), and I'd love to hear from you!
 
 __History__:
 
