@@ -24,6 +24,8 @@ namespace absolem {
         virtual void delay(Time time);
 
         virtual void setup();
+
+        virtual float charge();
         virtual void sleep();
         virtual void hibernate();
 
@@ -36,14 +38,16 @@ namespace absolem {
         virtual void off(Pin pin);
         virtual bool read(Pin pin);
 
-        virtual void report(Modifiers mods, KeyCode keys[6]);
-        virtual void report(UsageCode usage);
+        virtual bool report(Modifiers mods, KeyCode keys[6]);
+        virtual bool report(UsageCode usage);
 
         virtual void reset();
 
         private:
         BLEDis bledis;
         BLEHidAdafruit blehid;
+        BLEBas blebas;
+        Time blebasTimer;
     };
     
 } // namespace absolem

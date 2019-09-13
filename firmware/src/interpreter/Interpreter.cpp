@@ -50,11 +50,6 @@ namespace absolem {
         controller->tick();
         currentTime = controller->time();
 
-        if (!queue.size()) {
-            DD(controller->debug("Interpreter::tick: Queue empty at T%lu...", currentTime);)
-            return;
-        }
-
         #ifndef DISABLE_HOOK_ON_BEFORE_TICK
         notify("onBeforeTick", [&](Module* m) {
             return m->onBeforeTick();

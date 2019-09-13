@@ -12,29 +12,56 @@ namespace absolem {
 
     bool ReporterModule::onAfterTick() {
         flush();
+        report();
         return true;
+    }
+
+    void ReporterModule::report() {
+        auto* controller = interpreter->getController();
+        DD(controller->debug("ReporterModule::report runs");)
+        if (!queue.empty()) {
+            Report& r = queue.front();
+            KeyCode arr[6] = {0,0,0,0,0,0};
+            Byte i = 0;
+            for (auto k : r.second) {
+                arr[i++] = k;
+                if (i >= 5) break;
+            }
+            DD(controller->debug("ReporterModule::report: ["BINARY_PATTERN"] + [%d, %d, %d, %d, %d, %d]", BINARY(m), arr[0], arr[1], arr[2], arr[3], arr[4], arr[5]);)
+            if (controller->report(r.first, arr)) {
+                // only erase the front if the report is successful
+                queue.erase(queue.begin());
+            }
+        }
     }
 
     void ReporterModule::flush() {
         auto* controller = interpreter->getController(); 
         DD(controller->debug("ReporterModule::flush runs");)
         if (dirty) {
-            KeyCode arr[6] = {0,0,0,0,0,0};
-            Byte i = 0;
-            for (auto k : keys) {
-                arr[i++] = k;
-                if (i >= 5) break;
-            }
             Modifiers m = currentMods | oneshotMods;
+            queue.push_back(Report(m, keys));
             oneshotMods = 0;
-            PF(20);
-            //prof_report_count++;
-            //Time start = controller->time();
-            controller->report(m, arr);
-            //prof_report_sum += controller->time() - start;
-            PF(0);
-            DD(controller->debug("ReporterModule::flush: ["BINARY_PATTERN"] + [%d, %d, %d, %d, %d, %d]", BINARY(m), arr[0], arr[1], arr[2], arr[3], arr[4], arr[5]);)
             dirty = false;
+        }
+    }
+
+    void ReporterModule::type(String str, const String2CodeMap& map) {
+        auto end = map.end();
+        auto empty = Report(0, Set<KeyCode>());
+        char last = 0;
+        for (char c : str) {
+            auto it = map.find(c);
+            if (it != end) {
+                if (c == last) {
+                    queue.push_back(empty);
+                }
+                Set<KeyCode> key;
+                key.insert(it->second.second);
+                queue.push_back(Report(it->second.first, key));
+                last = c;
+            }
+            queue.push_back(empty);
         }
     }
 

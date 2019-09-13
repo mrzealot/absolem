@@ -48,6 +48,9 @@ namespace absolem {
         bledis.begin();
 
         blehid.begin();
+        blebas.begin();
+        blebas.write((Byte)charge());
+        blebasTimer = 0;
 
         // Advertising packet
         Bluefruit.Advertising.addFlags(BLE_GAP_ADV_FLAGS_LE_ONLY_GENERAL_DISC_MODE);
@@ -75,6 +78,34 @@ namespace absolem {
         Bluefruit.Advertising.start(0);                // 0 = Don't stop advertising after n seconds
     }
 
+
+    float Nrf52Bluefruit::charge() {
+        // read raw analog value --> straight from an Adafruit tutorial
+        float voltage = analogRead(A7);
+        voltage *= 2;    // we divided by 2, so multiply back
+        voltage *= 3.3;  // Multiply by 3.3V, our reference voltage
+        voltage /= 1024; // convert to voltage
+        
+        // convert to percentage --> based on a 3-line approximation of
+        // a common discharge curve...
+        // https://learn.adafruit.com/li-ion-and-lipoly-batteries/voltages
+        float percent = 0;
+        if (voltage >= 3.8) {
+            // 3.79 instead of 3.8 to actually have some time with 100%
+            percent = 80 + ((voltage - 3.79) / 0.4) * 20;
+            // then (because of the above) we actually need cap it
+            percent = percent > 100 ? 100 : percent;
+        } else if (voltage >= 3.5) {
+            percent = 20 + ((voltage - 3.5) / 0.3) * 60;
+        // let's say 3.2 is the minimum, don't know where the
+        // protection circuitry kicks in exactly...
+        } else if (voltage >= 3.2) {
+            percent = ((voltage - 3.2) / 0.3) * 20;
+        }
+        DD(debug("Nrf52Bluefruit::charge: %f", percent);)
+        return percent;
+    }
+
     void Nrf52Bluefruit::sleep() {
         // prepare wakeup, and then go to sleep, TODO
     }
@@ -84,7 +115,14 @@ namespace absolem {
     }
 
     void Nrf52Bluefruit::tick() {
-        // refresh battery service, TODO
+        // refresh battery service, but only about every 5 minutes
+        // which (with about 100 ticks per sec) is 30k
+        blebasTimer++;
+        if (blebasTimer >= 30000) {
+            DD(debug("Nrf52Bluefruit::refreshing blebas");)
+            blebas.write((Byte)charge());
+            blebasTimer = 0;
+        }
     }
 
     void Nrf52Bluefruit::input(Pin pin) {
@@ -111,13 +149,13 @@ namespace absolem {
         return digitalRead(pin) == LOW;
     }
 
-    void Nrf52Bluefruit::report(Modifiers mods, KeyCode keys[6]) {
+    bool Nrf52Bluefruit::report(Modifiers mods, KeyCode keys[6]) {
         DD(debug("Nrf52Bluefruit::report: reporting... %d + %d", mods, keys[0]);)
-        blehid.keyboardReport(mods, keys);
+        return blehid.keyboardReport(mods, keys);
     }
 
-    void Nrf52Bluefruit::report(UsageCode usage) {
-        blehid.consumerReport(usage);
+    bool Nrf52Bluefruit::report(UsageCode usage) {
+        return blehid.consumerReport(usage);
     }
 
     void Nrf52Bluefruit::reset() {

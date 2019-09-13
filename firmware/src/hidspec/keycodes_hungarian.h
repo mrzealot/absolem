@@ -175,4 +175,22 @@
 #define HU_ASTR HU_MINS // *
 #define HU_ASTR_MODS MOD_RALT
 
+
+#include "../common/String2CodeMap.h"
+
+static const absolem::String2CodeMap string2code = {
+    // just a little stub for the battery reporting
+    {'0', {0, HU_0}},
+    {'1', {0, HU_1}},
+    {'2', {0, HU_2}},
+    {'3', {0, HU_3}},
+    {'4', {0, HU_4}},
+    {'5', {0, HU_5}},
+    {'6', {0, HU_6}},
+    {'7', {0, HU_7}},
+    {'8', {0, HU_8}},
+    {'9', {0, HU_9}},
+    {'%', {HU_PERC_MODS, HU_PERC}}
+};
+
 #endif

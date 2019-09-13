@@ -5,9 +5,6 @@
 #include <nrf.h>
 #include "nrf_timer.h"
 
-#undef min
-#undef max
-
 #include "src/controllers/Nrf52Bluefruit.h"
 #include "src/decoder/wiring/MatrixWiring.h"
 #include "src/decoder/debounce/DebouncePerKey.h"
@@ -22,6 +19,7 @@
 #include "src/interpreter/actions/SequenceAction.h"
 #include "src/interpreter/actions/FlushAction.h"
 #include "src/interpreter/actions/ConsumerAction.h"
+#include "src/interpreter/actions/BatteryAction.h"
 
 #include "src/interpreter/modules/ReporterModule.h"
 #include "src/interpreter/modules/CacheModule.h"
@@ -359,7 +357,7 @@ void keymapSetup() {
 
   interpreter.addRule(111, kc(HU_SCLN_MODS, HU_SCLN));
   interpreter.addRule(112, kc(HU_COLN_MODS, HU_COLN));
-  interpreter.addRule(113, kc(KC_NO));
+  interpreter.addRule(113, {Rule(pressTrigger, new BatteryAction(string2code))});
   interpreter.addRule(114, kc(HU_ASTR_MODS, HU_ASTR));
   interpreter.addRule(115, kc(HU_PERC_MODS, HU_PERC));
 
@@ -423,9 +421,9 @@ void keymapSetup() {
   interpreter.addRule(233, kc(HU_OE));
   interpreter.addRule(234, kc(HU_OO));
 
-  interpreter.addRule(236, kc(HU_UEE));
-  interpreter.addRule(237, kc(HU_UE));
-  interpreter.addRule(238, kc(HU_UU));
+  interpreter.addRule(237, kc(HU_UEE));
+  interpreter.addRule(238, kc(HU_UE));
+  interpreter.addRule(239, kc(HU_UU));
 
 
 
@@ -540,7 +538,7 @@ void setup() {
   //timer.attachInterrupt(&profiling_wrapper, 1000); // microseconds
 }
 
-#define TICK_FREQ 20000
+#define TICK_FREQ 10000
 
 void loop() {
   Time begin = controller.time();
@@ -550,7 +548,7 @@ void loop() {
   Time diff = end - begin;
   if (diff >= TICK_FREQ) {
     //prof_overload += diff - PROF_TARGET;
-  } else {
+  } else if (diff > 0) { // don't let a potential overflow block
     //prof_underload += PROF_TARGET - diff;
     controller.delay(TICK_FREQ - diff);
   }
