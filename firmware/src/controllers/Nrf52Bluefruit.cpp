@@ -38,6 +38,11 @@ namespace absolem {
         debug("Serial interface started...");
         #endif
 
+        // explicitly set the analog reference for battery measurements
+        analogReference(AR_INTERNAL_3_0);
+        analogReadResolution(12);
+        delay(1);
+
         Bluefruit.begin();
         Bluefruit.setTxPower(4);    // Check bluefruit.h for supported values
         Bluefruit.setName(name);
@@ -81,10 +86,14 @@ namespace absolem {
 
     float Nrf52Bluefruit::charge() {
         // read raw analog value --> straight from an Adafruit tutorial
+        // https://learn.adafruit.com/bluefruit-nrf52-feather-learning-guide/nrf52-adc
         float voltage = analogRead(A7);
-        voltage *= 2;    // we divided by 2, so multiply back
-        voltage *= 3.3;  // Multiply by 3.3V, our reference voltage
-        voltage /= 1024; // convert to voltage
+        DD(debug("Nrf52Bluefruit::charge: raw battery pin reading is %f", voltage);)
+        
+        voltage *= 1.403; // voltage divider compensation
+        voltage *= 3.0;   // multiply by our reference voltage
+        voltage /= 4096;  // convert to voltage by dividing with the samling resolution
+        DD(debug("Nrf52Bluefruit::charge: battery voltage is %f", voltage);)
         
         // convert to percentage --> based on a 3-line approximation of
         // a common discharge curve...
@@ -102,7 +111,7 @@ namespace absolem {
         } else if (voltage >= 3.2) {
             percent = ((voltage - 3.2) / 0.3) * 20;
         }
-        DD(debug("Nrf52Bluefruit::charge: %f", percent);)
+        DD(debug("Nrf52Bluefruit::charge: final percentage is %f", percent);)
         return percent;
     }
 
