@@ -11,6 +11,7 @@ namespace absolem {
         public:
         Decoder(Wiring* w, Debounce* d);
         List<Event> getEvents();
+        void sleep();
 
         private:
         Wiring* wiring;

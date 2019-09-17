@@ -531,6 +531,15 @@ void keymapSetup() {
 //  timer.attachInterrupt(&profiling_wrapper, 1000); // microseconds
 //}
 
+#define TICK_FREQ 10000
+#define TICK_FREQ_LOW 50000
+uint32_t tick_freq = TICK_FREQ;
+
+#define LOW_RATE_TICKS 1000 // 10 seconds
+#define SLEEP_TICKS 6800 // 5 minutes
+uint32_t sleep_ticks = 0;
+
+
 void setup() {
   keyboardSetup();
   keymapSetup();
@@ -538,21 +547,39 @@ void setup() {
   //timer.attachInterrupt(&profiling_wrapper, 1000); // microseconds
 }
 
-#define TICK_FREQ 10000
 
 void loop() {
   Time begin = controller.time();
-  interpreter.enqueue(decoder.getEvents());
+
+  auto events = decoder.getEvents();
+  if (events.empty()) {
+    sleep_ticks++;
+    if (sleep_ticks >= SLEEP_TICKS) {
+      sleep_ticks = 0;
+      controller.blink(10, 100);
+      controller.blink(10, 300);
+      controller.blink(10, 100);
+      controller.blink(10, 0);
+      decoder.sleep();
+    } else if (tick_freq == TICK_FREQ && sleep_ticks >= LOW_RATE_TICKS) {
+      controller.blink(10, 0);
+      tick_freq = TICK_FREQ_LOW;
+    }
+  } else {
+    if (sleep_ticks > LOW_RATE_TICKS) {
+      controller.blink(10, 0);
+    }
+    tick_freq = TICK_FREQ;
+    sleep_ticks = 0;
+  }
+  interpreter.enqueue(events);
   interpreter.tick();
+
   Time end = controller.time();
   Time diff = end - begin;
-  if (diff >= TICK_FREQ) {
-    //prof_overload += diff - PROF_TARGET;
-  } else if (diff > 0) { // don't let a potential overflow block
-    //prof_underload += PROF_TARGET - diff;
-    controller.delay(TICK_FREQ - diff);
+  if ((diff < tick_freq) && (diff >= 0)) {
+    controller.delay(tick_freq - diff);
   }
-  //dump_profiling_data();
 }
 
 #endif

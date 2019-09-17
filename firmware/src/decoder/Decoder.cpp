@@ -7,5 +7,9 @@ namespace absolem {
     List<Event> Decoder::getEvents() {
         return debounce->update(wiring->getState());
     }
+
+    void Decoder::sleep() {
+        wiring->sleep();
+    }
     
 } // namespace absolem

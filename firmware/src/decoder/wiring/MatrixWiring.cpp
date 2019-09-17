@@ -34,7 +34,7 @@ namespace absolem {
                 DD(controller->debug("MatrixWiring::getState: setting up col %d", col);)
                 controller->input(col);
             }
-            controller->delay(1);           // wait for the signals to settle
+            controller->delay(5);           // wait for the signals to settle
             short col_index = 0;
             for (auto& col : cols) {        // now check activity on the cols
                 bool result = controller->read(col);
@@ -57,6 +57,22 @@ namespace absolem {
 
         state.second = actives;
         return state;
+    }
+
+    void MatrixWiring::sleep() {
+        // set every row to be output and on
+        for (auto& row : rows) {
+            controller->output(row);
+            controller->on(row);
+        }
+
+        // set every column to sense interrupts
+        for (auto& col : cols) {
+            controller->interrupt(col);
+        }
+
+        // actually go to sleep
+        controller->sleep();
     }
     
 } // namespace absolem

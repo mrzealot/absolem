@@ -10,6 +10,7 @@ namespace absolem {
         public:
         Wiring(Controller* controller) : controller(controller) {};
         virtual State getState() = 0;
+        virtual void sleep() = 0;
 
         protected:
         Controller* controller;

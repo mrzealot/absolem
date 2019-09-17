@@ -22,18 +22,19 @@ namespace absolem {
 
         virtual Time time();
         virtual void delay(Time time);
+        virtual void blink(Time on, Time off);
 
         virtual void setup();
+        virtual void tick();
 
         virtual float charge();
         virtual void sleep();
-        virtual void hibernate();
 
-        virtual void tick();
 
         virtual void input(Pin pin);
         virtual void output(Pin pin);
         virtual void disable(Pin pin);
+        virtual void interrupt(Pin pin);
         virtual void on(Pin pin);
         virtual void off(Pin pin);
         virtual bool read(Pin pin);

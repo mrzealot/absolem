@@ -24,12 +24,14 @@ namespace absolem {
     }
 
     void Nrf52Bluefruit::delay(Time time) {
-        PF(1);
-        if (time > 10000) {
-            ::delay((Time)(time / 1000));
-        } else {
-            ::delayMicroseconds(time);
-        }
+        ::delayMicroseconds(time);
+    }
+
+    void Nrf52Bluefruit::blink(Time on, Time off) {
+        digitalWrite(LED_BUILTIN, HIGH);
+        ::delay(on);
+        digitalWrite(LED_BUILTIN, LOW);
+        ::delay(off);
     }
 
     void Nrf52Bluefruit::setup() {
@@ -44,6 +46,8 @@ namespace absolem {
         delay(1);
 
         Bluefruit.begin();
+        // off Blue LED for lowest power consumption
+        Bluefruit.autoConnLed(false);
         Bluefruit.setTxPower(4);    // Check bluefruit.h for supported values
         Bluefruit.setName(name);
 
@@ -83,6 +87,16 @@ namespace absolem {
         Bluefruit.Advertising.start(0);                // 0 = Don't stop advertising after n seconds
     }
 
+    void Nrf52Bluefruit::tick() {
+        // refresh battery service, but only about every 5 minutes
+        // which (with about 100 ticks per sec) is 30k
+        blebasTimer++;
+        if (blebasTimer >= 30000) {
+            DD(debug("Nrf52Bluefruit::refreshing blebas");)
+            blebas.write((Byte)charge());
+            blebasTimer = 0;
+        }
+    }
 
     float Nrf52Bluefruit::charge() {
         // read raw analog value --> straight from an Adafruit tutorial
@@ -116,22 +130,8 @@ namespace absolem {
     }
 
     void Nrf52Bluefruit::sleep() {
-        // prepare wakeup, and then go to sleep, TODO
-    }
-
-    void Nrf52Bluefruit::hibernate() {
-        // an even deeper sleep, TODO
-    }
-
-    void Nrf52Bluefruit::tick() {
-        // refresh battery service, but only about every 5 minutes
-        // which (with about 100 ticks per sec) is 30k
-        blebasTimer++;
-        if (blebasTimer >= 30000) {
-            DD(debug("Nrf52Bluefruit::refreshing blebas");)
-            blebas.write((Byte)charge());
-            blebasTimer = 0;
-        }
+        // wakeup is prepared elsewhere, here we just go to sleep
+        sd_power_system_off();
     }
 
     void Nrf52Bluefruit::input(Pin pin) {
@@ -144,6 +144,14 @@ namespace absolem {
 
     void Nrf52Bluefruit::disable(Pin pin) {
         pinMode(pin, INPUT); // virtually disables the pin
+    }
+
+    void Nrf52Bluefruit::interrupt(Pin pin) {
+        nrf_gpio_cfg_sense_input(
+            pin,
+            NRF_GPIO_PIN_PULLUP,
+            NRF_GPIO_PIN_SENSE_LOW
+        );
     }
 
     void Nrf52Bluefruit::on(Pin pin) {

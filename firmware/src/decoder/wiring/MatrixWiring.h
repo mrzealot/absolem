@@ -10,6 +10,7 @@ namespace absolem {
         MatrixWiring(Controller* controller, List<Pin> rows, List<Pin> cols)
         : Wiring(controller), rows(rows), cols(cols) {};
         virtual State getState();
+        virtual void sleep();
 
         private:
         List<Pin> rows;
