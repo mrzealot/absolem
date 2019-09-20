@@ -1,3 +1,0 @@
-controller.tick();
-interpreter.enqueue(decoder.getEvents());
-interpreter.tick();
