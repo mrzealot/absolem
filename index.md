@@ -1,7 +1,7 @@
 # Absolem
 
 
-![Absolem Splash](https://zealot.hu/absolem/pics/splash.jpg)
+![Absolem Splash](./pics/splash.jpg)
 
 
 ## tl;dr
@@ -768,7 +768,7 @@ There's still a lot to do on this front, but I'm covered for now.
 
 ## Keymap
 
-My keymap is available [here](https://docs.google.com/spreadsheets/d/1Af3q4IMkBpMjVFEbvwf8Ib_Vf0bDYXK0Xkphn-pAfto/edit?usp=sharing), which (similarly to the physical aspects of the builds) was very much born in the spirit of "go hard or go home".
+My keymap is available [here](https://drive.google.com/file/d/1IIEawf1WjTC5cwfkBJBsqfzoJNIqKjZs/view?usp=sharing), which (similarly to the physical aspects of the builds) was very much born in the spirit of "go hard or go home".
 The alpha layer is [Colemak Mod-DH](https://colemakmods.github.io/mod-dh/) without the punctuation, and the thumbfan is mostly the "destress the pinky" zone leaning heavily on [mod/tap](https://docs.qmk.fm/#/feature_advanced_keycodes?id=mod-tap) and layers.
 The numbers are laid out like on a numpad, and the navigation layer (with full modifier support on the left) is designed with text editing in mind.
 There are ergonomic consideration even on the symbol layer, where I placed the symbols to more/less comfortable positions according to their relative frequency in both natural language corpora (corpuses?) and programming language source code.
