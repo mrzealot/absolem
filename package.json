@@ -1,15 +1,13 @@
 {
-  "name": "absolem",
-  "version": "0.0.1",
-  "description": "Flat, minimalistic, ergonomic keyboard layout generated from JS.",
-  "main": "absolem.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Bán Dénes <mr@zealot.hu>",
-  "license": "MIT",
-  "dependencies": {
-    "makerjs": "^0.13.1",
-    "mkdirp": "^0.5.1"
-  }
+    "name": "absolem",
+    "version": "1.0.0",
+    "description": "Flat, minimalistic, ergonomic keyboard layout generated from JS.",
+    "author": "Bán Dénes <mr@zealot.hu>",
+    "license": "MIT",
+    "dependencies": {
+        "fs-extra": "^9.0.0",
+        "js-yaml": "^3.14.0",
+        "makerjs": "^0.17.0",
+        "yargs": "^15.3.1"
+    }
 }

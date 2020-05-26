@@ -1,3 +1,0 @@
-[submodule "firmware"]
-	path = firmware
-	url = git@github.com:mrzealot/absolem-firmware.git
