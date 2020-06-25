@@ -754,7 +754,7 @@ And it also promised to be a good chance to grow as a programmer, _and_ to be in
 So this is exactly what I did.
 
 I don't want to go into too many details here -- this post is almost a book already -- so I'll probably write about the firmware separately in another post if there's any interest.
-In the meantime, you can check out the code [here](https://github.com/mrzealot/absolem/tree/master/firmware).
+In the meantime, you can check out the code [here](https://github.com/mrzealot/absolem-firmware).
 
 The important thing is that as of about a week ago, I was able to almost completely (99%) replicate my old QMK config.
 _And_ with such grace that I just couldn't stop patting myself on the back. :D
@@ -870,6 +870,7 @@ __History__:
 
 - 2019.09.07. -- Original publication.
 - 2019.09.07. -- I already stand corrected: what I referenced as "ergowrap" is actually the [ErgoWarp](https://github.com/pseudoku/ErgoWarp). My apologies!
+- 2020.06.25. -- Fixed the firmware link to point to its new home, plus added a favicon.
 
 __Acknowledgment__: Besides the people already mentioned it the post, I'd like to thank my wife, who put up with me during this year-long process, and whose first reactions weren't "You're doing WHAT?!" and "It costs HOW MUCH?!" :)
 
