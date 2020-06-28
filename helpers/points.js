@@ -108,6 +108,8 @@ const push_rotation = (list, angle, origin) => {
 
 const render_zone = (cols, rows, anchor=new Point(), reverse=false) => {
 
+    console.log(cols, rows)
+
     const sign = reverse ? -1 : 1
     const points = {}
     const rotations = []
@@ -130,9 +132,12 @@ const render_zone = (cols, rows, anchor=new Point(), reverse=false) => {
         const col_specific = col.rows || []
         const zone_wide = rows || []
         const actual_rows = []
-        for (let i = 0; i < zone_wide.length && i < col_specific.length; ++i) {
+        for (let i = 0; i < zone_wide.length || i < col_specific.length; ++i) {
+            console.log('---', i, Object.assign({}, zone_wide[i], col_specific[i]), '---')
             actual_rows.push(Object.assign({}, zone_wide[i], col_specific[i]))
         }
+
+        console.log(col_specific, zone_wide, actual_rows)
 
         for (const row of actual_rows) {
             let point = col_anchor.clone()
@@ -143,6 +148,7 @@ const render_zone = (cols, rows, anchor=new Point(), reverse=false) => {
             const name = `${col.name}_${row.name}`
             point.meta = {col, row, name}
             points[name] = point
+            console.log('point is born', point)
 
             col_anchor.y += row.padding || 19
         }
@@ -188,6 +194,8 @@ exports.parse = (config) => {
             !!zone.reverse
         ))
     }
+
+    console.log(points)
 
     if (config.angle) {
         for (const p of Object.values(points)) {

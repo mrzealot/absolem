@@ -26,6 +26,7 @@ const outline = (points, config) => {
 
         const get_line = (def={}) => {
             const point = points[def.key]
+            console.log(points, def, point)
             if (!point) throw new Error(`Point ${def.key} not found...`)
             const rect = m.model.originate(point.rect(footprint))
             line = rect.paths[def.line || 'top']
@@ -109,7 +110,7 @@ const outline = (points, config) => {
                 key = p.position(key)
                 // console.log(i+1, pname, jsu.inspect(key, true, null, true))
                 // if (i == 7) throw 7
-                keys[pname] = u.deepcopy(p.position(u.rect(14, 14, [-7, -7])))
+                keys[pname] = u.deepcopy(p.position(u.rect(13.8, 13.8, [-6.9, -6.9])))
                 if (mirrored) {
                     // TODO running into the problem again where the right side doesn't combine properly
                     // have to debug this at a lower level, it might be a bug in the makerjs source :/
@@ -122,7 +123,7 @@ const outline = (points, config) => {
 
 
                     right_keys = m.model.combineUnion(key, right_keys)
-                    u.dump_model({a: glue, c: right_keys}, `right_${++i}`)
+                    // u.dump_model({a: glue, c: right_keys}, `right_${++i}`)
                 } else {
 
                     // if (pname === 'inner_top') {
@@ -130,7 +131,7 @@ const outline = (points, config) => {
                     // }
 
                     left_keys = m.model.combineUnion(key, left_keys)
-                    u.dump_model({a: glue, b: left_keys}, `left_${++i}`)
+                    // u.dump_model({a: glue, b: left_keys}, `left_${++i}`)
                 }
 
                 // u.dump_model({a: glue}, `glue_${i++}`)
@@ -139,9 +140,9 @@ const outline = (points, config) => {
     }
 
 
-    u.dump_model({a: glue, b: left_keys, c: {models: right_keys}}, `all_before`)
+    // u.dump_model({a: glue, b: left_keys, c: {models: right_keys}}, `all_before`)
     glue = m.model.combineUnion(glue, left_keys)
-    u.dump_model({a: glue, b: left_keys, c: {models: right_keys}}, `all_after_left`)
+    // u.dump_model({a: glue, b: left_keys, c: {models: right_keys}}, `all_after_left`)
     glue = m.model.combineUnion(glue, right_keys)
     u.dump_model({a: glue, b: {models: keys}}, `fullll`)
 
