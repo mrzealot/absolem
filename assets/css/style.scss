@@ -5,42 +5,54 @@
 
 .gallery {
     text-align: center;
-    margin-bottom: 20px;
+    margin: 20px 0;
+    img {
+        margin-bottom: 20px;
+    }
 }
 
-.markdown-body {
+main {
     color: #363f48;
     background-color: #fefefe;
     font-size: 20px;
     line-height: 1.4;
 }
 
-.markdown-body h1,
-.markdown-body h2,
-.markdown-body h3 {
+main h1,
+main h2,
+main h3 {
     padding: 0;
     border: none;
+    font-weight: bold;
 }
 
-.markdown-body h1 {
+main h1 {
     font-size: 55px;
     text-align: center;
 }
 
-.markdown-body h2 {
+main h2 {
     font-size: 36px;
     margin-top: 100px;
 }
 
-.markdown-body h3 {
+main h3 {
     font-size: 26px;
     margin-top: 20px;
 }
 
-a {
+a, a:visited {
     color: #1c93c5;
 }
 
-h1:first-child, .footer {
+header, footer, h1:first-child {
     display: none;
+}
+
+.wrapper {
+    max-width: 1000px;
+}
+
+body {
+    font-family: Helvetica, Arial, sans-serif !important;
 }
