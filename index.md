@@ -848,6 +848,8 @@ So all I ask of you, dear reader, is that if you ever decide that the Absolem is
 
 Anyways, there'll be a list of some sort here, if there's ever someone other than me... :)
 
+**Update**: and there **is** someone. Wild Absolem builds have been spotted in Israel, the Netherlands, and France! Plus there are "derivatives" as well where the Absolem was credited as an influence. A real club list is in order now, but until then there's an official [Absolem Club Discord](https://discord.gg/DbCfZfZ), so come join the discussion!
+
 
 
 
@@ -864,13 +866,14 @@ Now go and upvote the [corresponding reddit post](https://www.reddit.com/r/Mecha
 <br />
 <hr />
 
-__Contact__: you can find me [by mail](mailto:mr@zealot.hu), [on GitHub](https://github.com/mrzealot), [on Reddit](https://www.reddit.com/user/mrzealot), or on Discord (MrZealot#8079), and if you have any feedback regarding the Absolem, I'd love to hear from you!
+__Contact__: you can find me [by mail](mailto:mr@zealot.hu), [on GitHub](https://github.com/mrzealot), [on Reddit](https://www.reddit.com/user/mrzealot), or on [Discord](https://discord.gg/DbCfZfZ), and if you have any feedback regarding the Absolem, I'd love to hear from you!
 
 __History__:
 
 - 2019.09.07. -- Original publication.
 - 2019.09.07. -- I already stand corrected: what I referenced as "ergowrap" is actually the [ErgoWarp](https://github.com/pseudoku/ErgoWarp). My apologies!
-- 2020.06.25. -- Fixed the firmware link to point to its new home, plus added a favicon.
+- 2020.06.25. -- Fixed the firmware link to point to its new home, plus tried to add a favicon.
+- 2020.06.28. -- Actually added a favicon... Plus some theme tweaks and some club-related updates.
 
 __Acknowledgment__: Besides the people already mentioned it the post, I'd like to thank my wife, who put up with me during this year-long process, and whose first reactions weren't "You're doing WHAT?!" and "It costs HOW MUCH?!" :)
 
