@@ -14,7 +14,7 @@ points:
             top:
               bind: [,15,-1]
           key:
-            column_net: P1
+            column_net: P4
             column_mark: P
         ring:
           stagger: 12
@@ -26,7 +26,7 @@ points:
             top:
               bind: [,10]
           key:
-            column_net: P0
+            column_net: P5
             column_mark: R
         middle:
           stagger: 5
@@ -37,7 +37,7 @@ points:
               bind: [,10,,10]
             top:
           key:
-            column_net: P2
+            column_net: P7
             column_mark: M
         index:
           stagger: -6
@@ -49,7 +49,7 @@ points:
             top:
               bind: [,,,10]
           key:
-            column_net: P3
+            column_net: P8
             column_mark: X
         inner:
           stagger: -2
@@ -61,7 +61,7 @@ points:
             top:
               bind: [,,,10]
           key:
-            column_net: P4
+            column_net: P1
             column_mark: I
       rows:
         bottom:
@@ -69,20 +69,20 @@ points:
           row_net: P16
           row_mark: LB
           mirror:
-            row_net: P7
+            row_net: P9
             row_mark: RB
         home:
           bind: [10]
-          row_net: P14
+          row_net: P15
           row_mark: LH
           mirror:
             row_net: P6
             row_mark: RH
         top:
-          row_net: P15
+          row_net: P20
           row_mark: LT
           mirror:
-            row_net: P5
+            row_net: P2
             row_mark: RT
     s19:
       extends: matrix
@@ -109,12 +109,12 @@ points:
                   anchor:
                     shift: [-4, 4]
                   nets:
-                    net: 'P19'
+                    net: P3
                   params:
                     width: 2
                     height: 2
                     front: false
-                    text: 'E'
+                    text: E
                     align: right
           key:
             footprints:
@@ -284,7 +284,7 @@ points:
           rows:
             thumb:
               bind: [10,5,,]
-              column_net: P2
+              column_net: P7
               tags:
                 classic: true
               footprints:
@@ -313,7 +313,7 @@ points:
           rows:
             thumb:
               bind: [,10,,15]
-              column_net: P3
+              column_net: P8
               tags:
                 classic: true
                 uniform: true
@@ -325,7 +325,7 @@ points:
           rows:
             thumb:
               bind: [-1,,,5]
-              column_net: P4
+              column_net: P1
               tags:
                 classic: true
               footprints:
@@ -351,7 +351,7 @@ points:
                 shift: [0, 9]
                 rotate: 180
           mirror:
-            row_net: P8
+            row_net: P19
             row_mark: RF
             footprints:
               diode:
@@ -374,7 +374,7 @@ points:
             thumb:
               bind: [-1,,,5]
           key:
-            column_net: P4
+            column_net: P1
             footprints:
               choc:
                 anchor:
@@ -389,7 +389,7 @@ points:
         thumb:
           row_net: P10
           mirror:
-            row_net: P8
+            row_net: P19
       key:
         footprints: *quad
         mirror: *quad_mirror
@@ -408,7 +408,7 @@ points:
             thumb:
               bind: [10,5,,]
           key:
-            column_net: P2
+            column_net: P7
             footprints:
               choc:
                 anchor:
@@ -423,7 +423,7 @@ points:
         thumb:
           row_net: P10
           mirror:
-            row_net: P8
+            row_net: P19
       key:
         footprints: *quad
         mirror: *quad_mirror
@@ -638,8 +638,8 @@ pcbs:
             - mirror_s18_inner_top
           shift: [0, -7.5]
         nets:
-          from: RAWER
-          to: RAW
+          from: RAW
+          to: RAWER
         params:
           side: B
       reset:
@@ -663,12 +663,12 @@ pcbs:
             - mirror_s18_inner_top
           shift: [-15, -10]
         nets:
-          net: 'P20'
+          net: P21
         params:
           width: 3
           height: 3
           front: false
-          text: 'LN'
+          text: LN
           align: right
       extra_row_right:
         type: pad
@@ -678,12 +678,12 @@ pcbs:
             - mirror_s18_inner_top
           shift: [15, -10]
         nets:
-          net: 'P21'
+          net: P0
         params:
           width: 3
           height: 3
           front: false
-          text: 'RN'
+          text: RN
       battery:
         type: jstph
         anchor:
@@ -703,5 +703,5 @@ pcbs:
             - mirror_matrix_inner_bottom
           shift: [0, -48]
         nets:
-          din: 'P9'
+          din: P18
           dout: ''
