@@ -229,8 +229,8 @@
       (at 0 0 -15)
 
       
-      (fp_text reference "S1" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-      (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text reference "S1" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
       
       (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -262,8 +262,8 @@
         (at 0 0 -15)
         
         
-        (fp_text reference "S2" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S2" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -288,8 +288,8 @@
         (at 0 0 -15)
 
         
-        (fp_text reference "S3" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S3" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -322,8 +322,8 @@
         (at 11.0747166 -9.4558528 255)
 
         
-        (fp_text reference "D1" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "D1" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start 0.25 0) (end 0.75 0) (layer F.SilkS) (width 0.1))
@@ -360,8 +360,8 @@
             (at -4.8989795 2.8284271 -15)
 
             
-            (fp_text reference "P1" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-            (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+            (fp_text reference "P1" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+            (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
             
             
             
@@ -378,8 +378,8 @@
             (at 2.8284271 4.8989795 -15)
 
             
-            (fp_text reference "P2" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-            (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+            (fp_text reference "P2" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+            (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
             
             
             
@@ -396,8 +396,8 @@
       (at 4.9175619 -18.3525907 -15)
 
       
-      (fp_text reference "S4" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-      (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text reference "S4" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
       
       (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -429,8 +429,8 @@
         (at 4.9175619 -18.3525907 -15)
         
         
-        (fp_text reference "S5" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S5" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -455,8 +455,8 @@
         (at 4.9175619 -18.3525907 -15)
 
         
-        (fp_text reference "S6" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S6" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -489,8 +489,8 @@
         (at 14.4393642 -22.0128885 75)
 
         
-        (fp_text reference "D2" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "D2" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start 0.25 0) (end 0.75 0) (layer F.SilkS) (width 0.1))
@@ -527,8 +527,8 @@
             (at 0.018582399999999666 -15.524163600000001 -15)
 
             
-            (fp_text reference "P3" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-            (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+            (fp_text reference "P3" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+            (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
             
             
             
@@ -545,8 +545,8 @@
       (at 9.8351237 -36.7051814 165)
 
       
-      (fp_text reference "S7" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-      (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text reference "S7" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
       
       (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -578,8 +578,8 @@
         (at 9.8351237 -36.7051814 165)
         
         
-        (fp_text reference "S8" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S8" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -604,8 +604,8 @@
         (at 9.8351237 -36.7051814 165)
 
         
-        (fp_text reference "S9" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S9" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -638,8 +638,8 @@
         (at 17.8040118 -34.569924300000004 75)
 
         
-        (fp_text reference "D3" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "D3" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start 0.25 0) (end 0.75 0) (layer F.SilkS) (width 0.1))
@@ -676,8 +676,8 @@
             (at 3.383229900000001 -28.0811993 -15)
 
             
-            (fp_text reference "P4" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-            (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+            (fp_text reference "P4" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+            (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
             
             
             
@@ -694,8 +694,8 @@
             (at 14.7341032 -39.5336085 -15)
 
             
-            (fp_text reference "P5" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-            (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+            (fp_text reference "P5" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+            (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
             
             
             
@@ -712,8 +712,8 @@
             (at 7.006696600000001 -41.604160900000004 -15)
 
             
-            (fp_text reference "P6" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-            (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+            (fp_text reference "P6" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+            (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
             
             
             
@@ -730,8 +730,8 @@
       (at 22.7244416 -5.176704 -20)
 
       
-      (fp_text reference "S10" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-      (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text reference "S10" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
       
       (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -763,8 +763,8 @@
         (at 22.7244416 -5.176704 -20)
         
         
-        (fp_text reference "S11" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S11" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -789,8 +789,8 @@
         (at 22.7244416 -5.176704 -20)
 
         
-        (fp_text reference "S12" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S12" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -823,8 +823,8 @@
         (at 32.1870064 -7.0535008999999995 250)
 
         
-        (fp_text reference "D4" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "D4" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start 0.25 0) (end 0.75 0) (layer F.SilkS) (width 0.1))
@@ -861,8 +861,8 @@
             (at 25.115131499999997 -0.04985290000000031 -20)
 
             
-            (fp_text reference "P7" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-            (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+            (fp_text reference "P7" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+            (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
             
             
             
@@ -879,8 +879,8 @@
       (at 29.2228244 -23.0308638 -20)
 
       
-      (fp_text reference "S13" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-      (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text reference "S13" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
       
       (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -912,8 +912,8 @@
         (at 29.2228244 -23.0308638 -20)
         
         
-        (fp_text reference "S14" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S14" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -938,8 +938,8 @@
         (at 29.2228244 -23.0308638 -20)
 
         
-        (fp_text reference "S15" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S15" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -972,8 +972,8 @@
         (at 37.8303389 -22.5584292 70)
 
         
-        (fp_text reference "D5" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "D5" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start 0.25 0) (end 0.75 0) (layer F.SilkS) (width 0.1))
@@ -1010,8 +1010,8 @@
       (at 35.7212071 -40.8850235 160)
 
       
-      (fp_text reference "S16" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-      (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text reference "S16" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
       
       (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -1043,8 +1043,8 @@
         (at 35.7212071 -40.8850235 160)
         
         
-        (fp_text reference "S17" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S17" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -1069,8 +1069,8 @@
         (at 35.7212071 -40.8850235 160)
 
         
-        (fp_text reference "S18" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S18" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -1103,8 +1103,8 @@
         (at 43.4736712 -38.0633573 70)
 
         
-        (fp_text reference "D6" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "D6" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start 0.25 0) (end 0.75 0) (layer F.SilkS) (width 0.1))
@@ -1141,8 +1141,8 @@
             (at 40.8480582 -43.2757134 -20)
 
             
-            (fp_text reference "P8" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-            (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+            (fp_text reference "P8" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+            (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
             
             
             
@@ -1159,8 +1159,8 @@
       (at 42.2887022 -3.3767843 -20)
 
       
-      (fp_text reference "S19" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-      (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text reference "S19" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
       
       (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -1192,8 +1192,8 @@
         (at 42.2887022 -3.3767843 -20)
         
         
-        (fp_text reference "S20" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S20" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -1218,8 +1218,8 @@
         (at 42.2887022 -3.3767843 -20)
 
         
-        (fp_text reference "S21" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S21" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -1252,8 +1252,8 @@
         (at 50.0411663 -0.5551181000000001 250)
 
         
-        (fp_text reference "D7" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "D7" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start 0.25 0) (end 0.75 0) (layer F.SilkS) (width 0.1))
@@ -1290,8 +1290,8 @@
             (at 44.6793921 1.7500667999999995 -20)
 
             
-            (fp_text reference "P9" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-            (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+            (fp_text reference "P9" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+            (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
             
             
             
@@ -1308,8 +1308,8 @@
       (at 48.7870849 -21.2309442 -20)
 
       
-      (fp_text reference "S22" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-      (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text reference "S22" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
       
       (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -1341,8 +1341,8 @@
         (at 48.7870849 -21.2309442 -20)
         
         
-        (fp_text reference "S23" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S23" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -1367,8 +1367,8 @@
         (at 48.7870849 -21.2309442 -20)
 
         
-        (fp_text reference "S24" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S24" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -1401,8 +1401,8 @@
         (at 55.5134886 -15.5902002 70)
 
         
-        (fp_text reference "D8" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "D8" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start 0.25 0) (end 0.75 0) (layer F.SilkS) (width 0.1))
@@ -1439,8 +1439,8 @@
       (at 55.2854676 -39.0851039 160)
 
       
-      (fp_text reference "S25" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-      (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text reference "S25" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
       
       (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -1472,8 +1472,8 @@
         (at 55.2854676 -39.0851039 160)
         
         
-        (fp_text reference "S26" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S26" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -1498,8 +1498,8 @@
         (at 55.2854676 -39.0851039 160)
 
         
-        (fp_text reference "S27" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S27" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -1532,8 +1532,8 @@
         (at 60.9858109 -30.625282 70)
 
         
-        (fp_text reference "D9" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "D9" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start 0.25 0) (end 0.75 0) (layer F.SilkS) (width 0.1))
@@ -1570,8 +1570,8 @@
             (at 60.4123187 -41.4757938 -20)
 
             
-            (fp_text reference "P10" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-            (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+            (fp_text reference "P10" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+            (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
             
             
             
@@ -1588,8 +1588,8 @@
       (at 58.0907411 8.7597541 -20)
 
       
-      (fp_text reference "S28" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-      (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text reference "S28" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
       
       (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -1621,8 +1621,8 @@
         (at 58.0907411 8.7597541 -20)
         
         
-        (fp_text reference "S29" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S29" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -1647,8 +1647,8 @@
         (at 58.0907411 8.7597541 -20)
 
         
-        (fp_text reference "S30" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S30" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -1681,8 +1681,8 @@
         (at 52.3903978 0.29993220000000065 250)
 
         
-        (fp_text reference "D10" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "D10" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start 0.25 0) (end 0.75 0) (layer F.SilkS) (width 0.1))
@@ -1719,8 +1719,8 @@
             (at 60.481431 13.8866052 -20)
 
             
-            (fp_text reference "P11" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-            (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+            (fp_text reference "P11" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+            (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
             
             
             
@@ -1737,8 +1737,8 @@
       (at 64.5891238 -9.0944057 -20)
 
       
-      (fp_text reference "S31" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-      (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text reference "S31" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
       
       (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -1770,8 +1770,8 @@
         (at 64.5891238 -9.0944057 -20)
         
         
-        (fp_text reference "S32" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S32" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -1796,8 +1796,8 @@
         (at 64.5891238 -9.0944057 -20)
 
         
-        (fp_text reference "S33" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S33" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -1830,8 +1830,8 @@
         (at 57.8627201 -14.7351497 70)
 
         
-        (fp_text reference "D11" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "D11" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start 0.25 0) (end 0.75 0) (layer F.SilkS) (width 0.1))
@@ -1868,8 +1868,8 @@
       (at 71.0875065 -26.9485655 160)
 
       
-      (fp_text reference "S34" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-      (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text reference "S34" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
       
       (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -1901,8 +1901,8 @@
         (at 71.0875065 -26.9485655 160)
         
         
-        (fp_text reference "S35" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S35" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -1927,8 +1927,8 @@
         (at 71.0875065 -26.9485655 160)
 
         
-        (fp_text reference "S36" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S36" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -1961,8 +1961,8 @@
         (at 63.335042400000006 -29.7702317 70)
 
         
-        (fp_text reference "D12" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "D12" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start 0.25 0) (end 0.75 0) (layer F.SilkS) (width 0.1))
@@ -1999,8 +1999,8 @@
             (at 76.2143576 -29.3392554 -20)
 
             
-            (fp_text reference "P12" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-            (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+            (fp_text reference "P12" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+            (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
             
             
             
@@ -2017,8 +2017,8 @@
       (at 75.2608606 17.1375221 -20)
 
       
-      (fp_text reference "S37" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-      (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text reference "S37" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
       
       (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -2050,8 +2050,8 @@
         (at 75.2608606 17.1375221 -20)
         
         
-        (fp_text reference "S38" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S38" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -2076,8 +2076,8 @@
         (at 75.2608606 17.1375221 -20)
 
         
-        (fp_text reference "S39" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S39" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -2110,8 +2110,8 @@
         (at 83.0133247 19.9591883 250)
 
         
-        (fp_text reference "D13" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "D13" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start 0.25 0) (end 0.75 0) (layer F.SilkS) (width 0.1))
@@ -2148,8 +2148,8 @@
             (at 77.6515505 22.2643732 -20)
 
             
-            (fp_text reference "P13" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-            (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+            (fp_text reference "P13" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+            (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
             
             
             
@@ -2166,8 +2166,8 @@
       (at 81.7592433 -0.7166377 -20)
 
       
-      (fp_text reference "S40" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-      (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text reference "S40" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
       
       (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -2199,8 +2199,8 @@
         (at 81.7592433 -0.7166377 -20)
         
         
-        (fp_text reference "S41" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S41" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -2225,8 +2225,8 @@
         (at 81.7592433 -0.7166377 -20)
 
         
-        (fp_text reference "S42" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S42" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -2259,8 +2259,8 @@
         (at 89.51170739999999 2.1050285 70)
 
         
-        (fp_text reference "D14" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "D14" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start 0.25 0) (end 0.75 0) (layer F.SilkS) (width 0.1))
@@ -2297,8 +2297,8 @@
       (at 88.257626 -18.5707976 160)
 
       
-      (fp_text reference "S43" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-      (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text reference "S43" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
       
       (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -2330,8 +2330,8 @@
         (at 88.257626 -18.5707976 160)
         
         
-        (fp_text reference "S44" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S44" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -2356,8 +2356,8 @@
         (at 88.257626 -18.5707976 160)
 
         
-        (fp_text reference "S45" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S45" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -2390,8 +2390,8 @@
         (at 96.0100901 -15.7491314 70)
 
         
-        (fp_text reference "D15" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "D15" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start 0.25 0) (end 0.75 0) (layer F.SilkS) (width 0.1))
@@ -2428,8 +2428,8 @@
             (at 93.3844771 -20.961487499999997 -20)
 
             
-            (fp_text reference "P14" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-            (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+            (fp_text reference "P14" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+            (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
             
             
             
@@ -2446,8 +2446,8 @@
         (at 0.2588191 -0.9659258 -15)
 
         
-        (fp_text reference "S46" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S46" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -2479,8 +2479,8 @@
         (at 4.9175619 -18.3525907 -15)
 
         
-        (fp_text reference "S47" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S47" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -2512,8 +2512,8 @@
         (at 9.5763046 -35.7392556 165)
 
         
-        (fp_text reference "S48" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S48" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -2545,8 +2545,8 @@
         (at 23.0664618 -6.1163966 -20)
 
         
-        (fp_text reference "S49" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S49" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -2578,8 +2578,8 @@
         (at 29.2228244 -23.0308638 -20)
 
         
-        (fp_text reference "S50" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S50" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -2611,8 +2611,8 @@
         (at 35.379187 -39.9453309 160)
 
         
-        (fp_text reference "S51" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S51" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -2644,8 +2644,8 @@
         (at 42.6307223 -4.316477 -20)
 
         
-        (fp_text reference "S52" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S52" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -2677,8 +2677,8 @@
         (at 48.7870849 -21.2309442 -20)
 
         
-        (fp_text reference "S53" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S53" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -2710,8 +2710,8 @@
         (at 54.9434475 -38.1454113 160)
 
         
-        (fp_text reference "S54" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S54" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -2743,8 +2743,8 @@
         (at 58.4327612 7.8200615 -20)
 
         
-        (fp_text reference "S55" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S55" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -2776,8 +2776,8 @@
         (at 64.5891238 -9.0944057 -20)
 
         
-        (fp_text reference "S56" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S56" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -2809,8 +2809,8 @@
         (at 70.7454863 -26.0088729 160)
 
         
-        (fp_text reference "S57" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S57" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -2842,8 +2842,8 @@
         (at 75.6028807 16.1978295 -20)
 
         
-        (fp_text reference "S58" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S58" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -2875,8 +2875,8 @@
         (at 81.7592433 -0.7166377 -20)
 
         
-        (fp_text reference "S59" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S59" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -2908,8 +2908,8 @@
         (at 87.9156059 -17.631105 160)
 
         
-        (fp_text reference "S60" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S60" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -2941,8 +2941,8 @@
       (at 62.1846295 32.5975409 -20)
 
       
-      (fp_text reference "S61" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-      (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text reference "S61" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
       
       (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -2974,8 +2974,8 @@
         (at 62.1846295 32.5975409 -20)
         
         
-        (fp_text reference "S62" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S62" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -3000,8 +3000,8 @@
         (at 62.1846295 32.5975409 160)
 
         
-        (fp_text reference "S63" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S63" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -3034,8 +3034,8 @@
         (at 72.7803518 26.876468499999998 160)
 
         
-        (fp_text reference "D16" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "D16" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start 0.25 0) (end 0.75 0) (layer F.SilkS) (width 0.1))
@@ -3072,8 +3072,8 @@
             (at 62.4437329 23.114246899999998 -20)
 
             
-            (fp_text reference "P15" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-            (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+            (fp_text reference "P15" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+            (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
             
             
             
@@ -3090,8 +3090,8 @@
       (at 82.5841162 47.013742 -48)
 
       
-      (fp_text reference "S64" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-      (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text reference "S64" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
       
       (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -3123,8 +3123,8 @@
         (at 82.5841162 47.013742 -48)
         
         
-        (fp_text reference "S65" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S65" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -3149,8 +3149,8 @@
         (at 82.5841162 47.013742 -48)
 
         
-        (fp_text reference "S66" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S66" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -3183,8 +3183,8 @@
         (at 94.62546449999999 46.936725100000004 132)
 
         
-        (fp_text reference "D17" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "D17" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start 0.25 0) (end 0.75 0) (layer F.SilkS) (width 0.1))
@@ -3221,8 +3221,8 @@
       (at 94.7890169 68.8083815 -76)
 
       
-      (fp_text reference "S67" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-      (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text reference "S67" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
       
       (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -3254,8 +3254,8 @@
         (at 94.7890169 68.8083815 -76)
         
         
-        (fp_text reference "S68" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S68" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -3280,8 +3280,8 @@
         (at 94.7890169 68.8083815 104)
 
         
-        (fp_text reference "S69" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S69" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -3314,8 +3314,8 @@
         (at 102.55399089999999 62.74990149999999 -76)
 
         
-        (fp_text reference "D18" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "D18" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start 0.25 0) (end 0.75 0) (layer F.SilkS) (width 0.1))
@@ -3352,8 +3352,8 @@
       (at 93.2834731 67.1363057 -76)
 
       
-      (fp_text reference "S70" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-      (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text reference "S70" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
       
       (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -3385,8 +3385,8 @@
         (at 93.2834731 67.1363057 -76)
         
         
-        (fp_text reference "S71" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S71" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -3411,8 +3411,8 @@
         (at 93.2834731 67.1363057 104)
 
         
-        (fp_text reference "S72" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S72" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -3444,8 +3444,8 @@
       (at 63.6901734 34.2696167 -20)
 
       
-      (fp_text reference "S73" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-      (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text reference "S73" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
       
       (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -3477,8 +3477,8 @@
         (at 63.6901734 34.2696167 -20)
         
         
-        (fp_text reference "S74" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S74" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -3503,8 +3503,8 @@
         (at 63.6901734 34.2696167 160)
 
         
-        (fp_text reference "S75" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S75" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -3536,8 +3536,8 @@
       (at 233.5881016 0 15)
 
       
-      (fp_text reference "S76" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-      (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text reference "S76" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
       
       (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -3569,8 +3569,8 @@
         (at 233.5881016 0 15)
         
         
-        (fp_text reference "S77" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S77" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -3595,8 +3595,8 @@
         (at 233.5881016 0 15)
 
         
-        (fp_text reference "S78" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S78" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -3629,8 +3629,8 @@
         (at 222.513385 -9.4558528 285)
 
         
-        (fp_text reference "D19" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "D19" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start 0.25 0) (end 0.75 0) (layer F.SilkS) (width 0.1))
@@ -3667,8 +3667,8 @@
             (at 238.48708109999998 2.8284271 15)
 
             
-            (fp_text reference "P16" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-            (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+            (fp_text reference "P16" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+            (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
             
             
             
@@ -3685,8 +3685,8 @@
             (at 230.7596745 4.8989795 15)
 
             
-            (fp_text reference "P17" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-            (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+            (fp_text reference "P17" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+            (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
             
             
             
@@ -3703,8 +3703,8 @@
       (at 228.67053969999998 -18.3525907 15)
 
       
-      (fp_text reference "S79" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-      (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text reference "S79" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
       
       (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -3736,8 +3736,8 @@
         (at 228.67053969999998 -18.3525907 15)
         
         
-        (fp_text reference "S80" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S80" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -3762,8 +3762,8 @@
         (at 228.67053969999998 -18.3525907 15)
 
         
-        (fp_text reference "S81" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S81" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -3796,8 +3796,8 @@
         (at 219.1487374 -22.0128885 105)
 
         
-        (fp_text reference "D20" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "D20" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start 0.25 0) (end 0.75 0) (layer F.SilkS) (width 0.1))
@@ -3834,8 +3834,8 @@
             (at 233.56951919999997 -15.524163600000001 15)
 
             
-            (fp_text reference "P18" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-            (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+            (fp_text reference "P18" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+            (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
             
             
             
@@ -3852,8 +3852,8 @@
       (at 223.7529779 -36.7051814 195)
 
       
-      (fp_text reference "S82" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-      (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text reference "S82" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
       
       (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -3885,8 +3885,8 @@
         (at 223.7529779 -36.7051814 195)
         
         
-        (fp_text reference "S83" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S83" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -3911,8 +3911,8 @@
         (at 223.7529779 -36.7051814 195)
 
         
-        (fp_text reference "S84" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S84" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -3945,8 +3945,8 @@
         (at 215.7840898 -34.569924300000004 105)
 
         
-        (fp_text reference "D21" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "D21" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start 0.25 0) (end 0.75 0) (layer F.SilkS) (width 0.1))
@@ -3983,8 +3983,8 @@
             (at 230.20487169999998 -28.0811993 15)
 
             
-            (fp_text reference "P19" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-            (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+            (fp_text reference "P19" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+            (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
             
             
             
@@ -4001,8 +4001,8 @@
             (at 218.8539984 -39.5336085 15)
 
             
-            (fp_text reference "P20" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-            (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+            (fp_text reference "P20" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+            (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
             
             
             
@@ -4019,8 +4019,8 @@
             (at 226.581405 -41.604160900000004 15)
 
             
-            (fp_text reference "P21" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-            (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+            (fp_text reference "P21" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+            (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
             
             
             
@@ -4037,8 +4037,8 @@
       (at 210.86365999999998 -5.176704 20)
 
       
-      (fp_text reference "S85" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-      (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text reference "S85" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
       
       (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -4070,8 +4070,8 @@
         (at 210.86365999999998 -5.176704 20)
         
         
-        (fp_text reference "S86" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S86" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -4096,8 +4096,8 @@
         (at 210.86365999999998 -5.176704 20)
 
         
-        (fp_text reference "S87" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S87" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -4130,8 +4130,8 @@
         (at 201.4010952 -7.0535008999999995 290)
 
         
-        (fp_text reference "D22" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "D22" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start 0.25 0) (end 0.75 0) (layer F.SilkS) (width 0.1))
@@ -4168,8 +4168,8 @@
             (at 208.47297009999997 -0.04985290000000031 20)
 
             
-            (fp_text reference "P22" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-            (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+            (fp_text reference "P22" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+            (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
             
             
             
@@ -4186,8 +4186,8 @@
       (at 204.36527719999998 -23.0308638 20)
 
       
-      (fp_text reference "S88" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-      (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text reference "S88" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
       
       (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -4219,8 +4219,8 @@
         (at 204.36527719999998 -23.0308638 20)
         
         
-        (fp_text reference "S89" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S89" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -4245,8 +4245,8 @@
         (at 204.36527719999998 -23.0308638 20)
 
         
-        (fp_text reference "S90" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S90" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -4279,8 +4279,8 @@
         (at 195.75776269999997 -22.5584292 110)
 
         
-        (fp_text reference "D23" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "D23" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start 0.25 0) (end 0.75 0) (layer F.SilkS) (width 0.1))
@@ -4317,8 +4317,8 @@
       (at 197.8668945 -40.8850235 200)
 
       
-      (fp_text reference "S91" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-      (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text reference "S91" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
       
       (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -4350,8 +4350,8 @@
         (at 197.8668945 -40.8850235 200)
         
         
-        (fp_text reference "S92" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S92" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -4376,8 +4376,8 @@
         (at 197.8668945 -40.8850235 200)
 
         
-        (fp_text reference "S93" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S93" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -4410,8 +4410,8 @@
         (at 190.1144304 -38.0633573 110)
 
         
-        (fp_text reference "D24" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "D24" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start 0.25 0) (end 0.75 0) (layer F.SilkS) (width 0.1))
@@ -4448,8 +4448,8 @@
             (at 192.7400434 -43.2757134 20)
 
             
-            (fp_text reference "P23" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-            (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+            (fp_text reference "P23" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+            (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
             
             
             
@@ -4466,8 +4466,8 @@
       (at 191.29939939999997 -3.3767843 20)
 
       
-      (fp_text reference "S94" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-      (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text reference "S94" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
       
       (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -4499,8 +4499,8 @@
         (at 191.29939939999997 -3.3767843 20)
         
         
-        (fp_text reference "S95" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S95" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -4525,8 +4525,8 @@
         (at 191.29939939999997 -3.3767843 20)
 
         
-        (fp_text reference "S96" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S96" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -4559,8 +4559,8 @@
         (at 183.54693529999997 -0.5551181000000001 290)
 
         
-        (fp_text reference "D25" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "D25" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start 0.25 0) (end 0.75 0) (layer F.SilkS) (width 0.1))
@@ -4597,8 +4597,8 @@
             (at 188.90870949999996 1.7500667999999995 20)
 
             
-            (fp_text reference "P24" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-            (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+            (fp_text reference "P24" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+            (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
             
             
             
@@ -4615,8 +4615,8 @@
       (at 184.8010167 -21.2309442 20)
 
       
-      (fp_text reference "S97" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-      (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text reference "S97" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
       
       (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -4648,8 +4648,8 @@
         (at 184.8010167 -21.2309442 20)
         
         
-        (fp_text reference "S98" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S98" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -4674,8 +4674,8 @@
         (at 184.8010167 -21.2309442 20)
 
         
-        (fp_text reference "S99" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S99" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -4708,8 +4708,8 @@
         (at 178.074613 -15.5902002 110)
 
         
-        (fp_text reference "D26" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "D26" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start 0.25 0) (end 0.75 0) (layer F.SilkS) (width 0.1))
@@ -4746,8 +4746,8 @@
       (at 178.30263399999998 -39.0851039 200)
 
       
-      (fp_text reference "S100" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-      (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text reference "S100" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
       
       (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -4779,8 +4779,8 @@
         (at 178.30263399999998 -39.0851039 200)
         
         
-        (fp_text reference "S101" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S101" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -4805,8 +4805,8 @@
         (at 178.30263399999998 -39.0851039 200)
 
         
-        (fp_text reference "S102" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S102" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -4839,8 +4839,8 @@
         (at 172.60229069999997 -30.625282 110)
 
         
-        (fp_text reference "D27" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "D27" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start 0.25 0) (end 0.75 0) (layer F.SilkS) (width 0.1))
@@ -4877,8 +4877,8 @@
             (at 173.17578289999997 -41.4757938 20)
 
             
-            (fp_text reference "P25" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-            (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+            (fp_text reference "P25" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+            (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
             
             
             
@@ -4895,8 +4895,8 @@
       (at 175.49736049999998 8.7597541 20)
 
       
-      (fp_text reference "S103" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-      (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text reference "S103" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
       
       (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -4928,8 +4928,8 @@
         (at 175.49736049999998 8.7597541 20)
         
         
-        (fp_text reference "S104" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S104" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -4954,8 +4954,8 @@
         (at 175.49736049999998 8.7597541 20)
 
         
-        (fp_text reference "S105" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S105" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -4988,8 +4988,8 @@
         (at 181.1977038 0.29993220000000065 290)
 
         
-        (fp_text reference "D28" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "D28" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start 0.25 0) (end 0.75 0) (layer F.SilkS) (width 0.1))
@@ -5026,8 +5026,8 @@
             (at 173.10667059999997 13.8866052 20)
 
             
-            (fp_text reference "P26" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-            (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+            (fp_text reference "P26" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+            (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
             
             
             
@@ -5044,8 +5044,8 @@
       (at 168.99897779999998 -9.0944057 20)
 
       
-      (fp_text reference "S106" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-      (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text reference "S106" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
       
       (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -5077,8 +5077,8 @@
         (at 168.99897779999998 -9.0944057 20)
         
         
-        (fp_text reference "S107" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S107" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -5103,8 +5103,8 @@
         (at 168.99897779999998 -9.0944057 20)
 
         
-        (fp_text reference "S108" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S108" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -5137,8 +5137,8 @@
         (at 175.72538149999997 -14.7351497 110)
 
         
-        (fp_text reference "D29" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "D29" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start 0.25 0) (end 0.75 0) (layer F.SilkS) (width 0.1))
@@ -5175,8 +5175,8 @@
       (at 162.5005951 -26.9485655 200)
 
       
-      (fp_text reference "S109" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-      (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text reference "S109" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
       
       (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -5208,8 +5208,8 @@
         (at 162.5005951 -26.9485655 200)
         
         
-        (fp_text reference "S110" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S110" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -5234,8 +5234,8 @@
         (at 162.5005951 -26.9485655 200)
 
         
-        (fp_text reference "S111" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S111" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -5268,8 +5268,8 @@
         (at 170.2530592 -29.7702317 110)
 
         
-        (fp_text reference "D30" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "D30" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start 0.25 0) (end 0.75 0) (layer F.SilkS) (width 0.1))
@@ -5306,8 +5306,8 @@
             (at 157.373744 -29.3392554 20)
 
             
-            (fp_text reference "P27" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-            (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+            (fp_text reference "P27" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+            (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
             
             
             
@@ -5324,8 +5324,8 @@
       (at 158.327241 17.1375221 20)
 
       
-      (fp_text reference "S112" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-      (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text reference "S112" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
       
       (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -5357,8 +5357,8 @@
         (at 158.327241 17.1375221 20)
         
         
-        (fp_text reference "S113" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S113" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -5383,8 +5383,8 @@
         (at 158.327241 17.1375221 20)
 
         
-        (fp_text reference "S114" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S114" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -5417,8 +5417,8 @@
         (at 150.5747769 19.9591883 290)
 
         
-        (fp_text reference "D31" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "D31" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start 0.25 0) (end 0.75 0) (layer F.SilkS) (width 0.1))
@@ -5455,8 +5455,8 @@
             (at 155.93655109999997 22.2643732 20)
 
             
-            (fp_text reference "P28" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-            (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+            (fp_text reference "P28" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+            (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
             
             
             
@@ -5473,8 +5473,8 @@
       (at 151.82885829999998 -0.7166377 20)
 
       
-      (fp_text reference "S115" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-      (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text reference "S115" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
       
       (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -5506,8 +5506,8 @@
         (at 151.82885829999998 -0.7166377 20)
         
         
-        (fp_text reference "S116" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S116" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -5532,8 +5532,8 @@
         (at 151.82885829999998 -0.7166377 20)
 
         
-        (fp_text reference "S117" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S117" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -5566,8 +5566,8 @@
         (at 144.07639419999998 2.1050285 110)
 
         
-        (fp_text reference "D32" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "D32" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start 0.25 0) (end 0.75 0) (layer F.SilkS) (width 0.1))
@@ -5604,8 +5604,8 @@
       (at 145.3304756 -18.5707976 200)
 
       
-      (fp_text reference "S118" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-      (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text reference "S118" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
       
       (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -5637,8 +5637,8 @@
         (at 145.3304756 -18.5707976 200)
         
         
-        (fp_text reference "S119" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S119" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -5663,8 +5663,8 @@
         (at 145.3304756 -18.5707976 200)
 
         
-        (fp_text reference "S120" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S120" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -5697,8 +5697,8 @@
         (at 137.5780115 -15.7491314 110)
 
         
-        (fp_text reference "D33" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "D33" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start 0.25 0) (end 0.75 0) (layer F.SilkS) (width 0.1))
@@ -5735,8 +5735,8 @@
             (at 140.2036245 -20.961487499999997 20)
 
             
-            (fp_text reference "P29" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-            (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+            (fp_text reference "P29" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+            (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
             
             
             
@@ -5753,8 +5753,8 @@
         (at 233.32928249999998 -0.9659258 15)
 
         
-        (fp_text reference "S121" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S121" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -5786,8 +5786,8 @@
         (at 228.67053969999998 -18.3525907 15)
 
         
-        (fp_text reference "S122" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S122" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -5819,8 +5819,8 @@
         (at 224.011797 -35.7392556 195)
 
         
-        (fp_text reference "S123" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S123" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -5852,8 +5852,8 @@
         (at 210.5216398 -6.1163966 20)
 
         
-        (fp_text reference "S124" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S124" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -5885,8 +5885,8 @@
         (at 204.36527719999998 -23.0308638 20)
 
         
-        (fp_text reference "S125" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S125" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -5918,8 +5918,8 @@
         (at 198.20891459999999 -39.9453309 200)
 
         
-        (fp_text reference "S126" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S126" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -5951,8 +5951,8 @@
         (at 190.95737929999999 -4.316477 20)
 
         
-        (fp_text reference "S127" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S127" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -5984,8 +5984,8 @@
         (at 184.8010167 -21.2309442 20)
 
         
-        (fp_text reference "S128" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S128" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -6017,8 +6017,8 @@
         (at 178.6446541 -38.1454113 200)
 
         
-        (fp_text reference "S129" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S129" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -6050,8 +6050,8 @@
         (at 175.1553404 7.8200615 20)
 
         
-        (fp_text reference "S130" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S130" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -6083,8 +6083,8 @@
         (at 168.99897779999998 -9.0944057 20)
 
         
-        (fp_text reference "S131" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S131" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -6116,8 +6116,8 @@
         (at 162.84261529999998 -26.0088729 200)
 
         
-        (fp_text reference "S132" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S132" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -6149,8 +6149,8 @@
         (at 157.9852209 16.1978295 20)
 
         
-        (fp_text reference "S133" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S133" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -6182,8 +6182,8 @@
         (at 151.82885829999998 -0.7166377 20)
 
         
-        (fp_text reference "S134" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S134" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -6215,8 +6215,8 @@
         (at 145.67249569999998 -17.631105 200)
 
         
-        (fp_text reference "S135" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S135" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -6248,8 +6248,8 @@
       (at 171.4034721 32.5975409 20)
 
       
-      (fp_text reference "S136" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-      (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text reference "S136" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
       
       (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -6281,8 +6281,8 @@
         (at 171.4034721 32.5975409 20)
         
         
-        (fp_text reference "S137" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S137" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -6307,8 +6307,8 @@
         (at 171.4034721 32.5975409 200)
 
         
-        (fp_text reference "S138" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S138" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -6341,8 +6341,8 @@
         (at 160.80774979999998 26.876468499999998 20)
 
         
-        (fp_text reference "D34" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "D34" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start 0.25 0) (end 0.75 0) (layer F.SilkS) (width 0.1))
@@ -6379,8 +6379,8 @@
             (at 171.1443687 23.114246899999998 20)
 
             
-            (fp_text reference "P30" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-            (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+            (fp_text reference "P30" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+            (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
             
             
             
@@ -6397,8 +6397,8 @@
       (at 151.00398539999998 47.013742 48)
 
       
-      (fp_text reference "S139" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-      (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text reference "S139" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
       
       (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -6430,8 +6430,8 @@
         (at 151.00398539999998 47.013742 48)
         
         
-        (fp_text reference "S140" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S140" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -6456,8 +6456,8 @@
         (at 151.00398539999998 47.013742 48)
 
         
-        (fp_text reference "S141" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S141" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -6490,8 +6490,8 @@
         (at 138.96263709999997 46.936725100000004 48)
 
         
-        (fp_text reference "D35" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "D35" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start 0.25 0) (end 0.75 0) (layer F.SilkS) (width 0.1))
@@ -6528,8 +6528,8 @@
       (at 138.79908469999998 68.8083815 76)
 
       
-      (fp_text reference "S142" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-      (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text reference "S142" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
       
       (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -6561,8 +6561,8 @@
         (at 138.79908469999998 68.8083815 76)
         
         
-        (fp_text reference "S143" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S143" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -6587,8 +6587,8 @@
         (at 138.79908469999998 68.8083815 256)
 
         
-        (fp_text reference "S144" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S144" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -6621,8 +6621,8 @@
         (at 131.03411069999999 62.74990149999999 256)
 
         
-        (fp_text reference "D36" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "D36" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start 0.25 0) (end 0.75 0) (layer F.SilkS) (width 0.1))
@@ -6659,8 +6659,8 @@
       (at 140.30462849999998 67.1363057 76)
 
       
-      (fp_text reference "S145" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-      (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text reference "S145" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
       
       (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -6692,8 +6692,8 @@
         (at 140.30462849999998 67.1363057 76)
         
         
-        (fp_text reference "S146" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S146" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -6718,8 +6718,8 @@
         (at 140.30462849999998 67.1363057 256)
 
         
-        (fp_text reference "S147" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S147" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -6751,8 +6751,8 @@
       (at 169.8979282 34.2696167 20)
 
       
-      (fp_text reference "S148" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-      (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text reference "S148" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
       
       (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -6784,8 +6784,8 @@
         (at 169.8979282 34.2696167 20)
         
         
-        (fp_text reference "S149" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S149" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -6810,8 +6810,8 @@
         (at 169.8979282 34.2696167 200)
 
         
-        (fp_text reference "S150" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "S150" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
         
         (fp_line (start -7 -6) (end -7 -7) (layer Dwgs.User) (width 0.15))
@@ -6843,14 +6843,14 @@
       (at 116.7940508 5.368894999999998 270)
 
       
-      (fp_text reference "C1" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-      (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text reference "C1" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+      (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
     
       
-      (fp_line (start -19.304 -3.556) (end -14.224 -3.556) (layer Dwgs.User) (width 0.15))
-      (fp_line (start -19.304 3.81) (end -19.304 -3.556) (layer Dwgs.User) (width 0.15))
+      (fp_line (start -19.304 -3.81) (end -14.224 -3.81) (layer Dwgs.User) (width 0.15))
+      (fp_line (start -19.304 3.81) (end -19.304 -3.81) (layer Dwgs.User) (width 0.15))
       (fp_line (start -14.224 3.81) (end -19.304 3.81) (layer Dwgs.User) (width 0.15))
-      (fp_line (start -14.224 -3.556) (end -14.224 3.81) (layer Dwgs.User) (width 0.15))
+      (fp_line (start -14.224 -3.81) (end -14.224 3.81) (layer Dwgs.User) (width 0.15))
     
       
       (fp_line (start -17.78 8.89) (end 15.24 8.89) (layer F.SilkS) (width 0.15))
@@ -6925,8 +6925,8 @@
             (at 116.7940508 -10.131105000000002 0)
 
             
-            (fp_text reference "T1" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-            (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+            (fp_text reference "T1" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+            (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
             
             
             (fp_line (start 1.95 -1.35) (end -1.95 -1.35) (layer B.SilkS) (width 0.15))
@@ -6967,8 +6967,8 @@
 
         (at 116.7940508 -0.6311050000000016 90)
         
-        (fp_text reference "B1" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "B1" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
         
         
         (fp_line (start 2.75 1.25) (end 1.25 2.75) (layer B.SilkS) (width 0.15))
@@ -6995,8 +6995,8 @@
             (at 101.7940508 -7.631105000000002 0)
 
             
-            (fp_text reference "P31" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-            (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+            (fp_text reference "P31" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+            (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
             
             
             
@@ -7013,8 +7013,8 @@
             (at 131.79405079999998 -7.631105000000002 0)
 
             
-            (fp_text reference "P32" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-            (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+            (fp_text reference "P32" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+            (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
             
             
             
@@ -7034,8 +7034,8 @@
         (at 116.7940508 60.1375221 180)
 
         
-        (fp_text reference "J1" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-        (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text reference "J1" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+        (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
         (fp_line (start -2.25 0.25) (end -2.25 -1.35) (layer F.SilkS) (width 0.15))
         (fp_line (start -2.25 -1.35) (end -2.95 -1.35) (layer F.SilkS) (width 0.15))
@@ -7062,8 +7062,8 @@
             (at 116.7940508 65.1375221 0)
 
             
-            (fp_text reference "L1" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
-            (fp_text value "" (at 0 0) (layer F.SilkS) (effects (font (size 1.27 1.27) (thickness 0.15))))
+            (fp_text reference "L1" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
+            (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
 
             (fp_line (start -1.75 -1.75) (end -1.75 1.75) (layer F.SilkS) (width 0.15))
             (fp_line (start -1.75 1.75) (end 1.75 1.75) (layer F.SilkS) (width 0.15))
