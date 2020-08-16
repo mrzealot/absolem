@@ -5,10 +5,7 @@ points:
         rotate: 5
       columns:
         pinky:
-          rotate: -5
-          origin: [7, -7]
           rows:
-            bottom:
             home:
               bind: [,15,-1]
             top:
@@ -17,6 +14,11 @@ points:
             column_net: P4
             column_mark: P
         ring:
+          rotate: -5
+          # hinge at the bottom right corner
+          # of the bottom pinky's 14x14 hole
+          # for historical reasons...
+          origin: [-12, -19]
           stagger: 12
           rows:
             bottom:
@@ -35,7 +37,6 @@ points:
               bind: [,10,,10]
             home:
               bind: [,10,,10]
-            top:
           key:
             column_net: P7
             column_mark: M
@@ -258,7 +259,8 @@ points:
       columns:
         pinky:
           stagger: 1
-          origin: [7, -8]
+        ring:
+          origin: [-12, -20]
       rows:
         top:
           footprints:
@@ -278,9 +280,6 @@ points:
         shift: [-7, -19]
       columns:
         near:
-          spread: 21.25
-          rotate: -28
-          origin: [9.5, -9]
           rows:
             thumb:
               bind: [10,5,,]
@@ -309,7 +308,7 @@ points:
         home:
           spread: 21.25
           rotate: -28
-          origin: [11.75, -9]
+          origin: [-11.75, -9]
           rows:
             thumb:
               bind: [,10,,15]
@@ -322,6 +321,9 @@ points:
                   anchor:
                     shift: [8,]
         far:
+          spread: 21.25
+          rotate: -28
+          origin: [-9.5, -9]
           rows:
             thumb:
               bind: [-1,,,5]
@@ -365,11 +367,11 @@ points:
         ref: thumbfan_home_thumb
       columns:
         home_again:
-          rotate: -28
-          origin: [9.5, -9]
           key:
             skip: true
         far:
+          rotate: -28
+          origin: [-9.5, -9]
           rows:
             thumb:
               bind: [-1,,,5]
@@ -398,12 +400,12 @@ points:
         ref: thumbfan_home_thumb
       columns:
         home_again:
-          spread: -19
-          rotate: 28
-          origin: [-9.5, -9]
           key:
             skip: true
         near:
+          spread: -19
+          rotate: 28
+          origin: [9.5, -9]
           rows:
             thumb:
               bind: [10,5,,]
@@ -476,7 +478,7 @@ outlines:
         - uniform_s19
         - classic_s18
   exports:
-    classic_s19_outline:
+    classic_s19_pcb:
       main:
         type: keys
         side: both
@@ -486,15 +488,15 @@ outlines:
         glue: classic_s19
         size: 13.5
         corner: .5
-    uniform_s19_outline:
-      extends: classic_s19_outline
+    uniform_s19_pcb:
+      extends: classic_s19_pcb
       main:
         tags:
           - s19
           - uniform
         glue: uniform_s19
-    uniform_s18_outline:
-      extends: uniform_s19_outline
+    uniform_s18_pcb:
+      extends: uniform_s19_pcb
       main:
         tags:
           - s18
@@ -552,10 +554,10 @@ outlines:
     intersected_outline:
       one:
         type: outline
-        name: classic_s19_outline
+        name: classic_s19_pcb
       two:
         type: outline
-        name: uniform_s18_outline
+        name: uniform_s18_pcb
         operation: intersect
       controller_cutout:
         type: rectangle
@@ -569,24 +571,6 @@ outlines:
         type: outline
         name: mounting_holes
         operation: subtract
-    classic_s19_switches:
-      main:
-        type: keys
-        side: both
-        tags:
-          - classic
-        glue: classic_s19
-        size: 14
-        bound: false
-    uniform_s19_switches:
-      main:
-        type: keys
-        side: both
-        tags:
-          - uniform
-        glue: uniform_s19
-        size: 14
-        bound: false
     pcb_middle:
       raw:
         type: keys
@@ -610,8 +594,44 @@ outlines:
         mirror: true
       outer_bounds:
         type: outline
-        name: classic_s19_outline
+        name: classic_s19_pcb
         operation: intersect
+    classic_s19_switches:
+      main:
+        type: keys
+        side: both
+        tags:
+          - s19
+          - classic
+        glue: classic_s19
+        size: 14
+        bound: false
+    classic_s19_body:
+      outer:
+        type: keys
+        side: both
+        tags:
+          - s19
+          - classic
+        size: 18
+        corner: .5
+      inner:
+        type: keys
+        side: both
+        tags:
+          - s19
+          - classic
+        size: 14
+        operation: subtract
+    uniform_s19_switches:
+      main:
+        type: keys
+        side: both
+        tags:
+          - uniform
+        glue: uniform_s19
+        size: 14
+        bound: false
 pcbs:
   main:
     outlines:
@@ -705,3 +725,7 @@ pcbs:
         nets:
           din: P18
           dout: ''
+cases:
+  classic_s19_minimal:
+    - outline: classic_s19_body
+      extrude: 7
