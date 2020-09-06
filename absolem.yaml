@@ -551,6 +551,30 @@ outlines:
         radius: 2.25
         mirror: true
         operation: stack
+    screw_holes:
+      extends: mounting_holes
+      ring_top:
+        radius: 1
+      ring_bottom:
+        radius: 1
+      index_top:
+        radius: 1
+      index_bottom:
+        radius: 1
+      thumb_near:
+        radius: 1
+      thumb_far:
+        radius: 1
+      middle:
+        radius: 1
+    controller_cutout:
+      main:
+        type: rectangle
+        ref:
+          - s18_inner_top
+          - mirror_s18_inner_top
+        shift: [-10, -5]
+        size: [20, 10]
     intersected_outline:
       one:
         type: outline
@@ -560,12 +584,8 @@ outlines:
         name: uniform_s18_pcb
         operation: intersect
       controller_cutout:
-        type: rectangle
-        ref:
-          - s18_inner_top
-          - mirror_s18_inner_top
-        shift: [-10, -5]
-        size: [20, 10]
+        type: outline
+        name: controller_cutout
         operation: subtract
       mounting_holes:
         type: outline
@@ -606,8 +626,8 @@ outlines:
         glue: classic_s19
         size: 14
         bound: false
-    classic_s19_body:
-      outer:
+    classic_s19_outer:
+      main:
         type: keys
         side: both
         tags:
@@ -615,23 +635,94 @@ outlines:
           - classic
         size: 18
         corner: .5
-      inner:
+    classic_s19_inner:
+      main:
         type: keys
         side: both
         tags:
           - s19
           - classic
         size: 14
+    classic_s19_body:
+      a:
+        type: outline
+        name: classic_s19_outer
+      b:
+        type: outline
+        name: classic_s19_inner
         operation: subtract
-    uniform_s19_switches:
+    # classic_s19_middle:
+    #   main:
+    #     type: keys
+    #     side: middle
+    #     tags:
+    #       - s19
+    #       - classic
+    #     glue: classic_s19
+    #     size: 28
+    #   helper1:
+    #     type: rectangle
+    #     size: [25, 5]
+    #     ref: thumbfan_home_thumb
+    #     shift: [0, 14]
+    #     mirror: true
+    #   helper2:
+    #     type: rectangle
+    #     size: [25, 5]
+    #     ref: thumbfan_far_thumb
+    #     shift: [-25, 14]
+    #     mirror: true
+    # _battery_bar_big:
+    #   main:
+    #     type: rectangle
+    #     size: [50, 13]
+    #     shift: [-50, -18]
+    #     ref:
+    #       - matrix_inner_bottom
+    #       - mirror_matrix_inner_bottom
+    # _battery_bar_medium:
+    #   main:
+    #     type: rectangle
+    #     size: [50, 13]
+    #     shift: [-21, -18]
+    #     bevel: 5
+    #     ref:
+    #       - matrix_inner_bottom
+    #       - mirror_matrix_inner_bottom
+    classic_s19_plate:
       main:
         type: keys
         side: both
         tags:
-          - uniform
-        glue: uniform_s19
-        size: 14
-        bound: false
+          - s19
+          - classic
+        size: 36
+      cut_to_size:
+        type: outline
+        name: classic_s19_outer
+        operation: intersect
+      clean_up_middle:
+        type: outline
+        name: pcb_middle
+        operation: subtract
+      controller_cutout:
+        type: outline
+        name: controller_cutout
+        operation: subtract
+      single_mounting_hole:
+        type: circle
+        ref: thumbfan_home_thumb
+        shift: [-8, 19]
+        radius: 2.25
+        operation: subtract
+      screw_holes:
+        type: outline
+        name: screw_holes
+        operation: subtract
+      switches:
+        type: outline
+        name: classic_s19_switches
+        operation: subtract
 pcbs:
   main:
     outlines:
