@@ -567,6 +567,22 @@ outlines:
         radius: 1
       middle:
         radius: 1
+    reset_hole:
+      main:
+        type: circle
+        ref:
+          - s18_inner_top
+          - mirror_s18_inner_top
+        shift: [0, -17]
+        radius: 1
+    led_hole:
+      main:
+        type: circle
+        ref:
+          - matrix_inner_bottom
+          - mirror_matrix_inner_bottom
+        shift: [0, -48]
+        radius: 1
     controller_cutout:
       main:
         type: rectangle
@@ -591,7 +607,7 @@ outlines:
         type: outline
         name: mounting_holes
         operation: subtract
-    pcb_middle:
+    pcb_middle: &middle
       raw:
         type: keys
         side: middle
@@ -633,6 +649,7 @@ outlines:
         tags:
           - s19
           - classic
+        glue: classic_s19
         size: 18
         corner: .5
     classic_s19_inner:
@@ -642,6 +659,7 @@ outlines:
         tags:
           - s19
           - classic
+        glue: classic_s19
         size: 14
     classic_s19_body:
       a:
@@ -651,44 +669,6 @@ outlines:
         type: outline
         name: classic_s19_inner
         operation: subtract
-    # classic_s19_middle:
-    #   main:
-    #     type: keys
-    #     side: middle
-    #     tags:
-    #       - s19
-    #       - classic
-    #     glue: classic_s19
-    #     size: 28
-    #   helper1:
-    #     type: rectangle
-    #     size: [25, 5]
-    #     ref: thumbfan_home_thumb
-    #     shift: [0, 14]
-    #     mirror: true
-    #   helper2:
-    #     type: rectangle
-    #     size: [25, 5]
-    #     ref: thumbfan_far_thumb
-    #     shift: [-25, 14]
-    #     mirror: true
-    # _battery_bar_big:
-    #   main:
-    #     type: rectangle
-    #     size: [50, 13]
-    #     shift: [-50, -18]
-    #     ref:
-    #       - matrix_inner_bottom
-    #       - mirror_matrix_inner_bottom
-    # _battery_bar_medium:
-    #   main:
-    #     type: rectangle
-    #     size: [50, 13]
-    #     shift: [-21, -18]
-    #     bevel: 5
-    #     ref:
-    #       - matrix_inner_bottom
-    #       - mirror_matrix_inner_bottom
     classic_s19_plate:
       main:
         type: keys
@@ -709,12 +689,6 @@ outlines:
         type: outline
         name: controller_cutout
         operation: subtract
-      single_mounting_hole:
-        type: circle
-        ref: thumbfan_home_thumb
-        shift: [-8, 19]
-        radius: 2.25
-        operation: subtract
       screw_holes:
         type: outline
         name: screw_holes
@@ -722,6 +696,32 @@ outlines:
       switches:
         type: outline
         name: classic_s19_switches
+        operation: subtract
+    classic_s19_bottom:
+      base:
+        type: outline
+        name: classic_s19_outer
+      screw_holes:
+        type: outline
+        name: screw_holes
+        operation: subtract
+      reset:
+        type: outline
+        name: reset_hole
+        operation: subtract
+    classic_s19_top: 
+      <<: *middle
+      outer_bounds:
+        type: outline
+        name: classic_s19_outer
+        operation: intersect
+      screw_holes:
+        type: outline
+        name: screw_holes
+        operation: subtract
+      led:
+        type: outline
+        name: led_hole
         operation: subtract
 pcbs:
   main:
