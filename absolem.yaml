@@ -607,7 +607,7 @@ outlines:
         type: outline
         name: mounting_holes
         operation: subtract
-    pcb_middle: &middle
+    normal_middle: &middle
       raw:
         type: keys
         side: middle
@@ -683,7 +683,7 @@ outlines:
         operation: intersect
       clean_up_middle:
         type: outline
-        name: pcb_middle
+        name: normal_middle
         operation: subtract
       controller_cutout:
         type: outline
@@ -723,6 +723,122 @@ outlines:
         type: outline
         name: led_hole
         operation: subtract
+    bigger_middle:
+      <<: *middle
+      raw:
+        type: keys
+        side: middle
+        tags:
+          - s19
+          - classic
+        glue: classic_s19
+        size: 20
+      outer_bounds:
+        type: outline
+        name: classic_s19_outer
+        operation: intersect
+      helper1:
+        type: rectangle
+        size: [25, 5]
+        ref: thumbfan_home_thumb
+        shift: [0, 10]
+        mirror: true
+      helper2:
+        type: rectangle
+        size: [25, 5]
+        ref: thumbfan_far_thumb
+        shift: [-25, 10]
+        mirror: true
+    smaller_middle:
+      <<: *middle
+      raw:
+        type: keys
+        side: middle
+        tags:
+          - s19
+          - classic
+        glue: classic_s19
+        size: 28
+      outer_bounds:
+        type: outline
+        name: classic_s19_pcb
+        operation: intersect
+      helper1:
+        type: rectangle
+        size: [25, 5]
+        ref: thumbfan_home_thumb
+        shift: [0, 14]
+        mirror: true
+      helper2:
+        type: rectangle
+        size: [25, 5]
+        ref: thumbfan_far_thumb
+        shift: [-25, 14]
+        mirror: true
+    battery_bar_long:
+      bar:
+        type: rectangle
+        ref:
+          - thumbfan_near_thumb
+          - mirror_thumbfan_near_thumb
+        size: [200, 10]
+        shift: [-100, -1.5]
+    battery_bar:
+      bar:
+        type: outline
+        name: battery_bar_long
+      cut:
+        type: outline
+        name: normal_middle
+        operation: intersect
+      hole:
+        type: outline
+        name: mounting_holes
+        operation: subtract
+    battery_bar_lip:
+      base:
+        type: outline
+        name: battery_bar
+      cut:
+        type: outline
+        name: smaller_middle
+        operation: subtract
+    upper_case:
+      base:
+        type: outline
+        name: bigger_middle
+      cut:
+        type: outline
+        name: smaller_middle
+        operation: subtract
+    upper_case_lip:
+      base:
+        type: outline
+        name: normal_middle
+      back_cut:
+        type: rectangle
+        ref:
+          - matrix_inner_top
+          - mirror_matrix_inner_top
+        size: 200
+        shift: [-100, 0]
+        operation: subtract
+      front_cut:
+        type: rectangle
+        ref:
+          - thumbfan_far_thumb
+          - mirror_thumbfan_far_thumb
+        size: 200
+        shift: [-100, -200]
+        operation: subtract
+      mid_cut:
+        type: outline
+        name: smaller_middle
+        operation: subtract
+      battery_cut:
+        type: outline
+        name: battery_bar_long
+        operation: subtract
 pcbs:
   main:
     outlines:
@@ -730,7 +846,7 @@ pcbs:
         outline: intersected_outline
         layer: Edge.Cuts
       middle:
-        outline: pcb_middle
+        outline: normal_middle
         layer: F.SilkS
     footprints:
       mcu:
@@ -817,6 +933,19 @@ pcbs:
           din: P18
           dout: ''
 cases:
-  classic_s19_minimal:
+  classic_s19_minimal_lower:
     - outline: classic_s19_body
-      extrude: 7
+      extrude: 8
+  classic_s19_minimal_upper:
+    - outline: upper_case
+      extrude: 5
+      shift: [0, 0, 2]
+    - outline: upper_case_lip
+      extrude: 2
+  classic_s19_minimal_battery:
+    - outline: battery_bar
+      extrude: 1.5
+    - outline: battery_bar_lip
+      extrude: 3.5
+      shift: [, , 1.5]
+  

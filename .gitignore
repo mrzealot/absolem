@@ -1,0 +1,5 @@
+output*
+*bak
+pcb/*.pro
+pcb/*cache
+pcb/*temp*
