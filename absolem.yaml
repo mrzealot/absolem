@@ -839,6 +839,15 @@ outlines:
         type: outline
         name: battery_bar_long
         operation: subtract
+    usb_cutout:
+      base:
+        type: rectangle
+        ref:
+          - matrix_inner_top
+          - mirror_matrix_inner_top
+        size: [20, 11]
+        shift: [-10, -10]
+        corner: 2
 pcbs:
   main:
     outlines:
@@ -933,19 +942,37 @@ pcbs:
           din: P18
           dout: ''
 cases:
+  usb_cutout:
+    - type: outline
+      name: usb_cutout
+      extrude: 200
+      rotate: [-90, 0, 0]
+      shift: [0, 0, -3.5]
   classic_s19_minimal_lower:
-    - outline: classic_s19_body
+    - type: outline
+      name: classic_s19_body
       extrude: 8
+      shift: [0, 0, -9]
+    - type: case
+      name: usb_cutout
+      operation: subtract
   classic_s19_minimal_upper:
-    - outline: upper_case
+    - type: outline
+      name: upper_case
       extrude: 5
-      shift: [0, 0, 2]
-    - outline: upper_case_lip
+    - type: outline
+      name: upper_case_lip
       extrude: 2
+      shift: [0, 0, -2]
+    - type: case
+      name: usb_cutout
+      operation: subtract
   classic_s19_minimal_battery:
-    - outline: battery_bar
+    - type: outline
+      name: battery_bar
       extrude: 1.5
-    - outline: battery_bar_lip
+    - type: outline
+      name: battery_bar_lip
       extrude: 3.5
       shift: [, , 1.5]
   
