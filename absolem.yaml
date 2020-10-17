@@ -592,21 +592,10 @@ outlines:
         shift: [-10, -5]
         size: [20, 10]
     intersected_outline:
-      one:
-        type: outline
-        name: classic_s19_pcb
-      two:
-        type: outline
-        name: uniform_s18_pcb
-        operation: intersect
-      controller_cutout:
-        type: outline
-        name: controller_cutout
-        operation: subtract
-      mounting_holes:
-        type: outline
-        name: mounting_holes
-        operation: subtract
+      - +classic_s19_pcb
+      - ~uniform_s18_pcb
+      - -controller_cutout
+      - -mounting_holes
     normal_middle: &middle
       raw:
         type: keys
@@ -662,13 +651,8 @@ outlines:
         glue: classic_s19
         size: 14
     classic_s19_body:
-      a:
-        type: outline
-        name: classic_s19_outer
-      b:
-        type: outline
-        name: classic_s19_inner
-        operation: subtract
+      - +classic_s19_outer
+      - -classic_s19_inner
     classic_s19_plate:
       main:
         type: keys
@@ -943,36 +927,26 @@ pcbs:
           dout: ''
 cases:
   usb_cutout:
-    - type: outline
-      name: usb_cutout
+    - name: usb_cutout
       extrude: 200
       rotate: [-90, 0, 0]
       shift: [0, 0, -3.5]
   classic_s19_minimal_lower:
-    - type: outline
-      name: classic_s19_body
+    - name: classic_s19_body
       extrude: 8
       shift: [0, 0, -9]
-    - type: case
-      name: usb_cutout
-      operation: subtract
+    - -usb_cutout
   classic_s19_minimal_upper:
-    - type: outline
-      name: upper_case
+    - name: upper_case
       extrude: 5
-    - type: outline
-      name: upper_case_lip
+    - name: upper_case_lip
       extrude: 2
       shift: [0, 0, -2]
-    - type: case
-      name: usb_cutout
-      operation: subtract
+    - -usb_cutout
   classic_s19_minimal_battery:
-    - type: outline
-      name: battery_bar
+    - name: battery_bar
       extrude: 1.5
-    - type: outline
-      name: battery_bar_lip
+    - name: battery_bar_lip
       extrude: 3.5
       shift: [, , 1.5]
   
