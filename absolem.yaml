@@ -86,7 +86,7 @@ points:
             row_net: P2
             row_mark: RT
     s19:
-      extends: matrix
+      extends: points.zones.matrix
       columns:
         pinky:
           rows:
@@ -255,7 +255,7 @@ points:
                   from: '!column_net'
                   to: '!colrow'
     s18:
-      extends: matrix
+      extends: points.zones.matrix
       columns:
         pinky:
           stagger: 1
@@ -441,18 +441,18 @@ outlines:
       top:
         left:
           ref: matrix_inner_top
-          shift: [, 0.5]
+          shift: [, 0.5 sy]
         right:
           ref: mirror_matrix_inner_top
-          shift: [, 0.5]
+          shift: [, 0.5 sy]
       bottom:
         left:
           ref: thumbfan_far_thumb
-          shift: [0.5, 0]
+          shift: [0.5 sx, 0]
           rotate: 90
         right:
           ref: mirror_thumbfan_far_thumb
-          shift: [0.5, 0]
+          shift: [0.5 sx, 0]
           rotate: 90
       waypoints:
         - percent: 50
@@ -460,14 +460,14 @@ outlines:
         - percent: 90
           width: 25
     uniform_s19:
-      extends: classic_s19
+      extends: outlines.glue.classic_s19
       bottom:
         left:
           ref: unifar_far_thumb
         right:
           ref: mirror_unifar_far_thumb
     classic_s18:
-      extends: classic_s19
+      extends: outlines.glue.classic_s19
       top:
         left:
           ref: s18_inner_top
@@ -475,8 +475,8 @@ outlines:
           ref: mirror_s18_inner_top
     uniform_s18:
       extends:
-        - uniform_s19
-        - classic_s18
+        - outlines.glue.uniform_s19
+        - outlines.glue.classic_s18
   exports:
     classic_s19_pcb:
       main:
@@ -489,14 +489,14 @@ outlines:
         size: 13.5
         corner: .5
     uniform_s19_pcb:
-      extends: classic_s19_pcb
+      extends: outlines.exports.classic_s19_pcb
       main:
         tags:
           - s19
           - uniform
         glue: uniform_s19
     uniform_s18_pcb:
-      extends: uniform_s19_pcb
+      extends: outlines.exports.uniform_s19_pcb
       main:
         tags:
           - s18
@@ -552,7 +552,7 @@ outlines:
         mirror: true
         operation: stack
     screw_holes:
-      extends: mounting_holes
+      extends: outlines.exports.mounting_holes
       ring_top:
         radius: 1
       ring_bottom:
