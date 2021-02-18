@@ -86,7 +86,7 @@ points:
             row_net: P2
             row_mark: RT
     s19:
-      extends: points.zones.matrix
+      $extends: points.zones.matrix
       columns:
         pinky:
           rows:
@@ -124,12 +124,12 @@ points:
                 anchor:
                   shift: [-4, -4]
                 nets:
-                  net: '!row_net'
+                  net: =row_net
                 params:
                   width: 2
                   height: 2
                   front: false
-                  text: '!row_mark'
+                  text: =row_mark
                   align: right
         ring:
           rows:
@@ -189,12 +189,12 @@ points:
               anchor:
                 shift: [4, 4]
               nets:
-                net: '!column_net'
+                net: =column_net
               params:
                 width: 2
                 height: 2
                 front: false
-                text: '!column_mark'
+                text: =column_mark
         bottom:
           footprints:
             diode:
@@ -205,12 +205,12 @@ points:
               anchor:
                 shift: [4, -4]
               nets:
-                net: '!column_net'
+                net: =column_net
               params:
                 width: 2
                 height: 2
                 front: false
-                text: '!column_mark'
+                text: =column_mark
       key:
         tags:
           s19: true
@@ -218,44 +218,44 @@ points:
           mx:
             type: mx
             nets:
-              from: '!colrow'
-              to: '!column_net'
+              from: =colrow
+              to: =column_net
           alps:
             type: alps
             nets:
-              from: '!colrow'
-              to: '!column_net'
+              from: =colrow
+              to: =column_net
           <<: &choc
             choc:
               type: choc
               nets:
-                from: '!colrow'
-                to: '!column_net'
+                from: =colrow
+                to: =column_net
           diode:
             type: diode
             anchor:
               rotate: 90
               shift: [8.25, 0]
             nets:
-              from: '!colrow'
-              to: '!row_net'
+              from: =colrow
+              to: =row_net
         mirror:
           footprints: &quad_mirror
             mx:
               nets:
-                from: '!column_net'
-                to: '!colrow'
+                from: =column_net
+                to: =colrow
             alps:
               nets:
-                from: '!column_net'
-                to: '!colrow'
+                from: =column_net
+                to: =colrow
             <<: &choc_mirror
               choc:
                 nets:
-                  from: '!column_net'
-                  to: '!colrow'
+                  from: =column_net
+                  to: =colrow
     s18:
-      extends: points.zones.matrix
+      $extends: points.zones.matrix
       columns:
         pinky:
           stagger: 1
@@ -298,12 +298,12 @@ points:
                   anchor:
                     shift: [-3, 9]
                   nets:
-                    net: '!row_net'
+                    net: =row_net
                   params:
                     width: 2
                     height: 2
                     front: false
-                    text: '!row_mark'
+                    text: =row_mark
                     align: right
         home:
           spread: 21.25
@@ -381,10 +381,10 @@ points:
               choc:
                 anchor:
                   rotate: 180
-              diode: '!!unset'
+              diode: $unset
             mirror:
               footprints:
-                diode: '!!unset'
+                diode: $unset
             tags:
               uniform: true
       rows:
@@ -415,10 +415,10 @@ points:
               choc:
                 anchor:
                   rotate: 180
-              diode: '!!unset'
+              diode: $unset
             mirror:
               footprints:
-                diode: '!!unset'
+                diode: $unset
             tags:
               uniform: true
       rows:
@@ -460,21 +460,21 @@ outlines:
         - percent: 90
           width: 25
     uniform_s19:
-      extends: outlines.glue.classic_s19
+      $extends: outlines.glue.classic_s19
       bottom:
         left:
           ref: unifar_far_thumb
         right:
           ref: mirror_unifar_far_thumb
     classic_s18:
-      extends: outlines.glue.classic_s19
+      $extends: outlines.glue.classic_s19
       top:
         left:
           ref: s18_inner_top
         right:
           ref: mirror_s18_inner_top
     uniform_s18:
-      extends:
+      $extends:
         - outlines.glue.uniform_s19
         - outlines.glue.classic_s18
   exports:
@@ -489,14 +489,14 @@ outlines:
         size: 13.5
         corner: .5
     uniform_s19_pcb:
-      extends: outlines.exports.classic_s19_pcb
+      $extends: outlines.exports.classic_s19_pcb
       main:
         tags:
           - s19
           - uniform
         glue: uniform_s19
     uniform_s18_pcb:
-      extends: outlines.exports.uniform_s19_pcb
+      $extends: outlines.exports.uniform_s19_pcb
       main:
         tags:
           - s18
@@ -552,7 +552,7 @@ outlines:
         mirror: true
         operation: stack
     screw_holes:
-      extends: outlines.exports.mounting_holes
+      $extends: outlines.exports.mounting_holes
       ring_top:
         radius: 1
       ring_bottom:
@@ -863,7 +863,7 @@ pcbs:
         params:
           side: B
       reset:
-        type: reset
+        type: button
         anchor:
           ref:
             - s18_inner_top
