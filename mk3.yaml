@@ -1,0 +1,145 @@
+points:
+  zones:
+    matrix:
+      anchor:
+        rotate: 5
+      columns:
+        pinky:
+          rows:
+            home.bind: [,15]
+            top.bind: [,15]
+        ring:
+          rotate: -5
+          # hinge at the bottom right corner
+          # of the bottom pinky's 14x14 hole
+          # for historical reasons...
+          origin: [-12, -19]
+          stagger: 12
+          spread: cx
+          rows:
+            bottom.bind: [,,,5]
+            home.bind: [,5]
+            top.bind: [,5]
+        middle:
+          stagger: 5
+          spread: cx
+          rows:
+            bottom.bind: [,5,,5]
+            home.bind: [,5,,5]
+        index:
+          stagger: -6
+          spread: cx
+          rows:
+            bottom.bind: [,5]
+            home.bind: [,,,5]
+            top.bind: [,,,5]
+        inner:
+          stagger: -2
+          spread: cx
+          rows:
+            bottom.bind: [,,5]
+            home.bind: [,,,5]
+            top.bind: [,,,5]
+      rows:
+        bottom.bind: [5]
+        home.bind: [5]
+        top:
+      key.bind: [0,0,0,0]
+      key.padding: cy
+    thumbfan:
+      anchor:
+        ref: matrix_inner_bottom
+        shift: [-7, -cy]
+      columns:
+        near:
+          rows.thumb.bind: [5,5]
+        home:
+          spread: cx
+          rotate: -28
+          origin: [-cx/2, -cy/2]
+          rows.thumb.bind: [,,,5]
+        # far:
+        #   spread: 21.25
+        #   rotate: -28
+        #   origin: [-9.5, -9]
+        #   rows.thumb.bind: [,,,5]
+      rows:
+        thumb.bind: [0,0,0,0]
+  rotate: -20
+  mirror:
+    ref: matrix_pinky_home
+    # The mk1's origin was the bottom left corner of the bottom pinky key.
+    # But it later got rotated by the bottom *right* corner as the pinky angle
+    # and then rotated again for the inter-half angle so [0, 0] was nowhere on
+    # the actual result.
+    #
+    # Since the new origin is the center of the pinky home, we have to convert
+    # the old, round 250 width to this new coordinate system if we want backward
+    # compatibility. The following snippet was used to arrive at this distance.
+    #
+    # old_origin = new Point(7, 7 + 19)
+    # old_origin.rotate(5, [14, 0])
+    # old_origin.rotate(-20, [0, 0])
+    # new_width = 250 - (2 * old_origin.x)
+    distance: 223.7529778
+outlines:
+  glue:
+    default:
+      top:
+        left:
+          ref: matrix_inner_top
+          shift: [, 0.5 sy]
+        right:
+          ref: mirror_matrix_inner_top
+          shift: [, 0.5 sy]
+      bottom:
+        left:
+          ref: thumbfan_home_thumb
+          shift: [0.5 sx, 0]
+          rotate: 90
+        right:
+          ref: mirror_thumbfan_home_thumb
+          shift: [0.5 sx, 0]
+          rotate: 90
+      waypoints:
+        - percent: 50
+          width: 50
+  exports:
+    raw:
+      - type: keys
+        side: both
+        size: [cx + 20, cy + 20]
+        bevel: 7
+      # refine under-middle mess with a staight line
+      - type: rectangle
+        ref: matrix_index_bottom
+        size: [50, cy + 20]
+        shift: [-sx, -sy/2]
+        mirror: true
+      # connect pinky to under-middle pinky at 45 degrees with a triangle
+      - type: polygon
+        points:
+          - ref: matrix_pinky_bottom
+            shift: [(cx + 20)/2 - 7, -(cy + 20)/2]
+          - shift: [20, 20]
+          - shift: [-20, 0]
+        mirror: true
+      # create flat bottom
+      - type: polygon
+        points:
+          - ref: thumbfan_home_thumb
+            shift: [7, 0]
+            rotate: 48
+          - shift: [70, 0]
+          - shift: [-25, 50]
+    refined:
+      - type: outline
+        name: raw
+        fillet: 2
+    plate:
+      - refined
+      - type: keys
+        side: both
+        size: 14
+        bound: false
+        operation: subtract
