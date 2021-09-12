@@ -1,952 +1,1670 @@
 points:
-  zones:
-    matrix:
-      anchor:
-        rotate: 5
-      columns:
-        pinky:
-          rows:
-            home:
-              bind: [,15,-1]
+    zones:
+        matrix:
+            anchor:
+                rotate: 5
+            columns:
+                pinky:
+                    rows:
+                        home:
+                            bind:
+                                - null
+                                - 15
+                                - -1
+                        top:
+                            bind:
+                                - null
+                                - 15
+                                - -1
+                    key:
+                        column_net: P4
+                        column_mark: P
+                ring:
+                    rotate: -5
+                    origin:
+                        - -12
+                        - -19
+                    stagger: 12
+                    rows:
+                        bottom:
+                            bind:
+                                - null
+                                - null
+                                - null
+                                - 10
+                        home:
+                            bind:
+                                - null
+                                - 10
+                        top:
+                            bind:
+                                - null
+                                - 10
+                    key:
+                        column_net: P5
+                        column_mark: R
+                middle:
+                    rotate: -5
+                    stagger: 5
+                    rows:
+                        bottom:
+                            bind:
+                                - null
+                                - 10
+                                - null
+                                - 10
+                        home:
+                            bind:
+                                - null
+                                - 10
+                                - null
+                                - 10
+                    key:
+                        column_net: P7
+                        column_mark: M
+                index:
+                    stagger: -6
+                    rows:
+                        bottom:
+                            bind:
+                                - null
+                                - 10
+                        home:
+                            bind:
+                                - null
+                                - null
+                                - null
+                                - 10
+                        top:
+                            bind:
+                                - null
+                                - null
+                                - null
+                                - 10
+                    key:
+                        column_net: P8
+                        column_mark: X
+                inner:
+                    stagger: -2
+                    rows:
+                        bottom:
+                            bind:
+                                - null
+                                - null
+                                - 10
+                        home:
+                            bind:
+                                - null
+                                - null
+                                - null
+                                - 10
+                        top:
+                            bind:
+                                - null
+                                - null
+                                - null
+                                - 10
+                    key:
+                        column_net: P1
+                        column_mark: I
+            rows:
+                bottom:
+                    bind:
+                        - 10
+                    row_net: P16
+                    row_mark: LB
+                    mirror:
+                        row_net: P9
+                        row_mark: RB
+                home:
+                    bind:
+                        - 10
+                    row_net: P15
+                    row_mark: LH
+                    mirror:
+                        row_net: P6
+                        row_mark: RH
+                top:
+                    row_net: P20
+                    row_mark: LT
+                    mirror:
+                        row_net: P2
+                        row_mark: RT
+        s19:
+            anchor:
+                rotate: 5
+            columns:
+                pinky:
+                    rows:
+                        home:
+                            bind:
+                                - null
+                                - 15
+                                - -1
+                            footprints:
+                                diode:
+                                    anchor:
+                                        shift:
+                                            - null
+                                            - 6
+                        top:
+                            bind:
+                                - null
+                                - 15
+                                - -1
+                            footprints:
+                                row_ext:
+                                    anchor:
+                                        shift:
+                                            - null
+                                            - -10
+                                extra_column:
+                                    type: pad
+                                    anchor:
+                                        shift:
+                                            - -4
+                                            - 4
+                                    nets:
+                                        net: P3
+                                    params:
+                                        width: 2
+                                        height: 2
+                                        front: false
+                                        text: E
+                                        align: right
+                        bottom:
+                            footprints:
+                                diode:
+                                    anchor:
+                                        shift:
+                                            - null
+                                            - 12
+                    key:
+                        column_net: P4
+                        column_mark: P
+                        footprints:
+                            row_ext:
+                                type: pad
+                                anchor:
+                                    shift:
+                                        - -4
+                                        - -4
+                                nets:
+                                    net: '=row_net'
+                                params:
+                                    width: 2
+                                    height: 2
+                                    front: false
+                                    text: '=row_mark'
+                                    align: right
+                ring:
+                    rotate: -5
+                    origin:
+                        - -12
+                        - -19
+                    stagger: 12
+                    rows:
+                        bottom:
+                            bind:
+                                - null
+                                - null
+                                - null
+                                - 10
+                            footprints:
+                                diode:
+                                    anchor:
+                                        shift:
+                                            - null
+                                            - 5
+                        home:
+                            bind:
+                                - null
+                                - 10
+                            footprints:
+                                diode:
+                                    anchor:
+                                        shift:
+                                            - null
+                                            - 2.5
+                        top:
+                            bind:
+                                - null
+                                - 10
+                    key:
+                        column_net: P5
+                        column_mark: R
+                middle:
+                    rotate: -5
+                    stagger: 5
+                    rows:
+                        bottom:
+                            bind:
+                                - null
+                                - 10
+                                - null
+                                - 10
+                        home:
+                            bind:
+                                - null
+                                - 10
+                                - null
+                                - 10
+                            footprints:
+                                diode:
+                                    anchor:
+                                        shift:
+                                            - null
+                                            - -3
+                        top:
+                            footprints:
+                                diode:
+                                    anchor:
+                                        shift:
+                                            - null
+                                            - -6
+                    key:
+                        column_net: P7
+                        column_mark: M
+                index:
+                    stagger: -6
+                    rows:
+                        bottom:
+                            bind:
+                                - null
+                                - 10
+                            footprints:
+                                diode:
+                                    anchor:
+                                        shift:
+                                            - -8.25
+                                            - 6
+                        home:
+                            bind:
+                                - null
+                                - null
+                                - null
+                                - 10
+                            footprints:
+                                diode:
+                                    anchor:
+                                        shift:
+                                            - -8.25
+                                            - 3
+                        top:
+                            bind:
+                                - null
+                                - null
+                                - null
+                                - 10
+                            footprints:
+                                diode:
+                                    anchor:
+                                        shift:
+                                            - -8.25
+                    key:
+                        column_net: P8
+                        column_mark: X
+                inner:
+                    stagger: -2
+                    rows:
+                        bottom:
+                            bind:
+                                - null
+                                - null
+                                - 10
+                        home:
+                            bind:
+                                - null
+                                - null
+                                - null
+                                - 10
+                        top:
+                            bind:
+                                - null
+                                - null
+                                - null
+                                - 10
+                    key:
+                        column_net: P1
+                        column_mark: I
+            rows:
+                bottom:
+                    bind:
+                        - 10
+                    row_net: P16
+                    row_mark: LB
+                    mirror:
+                        row_net: P9
+                        row_mark: RB
+                    footprints:
+                        diode:
+                            anchor:
+                                rotate: 270
+                        col_ext:
+                            type: pad
+                            anchor:
+                                shift:
+                                    - 4
+                                    - -4
+                            nets:
+                                net: '=column_net'
+                            params:
+                                width: 2
+                                height: 2
+                                front: false
+                                text: '=column_mark'
+                home:
+                    bind:
+                        - 10
+                    row_net: P15
+                    row_mark: LH
+                    mirror:
+                        row_net: P6
+                        row_mark: RH
+                top:
+                    row_net: P20
+                    row_mark: LT
+                    mirror:
+                        row_net: P2
+                        row_mark: RT
+                    footprints:
+                        mx:
+                            anchor:
+                                rotate: 180
+                        alps:
+                            anchor:
+                                rotate: 180
+                        choc:
+                            anchor:
+                                rotate: 180
+                        col_ext:
+                            type: pad
+                            anchor:
+                                shift:
+                                    - 4
+                                    - 4
+                            nets:
+                                net: '=column_net'
+                            params:
+                                width: 2
+                                height: 2
+                                front: false
+                                text: '=column_mark'
+            key:
+                tags:
+                    s19: true
+                footprints:
+                    mx:
+                        type: mx
+                        nets:
+                            from: '=colrow'
+                            to: '=column_net'
+                    alps:
+                        type: alps
+                        nets:
+                            from: '=colrow'
+                            to: '=column_net'
+                    choc:
+                        type: choc
+                        nets:
+                            from: '=colrow'
+                            to: '=column_net'
+                    diode:
+                        type: diode
+                        anchor:
+                            rotate: 90
+                            shift:
+                                - 8.25
+                                - 0
+                        nets:
+                            from: '=colrow'
+                            to: '=row_net'
+                mirror:
+                    footprints:
+                        mx:
+                            nets:
+                                from: '=column_net'
+                                to: '=colrow'
+                        alps:
+                            nets:
+                                from: '=column_net'
+                                to: '=colrow'
+                        choc:
+                            nets:
+                                from: '=column_net'
+                                to: '=colrow'
+        s18:
+            anchor:
+                rotate: 5
+            columns:
+                pinky:
+                    rows:
+                        home:
+                            bind:
+                                - null
+                                - 15
+                                - -1
+                        top:
+                            bind:
+                                - null
+                                - 15
+                                - -1
+                    key:
+                        column_net: P4
+                        column_mark: P
+                    stagger: 1
+                ring:
+                    rotate: -5
+                    origin:
+                        - -12
+                        - -20
+                    stagger: 12
+                    rows:
+                        bottom:
+                            bind:
+                                - null
+                                - null
+                                - null
+                                - 10
+                        home:
+                            bind:
+                                - null
+                                - 10
+                        top:
+                            bind:
+                                - null
+                                - 10
+                    key:
+                        column_net: P5
+                        column_mark: R
+                middle:
+                    rotate: -5
+                    stagger: 5
+                    rows:
+                        bottom:
+                            bind:
+                                - null
+                                - 10
+                                - null
+                                - 10
+                        home:
+                            bind:
+                                - null
+                                - 10
+                                - null
+                                - 10
+                    key:
+                        column_net: P7
+                        column_mark: M
+                index:
+                    stagger: -6
+                    rows:
+                        bottom:
+                            bind:
+                                - null
+                                - 10
+                        home:
+                            bind:
+                                - null
+                                - null
+                                - null
+                                - 10
+                        top:
+                            bind:
+                                - null
+                                - null
+                                - null
+                                - 10
+                    key:
+                        column_net: P8
+                        column_mark: X
+                inner:
+                    stagger: -2
+                    rows:
+                        bottom:
+                            bind:
+                                - null
+                                - null
+                                - 10
+                        home:
+                            bind:
+                                - null
+                                - null
+                                - null
+                                - 10
+                        top:
+                            bind:
+                                - null
+                                - null
+                                - null
+                                - 10
+                    key:
+                        column_net: P1
+                        column_mark: I
+            rows:
+                bottom:
+                    bind:
+                        - 10
+                    row_net: P16
+                    row_mark: LB
+                    mirror:
+                        row_net: P9
+                        row_mark: RB
+                home:
+                    bind:
+                        - 10
+                    row_net: P15
+                    row_mark: LH
+                    mirror:
+                        row_net: P6
+                        row_mark: RH
+                top:
+                    row_net: P20
+                    row_mark: LT
+                    mirror:
+                        row_net: P2
+                        row_mark: RT
+                    footprints:
+                        choc:
+                            anchor:
+                                rotate: 180
+            key:
+                padding: 18
+                tags:
+                    s18: true
+                footprints:
+                    choc:
+                        type: choc
+                        nets:
+                            from: '=colrow'
+                            to: '=column_net'
+                mirror:
+                    footprints:
+                        choc:
+                            nets:
+                                from: '=column_net'
+                                to: '=colrow'
+        thumbfan:
+            anchor:
+                ref: matrix_inner_bottom
+                shift:
+                    - -27
+                    - -19
+            columns:
+                nearer:
+                    rows:
+                        thumb:
+                            bind:
+                                - 10
+                                - 5
+                                - null
+                            column_net: P7
+                            tags:
+                                classic: true
+                            footprints:
+                                choc:
+                                    anchor:
+                                        rotate: 180
+                                diode:
+                                    anchor:
+                                        shift:
+                                            - 8
+                                row_ext:
+                                    type: pad
+                                    anchor:
+                                        shift:
+                                            - -3
+                                            - 9
+                                    nets:
+                                        net: '=row_net'
+                                    params:
+                                        width: 2
+                                        height: 2
+                                        front: false
+                                        text: '=row_mark'
+                                        align: right
+                near:
+                    rows:
+                        thumb:
+                            bind:
+                                - 10
+                                - 5
+                                - null
+                            column_net: P7
+                            tags:
+                                classic: true
+                            footprints:
+                                choc:
+                                    anchor:
+                                        rotate: 180
+                                diode:
+                                    anchor:
+                                        shift:
+                                            - 8
+                                row_ext:
+                                    type: pad
+                                    anchor:
+                                        shift:
+                                            - -3
+                                            - 9
+                                    nets:
+                                        net: '=row_net'
+                                    params:
+                                        width: 2
+                                        height: 2
+                                        front: false
+                                        text: '=row_mark'
+                                        align: right
+                home:
+                    spread: 21.25
+                    rotate: -28
+                    origin:
+                        - -11.75
+                        - -9
+                    rows:
+                        thumb:
+                            bind:
+                                - null
+                                - 10
+                                - null
+                                - 15
+                            column_net: P8
+                            tags:
+                                classic: true
+                                uniform: true
+                            footprints:
+                                diode:
+                                    anchor:
+                                        shift:
+                                            - 8
+                far:
+                    spread: 21.25
+                    rotate: -28
+                    origin:
+                        - -9.5
+                        - -9
+                    rows:
+                        thumb:
+                            bind:
+                                - -1
+                                - null
+                                - null
+                                - 5
+                            column_net: P1
+                            tags:
+                                classic: true
+                            footprints:
+                                choc:
+                                    anchor:
+                                        rotate: 180
+                                diode:
+                                    anchor:
+                                        shift:
+                                            - -4
+                                        rotate: 0
+                            mirror:
+                                footprints:
+                                    diode:
+                                        anchor:
+                                            rotate: 180
+            rows:
+                thumb:
+                    row_net: P10
+                    row_mark: LF
+                    footprints:
+                        diode:
+                            anchor:
+                                shift:
+                                    - 0
+                                    - 9
+                                rotate: 180
+                    mirror:
+                        row_net: P19
+                        row_mark: RF
+                        footprints:
+                            diode:
+                                anchor:
+                                    rotate: 0
+            key:
+                footprints:
+                    mx:
+                        type: mx
+                        nets:
+                            from: '=colrow'
+                            to: '=column_net'
+                    alps:
+                        type: alps
+                        nets:
+                            from: '=colrow'
+                            to: '=column_net'
+                    choc:
+                        type: choc
+                        nets:
+                            from: '=colrow'
+                            to: '=column_net'
+                    diode:
+                        type: diode
+                        anchor:
+                            rotate: 90
+                            shift:
+                                - 8.25
+                                - 0
+                        nets:
+                            from: '=colrow'
+                            to: '=row_net'
+                mirror:
+                    mx:
+                        nets:
+                            from: '=column_net'
+                            to: '=colrow'
+                    alps:
+                        nets:
+                            from: '=column_net'
+                            to: '=colrow'
+                    choc:
+                        nets:
+                            from: '=column_net'
+                            to: '=colrow'
+        unifar:
+            anchor:
+                ref: thumbfan_home_thumb
+            columns:
+                home_again:
+                    key:
+                        skip: true
+                far:
+                    rotate: -28
+                    origin:
+                        - -9.5
+                        - -9
+                    rows:
+                        thumb:
+                            bind:
+                                - -1
+                                - null
+                                - null
+                                - 5
+                    key:
+                        column_net: P1
+                        footprints:
+                            choc:
+                                anchor:
+                                    rotate: 180
+                            diode: $unset
+                        mirror:
+                            footprints:
+                                diode: $unset
+                        tags:
+                            uniform: true
+            rows:
+                thumb:
+                    row_net: P10
+                    mirror:
+                        row_net: P19
+            key:
+                footprints:
+                    mx:
+                        type: mx
+                        nets:
+                            from: '=colrow'
+                            to: '=column_net'
+                    alps:
+                        type: alps
+                        nets:
+                            from: '=colrow'
+                            to: '=column_net'
+                    choc:
+                        type: choc
+                        nets:
+                            from: '=colrow'
+                            to: '=column_net'
+                    diode:
+                        type: diode
+                        anchor:
+                            rotate: 90
+                            shift:
+                                - 8.25
+                                - 0
+                        nets:
+                            from: '=colrow'
+                            to: '=row_net'
+                mirror:
+                    mx:
+                        nets:
+                            from: '=column_net'
+                            to: '=colrow'
+                    alps:
+                        nets:
+                            from: '=column_net'
+                            to: '=colrow'
+                    choc:
+                        nets:
+                            from: '=column_net'
+                            to: '=colrow'
+        uninear:
+            anchor:
+                ref: thumbfan_home_thumb
+            columns:
+                home_again:
+                    key:
+                        skip: true
+                near:
+                    spread: -19
+                    rotate: 28
+                    origin:
+                        - 9.5
+                        - -9
+                    rows:
+                        thumb:
+                            bind:
+                                - 10
+                                - 5
+                                - null
+                    key:
+                        column_net: P7
+                        footprints:
+                            choc:
+                                anchor:
+                                    rotate: 180
+                            diode: $unset
+                        mirror:
+                            footprints:
+                                diode: $unset
+                        tags:
+                            uniform: true
+            rows:
+                thumb:
+                    row_net: P10
+                    mirror:
+                        row_net: P19
+            key:
+                footprints:
+                    mx:
+                        type: mx
+                        nets:
+                            from: '=colrow'
+                            to: '=column_net'
+                    alps:
+                        type: alps
+                        nets:
+                            from: '=colrow'
+                            to: '=column_net'
+                    choc:
+                        type: choc
+                        nets:
+                            from: '=colrow'
+                            to: '=column_net'
+                    diode:
+                        type: diode
+                        anchor:
+                            rotate: 90
+                            shift:
+                                - 8.25
+                                - 0
+                        nets:
+                            from: '=colrow'
+                            to: '=row_net'
+                mirror:
+                    mx:
+                        nets:
+                            from: '=column_net'
+                            to: '=colrow'
+                    alps:
+                        nets:
+                            from: '=column_net'
+                            to: '=colrow'
+                    choc:
+                        nets:
+                            from: '=column_net'
+                            to: '=colrow'
+    key:
+        bind:
+            - 0
+            - 0
+            - 0
+            - 0
+    rotate: -20
+    mirror:
+        ref: matrix_pinky_home
+        distance: 223.7529778
+outlines:
+    glue:
+        classic_s19:
             top:
-              bind: [,15,-1]
-          key:
-            column_net: P4
-            column_mark: P
-        ring:
-          rotate: -5
-          # hinge at the bottom right corner
-          # of the bottom pinky's 14x14 hole
-          # for historical reasons...
-          origin: [-12, -19]
-          stagger: 12
-          rows:
+                left:
+                    ref: matrix_inner_top
+                    shift:
+                        - null
+                        - 0.5 sy
+                right:
+                    ref: mirror_matrix_inner_top
+                    shift:
+                        - null
+                        - 0.5 sy
             bottom:
-              bind: [,,,10]
-            home:
-              bind: [,10]
+                left:
+                    ref: thumbfan_far_thumb
+                    shift:
+                        - 0.5 sx
+                        - 0
+                    rotate: 90
+                right:
+                    ref: mirror_thumbfan_far_thumb
+                    shift:
+                        - 0.5 sx
+                        - 0
+                    rotate: 90
+            waypoints:
+                -
+                    percent: 50
+                    width: 50
+                -
+                    percent: 90
+                    width: 25
+        uniform_s19:
             top:
-              bind: [,10]
-          key:
-            column_net: P5
-            column_mark: R
-        middle:
-          stagger: 5
-          rows:
+                left:
+                    ref: matrix_inner_top
+                    shift:
+                        - null
+                        - 0.5 sy
+                right:
+                    ref: mirror_matrix_inner_top
+                    shift:
+                        - null
+                        - 0.5 sy
             bottom:
-              bind: [,10,,10]
-            home:
-              bind: [,10,,10]
-          key:
-            column_net: P7
-            column_mark: M
-        index:
-          stagger: -6
-          rows:
-            bottom:
-              bind: [,10]
-            home:
-              bind: [,,,10]
+                left:
+                    ref: unifar_far_thumb
+                    shift:
+                        - 0.5 sx
+                        - 0
+                    rotate: 90
+                right:
+                    ref: mirror_unifar_far_thumb
+                    shift:
+                        - 0.5 sx
+                        - 0
+                    rotate: 90
+            waypoints:
+                -
+                    percent: 50
+                    width: 50
+                -
+                    percent: 90
+                    width: 25
+        classic_s18:
             top:
-              bind: [,,,10]
-          key:
-            column_net: P8
-            column_mark: X
-        inner:
-          stagger: -2
-          rows:
+                left:
+                    ref: s18_inner_top
+                    shift:
+                        - null
+                        - 0.5 sy
+                right:
+                    ref: mirror_s18_inner_top
+                    shift:
+                        - null
+                        - 0.5 sy
             bottom:
-              bind: [,,10,]
-            home:
-              bind: [,,,10]
+                left:
+                    ref: thumbfan_far_thumb
+                    shift:
+                        - 0.5 sx
+                        - 0
+                    rotate: 90
+                right:
+                    ref: mirror_thumbfan_far_thumb
+                    shift:
+                        - 0.5 sx
+                        - 0
+                    rotate: 90
+            waypoints:
+                -
+                    percent: 50
+                    width: 50
+                -
+                    percent: 90
+                    width: 25
+        uniform_s18:
             top:
-              bind: [,,,10]
-          key:
-            column_net: P1
-            column_mark: I
-      rows:
-        bottom:
-          bind: [10]
-          row_net: P16
-          row_mark: LB
-          mirror:
-            row_net: P9
-            row_mark: RB
-        home:
-          bind: [10]
-          row_net: P15
-          row_mark: LH
-          mirror:
-            row_net: P6
-            row_mark: RH
-        top:
-          row_net: P20
-          row_mark: LT
-          mirror:
-            row_net: P2
-            row_mark: RT
-    s19:
-      $extends: points.zones.matrix
-      columns:
-        pinky:
-          rows:
+                left:
+                    ref: s18_inner_top
+                    shift:
+                        - null
+                        - 0.5 sy
+                right:
+                    ref: mirror_s18_inner_top
+                    shift:
+                        - null
+                        - 0.5 sy
             bottom:
-              footprints:
-                diode:
-                  anchor:
-                    shift: [,12]
-            home:
-              footprints:
-                diode:
-                  anchor:
-                    shift: [,6]
-            top:
-              footprints:
-                row_ext:
-                  anchor:
-                    shift: [, -10]
-                extra_column:
-                  type: pad
-                  anchor:
-                    shift: [-4, 4]
-                  nets:
-                    net: P3
-                  params:
-                    width: 2
-                    height: 2
-                    front: false
-                    text: E
-                    align: right
-          key:
-            footprints:
-              row_ext:
+                left:
+                    ref: unifar_far_thumb
+                    shift:
+                        - 0.5 sx
+                        - 0
+                    rotate: 90
+                right:
+                    ref: mirror_unifar_far_thumb
+                    shift:
+                        - 0.5 sx
+                        - 0
+                    rotate: 90
+            waypoints:
+                -
+                    percent: 50
+                    width: 50
+                -
+                    percent: 90
+                    width: 25
+    exports:
+        classic_s19_pcb:
+            main:
+                type: keys
+                side: both
+                tags:
+                    - s19
+                    - classic
+                glue: classic_s19
+                size: 13.5
+                corner: 0.5
+        uniform_s19_pcb:
+            main:
+                type: keys
+                side: both
+                tags:
+                    - s19
+                    - uniform
+                glue: uniform_s19
+                size: 13.5
+                corner: 0.5
+        uniform_s18_pcb:
+            main:
+                type: keys
+                side: both
+                tags:
+                    - s18
+                    - uniform
+                glue: uniform_s18
+                size: 13.5
+                corner: 0.5
+        mounting_holes:
+            ring_top:
+                type: circle
+                anchor:
+                    ref: matrix_ring_home
+                    shift:
+                        - -10
+                        - 5
+                radius: 2.25
+                mirror: true
+            ring_bottom:
+                type: circle
+                anchor:
+                    ref: matrix_ring_home
+                    shift:
+                        - -9
+                        - -9
+                radius: 2.25
+                mirror: true
+                operation: stack
+            index_top:
+                type: circle
+                anchor:
+                    ref: matrix_index_home
+                    shift:
+                        - 9.5
+                        - 9.5
+                radius: 2.25
+                mirror: true
+                operation: stack
+            index_bottom:
+                type: circle
+                anchor:
+                    ref: matrix_index_home
+                    shift:
+                        - 9.5
+                        - -9.5
+                radius: 2.25
+                mirror: true
+                operation: stack
+            thumb_near:
+                type: circle
+                anchor:
+                    ref: matrix_index_home
+                    shift:
+                        - -12
+                        - 2
+                radius: 2.25
+                mirror: true
+                operation: stack
+            thumb_far:
+                type: circle
+                anchor:
+                    ref: thumbfan_home_thumb
+                    shift:
+                        - 12
+                        - 2
+                radius: 2.25
+                mirror: true
+                operation: stack
+            middle:
+                type: circle
+                anchor:
+                    ref: thumbfan_home_thumb
+                    shift:
+                        - -8
+                        - 19
+                radius: 2.25
+                mirror: true
+                operation: stack
+        screw_holes:
+            ring_top:
+                type: circle
+                anchor:
+                    ref: matrix_ring_home
+                    shift:
+                        - -10
+                        - 5
+                radius: 1
+                mirror: true
+            ring_bottom:
+                type: circle
+                anchor:
+                    ref: matrix_ring_home
+                    shift:
+                        - -9
+                        - -9
+                radius: 1
+                mirror: true
+                operation: stack
+            index_top:
+                type: circle
+                anchor:
+                    ref: matrix_index_home
+                    shift:
+                        - 9.5
+                        - 9.5
+                radius: 1
+                mirror: true
+                operation: stack
+            index_bottom:
+                type: circle
+                anchor:
+                    ref: matrix_index_home
+                    shift:
+                        - 9.5
+                        - -9.5
+                radius: 1
+                mirror: true
+                operation: stack
+            thumb_near:
+                type: circle
+                anchor:
+                    ref: matrix_index_home
+                    shift:
+                        - -12
+                        - 2
+                radius: 1
+                mirror: true
+                operation: stack
+            thumb_far:
+                type: circle
+                anchor:
+                    ref: thumbfan_home_thumb
+                    shift:
+                        - 12
+                        - 2
+                radius: 1
+                mirror: true
+                operation: stack
+            middle:
+                type: circle
+                anchor:
+                    ref: thumbfan_home_thumb
+                    shift:
+                        - -8
+                        - 19
+                radius: 1
+                mirror: true
+                operation: stack
+        reset_hole:
+            main:
+                type: circle
+                anchor:
+                    ref:
+                        - s18_inner_top
+                        - mirror_s18_inner_top
+                    shift:
+                        - -8
+                        - 19
+                radius: 1
+        led_hole:
+            main:
+                type: circle
+                anchor:
+                    ref:
+                        - matrix_inner_bottom
+                        - mirror_matrix_inner_bottom
+                    shift:
+                        - 0
+                        - -48
+                radius: 1
+        controller_cutout:
+            main:
+                type: rectangle
+                anchor:
+                    ref:
+                        - s18_inner_top
+                        - mirror_s18_inner_top
+                    shift:
+                        - 10
+                        - -5
+                size:
+                    - 20
+                    - 10
+        intersected_outline:
+            - +classic_s19_pcb
+            - ~uniform_s18_pcb
+            - '-controller_cutout'
+            - '-mounting_holes'
+        normal_middle:
+            raw:
+                type: keys
+                side: middle
+                tags:
+                    - s19
+                    - classic
+                glue: classic_s19
+                size: 24
+            helper1:
+                type: rectangle
+                size:
+                    - 25
+                    - 5
+                anchor:
+                    ref: thumbfan_home_thumb
+                    shift:
+                        - 0
+                        - 12
+                mirror: true
+            helper2:
+                type: rectangle
+                size:
+                    - 25
+                    - 5
+                anchor:
+                    ref: thumbfan_far_thumb
+                    shift:
+                        - -25
+                        - 12
+                mirror: true
+            outer_bounds:
+                type: outline
+                name: classic_s19_pcb
+                operation: intersect
+        classic_s19_switches:
+            main:
+                type: keys
+                side: both
+                tags:
+                    - s19
+                    - classic
+                glue: classic_s19
+                size: 14
+                bound: false
+        classic_s19_outer:
+            main:
+                type: keys
+                side: both
+                tags:
+                    - s19
+                    - classic
+                glue: classic_s19
+                size: 18
+                corner: 0.5
+        classic_s19_inner:
+            main:
+                type: keys
+                side: both
+                tags:
+                    - s19
+                    - classic
+                glue: classic_s19
+                size: 14
+        classic_s19_body:
+            - +classic_s19_outer
+            - '-classic_s19_inner'
+        classic_s19_plate:
+            main:
+                type: keys
+                side: both
+                tags:
+                    - s19
+                    - classic
+                size: 36
+            cut_to_size:
+                type: outline
+                name: classic_s19_outer
+                operation: intersect
+            clean_up_middle:
+                type: outline
+                name: normal_middle
+                operation: subtract
+            controller_cutout:
+                type: outline
+                name: controller_cutout
+                operation: subtract
+            screw_holes:
+                type: outline
+                name: screw_holes
+                operation: subtract
+            switches:
+                type: outline
+                name: classic_s19_switches
+                operation: subtract
+        classic_s19_bottom:
+            base:
+                type: outline
+                name: classic_s19_outer
+            screw_holes:
+                type: outline
+                name: screw_holes
+                operation: subtract
+            reset:
+                type: outline
+                name: reset_hole
+                operation: subtract
+        classic_s19_top:
+            raw:
+                type: keys
+                side: middle
+                tags:
+                    - s19
+                    - classic
+                glue: classic_s19
+                size: 24
+            helper1:
+                type: rectangle
+                size:
+                    - 25
+                    - 5
+                anchor:
+                    ref: thumbfan_home_thumb
+                    shift:
+                        - 0
+                        - 12
+                mirror: true
+            helper2:
+                type: rectangle
+                size:
+                    - 25
+                    - 5
+                anchor:
+                    ref: thumbfan_far_thumb
+                    shift:
+                        - -25
+                        - 12
+                mirror: true
+            outer_bounds:
+                type: outline
+                name: classic_s19_outer
+                operation: intersect
+            screw_holes:
+                type: outline
+                name: screw_holes
+                operation: subtract
+            led:
+                type: outline
+                name: led_hole
+                operation: subtract
+        bigger_middle:
+            raw:
+                type: keys
+                side: middle
+                tags:
+                    - s19
+                    - classic
+                glue: classic_s19
+                size: 20
+            helper1:
+                type: rectangle
+                size:
+                    - 25
+                    - 5
+                anchor:
+                    ref: thumbfan_home_thumb
+                    shift:
+                        - 0
+                        - 10
+                mirror: true
+            helper2:
+                type: rectangle
+                size:
+                    - 25
+                    - 5
+                anchor:
+                    ref: thumbfan_far_thumb
+                    shift:
+                        - -25
+                        - 10
+                mirror: true
+            outer_bounds:
+                type: outline
+                name: classic_s19_outer
+                operation: intersect
+        smaller_middle:
+            raw:
+                type: keys
+                side: middle
+                tags:
+                    - s19
+                    - classic
+                glue: classic_s19
+                size: 28
+            helper1:
+                type: rectangle
+                size:
+                    - 25
+                    - 5
+                anchor:
+                    ref: thumbfan_home_thumb
+                    shift:
+                        - 0
+                        - 14
+                mirror: true
+            helper2:
+                type: rectangle
+                size:
+                    - 25
+                    - 5
+                anchor:
+                    ref: thumbfan_far_thumb
+                    shift:
+                        - -25
+                        - 14
+                mirror: true
+            outer_bounds:
+                type: outline
+                name: classic_s19_pcb
+                operation: intersect
+        upper_case:
+            base:
+                type: outline
+                name: bigger_middle
+            cut:
+                type: outline
+                name: smaller_middle
+                operation: subtract
+        upper_case_lip:
+            base:
+                type: outline
+                name: normal_middle
+            back_cut:
+                type: rectangle
+                size: 200
+                anchor:
+                    ref:
+                        - matrix_inner_top
+                        - mirror_matrix_inner_top
+                    shift:
+                        - -100
+                        - 0
+                operation: subtract
+            front_cut:
+                type: rectangle
+                size: 200
+                anchor:
+                    ref:
+                        - thumbfan_far_thumb
+                        - mirror_thumbfan_far_thumb
+                    shift:
+                        - -100
+                        - -200
+                operation: subtract
+            mid_cut:
+                type: outline
+                name: smaller_middle
+                operation: subtract
+        usb_cutout:
+            base:
+                type: rectangle
+                size:
+                    - 20
+                    - 11
+                anchor:
+                    ref:
+                        - matrix_inner_top
+                        - mirror_matrix_inner_top
+                    shift:
+                        - -10
+                        - -10
+                corner: 2
+pcbs:
+    main:
+        outlines:
+            edge:
+                outline: intersected_outline
+                layer: Edge.Cuts
+            middle:
+                outline: normal_middle
+                layer: F.SilkS
+        footprints:
+            mcu:
+                type: promicro
+                anchor:
+                    ref:
+                        - s18_inner_top
+                        - mirror_s18_inner_top
+                    shift:
+                        - 0
+                        - -23
+                    rotate: 270
+            slider:
+                type: slider
+                anchor:
+                    ref:
+                        - s18_inner_top
+                        - mirror_s18_inner_top
+                    shift:
+                        - 0
+                        - -7.5
+                nets:
+                    from: RAW
+                    to: RAWER
+                params:
+                    side: B
+            reset:
+                type: button
+                anchor:
+                    ref:
+                        - s18_inner_top
+                        - mirror_s18_inner_top
+                    shift:
+                        - 0
+                        - -17
+                    rotate: 90
+                nets:
+                    from: RST
+                    to: GND
+                params:
+                    side: B
+            extra_row_left:
                 type: pad
                 anchor:
-                  shift: [-4, -4]
+                    ref:
+                        - s18_inner_top
+                        - mirror_s18_inner_top
+                    shift:
+                        - -15
+                        - -10
                 nets:
-                  net: =row_net
+                    net: P21
                 params:
-                  width: 2
-                  height: 2
-                  front: false
-                  text: =row_mark
-                  align: right
-        ring:
-          rows:
-            bottom:
-              footprints:
-                diode:
-                  anchor:
-                    shift: [,5]
-            home:
-              footprints:
-                diode:
-                  anchor:
-                    shift: [,2.5]
-        middle:
-          rows:
-            top:
-              footprints:
-                diode:
-                  anchor:
-                    shift: [,-6]
-            home:
-              footprints:
-                diode:
-                  anchor:
-                    shift: [,-3]
-        index:
-          rows:
-            bottom:
-              footprints:
-                diode:
-                  anchor:
-                    shift: [-8.25,6]
-            home:
-              footprints:
-                diode:
-                  anchor:
-                    shift: [-8.25,3]
-            top:
-              footprints:
-                diode:
-                  anchor:
-                    shift: [-8.25,]
-      rows:
-        top:
-          footprints:
-            mx:
-              anchor:
-                rotate: 180
-            alps:
-              anchor:
-                rotate: 180
-            choc:
-              anchor:
-                rotate: 180
-            col_ext:
-              type: pad
-              anchor:
-                shift: [4, 4]
-              nets:
-                net: =column_net
-              params:
-                width: 2
-                height: 2
-                front: false
-                text: =column_mark
-        bottom:
-          footprints:
-            diode:
-              anchor:
-                rotate: 270
-            col_ext:
-              type: pad
-              anchor:
-                shift: [4, -4]
-              nets:
-                net: =column_net
-              params:
-                width: 2
-                height: 2
-                front: false
-                text: =column_mark
-      key:
-        tags:
-          s19: true
-        footprints: &quad
-          mx:
-            type: mx
-            nets:
-              from: =colrow
-              to: =column_net
-          alps:
-            type: alps
-            nets:
-              from: =colrow
-              to: =column_net
-          <<: &choc
-            choc:
-              type: choc
-              nets:
-                from: =colrow
-                to: =column_net
-          diode:
-            type: diode
-            anchor:
-              rotate: 90
-              shift: [8.25, 0]
-            nets:
-              from: =colrow
-              to: =row_net
-        mirror:
-          footprints: &quad_mirror
-            mx:
-              nets:
-                from: =column_net
-                to: =colrow
-            alps:
-              nets:
-                from: =column_net
-                to: =colrow
-            <<: &choc_mirror
-              choc:
-                nets:
-                  from: =column_net
-                  to: =colrow
-    s18:
-      $extends: points.zones.matrix
-      columns:
-        pinky:
-          stagger: 1
-        ring:
-          origin: [-12, -20]
-      rows:
-        top:
-          footprints:
-            choc:
-              anchor:
-                rotate: 180
-      key:
-        padding: 18
-        tags:
-          s18: true
-        footprints: *choc
-        mirror:
-          footprints: *choc_mirror
-    thumbfan:
-      anchor:
-        ref: matrix_inner_bottom
-        shift: [-7, -19]
-      columns:
-        near:
-          rows:
-            thumb:
-              bind: [10,5,,]
-              column_net: P7
-              tags:
-                classic: true
-              footprints:
-                choc:
-                  anchor:
-                    rotate: 180
-                diode:
-                  anchor:
-                    shift: [8,]
-                row_ext:
-                  type: pad
-                  anchor:
-                    shift: [-3, 9]
-                  nets:
-                    net: =row_net
-                  params:
-                    width: 2
-                    height: 2
+                    width: 3
+                    height: 3
                     front: false
-                    text: =row_mark
+                    text: LN
                     align: right
-        home:
-          spread: 21.25
-          rotate: -28
-          origin: [-11.75, -9]
-          rows:
-            thumb:
-              bind: [,10,,15]
-              column_net: P8
-              tags:
-                classic: true
-                uniform: true
-              footprints:
-                diode:
-                  anchor:
-                    shift: [8,]
-        far:
-          spread: 21.25
-          rotate: -28
-          origin: [-9.5, -9]
-          rows:
-            thumb:
-              bind: [-1,,,5]
-              column_net: P1
-              tags:
-                classic: true
-              footprints:
-                choc:
-                  anchor:
-                    rotate: 180
-                diode:
-                  anchor:
-                    shift: [-4,]
-                    rotate: 0
-              mirror:
-                footprints:
-                  diode:
-                    anchor:
-                      rotate: 180
-      rows:
-        thumb:
-          row_net: P10
-          row_mark: LF
-          footprints:
-            diode:
-              anchor:
-                shift: [0, 9]
-                rotate: 180
-          mirror:
-            row_net: P19
-            row_mark: RF
-            footprints:
-              diode:
+            extra_row_right:
+                type: pad
                 anchor:
-                  rotate: 0
-      key:
-        footprints: *quad
-        mirror: *quad_mirror
-    unifar:
-      anchor:
-        ref: thumbfan_home_thumb
-      columns:
-        home_again:
-          key:
-            skip: true
-        far:
-          rotate: -28
-          origin: [-9.5, -9]
-          rows:
-            thumb:
-              bind: [-1,,,5]
-          key:
-            column_net: P1
-            footprints:
-              choc:
+                    ref:
+                        - s18_inner_top
+                        - mirror_s18_inner_top
+                    shift:
+                        - 15
+                        - -10
+                nets:
+                    net: P0
+                params:
+                    width: 3
+                    height: 3
+                    front: false
+                    text: RN
+            led:
+                type: rgb
                 anchor:
-                  rotate: 180
-              diode: $unset
-            mirror:
-              footprints:
-                diode: $unset
-            tags:
-              uniform: true
-      rows:
-        thumb:
-          row_net: P10
-          mirror:
-            row_net: P19
-      key:
-        footprints: *quad
-        mirror: *quad_mirror
-    uninear:
-      anchor:
-        ref: thumbfan_home_thumb
-      columns:
-        home_again:
-          key:
-            skip: true
-        near:
-          spread: -19
-          rotate: 28
-          origin: [9.5, -9]
-          rows:
-            thumb:
-              bind: [10,5,,]
-          key:
-            column_net: P7
-            footprints:
-              choc:
-                anchor:
-                  rotate: 180
-              diode: $unset
-            mirror:
-              footprints:
-                diode: $unset
-            tags:
-              uniform: true
-      rows:
-        thumb:
-          row_net: P10
-          mirror:
-            row_net: P19
-      key:
-        footprints: *quad
-        mirror: *quad_mirror
-  key:
-    bind: [0,0,0,0]
-  rotate: -20
-  mirror:
-    ref: matrix_pinky_home
-    distance: 223.7529778
-outlines:
-  glue:
-    classic_s19:
-      top:
-        left:
-          ref: matrix_inner_top
-          shift: [, 0.5 sy]
-        right:
-          ref: mirror_matrix_inner_top
-          shift: [, 0.5 sy]
-      bottom:
-        left:
-          ref: thumbfan_far_thumb
-          shift: [0.5 sx, 0]
-          rotate: 90
-        right:
-          ref: mirror_thumbfan_far_thumb
-          shift: [0.5 sx, 0]
-          rotate: 90
-      waypoints:
-        - percent: 50
-          width: 50
-        - percent: 90
-          width: 25
-    uniform_s19:
-      $extends: outlines.glue.classic_s19
-      bottom:
-        left:
-          ref: unifar_far_thumb
-        right:
-          ref: mirror_unifar_far_thumb
-    classic_s18:
-      $extends: outlines.glue.classic_s19
-      top:
-        left:
-          ref: s18_inner_top
-        right:
-          ref: mirror_s18_inner_top
-    uniform_s18:
-      $extends:
-        - outlines.glue.uniform_s19
-        - outlines.glue.classic_s18
-  exports:
-    classic_s19_pcb:
-      main:
-        type: keys
-        side: both
-        tags:
-          - s19
-          - classic
-        glue: classic_s19
-        size: 13.5
-        corner: .5
-    uniform_s19_pcb:
-      $extends: outlines.exports.classic_s19_pcb
-      main:
-        tags:
-          - s19
-          - uniform
-        glue: uniform_s19
-    uniform_s18_pcb:
-      $extends: outlines.exports.uniform_s19_pcb
-      main:
-        tags:
-          - s18
-          - uniform
-        glue: uniform_s18
-    mounting_holes:
-      ring_top:
-        type: circle
-        ref: matrix_ring_home
-        shift: [-10, 5]
-        radius: 2.25
-        mirror: true
-      ring_bottom:
-        type: circle
-        ref: matrix_ring_home
-        shift: [-9, -9]
-        radius: 2.25
-        mirror: true
-        operation: stack
-      index_top:
-        type: circle
-        ref: matrix_index_home
-        shift: [9.5, 9.5]
-        radius: 2.25
-        mirror: true
-        operation: stack
-      index_bottom:
-        type: circle
-        ref: matrix_index_home
-        shift: [9.5, -9.5]
-        radius: 2.25
-        mirror: true
-        operation: stack
-      thumb_near:
-        type: circle
-        ref: thumbfan_home_thumb
-        shift: [-12, 2]
-        radius: 2.25
-        mirror: true
-        operation: stack
-      thumb_far:
-        type: circle
-        ref: thumbfan_home_thumb
-        shift: [12, 2]
-        radius: 2.25
-        mirror: true
-        operation: stack
-      middle:
-        type: circle
-        ref: thumbfan_home_thumb
-        shift: [-8, 19]
-        radius: 2.25
-        mirror: true
-        operation: stack
-    screw_holes:
-      $extends: outlines.exports.mounting_holes
-      ring_top:
-        radius: 1
-      ring_bottom:
-        radius: 1
-      index_top:
-        radius: 1
-      index_bottom:
-        radius: 1
-      thumb_near:
-        radius: 1
-      thumb_far:
-        radius: 1
-      middle:
-        radius: 1
-    reset_hole:
-      main:
-        type: circle
-        ref:
-          - s18_inner_top
-          - mirror_s18_inner_top
-        shift: [0, -17]
-        radius: 1
-    led_hole:
-      main:
-        type: circle
-        ref:
-          - matrix_inner_bottom
-          - mirror_matrix_inner_bottom
-        shift: [0, -48]
-        radius: 1
-    controller_cutout:
-      main:
-        type: rectangle
-        ref:
-          - s18_inner_top
-          - mirror_s18_inner_top
-        shift: [-10, -5]
-        size: [20, 10]
-    intersected_outline:
-      - +classic_s19_pcb
-      - ~uniform_s18_pcb
-      - -controller_cutout
-      - -mounting_holes
-    normal_middle: &middle
-      raw:
-        type: keys
-        side: middle
-        tags:
-          - s19
-          - classic
-        glue: classic_s19
-        size: 24
-      helper1:
-        type: rectangle
-        size: [25, 5]
-        ref: thumbfan_home_thumb
-        shift: [0, 12]
-        mirror: true
-      helper2:
-        type: rectangle
-        size: [25, 5]
-        ref: thumbfan_far_thumb
-        shift: [-25, 12]
-        mirror: true
-      outer_bounds:
-        type: outline
-        name: classic_s19_pcb
-        operation: intersect
-    classic_s19_switches:
-      main:
-        type: keys
-        side: both
-        tags:
-          - s19
-          - classic
-        glue: classic_s19
-        size: 14
-        bound: false
-    classic_s19_outer:
-      main:
-        type: keys
-        side: both
-        tags:
-          - s19
-          - classic
-        glue: classic_s19
-        size: 18
-        corner: .5
-    classic_s19_inner:
-      main:
-        type: keys
-        side: both
-        tags:
-          - s19
-          - classic
-        glue: classic_s19
-        size: 14
-    classic_s19_body:
-      - +classic_s19_outer
-      - -classic_s19_inner
-    classic_s19_plate:
-      main:
-        type: keys
-        side: both
-        tags:
-          - s19
-          - classic
-        size: 36
-      cut_to_size:
-        type: outline
-        name: classic_s19_outer
-        operation: intersect
-      clean_up_middle:
-        type: outline
-        name: normal_middle
-        operation: subtract
-      controller_cutout:
-        type: outline
-        name: controller_cutout
-        operation: subtract
-      screw_holes:
-        type: outline
-        name: screw_holes
-        operation: subtract
-      switches:
-        type: outline
-        name: classic_s19_switches
-        operation: subtract
-    classic_s19_bottom:
-      base:
-        type: outline
-        name: classic_s19_outer
-      screw_holes:
-        type: outline
-        name: screw_holes
-        operation: subtract
-      reset:
-        type: outline
-        name: reset_hole
-        operation: subtract
-    classic_s19_top: 
-      <<: *middle
-      outer_bounds:
-        type: outline
-        name: classic_s19_outer
-        operation: intersect
-      screw_holes:
-        type: outline
-        name: screw_holes
-        operation: subtract
-      led:
-        type: outline
-        name: led_hole
-        operation: subtract
-    bigger_middle:
-      <<: *middle
-      raw:
-        type: keys
-        side: middle
-        tags:
-          - s19
-          - classic
-        glue: classic_s19
-        size: 20
-      outer_bounds:
-        type: outline
-        name: classic_s19_outer
-        operation: intersect
-      helper1:
-        type: rectangle
-        size: [25, 5]
-        ref: thumbfan_home_thumb
-        shift: [0, 10]
-        mirror: true
-      helper2:
-        type: rectangle
-        size: [25, 5]
-        ref: thumbfan_far_thumb
-        shift: [-25, 10]
-        mirror: true
-    smaller_middle:
-      <<: *middle
-      raw:
-        type: keys
-        side: middle
-        tags:
-          - s19
-          - classic
-        glue: classic_s19
-        size: 28
-      outer_bounds:
-        type: outline
-        name: classic_s19_pcb
-        operation: intersect
-      helper1:
-        type: rectangle
-        size: [25, 5]
-        ref: thumbfan_home_thumb
-        shift: [0, 14]
-        mirror: true
-      helper2:
-        type: rectangle
-        size: [25, 5]
-        ref: thumbfan_far_thumb
-        shift: [-25, 14]
-        mirror: true
-    battery_bar_long:
-      bar:
-        type: rectangle
-        ref:
-          - thumbfan_near_thumb
-          - mirror_thumbfan_near_thumb
-        size: [200, 10]
-        shift: [-100, -1.5]
-    battery_bar:
-      bar:
-        type: outline
-        name: battery_bar_long
-      cut:
-        type: outline
-        name: normal_middle
-        operation: intersect
-      hole:
-        type: outline
-        name: mounting_holes
-        operation: subtract
-    battery_bar_lip:
-      base:
-        type: outline
-        name: battery_bar
-      cut:
-        type: outline
-        name: smaller_middle
-        operation: subtract
-    upper_case:
-      base:
-        type: outline
-        name: bigger_middle
-      cut:
-        type: outline
-        name: smaller_middle
-        operation: subtract
-    upper_case_lip:
-      base:
-        type: outline
-        name: normal_middle
-      back_cut:
-        type: rectangle
-        ref:
-          - matrix_inner_top
-          - mirror_matrix_inner_top
-        size: 200
-        shift: [-100, 0]
-        operation: subtract
-      front_cut:
-        type: rectangle
-        ref:
-          - thumbfan_far_thumb
-          - mirror_thumbfan_far_thumb
-        size: 200
-        shift: [-100, -200]
-        operation: subtract
-      mid_cut:
-        type: outline
-        name: smaller_middle
-        operation: subtract
-      battery_cut:
-        type: outline
-        name: battery_bar_long
-        operation: subtract
-    usb_cutout:
-      base:
-        type: rectangle
-        ref:
-          - matrix_inner_top
-          - mirror_matrix_inner_top
-        size: [20, 11]
-        shift: [-10, -10]
-        corner: 2
-pcbs:
-  main:
-    outlines:
-      edge:
-        outline: intersected_outline
-        layer: Edge.Cuts
-      middle:
-        outline: normal_middle
-        layer: F.SilkS
-    footprints:
-      mcu:
-        type: promicro
-        anchor:
-          ref:
-            - s18_inner_top
-            - mirror_s18_inner_top
-          shift: [0, -23]
-          rotate: 270
-      slider:
-        type: slider
-        anchor:
-          ref:
-            - s18_inner_top
-            - mirror_s18_inner_top
-          shift: [0, -7.5]
-        nets:
-          from: RAW
-          to: RAWER
-        params:
-          side: B
-      reset:
-        type: button
-        anchor:
-          ref:
-            - s18_inner_top
-            - mirror_s18_inner_top
-          shift: [0, -17]
-          rotate: 90
-        nets:
-          from: RST
-          to: GND
-        params:
-          side: B
-      extra_row_left:
-        type: pad
-        anchor:
-          ref:
-            - s18_inner_top
-            - mirror_s18_inner_top
-          shift: [-15, -10]
-        nets:
-          net: P21
-        params:
-          width: 3
-          height: 3
-          front: false
-          text: LN
-          align: right
-      extra_row_right:
-        type: pad
-        anchor:
-          ref:
-            - s18_inner_top
-            - mirror_s18_inner_top
-          shift: [15, -10]
-        nets:
-          net: P0
-        params:
-          width: 3
-          height: 3
-          front: false
-          text: RN
-      battery:
-        type: jstph
-        anchor:
-          ref:
-            - matrix_inner_bottom
-            - mirror_matrix_inner_bottom
-          shift: [0, -43]
-          rotate: 180
-        nets:
-          pos: RAWER
-          neg: GND
-      led:
-        type: rgb
-        anchor:
-          ref:
-            - matrix_inner_bottom
-            - mirror_matrix_inner_bottom
-          shift: [0, -48]
-        nets:
-          din: P18
-          dout: ''
+                    ref:
+                        - matrix_inner_bottom
+                        - mirror_matrix_inner_bottom
+                    shift:
+                        - 0
+                        - -48
+                nets:
+                    din: P18
+                    dout: ''
 cases:
-  usb_cutout:
-    - name: usb_cutout
-      extrude: 200
-      rotate: [-90, 0, 0]
-      shift: [0, 0, -3.5]
-  classic_s19_minimal_lower:
-    - name: classic_s19_body
-      extrude: 8
-      shift: [0, 0, -9]
-    - -usb_cutout
-  classic_s19_minimal_upper:
-    - name: upper_case
-      extrude: 5
-    - name: upper_case_lip
-      extrude: 2
-      shift: [0, 0, -2]
-    - -usb_cutout
-  classic_s19_minimal_battery:
-    - name: battery_bar
-      extrude: 1.5
-    - name: battery_bar_lip
-      extrude: 3.5
-      shift: [, , 1.5]
-  
+    usb_cutout:
+        -
+            name: usb_cutout
+            extrude: 200
+            rotate:
+                - -90
+                - 0
+                - 0
+            shift:
+                - 0
+                - 0
+                - -3.5
+    classic_s19_minimal_lower:
+        -
+            name: classic_s19_body
+            extrude: 8
+            shift:
+                - 0
+                - 0
+                - -9
+        - '-usb_cutout'
+    classic_s19_minimal_upper:
+        -
+            name: upper_case
+            extrude: 5
+        -
+            name: upper_case_lip
+            extrude: 2
+            shift:
+                - 0
+                - 0
+                - -2
+        - '-usb_cutout'
