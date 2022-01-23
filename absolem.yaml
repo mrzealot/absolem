@@ -505,49 +505,56 @@ outlines:
     mounting_holes:
       ring_top:
         type: circle
-        ref: matrix_ring_home
-        shift: [-10, 5]
+        anchor:
+          ref: matrix_ring_home
+          shift: [-10, 5]
         radius: 2.25
         mirror: true
       ring_bottom:
         type: circle
-        ref: matrix_ring_home
-        shift: [-9, -9]
+        anchor:
+          ref: matrix_ring_home
+          shift: [-9, -9]
         radius: 2.25
         mirror: true
         operation: stack
       index_top:
         type: circle
-        ref: matrix_index_home
-        shift: [9.5, 9.5]
+        anchor:
+          ref: matrix_index_home
+          shift: [9.5, 9.5]
         radius: 2.25
         mirror: true
         operation: stack
       index_bottom:
         type: circle
-        ref: matrix_index_home
-        shift: [9.5, -9.5]
+        anchor:
+          ref: matrix_index_home
+          shift: [9.5, -9.5]
         radius: 2.25
         mirror: true
         operation: stack
       thumb_near:
         type: circle
-        ref: thumbfan_home_thumb
-        shift: [-12, 2]
+        anchor:
+          ref: thumbfan_home_thumb
+          shift: [-12, 2]
         radius: 2.25
         mirror: true
         operation: stack
       thumb_far:
         type: circle
-        ref: thumbfan_home_thumb
-        shift: [12, 2]
+        anchor:
+          ref: thumbfan_home_thumb
+          shift: [12, 2]
         radius: 2.25
         mirror: true
         operation: stack
       middle:
         type: circle
-        ref: thumbfan_home_thumb
-        shift: [-8, 19]
+        anchor:
+          ref: thumbfan_home_thumb
+          shift: [-8, 19]
         radius: 2.25
         mirror: true
         operation: stack
@@ -570,26 +577,29 @@ outlines:
     reset_hole:
       main:
         type: circle
-        ref:
-          - s18_inner_top
-          - mirror_s18_inner_top
-        shift: [0, -17]
+        anchor:
+          ref:
+            - s18_inner_top
+            - mirror_s18_inner_top
+          shift: [0, -17]
         radius: 1
     led_hole:
       main:
         type: circle
-        ref:
-          - matrix_inner_bottom
-          - mirror_matrix_inner_bottom
-        shift: [0, -48]
+        anchor:
+          ref:
+            - matrix_inner_bottom
+            - mirror_matrix_inner_bottom
+          shift: [0, -48]
         radius: 1
     controller_cutout:
       main:
         type: rectangle
-        ref:
-          - s18_inner_top
-          - mirror_s18_inner_top
-        shift: [-10, -5]
+        anchor:
+          ref:
+            - s18_inner_top
+            - mirror_s18_inner_top
+          shift: [-10, -5]
         size: [20, 10]
     intersected_outline:
       - +classic_s19_pcb
@@ -608,14 +618,16 @@ outlines:
       helper1:
         type: rectangle
         size: [25, 5]
-        ref: thumbfan_home_thumb
-        shift: [0, 12]
+        anchor:
+          ref: thumbfan_home_thumb
+          shift: [0, 12]
         mirror: true
       helper2:
         type: rectangle
         size: [25, 5]
-        ref: thumbfan_far_thumb
-        shift: [-25, 12]
+        anchor:
+          ref: thumbfan_far_thumb
+          shift: [-25, 12]
         mirror: true
       outer_bounds:
         type: outline
@@ -724,14 +736,16 @@ outlines:
       helper1:
         type: rectangle
         size: [25, 5]
-        ref: thumbfan_home_thumb
-        shift: [0, 10]
+        anchor:
+          ref: thumbfan_home_thumb
+          shift: [0, 10]
         mirror: true
       helper2:
         type: rectangle
         size: [25, 5]
-        ref: thumbfan_far_thumb
-        shift: [-25, 10]
+        anchor:
+          ref: thumbfan_far_thumb
+          shift: [-25, 10]
         mirror: true
     smaller_middle:
       <<: *middle
@@ -750,23 +764,26 @@ outlines:
       helper1:
         type: rectangle
         size: [25, 5]
-        ref: thumbfan_home_thumb
-        shift: [0, 14]
+        anchor:
+          ref: thumbfan_home_thumb
+          shift: [0, 14]
         mirror: true
       helper2:
         type: rectangle
         size: [25, 5]
-        ref: thumbfan_far_thumb
-        shift: [-25, 14]
+        anchor:
+          ref: thumbfan_far_thumb
+          shift: [-25, 14]
         mirror: true
     battery_bar_long:
       bar:
         type: rectangle
-        ref:
-          - thumbfan_near_thumb
-          - mirror_thumbfan_near_thumb
+        anchor:
+          ref:
+            - thumbfan_near_thumb
+            - mirror_thumbfan_near_thumb
+          shift: [-100, -1.5]
         size: [200, 10]
-        shift: [-100, -1.5]
     battery_bar:
       bar:
         type: outline
@@ -801,19 +818,21 @@ outlines:
         name: normal_middle
       back_cut:
         type: rectangle
-        ref:
-          - matrix_inner_top
-          - mirror_matrix_inner_top
+        anchor:
+          ref:
+            - matrix_inner_top
+            - mirror_matrix_inner_top
+          shift: [-100, 0]
         size: 200
-        shift: [-100, 0]
         operation: subtract
       front_cut:
         type: rectangle
-        ref:
-          - thumbfan_far_thumb
-          - mirror_thumbfan_far_thumb
+        anchor:
+          ref:
+            - thumbfan_far_thumb
+            - mirror_thumbfan_far_thumb
+          shift: [-100, -200]
         size: 200
-        shift: [-100, -200]
         operation: subtract
       mid_cut:
         type: outline
@@ -826,11 +845,12 @@ outlines:
     usb_cutout:
       base:
         type: rectangle
-        ref:
-          - matrix_inner_top
-          - mirror_matrix_inner_top
+        anchor:
+          ref:
+            - matrix_inner_top
+            - mirror_matrix_inner_top
+          shift: [-10, -10]
         size: [20, 11]
-        shift: [-10, -10]
         corner: 2
 pcbs:
   main:
